@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion '30.0.2'
+    defaultConfig {
+        applicationId "com.etang.nt_launcher"
+        minSdkVersion 17
+        targetSdkVersion 30
+        versionCode 340000
+        versionName "3.4" //稳定版最新版本号
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        debug {
+            keyAlias 'etangkey'
+            keyPassword 'xiaoyu0632'
+            storeFile file('C:/Users/10976/Desktop/myAPP-KEY.jks')
+            storePassword 'xiaoyu0632'
+        }
+        release {
+            keyAlias 'etangkey'
+            keyPassword 'xiaoyu0632'
+            storeFile file('C:/Users/10976/Desktop/myAPP-KEY.jks')
+            storePassword 'xiaoyu0632'
+        }
+    }
+    buildTypes {
+        debug {
+            zipAlignEnabled true
+            debuggable true
+            minifyEnabled false //是否混淆
+            shrinkResources false //是否去除无效的资源文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+        release {
+            zipAlignEnabled true
+            debuggable false
+            minifyEnabled true //是否混淆
+            shrinkResources true //是否去除无效的资源文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "androidx.appcompat:appcompat:${appcompatVersion}"
+    implementation 'ru.alexbykov:nopermission:1.1.2'
+    implementation "androidx.constraintlayout:constraintlayout:${constraintlayoutVersion}"
+    implementation "com.google.android.material:material:${materialVersion}"
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation "androidx.test.ext:junit:${junitVersion}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${espressoCoreVersion}"
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation "androidx.cardview:cardview:${cardviewVersion}"
+    implementation("com.squareup.okhttp3:okhttp:${okhttpVersion}")
+    implementation 'org.jsoup:jsoup:1.13.1'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
+}
