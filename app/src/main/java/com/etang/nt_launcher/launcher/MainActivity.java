@@ -95,7 +95,6 @@ public class MainActivity extends Activity implements OnClickListener {
     private Runnable runnable;
     private static MyDataBaseHelper dbHelper_name_sql;
     private static SQLiteDatabase db;
-    public static View view_buttom;
     public static TextView tv_user_id, tv_time_hour, tv_time_min,
             tv_main_batterystate, tv_city, tv_wind, tv_temp_state,
             tv_last_updatetime, tv_main_nowdate;
@@ -108,6 +107,7 @@ public class MainActivity extends Activity implements OnClickListener {
     public static List<AppInfo> appInfos = new ArrayList<AppInfo>();
     public static boolean offline_mode = false;
     private AppInstallServer appinstallserver;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -117,7 +117,6 @@ public class MainActivity extends Activity implements OnClickListener {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);// 无Title
         setContentView(R.layout.activity_main);
-        SharedPreferences sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
         //绑定各类
         initView();// 绑定控件
         check_first_user();//检查是不是第一次使用
@@ -152,12 +151,6 @@ public class MainActivity extends Activity implements OnClickListener {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-//                try {
-//                    string_app_info = appInfos.get(position).getPackageName();
-//                    UnInstallDialog.uninstall_app(position, appInfos, MainActivity.this, MainActivity.this, string_app_info, appInfos.get(position).getName());
-//                } catch (Exception e) {
-//                    DeBugDialog.debug_show_dialog(MainActivity.this, e.toString());//显示错误信息
-//                }
                 try {
                     // Intent intent=appInfos.get(position).getIntent();
                     // startActivity(intent);
@@ -231,7 +224,6 @@ public class MainActivity extends Activity implements OnClickListener {
                 setNotification();
             }
         }, 50);
-        Log.i("初次见面", "欢迎来到这个世界");
     }
 
     @Override
@@ -306,7 +298,6 @@ public class MainActivity extends Activity implements OnClickListener {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void check_first_user() {
         if (isFirstStart(MainActivity.this)) {//第一次
             /**
@@ -316,8 +307,8 @@ public class MainActivity extends Activity implements OnClickListener {
             editor.putString("images_info", "applist");//默认显示内容
             editor.putString("images_app_listifo", "true");
             editor.putString("appname_state", "one");//是否显示APP名称
-            editor.putString("applist_number", "auto");//默认APP列表大小
-            editor.putString("timetext_min_size", "50");//分钟时间大小
+            editor.putString("applist_number", "5");//默认APP列表大小
+            editor.putString("timetext_min_size", "40");//分钟时间大小
             editor.putString("timetext_hour_size", "70");//小时时间大小
             editor.putString("nametext_size", "16");//昵称文本大小
             editor.putString("dianchitext_size", "16");//电池文本大小
@@ -325,7 +316,7 @@ public class MainActivity extends Activity implements OnClickListener {
             editor.putString("setting_ico_hind", "false");//隐藏底栏
             editor.putString("offline", "false");//离线模式
             editor.putBoolean("app_setStackFromBottomMode", false);//默认显示内容
-            editor.putString("icon_size", "30");//图标大小
+            editor.putString("icon_size", "45");//图标大小
             editor.apply();
             //更新桌面信息
             images_upgrade();
@@ -402,24 +393,15 @@ public class MainActivity extends Activity implements OnClickListener {
     }
 
     public static void check_view_hind(Context context, SharedPreferences sharedPreferences) {
+        if (Build.BRAND.toString().equals("Allwinner")) {
+            iv_setting_refresh.setVisibility(View.GONE);
+        }
         try {
             String ico_info = sharedPreferences.getString("setting_ico_hind", null);
             if (ico_info.equals("true")) {
                 line_bottom.setVisibility(View.GONE);
-//                MainActivity.iv_setting_button.setVisibility(View.GONE);
-//                iv_setting_lock.setVisibility(View.GONE);
-//                iv_setting_yinliang.setVisibility(View.GONE);
-//                tg_apps_state.setVisibility(View.GONE);
-//                iv_setting_rss.setVisibility(View.GONE);
-//                view_buttom.setVisibility(View.INVISIBLE);
             } else {
                 line_bottom.setVisibility(View.VISIBLE);
-//                iv_setting_button.setVisibility(View.VISIBLE);
-//                iv_setting_lock.setVisibility(View.VISIBLE);
-//                iv_setting_rss.setVisibility(View.VISIBLE);
-//                iv_setting_yinliang.setVisibility(View.VISIBLE);
-//                tg_apps_state.setVisibility(View.VISIBLE);
-//                view_buttom.setVisibility(View.VISIBLE);
             }
         } catch (Exception e) {
             SharedPreferences.Editor editor = context.getSharedPreferences("info", context.MODE_PRIVATE).edit();
@@ -548,15 +530,10 @@ public class MainActivity extends Activity implements OnClickListener {
         String s = Build.BRAND;
         hind_apparrayList.clear();
         hind_apparrayList = SaveArrayListUtil.getSearchArrayList(context);
-//        if (s.equals("Allwinner")) {
-//            hind_apparrayList.add("com.duokan.einkreader");
-//            hind_apparrayList.add("com.android.settings");
-//        }
         for (int j = 0; j < hind_apparrayList.size(); j++) {
             for (int i = 0; i < appInfos.size(); i++) {
                 if (hind_apparrayList.get(j).equals(appInfos.get(i).getPackageName())) {
                     appInfos.remove(i);
-//                    continue;
                 }
             }
         }
@@ -616,12 +593,12 @@ public class MainActivity extends Activity implements OnClickListener {
      * 绑定控件
      */
     private void initView() {
-        line_bottom = (LinearLayout) findViewById(R.id.linearLayout2);
+        sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
+        line_bottom = (LinearLayout) findViewById(R.id.line_bottom);
         tv_main_nowdate = (TextView) findViewById(R.id.tv_main_nowdate);
-        iv_clean_button = (ImageView) findViewById(R.id.iv_clean_button);
+        iv_clean_button = (ImageView) findViewById(R.id.iv_setting_clear);
         iv_setting_rss = (ImageView) findViewById(R.id.iv_setting_rss);
         iv_setting_refresh = (ImageView) findViewById(R.id.iv_setting_refresh);
-        view_buttom = (View) findViewById(R.id.view_buttom);
         mListView = (GridView) findViewById(R.id.mAppGridView);
         iv_setting_button = (ImageView) findViewById(R.id.iv_setting_button);
         tv_time_hour = (TextView) findViewById(R.id.tv_time_hour);
@@ -928,7 +905,7 @@ public class MainActivity extends Activity implements OnClickListener {
                     e.printStackTrace();
                 }
                 break;
-            case R.id.iv_clean_button:
+            case R.id.iv_setting_clear:
                 String s_clean = Build.BRAND;
                 if (s_clean.equals("Allwinner")) {
                     Intent intent_clear = new Intent("com.mogu.clear_mem");
@@ -1008,7 +985,7 @@ public class MainActivity extends Activity implements OnClickListener {
             /**
              * 设定文本大小预填充
              */
-            editor.putString("timetext_min_size", "50");
+            editor.putString("timetext_min_size", "40");
             editor.putString("timetext_hour_size", "70");
             editor.putString("nametext_size", "17");//昵称文本大小
             editor.putString("dianchitext_size", "17");//电池文本大小

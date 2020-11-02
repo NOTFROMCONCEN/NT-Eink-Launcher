@@ -50,8 +50,8 @@ public class DeskTopGridViewBaseAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(
                     R.layout.list_gridview_item, null);
             holder = new Holder();
-            holder.ico = (ImageView) convertView.findViewById(R.id.iv);
-            holder.Name = (TextView) convertView.findViewById(R.id.tv);
+            holder.ico = (ImageView) convertView.findViewById(R.id.iv_gridview_app_icon);
+            holder.Name = (TextView) convertView.findViewById(R.id.tv_gridview_app_name);
             holder.line_appinfo = (LinearLayout) convertView.findViewById(R.id.line_appinfo);
             convertView.setTag(holder);
         } else {
@@ -83,7 +83,7 @@ public class DeskTopGridViewBaseAdapter extends BaseAdapter {
             holder.ico.setLayoutParams(params);
         } catch (Exception e) {
             SharedPreferences sharedPreferences = context.getSharedPreferences("info", context.MODE_PRIVATE);
-            sharedPreferences.edit().putString("icon_size", "30").commit();
+            sharedPreferences.edit().putString("icon_size", "45").commit();
             get_iconsize(context, holder);
         }
     }
@@ -122,16 +122,16 @@ public class DeskTopGridViewBaseAdapter extends BaseAdapter {
                     holder.line_appinfo.setBackground(null);
                 }
                 if (appblok_state.equals("show_blok")) {
-                    holder.line_appinfo.setBackgroundResource(R.drawable.shaper_desk_top_colorwhite_show);
+                    holder.line_appinfo.setBackgroundResource(R.drawable.shaper_zhijiao_lins_show);
                 }
                 if (appblok_state.equals("show_nocolor_blok")) {
-                    holder.line_appinfo.setBackgroundResource(R.drawable.shaper_desk_top_show);
+                    holder.line_appinfo.setBackgroundResource(R.drawable.shaper_zhijiao_lins_nocolor);
                 }
             }
         } catch (Exception e) {
             SharedPreferences.Editor editor = context.getSharedPreferences("info_app_list_state", context.MODE_PRIVATE).edit();
             editor.putString("appname_state", "null");
-            editor.putString("appblok_state", "null");
+            editor.putString("appblok_state", "show_nocolor_blok");
             editor.apply();
             get_appname_info(holder);
         }
