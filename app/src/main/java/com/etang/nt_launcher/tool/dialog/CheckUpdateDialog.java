@@ -54,13 +54,12 @@ public class CheckUpdateDialog {
     //  文件保存路径
     private static String mSavePath;
     //  版本名称
-    private static String mVersion_name = "奶糖桌面";
+    private static String mVersion_name = "梅糖桌面";
 
     public static void check_update(final Context context, final Activity activity) {
         final ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("正在加载......");
         progressDialog.show();
-        NewUserDialog.dialog_show(context, "有用户检查更新：");
         final Handler handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -328,7 +327,8 @@ public class CheckUpdateDialog {
             public void run() {
                 try {
                     if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                        String sdPath = Environment.getExternalStorageDirectory() + "/";
+                        String sdPath = Environment.getExternalStorageState() + "/";
+                        Log.e("更新下载目录", sdPath);
 //                      文件保存路径
                         mSavePath = sdPath + "ntlauncher";
                         File dir = new File(mSavePath);

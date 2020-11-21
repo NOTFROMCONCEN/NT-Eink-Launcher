@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -34,23 +35,22 @@ import com.etang.nt_launcher.tool.toast.DiyToast;
 public class SettingActivity extends Activity {
 
     LinearLayout lv_window_setting, lv_restart_setting, lv_inforeback_activity, lv_textsize_setting, lv_applist_setting, lv_about_activity, lv_desktop_setting, lv_exit_setting, lv_hindapp_setting, lv_name_setting, lv_uninstall_setting;
-    private TextView tv_title_text;
     private CheckBox cb_hind_setting_ico, cb_setting_offlinemode, cb_setting_oldmanmode;
-    private ImageView iv_title_back;
     private MyDataBaseHelper dbHelper_name_sql;
     private SQLiteDatabase db;
+    private TextView tv_back, tv_button, tv_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        //全屏
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);// 无Title
         setContentView(R.layout.activity_setting);
         initView();
-        tv_title_text.setText("桌面设置");
-        iv_title_back.setOnClickListener(new OnClickListener() {
+        tv_title.setText("桌面设置");
+        tv_back.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -79,11 +79,23 @@ public class SettingActivity extends Activity {
 //                finish();
 //            }
 //        });
+        tv_button.setText("权限声明 | APP说明书");
+        tv_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), WelecomeActivity.class);
+                intent.putExtra("state", "false");
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                finish();
+            }
+        });
         //壁纸设置
         lv_desktop_setting.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SettingActivity.this, ChoseImagesActivity.class));
+                overridePendingTransition(0, 0);
             }
         });
         //桌面应用列表设置
@@ -91,6 +103,7 @@ public class SettingActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SettingActivity.this, DeskTopSettingActivity.class));
+                overridePendingTransition(0, 0);
             }
         });
         //文本大小设置
@@ -98,6 +111,7 @@ public class SettingActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SettingActivity.this, TextSizeSetting.class));
+                overridePendingTransition(0, 0);
             }
         });
         //应用管理设置
@@ -105,6 +119,7 @@ public class SettingActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SettingActivity.this, HindAppSetting.class));
+                overridePendingTransition(0, 0);
             }
         });
         //退出“奶糖桌面”
@@ -124,7 +139,6 @@ public class SettingActivity extends Activity {
         lv_inforeback_activity.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
         lv_restart_setting.setOnClickListener(new OnClickListener() {
@@ -233,19 +247,6 @@ public class SettingActivity extends Activity {
                 }
             }
         });
-        ((TextView) findViewById(R.id.tv_title_imagetext)).setText("权限声明 | APP说明书");
-        ((TextView) findViewById(R.id.tv_title_imagetext)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SettingActivity.this, WelecomeActivity.class));
-            }
-        });
-        ((ImageView) findViewById(R.id.iv_title_imagebutton)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SettingActivity.this, WelecomeActivity.class));
-            }
-        });
     }
 //
 //    private void show_dialog() {
@@ -334,6 +335,9 @@ public class SettingActivity extends Activity {
 
     private void initView() {
         // TODO Auto-generated method stub
+        tv_back = (TextView) findViewById(R.id.tv_title_back);
+        tv_button = (TextView) findViewById(R.id.tv_title_button);
+        tv_title = (TextView) findViewById(R.id.tv_title_text);
         lv_restart_setting = (LinearLayout) findViewById(R.id.lv_restart_setting);
         lv_inforeback_activity = (LinearLayout) findViewById(R.id.lv_inforeback_activity);
         cb_setting_offlinemode = (CheckBox) findViewById(R.id.cb_setting_offlinemode);
@@ -344,8 +348,6 @@ public class SettingActivity extends Activity {
         lv_hindapp_setting = (LinearLayout) findViewById(R.id.lv_hindapp_setting);
         lv_exit_setting = (LinearLayout) findViewById(R.id.lv_exit_setting);
         lv_textsize_setting = (LinearLayout) findViewById(R.id.lv_textsize_setting);
-        tv_title_text = (TextView) findViewById(R.id.tv_title_text);
-        iv_title_back = (ImageView) findViewById(R.id.iv_title_back);
         lv_desktop_setting = (LinearLayout) findViewById(R.id.lv_desktop_setting);
         lv_about_activity = (LinearLayout) findViewById(R.id.lv_about_activity);
         lv_applist_setting = (LinearLayout) findViewById(R.id.lv_applist_setting);
@@ -354,4 +356,11 @@ public class SettingActivity extends Activity {
                 null, 2);
         db = dbHelper_name_sql.getWritableDatabase();
     }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(0, 0);
+    }
+
 }
