@@ -10,8 +10,8 @@
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 396000715,
-      "versionName": "3.9.6 Galaxy",
+      "versionCode": 397000715,
+      "versionName": "3.9.7 Galaxy",
       "outputFile": "app-release.apk"
     }
   ]
