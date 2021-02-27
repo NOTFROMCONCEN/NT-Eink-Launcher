@@ -86,7 +86,7 @@ public class SettingActivity extends Activity {
 //                finish();
 //            }
 //        });
-        tv_button.setText("权限声明 | APP说明书");
+        tv_button.setText("语言|权限|说明书");
         tv_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

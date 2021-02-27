@@ -1,19 +1,16 @@
 package com.etang.nt_launcher.launcher.settings.inforeback;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.etang.nt_launcher.R;
-import com.etang.nt_launcher.tool.toast.DiyToast;
 
+/**
+ * 意见反馈页面
+ */
 public class InfoRebackActivity extends AppCompatActivity {
 
 

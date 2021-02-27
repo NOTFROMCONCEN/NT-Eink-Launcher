@@ -13,11 +13,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.etang.nt_launcher.BuildConfig;
 import com.etang.nt_launcher.R;
 import com.etang.nt_launcher.tool.dialog.CheckUpdateDialog;
 import com.etang.nt_launcher.tool.dialog.PayMeDialog;
 import com.etang.nt_launcher.tool.permission.SavePermission;
+import com.etang.nt_launcher.tool.util.MTCore;
+
+import ru.alexbykov.nopermission.BuildConfig;
 
 /**
  * 关于界面，用于显示软件更新
@@ -41,7 +43,7 @@ public class AboutActivity extends AppCompatActivity {
         //标题
         tv_title.setText(getString(R.string.string_about));
         tv_button.setText(getString(R.string.string_version));
-        tv_about_appversion.setText(BuildConfig.VERSION_NAME);
+        tv_about_appversion.setText(MTCore.get_my_appVERSIONNAME());
         tv_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
