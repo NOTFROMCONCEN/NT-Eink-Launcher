@@ -20,7 +20,9 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/pager_welecome"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="@drawable/shaper_toast_show">
 
         </androidx.viewpager.widget.ViewPager>
 

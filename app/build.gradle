@@ -5,7 +5,7 @@ android {
     buildToolsVersion '30.0.2'
     defaultConfig {
         applicationId "com.etang.nt_launcher"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 30
         versionCode 399000715
         versionName "The holiday is over."
@@ -56,6 +56,7 @@ dependencies {
     implementation "com.google.android.material:material:${materialVersion}"
     implementation "androidx.navigation:navigation-fragment:2.3.1"
     implementation "androidx.navigation:navigation-ui:2.3.1"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation "junit:junit:${junitVersion1}"
     androidTestImplementation "androidx.test.ext:junit:${junitVersion}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${espressoCoreVersion}"

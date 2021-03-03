@@ -2,7 +2,8 @@ package com.etang.nt_launcher.tool.util;
 
 import android.os.Build;
 
-import com.etang.nt_launcher.BuildConfig;
+
+import ru.alexbykov.nopermission.BuildConfig;
 
 /**
  * 存放整个APP能用到的变量

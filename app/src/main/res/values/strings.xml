@@ -120,4 +120,6 @@
     <string name="setting_imagesetting_name_nowsystemback_and_applist">显示系统壁纸和应用列表</string>
     <string name="setting_imagesetting_name_newlauncher">新桌面（正在做了--10%）</string>
     <string name="setting_imagesetting_name_clickthis_settingback">点此设置系统壁纸</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

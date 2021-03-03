@@ -10,6 +10,6 @@
         android:id="@+id/uirefresh_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#000"></View>
+        android:background="#cdcdcd"></View>
 
 </LinearLayout>

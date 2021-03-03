@@ -17,6 +17,8 @@ import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ProgressBar;
 
 import com.etang.nt_launcher.BuildConfig;
@@ -60,38 +62,56 @@ public class CheckUpdateDialog {
     //当前TAG
     private static String TAG = "CheckUpdateDialog";
 
+
     public static void check_update(final Context context, final Activity activity) {
-        final ProgressDialog progressDialog = new ProgressDialog(context);
-        progressDialog.setMessage("正在加载......");
-        progressDialog.show();
         final Handler handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
+                /**
+                 * AlerDialog弹出框
+                 */
+                AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
+                View view = LayoutInflater.from(activity).inflate(R.layout.dialog_show_progressbar, null, false);
+                alertDialog.setView(view);
+                alertDialog.setCanceledOnTouchOutside(false);
+//                alertDialog.show();
+                WindowManager.LayoutParams lp = alertDialog.getWindow().getAttributes();
+                lp.width = 400;//定义宽度
+                lp.height = 400;//定义高度
+                alertDialog.getWindow().setAttributes(lp);
+                ///////////////////////////////////////////////////
                 Bundle data = msg.getData();
                 String val = data.getString("weblink_state");
                 switch (val) {
                     case "1":
                         DiyToast.showToast(context, "正在连接，请稍后", true);
+                        alertDialog.setTitle("正在连接，请稍后");
+                        alertDialog.show();
                         break;
                     case "2":
                         DiyToast.showToast(context, "出现错误，请重试！", true);
                         Bundle data_error = msg.getData();
                         String error_message = data_error.getString("error_message");
                         DeBugDialog.debug_show_dialog(context, error_message, TAG);
-                        progressDialog.dismiss();
+                        alertDialog.dismiss();
                         break;
                     case "3":
                         DiyToast.showToast(context, "连接成功，解析中", true);
-                        progressDialog.setMessage("连接成功，解析中");
+                        alertDialog.setTitle("连接成功，解析中");
                         break;
                     case "4":
                         DiyToast.showToast(context, "", true);
-                        progressDialog.setMessage("");
+                        alertDialog.setTitle("");
+                        try {
+                            Thread.sleep(2000);
+                        } catch (Exception e) {
+                        }
+                        alertDialog.dismiss();
                         break;
                     case "5":
                         DiyToast.showToast(context, "加载完成", true);
-                        progressDialog.dismiss();
+                        alertDialog.dismiss();
                         Bundle data_version = msg.getData();
                         String version_message = data_version.getString("version_message");
                         String new_version_message = version_message.replace("<li>", ""); //得到新的字符串
@@ -188,13 +208,13 @@ public class CheckUpdateDialog {
             } else {
                 if (version_code > version_web_code) {
                     mVersion_name = mVersion_name + "_" + String.valueOf(version_web_code);
-                    builder.setMessage("当前版本CODE：\n" + String.valueOf(version_code) + "\n最新版本CODE：\n" + String.valueOf(version_web_code) + "\n\n你的版本比目前发布的稳定版还要高，可能你使用的是内测版或者第三方修改的不稳定版本");
+                    builder.setMessage("当前版本：\n" + String.valueOf(version_code) + "\n最新版本：\n" + String.valueOf(version_web_code) + "\n\n你的版本比目前发布的稳定版还要高，可能你使用的是内测版或者第三方修改的不稳定版本");
                     DiyToast.showToast(context, "你的版本比目前发布的稳定版还要高，可能你使用的是内测版或者第三方修改的不稳定版本。", true);
                     builder.setNeutralButton("关闭", null);
                 } else {
                     mVersion_name = mVersion_name + "_" + String.valueOf(version_web_code);
-                    builder.setMessage("当前版本CODE：\n" + String.valueOf(version_code) + "\n最新版本CODE：\n" + String.valueOf(version_web_code) + "\n\n你的“奶糖桌面”需要更新，请到酷安、博客，或者点击“更新”进行更新。");
-                    DiyToast.showToast(context, "你的“奶糖桌面”需要更新，请到酷安、博客，或者点击“更新”进行更新。", true);
+                    builder.setMessage("当前版本：\n" + String.valueOf(version_code) + "\n最新版本：\n" + String.valueOf(version_web_code) + "\n\n你的“奶糖桌面”需要更新，请到酷安、博客，或者点击“更新”进行更新。");
+                    DiyToast.showToast(context, "检查到新版本", true);
                     builder.setNeutralButton("更新", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -205,7 +225,7 @@ public class CheckUpdateDialog {
             }
         } else {
             mVersion_name = mVersion_name + "_" + String.valueOf(version_web_code);
-            builder.setMessage("当前版本CODE：" + "\n" + String.valueOf(version_code) + "\n" + "现有版本CODE：" + "\n" + version_web_code + "\n" + "\n你已经是最新版本了");
+            builder.setMessage("当前版本：" + "\n" + String.valueOf(version_code) + "\n" + "现有版本：" + "\n" + version_web_code + "\n" + "\n你已经是最新版本了");
             DiyToast.showToast(context, "你已经是最新版本了", true);
             builder.setNeutralButton("重新下载", new DialogInterface.OnClickListener() {
                 @Override
