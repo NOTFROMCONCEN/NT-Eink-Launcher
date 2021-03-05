@@ -1,7 +1,5 @@
 package com.etang.nt_launcher.tool.util;
 
-import android.os.Build;
-
 
 import ru.alexbykov.nopermission.BuildConfig;
 
@@ -17,12 +15,12 @@ public class MTCore {
         return String.valueOf(BuildConfig.APPLICATION_ID);
     }
 
-    //APP构造...看不懂
+    //APP构造模式（正式版or测试版）
     public static String get_my_appBUILD_TYPE() {
         return String.valueOf(BuildConfig.BUILD_TYPE);
     }
 
-    //APP Debug
+    //APP Debug模式
     public static String get_my_appDEBUG() {
         return String.valueOf(BuildConfig.DEBUG);
     }

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.etang.nt_launcher.R;
 import com.etang.nt_launcher.launcher.MainActivity;
 import com.etang.nt_launcher.launcher.settings.SettingActivity;
+import com.etang.nt_launcher.launcher.settings.about.AboutActivity;
 import com.etang.nt_launcher.launcher.settings.uirefresh.UireFreshActivity;
 import com.etang.nt_launcher.launcher.settings.weather.WeatherActivity;
 import com.etang.nt_launcher.tool.permission.SavePermission;
@@ -65,7 +66,8 @@ public class UnInstallDialog {
                             intent = new Intent(context, WeatherActivity.class);
                             context.startActivity(intent);
                         } else if (appInfos.get(position).getPackageName().equals(context.getPackageName() + ".systemupdate")) {//点击了“检查更新”
-                            CheckUpdateDialog.check_update(context, activity);
+                            intent = new Intent(context, AboutActivity.class);
+                            context.startActivity(intent);
                         } else if (appInfos.get(position).getPackageName().equals(context.getPackageName() + ".launchersetting")) {//点击了“桌面设置”
                             intent = new Intent(context, SettingActivity.class);
                             context.startActivity(intent);

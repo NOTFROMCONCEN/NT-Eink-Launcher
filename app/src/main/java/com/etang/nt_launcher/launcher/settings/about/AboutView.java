@@ -30,20 +30,22 @@ public class AboutView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        height = canvas.getHeight() / 2;
-        width = canvas.getWidth() / 2;
+//        height = canvas.getHeight() / 2;
+//        width = canvas.getWidth() / 2;
+        height = 200;
+        width = 200;
         Paint paint = new Paint();
         paint.setAntiAlias(true);
-        paint.setColor(Color.BLACK);
+        paint.setColor(Color.GRAY);
         paint.setStyle(Paint.Style.STROKE);// 画笔线条
         paint.setStrokeWidth(4);// 画笔宽
         radius = height - 3;
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 200; i++) {
             canvas.save();// 保存画布
-            canvas.rotate(i * 10, width, height);// 旋转画布
+            canvas.rotate(i * 5, width, height);// 旋转画布
             // 绘制线条
             canvas.drawLine(width, height - radius, width,
-                    height - radius + 10, paint);
+                    height - radius + 5, paint);
             canvas.restore();// 恢复画布
         }
 //        invalidate();
