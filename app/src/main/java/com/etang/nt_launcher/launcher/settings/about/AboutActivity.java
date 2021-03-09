@@ -123,12 +123,8 @@ public class AboutActivity extends AppCompatActivity {
         tv_about_juanzeng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AlertDialog.Builder(AboutActivity.this).setTitle("说明：").setMessage("即使不捐赠，桌面所有功能都是免费开放的。就是说留下这个入口只是提供一个联系渠道。").setNegativeButton("关闭", null).setPositiveButton("打开捐赠二维码", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        PayMeDialog.show_dialog(AboutActivity.this, "no");
-                    }
-                }).show();
+                DiyToast.showToast(getApplicationContext(), "请注意：捐赠与否并不影响正常使用", true);
+                PayMeDialog.show_dialog(AboutActivity.this);
             }
         });
     }

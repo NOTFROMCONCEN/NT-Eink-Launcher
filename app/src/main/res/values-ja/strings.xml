@@ -68,7 +68,7 @@
     <string name="setting_offlinemode">离线模式（不稳定）</string>
     <string name="setting_checkbox_hindbar">在主界面隐藏底栏</string>
     <string name="setting_exit_launcher">退出“奶糖桌面”</string>
-    <string name="setting_yijian">意见反馈</string>
+    <string name="setting_yijian">信息反馈</string>
     <string name="setting_xuanfuqiu">悬浮窗相关</string>
     <string name="inback_title">TextView</string>
     <string name="inback_button">Button</string>

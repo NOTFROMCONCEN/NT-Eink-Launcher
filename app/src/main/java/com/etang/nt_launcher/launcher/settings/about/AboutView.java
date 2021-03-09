@@ -30,10 +30,10 @@ public class AboutView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-//        height = canvas.getHeight() / 2;
-//        width = canvas.getWidth() / 2;
-        height = 200;
-        width = 200;
+        height = canvas.getHeight() / 2;
+        width = canvas.getWidth() / 2;
+//        height = 200;
+//        width = 200;
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setColor(Color.GRAY);

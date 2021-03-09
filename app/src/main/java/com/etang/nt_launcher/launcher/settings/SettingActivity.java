@@ -129,6 +129,14 @@ public class SettingActivity extends Activity {
                 overridePendingTransition(0, 0);
             }
         });
+        //消息反馈
+        lv_inforeback_activity.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SettingActivity.this, InfoRebackActivity.class));
+                overridePendingTransition(0, 0);
+            }
+        });
 //        //退出“奶糖桌面”
 //        lv_exit_setting.setOnClickListener(new OnClickListener() {
 //            @Override
@@ -141,14 +149,6 @@ public class SettingActivity extends Activity {
             @Override
             public void onClick(View v) {
                 UnInstallDialog.UninstallApk(SettingActivity.this, SettingActivity.this, getPackageName());
-            }
-        });
-        lv_inforeback_activity.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DiyToast.showToast(SettingActivity.this, "未完成功能，暂未开放，请期待后续版本", true);
-//                startActivity(new Intent(SettingActivity.this, InfoRebackActivity.class));
-//                overridePendingTransition(0, 0);
             }
         });
         lv_restart_setting.setOnClickListener(new OnClickListener() {

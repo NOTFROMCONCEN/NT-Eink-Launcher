@@ -3,5 +3,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center_vertical|center_horizontal|center"
     android:background="#FFFFFF"
-    android:orientation="vertical" />
+    android:gravity="center|center_horizontal|center_vertical"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal|center"
+        android:layout_marginBottom="30dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="请选择你的支付方式"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal|center"
+        android:layout_margin="10dp"
+        android:background="@drawable/shaper_toast_show"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+
+        <ImageView
+            android:id="@+id/iv_alipay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/im_alipay" />
+
+        <ImageView
+            android:id="@+id/iv_wechatpay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/im_wechatpay" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_payme_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="关闭" />
+</LinearLayout>
