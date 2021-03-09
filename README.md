@@ -52,6 +52,6 @@
 
 | 微信                                                         | 支付宝                                                       |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![微信](https://yp.nyanon.online/index.php?user/publicLink&fid=2de0cWutSBNLwAHf2wKj9jTu1p7CdgvG7frqYDYx5hxy0-olktzX-pqFUu_ERrtigTfFQjOA_v5-DVtk-XrE9aiIZfLKXOIVys5HDdhstpaNSyzMXOPdMC4fJ9QMaESHcnjusI71vhlwO-Zcn2a4&file_name=/wechatpay.jpg) | ![支付宝](https://yp.nyanon.online/index.php?user/publicLink&fid=fbc5CTYExmGz2jwK5RCh_7AH_VBreib4I37_naefmWF-PijPGScnC933sBCbb8IG8t7hjKBiFyj6Ej74mk6dyu5ZrrzqRzyOXmmQKEzesejamTV9YZm62xS9TstSW0t2iPwyQGPJeJMXgGXA&file_name=/alipay.jpg) |
+| ![微信](https://yp.nyanon.online/data/User/admin/home/image/gallery/pay_core/wechatpay.jpg) | ![支付宝](https://yp.nyanon.online/data/User/admin/home/image/gallery/pay_core/alipay.jpg) |
 
 
