@@ -44,6 +44,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationCompat;
 
 import com.etang.nt_launcher.R;
 import com.etang.nt_launcher.launcher.settings.SettingActivity;
@@ -215,12 +216,12 @@ public class MainActivity extends Activity implements OnClickListener {
         /**
          * 每次回到桌面开启常驻通知
          */
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                setNotification();
-//            }
-//        }, 50);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setNotification();
+            }
+        }, 50);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -971,38 +972,38 @@ public class MainActivity extends Activity implements OnClickListener {
         }
     }
 
-//    // 添加常驻通知
-//    private void setNotification() {
-//        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//        NotificationCompat.Builder builder;
-//        int channelId = 1;
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {    //Android 8.0以上适配
-//            NotificationChannel channel = new NotificationChannel(String.valueOf(channelId), "channel_name",
-//                    NotificationManager.IMPORTANCE_HIGH);
-//            manager.createNotificationChannel(channel);
-//            builder = new NotificationCompat.Builder(this, String.valueOf(channelId));
-//        } else {
-//            builder = new NotificationCompat.Builder(this);
-//        }
-////        Intent intent = new Intent(this, MainActivity.class);
-//        Intent intent = new Intent();// 创建Intent对象
-//        intent.setAction(Intent.ACTION_MAIN);// 设置Intent动作
-//        intent.addCategory(Intent.CATEGORY_HOME);// 设置Intent种类
-////        startActivity(intent);// 将Intent传递给Activity
-//        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
-//        builder.setContentTitle("点击此条通知回到桌面")//指定通知栏的标题内容
-//                .setContentText("软件后台运行中")//通知的正文内容
-//                .setWhen(0)//通知创建的时间
-//                .setAutoCancel(false)//点击通知后，自动取消
-//                .setStyle(new NotificationCompat.BigTextStyle().bigText(""))
-//                .setSmallIcon(R.drawable.ic_launcher)//通知显示的小图标，只能用alpha图层的图片进行设置
-//                .setPriority(NotificationCompat.PRIORITY_MAX)//通知重要程度
-//                .setContentIntent(pi)//点击跳转
-//                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher));
-//        Notification notification = builder.build();
-//        notification.flags |= Notification.FLAG_ONGOING_EVENT;
-//        manager.notify(channelId, notification);
-//    }
+    // 添加常驻通知
+    private void setNotification() {
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationCompat.Builder builder;
+        int channelId = 1;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {    //Android 8.0以上适配
+            NotificationChannel channel = new NotificationChannel(String.valueOf(channelId), "channel_name",
+                    NotificationManager.IMPORTANCE_HIGH);
+            manager.createNotificationChannel(channel);
+            builder = new NotificationCompat.Builder(this, String.valueOf(channelId));
+        } else {
+            builder = new NotificationCompat.Builder(this);
+        }
+//        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent();// 创建Intent对象
+        intent.setAction(Intent.ACTION_MAIN);// 设置Intent动作
+        intent.addCategory(Intent.CATEGORY_HOME);// 设置Intent种类
+//        startActivity(intent);// 将Intent传递给Activity
+        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
+        builder.setContentTitle("点击此条通知回到桌面")//指定通知栏的标题内容
+                .setContentText("软件后台运行中")//通知的正文内容
+                .setWhen(0)//通知创建的时间
+                .setAutoCancel(false)//点击通知后，自动取消
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(""))
+                .setSmallIcon(R.drawable.ic_launcher)//通知显示的小图标，只能用alpha图层的图片进行设置
+                .setPriority(NotificationCompat.PRIORITY_MAX)//通知重要程度
+                .setContentIntent(pi)//点击跳转
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher));
+        Notification notification = builder.build();
+        notification.flags |= Notification.FLAG_ONGOING_EVENT;
+        manager.notify(channelId, notification);
+    }
 
     /**
      * 检查文本大小并设置
