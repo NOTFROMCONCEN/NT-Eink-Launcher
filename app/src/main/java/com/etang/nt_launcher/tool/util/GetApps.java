@@ -49,6 +49,12 @@ public class GetApps {
         return list;
     }
 
+    /**
+     * 添加自定义APP信息
+     *
+     * @param context 继承context
+     * @param list    继承list
+     */
     private static void add_diary(Context context, List<AppInfo> list) {
         /**
          * 添加“天气”
