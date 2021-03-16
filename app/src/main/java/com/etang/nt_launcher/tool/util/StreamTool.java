@@ -5,9 +5,14 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * 一种数据流（我也不知道具体原理和作用）
+ * 字节流工具
  */
 public class StreamTool {
+    /**
+     * @param in
+     * @return
+     * @throws IOException
+     */
     public static String decodeStream(InputStream in) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         int len = 0;

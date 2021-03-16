@@ -563,7 +563,7 @@ public class MainActivity extends Activity implements OnClickListener {
         hind_apparrayList = SaveArrayListUtil.getSearchArrayList(context);
         String s = Build.BRAND;
         if (s.equals("Allwinner")) {
-//            hind_apparrayList.add("com.android.settings");
+            hind_apparrayList.add("com.android.settings");
         }
         for (int j = 0; j < hind_apparrayList.size(); j++) {
             for (int i = 0; i < appInfos.size(); i++) {

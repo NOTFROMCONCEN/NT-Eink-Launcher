@@ -10,7 +10,11 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 /**
- * 绘制AboutActivity（关于界面）中间的环形虚线
+ * @Package: com.etang.nt_launcher.launcher.settings.about
+ * @ClassName: AboutView
+ * @Description: 绘制AboutActivity（关于界面）中间的环形虚线
+ * @CreateDate: 2021/3/16 8:55
+ * @UpdateDate: 2021/3/16 8:55
  */
 public class AboutView extends View {
     //高
@@ -75,7 +79,7 @@ public class AboutView extends View {
             canvas.rotate(i * 5, width, height);// 旋转画布
             // 绘制线条
             canvas.drawLine(width, height - radius, width,
-                    height - radius - 50, paint);
+                    height - radius + 20, paint);
             canvas.restore();// 恢复画布
         }
 //        invalidate();
