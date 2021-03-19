@@ -5,7 +5,11 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * 字节流工具
+ * @Package: com.etang.nt_launcher.tool.util
+ * @ClassName: StreamTool
+ * @Description: 字节流工具
+ * @CreateDate: 2021/3/19 8:29
+ * @UpdateDate: 2021/3/19 8:29
  */
 public class StreamTool {
     /**

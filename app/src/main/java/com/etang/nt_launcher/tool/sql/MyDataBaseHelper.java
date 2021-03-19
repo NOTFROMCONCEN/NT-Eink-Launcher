@@ -8,7 +8,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.etang.nt_launcher.tool.toast.DiyToast;
 
 /**
- * 数据库
+ * @Package: com.etang.nt_launcher.tool.sql
+ * @ClassName: MyDataBaseHelper
+ * @Description: 数据库
+ * @CreateDate: 2021/3/19 8:27
+ * @UpdateDate: 2021/3/19 8:27
  */
 public class MyDataBaseHelper extends SQLiteOpenHelper {
 

@@ -21,6 +21,13 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @Package: com.etang.nt_launcher.tool.util
+ * @ClassName: DeskTopGridViewBaseAdapter
+ * @Description: java类作用描述
+ * @CreateDate: 2021/3/19 8:27
+ * @UpdateDate: 2021/3/19 8:27
+ */
 public class DeskTopGridViewBaseAdapter extends BaseAdapter {
 
     Context context;

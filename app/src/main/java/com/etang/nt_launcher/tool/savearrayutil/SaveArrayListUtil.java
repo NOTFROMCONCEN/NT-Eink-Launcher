@@ -5,6 +5,13 @@ import android.content.SharedPreferences;
 
 import java.util.ArrayList;
 
+/**
+ * @Package: com.etang.nt_launcher.tool.savearrayutil
+ * @ClassName: SaveArrayImageUtil
+ * @Description: 用于保存ArrayList的SharedPreferences方法（列表）
+ * @CreateDate: 2021/3/19 8:26
+ * @UpdateDate: 2021/3/19 8:26
+ */
 public class SaveArrayListUtil {
     /**
      * 将arrayList的内容保存到sp里

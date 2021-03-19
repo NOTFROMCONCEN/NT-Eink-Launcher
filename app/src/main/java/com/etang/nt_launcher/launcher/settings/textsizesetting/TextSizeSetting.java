@@ -20,6 +20,13 @@ import com.etang.nt_launcher.R;
 import com.etang.nt_launcher.launcher.MainActivity;
 import com.etang.nt_launcher.tool.toast.DiyToast;
 
+/**
+ * @Package: com.etang.nt_launcher.launcher.settings.textsizesetting
+ * @ClassName: TextSizeSetting
+ * @Description: “文本大小”设置
+ * @CreateDate: 2021/3/19 8:15
+ * @UpdateDate: 2021/3/19 8:15
+ */
 public class TextSizeSetting extends AppCompatActivity {
     private Button btn_timetext_hour_size, btn_timetext_min_size, btn_datetext_size, btn_nametext_size, btn_dianchitext_size, btn_textsize_resert;
     private SharedPreferences sharedPreferences;

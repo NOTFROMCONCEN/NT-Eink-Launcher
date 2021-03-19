@@ -9,7 +9,11 @@ import android.util.Log;
 import com.etang.nt_launcher.tool.toast.DiyToast;
 
 /**
- * 用于检查应用权限的方法
+ * @Package: com.etang.nt_launcher.tool.permission
+ * @ClassName: SavePermission
+ * @Description: 用于检查、申请应用存储权限的方法
+ * @CreateDate: 2021/3/19 8:26
+ * @UpdateDate: 2021/3/19 8:26
  */
 public class SavePermission {
     /**

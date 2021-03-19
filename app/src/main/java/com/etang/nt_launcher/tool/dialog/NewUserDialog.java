@@ -17,7 +17,11 @@ import java.lang.reflect.Field;
 import java.security.MessageDigest;
 
 /**
- * 用于给服务器发送新用户激活信息、设备信息的弹出框（无View）
+ * @Package: com.etang.nt_launcher.tool.dialog
+ * @ClassName: NewUserDialog
+ * @Description: 用于给服务器发送新用户激活信息、设备信息的弹出框（无View）
+ * @CreateDate: 2021/3/19 8:23
+ * @UpdateDate: 2021/3/19 8:23
  */
 public class NewUserDialog {
     private static String SKEY = "SCU66788Tac2bf7385575174e067c917d471e25365dd3983cec5ee";

@@ -25,7 +25,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 设置中的桌面列表设置项
+ * @Package: com.etang.nt_launcher.launcher.settings.hindapp
+ * @ClassName: HindAppSetting
+ * @Description: “隐藏APP”设置
+ * @CreateDate: 2021/3/19 8:14
+ * @UpdateDate: 2021/3/19 8:14
  */
 public class HindAppSetting extends AppCompatActivity {
     private static List<AppInfo> appInfos = new ArrayList<AppInfo>();

@@ -9,7 +9,13 @@ import android.widget.Toast;
 
 import com.etang.nt_launcher.R;
 
-
+/**
+ * @Package: com.etang.nt_launcher.tool.toast
+ * @ClassName: DiyToast
+ * @Description: 自定义的Toast
+ * @CreateDate: 2021/3/19 8:27
+ * @UpdateDate: 2021/3/19 8:27
+ */
 public class DiyToast {
     private static Toast toast;
 

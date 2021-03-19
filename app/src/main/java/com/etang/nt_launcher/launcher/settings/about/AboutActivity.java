@@ -38,9 +38,9 @@ import javax.net.ssl.HttpsURLConnection;
 /**
  * @Package: com.etang.nt_launcher.launcher.settings.about
  * @ClassName: AboutActivity
- * @Description: “关于”界面相关
+ * @Description: “关于”界面
  * @CreateDate: 2021/3/16 8:51
- * @UpdateDate: 2021/3/16 8:51
+ * @UpdateDate: 2021/3/19 8:09
  */
 public class AboutActivity extends AppCompatActivity {
     private ImageView iv_about_logo;//关于 LOGO

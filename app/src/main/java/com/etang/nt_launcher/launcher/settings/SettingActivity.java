@@ -33,6 +33,13 @@ import com.etang.nt_launcher.tool.dialog.UnInstallDialog;
 import com.etang.nt_launcher.tool.sql.MyDataBaseHelper;
 import com.etang.nt_launcher.tool.toast.DiyToast;
 
+/**
+ * @Package: com.etang.nt_launcher.launcher.settings
+ * @ClassName: SettingActivity
+ * @Description: “设置”界面
+ * @CreateDate: 2021/3/19 8:16
+ * @UpdateDate: 2021/3/19 8:16
+ */
 public class SettingActivity extends Activity {
 
     LinearLayout lv_back, lv_window_setting, lv_restart_setting, lv_inforeback_activity, lv_textsize_setting, lv_applist_setting, lv_about_activity, lv_desktop_setting, lv_exit_setting, lv_hindapp_setting, lv_name_setting, lv_uninstall_setting;

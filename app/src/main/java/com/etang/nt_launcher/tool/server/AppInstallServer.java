@@ -11,6 +11,13 @@ import com.etang.nt_launcher.launcher.MainActivity;
 import com.etang.nt_launcher.tool.dialog.DeBugDialog;
 import com.etang.nt_launcher.tool.toast.DiyToast;
 
+/**
+ * @Package: com.etang.nt_launcher.tool.server
+ * @ClassName: AppInstallServer
+ * @Description: 用于监听系统安装、卸载、更新软件的服务
+ * @CreateDate: 2021/3/19 8:27
+ * @UpdateDate: 2021/3/19 8:27
+ */
 public class AppInstallServer extends BroadcastReceiver {
 
     /**

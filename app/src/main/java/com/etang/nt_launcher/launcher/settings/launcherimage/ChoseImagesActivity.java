@@ -29,7 +29,11 @@ import com.etang.nt_launcher.R;
 import java.io.IOException;
 
 /**
- * 设置中桌面壁纸设置项
+ * @Package: com.etang.nt_launcher.launcher.settings.launcherimage
+ * @ClassName: ChoseImagesActivity
+ * @Description: “壁纸设置”界面
+ * @CreateDate: 2021/3/19 8:15
+ * @UpdateDate: 2021/3/19 8:15
  */
 public class ChoseImagesActivity extends AppCompatActivity {
     private RadioButton ra_meizi, ra_qinglv, ra_applist, ra_luoli, ra_zhiyu, ra_wallpaper, ra_wallpaper_and_applist;

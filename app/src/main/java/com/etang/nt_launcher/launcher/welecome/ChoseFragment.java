@@ -22,6 +22,13 @@ import com.etang.nt_launcher.R;
 
 import java.util.Locale;
 
+/**
+ * @Package: com.etang.nt_launcher.launcher.welecome
+ * @ClassName: ChoseFragment
+ * @Description: “欢迎界面”选择语言碎片
+ * @CreateDate: 2021/3/19 8:16
+ * @UpdateDate: 2021/3/19 8:16
+ */
 public class ChoseFragment extends Fragment {
     private SharedPreferences sharedPreferences;
     private RadioButton ra_welecome_auto, ra_welecome_cn, ra_welecome_en, ra_welecome_jp;

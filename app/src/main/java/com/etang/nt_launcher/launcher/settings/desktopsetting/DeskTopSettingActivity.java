@@ -22,7 +22,11 @@ import com.etang.nt_launcher.launcher.MainActivity;
 import com.etang.nt_launcher.tool.toast.DiyToast;
 
 /**
- * 设置中桌面设置设置项
+ * @Package: com.etang.nt_launcher.launcher.settings.desktopsetting
+ * @ClassName: DeskTopSettingActivity
+ * @Description: “桌面列表”设置
+ * @CreateDate: 2021/3/19 8:14
+ * @UpdateDate: 2021/3/19 8:14
  */
 public class DeskTopSettingActivity extends AppCompatActivity implements View.OnClickListener {
     private RadioButton ra_appname_hind, ra_appname_one, ra_appname_nope, ra_app_show_blok, ra_app_hind_blok, ra_app_bottommode_bottom, ra_app_bottommode_top, ra_app_show_nocolor_blok;

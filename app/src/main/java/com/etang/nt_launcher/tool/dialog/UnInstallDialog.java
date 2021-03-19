@@ -30,6 +30,13 @@ import com.etang.nt_launcher.tool.util.AppInfo;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @Package: com.etang.nt_launcher.tool.dialog
+ * @ClassName: UnInstallDialog
+ * @Description: 用于展示软件信息的Dialog
+ * @CreateDate: 2021/3/19 8:25
+ * @UpdateDate: 2021/3/19 8:25
+ */
 public class UnInstallDialog {
     private static String TAG = "UnInstallDialog";
 

@@ -10,7 +10,11 @@ import android.widget.ImageView;
 import com.etang.nt_launcher.R;
 
 /**
- * 用于展示赞赏支付方式的弹出框
+ * @Package: com.etang.nt_launcher.tool.dialog
+ * @ClassName: PayMeDialog
+ * @Description: 用于展示赞赏支付方式的弹出框
+ * @CreateDate: 2021/3/19 8:24
+ * @UpdateDate: 2021/3/19 8:24
  */
 public class PayMeDialog {
 

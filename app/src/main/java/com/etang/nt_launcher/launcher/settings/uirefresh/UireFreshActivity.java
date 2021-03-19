@@ -14,6 +14,13 @@ import android.view.WindowManager;
 import com.etang.nt_launcher.R;
 import com.etang.nt_launcher.tool.toast.DiyToast;
 
+/**
+ * @Package: com.etang.nt_launcher.launcher.settings.uirefresh
+ * @ClassName: UireFreshActivity
+ * @Description: “界面刷新”设置
+ * @CreateDate: 2021/3/19 8:16
+ * @UpdateDate: 2021/3/19 8:16
+ */
 public class UireFreshActivity extends AppCompatActivity {
     int number = 0;
     View uirefresh_id;

@@ -4,7 +4,11 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 
 /**
- * 获取APP信息JavaBean
+ * @Package: com.etang.nt_launcher.tool.util
+ * @ClassName: AppInfo
+ * @Description: 获取APP信息JavaBean
+ * @CreateDate: 2021/3/19 8:27
+ * @UpdateDate: 2021/3/19 8:27
  */
 public class AppInfo {
 

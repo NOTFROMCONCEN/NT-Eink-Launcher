@@ -11,6 +11,13 @@ import androidx.fragment.app.Fragment;
 
 import com.etang.nt_launcher.R;
 
+/**
+ * @Package: com.etang.nt_launcher.launcher.welecome
+ * @ClassName: OneFragment
+ * @Description: “欢迎界面”第一个碎片
+ * @CreateDate: 2021/3/19 8:17
+ * @UpdateDate: 2021/3/19 8:17
+ */
 public class OneFragment extends Fragment {
     @Nullable
     @Override

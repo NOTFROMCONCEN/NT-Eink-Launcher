@@ -78,13 +78,11 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * @author Administrator
- * @year 2019
- * @Todo TODO 桌面主页
- * @package_name com.example.dklauncherdemo
- * @project_name DKLauncherDemo
- * @file_name MainActivity.java
- * @我的博客 https://naiyouhuameitang.club/
+ * @Package: com.etang.nt_launcher.launcher
+ * @ClassName: MainActivity
+ * @Description: Main活动，主界面，桌面界面
+ * @CreateDate: 2021/3/19 8:18
+ * @UpdateDate: 2021/3/19 8:18
  */
 public class MainActivity extends Activity implements OnClickListener {
     private BroadcastReceiver batteryLevelRcvr;

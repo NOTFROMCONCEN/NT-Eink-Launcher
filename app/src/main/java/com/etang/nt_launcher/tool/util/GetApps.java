@@ -20,7 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 获取设备内APP信息并装在进List中
+ * @Package: com.etang.nt_launcher.tool.util
+ * @ClassName: GetApps
+ * @Description: 获取设备内APP信息并装载进List中
+ * @CreateDate: 2021/3/19 8:28
+ * @UpdateDate: 2021/3/19 8:28
  */
 public class GetApps {
     public static List<AppInfo> GetAppList1(Context context) {

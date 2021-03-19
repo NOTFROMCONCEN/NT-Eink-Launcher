@@ -19,7 +19,13 @@ import com.etang.nt_launcher.tool.sql.MyDataBaseHelper;
 import com.etang.nt_launcher.tool.toast.DiyToast;
 import com.etang.nt_launcher.R;
 
-
+/**
+ * @Package: com.etang.nt_launcher.launcher.settings.weather
+ * @ClassName: WeatherActivity
+ * @Description: “天气”设置
+ * @CreateDate: 2021/3/19 8:16
+ * @UpdateDate: 2021/3/19 8:16
+ */
 public class WeatherActivity extends Activity {
     private Button btn_wather_con, btn_wather_cls;
     private EditText et_city_get;

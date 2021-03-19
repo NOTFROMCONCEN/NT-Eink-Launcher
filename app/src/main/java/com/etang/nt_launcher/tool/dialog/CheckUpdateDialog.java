@@ -89,7 +89,6 @@ public class CheckUpdateDialog {
                         alertDialog.setTitle("正在连接，请稍后");
                         alertDialog.show();
                         try {
-
                             Thread.sleep(2000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();

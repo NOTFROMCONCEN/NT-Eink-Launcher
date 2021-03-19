@@ -32,6 +32,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @Package: com.etang.nt_launcher.launcher.welecome
+ * @ClassName: WelecomeActivity
+ * @Description: “欢迎界面”FragmentActivity
+ * @CreateDate: 2021/3/19 8:17
+ * @UpdateDate: 2021/3/19 8:17
+ */
 public class WelecomeActivity extends FragmentActivity {
 
     ViewPager viewPager;

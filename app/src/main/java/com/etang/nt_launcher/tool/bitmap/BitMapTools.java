@@ -12,7 +12,11 @@ import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 
 /**
- * 处理图片的工具类.
+ * @Package: com.etang.nt_launcher.tool.bitmap
+ * @ClassName: BitMapTools
+ * @Description: 处理图片的bitmap（转换成黑白图片）
+ * @CreateDate: 2021/3/19 8:22
+ * @UpdateDate: 2021/3/19 8:22
  */
 public class BitMapTools {
 

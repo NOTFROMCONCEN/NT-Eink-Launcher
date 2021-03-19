@@ -4,7 +4,11 @@ package com.etang.nt_launcher.tool.util;
 import ru.alexbykov.nopermission.BuildConfig;
 
 /**
- * 存放整个APP能用到的变量
+ * @Package: com.etang.nt_launcher.tool.util
+ * @ClassName: MTCore
+ * @Description: 存放整个APP能用到的变量
+ * @CreateDate: 2021/3/19 8:29
+ * @UpdateDate: 2021/3/19 8:29
  */
 public class MTCore {
     //APP名称

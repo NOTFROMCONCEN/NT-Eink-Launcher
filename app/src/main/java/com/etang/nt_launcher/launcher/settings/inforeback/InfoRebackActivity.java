@@ -12,7 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.etang.nt_launcher.R;
 
 /**
- * 意见反馈页面
+ * @Package: com.etang.nt_launcher.launcher.settings.inforeback
+ * @ClassName: InfoRebackActivity
+ * @Description: “意见反馈”界面
+ * @CreateDate: 2021/3/19 8:15
+ * @UpdateDate: 2021/3/19 8:15
  */
 public class InfoRebackActivity extends AppCompatActivity {
 

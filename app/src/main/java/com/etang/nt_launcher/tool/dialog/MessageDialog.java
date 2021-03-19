@@ -6,7 +6,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 
 /**
- * 用于展示普通信息的弹出框（未启用）
+ * @Package: com.etang.nt_launcher.tool.dialog
+ * @ClassName: MessageDialog
+ * @Description: 用于展示普通信息的Dialog
+ * @CreateDate: 2021/3/19 8:23
+ * @UpdateDate: 2021/3/19 8:23
  */
 public class MessageDialog {
     private void show_dialog(final String msg, Activity activity) {

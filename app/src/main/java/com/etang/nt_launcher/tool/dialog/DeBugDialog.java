@@ -7,7 +7,11 @@ import android.view.Window;
 import android.view.WindowManager;
 
 /**
- * 用于展示报错信息的弹出框
+ * @Package: com.etang.nt_launcher.tool.dialog
+ * @ClassName: DeBugDialog
+ * @Description: 用于展示报错信息的Dialog
+ * @CreateDate: 2021/3/19 8:23
+ * @UpdateDate: 2021/3/19 8:23
  */
 public class DeBugDialog {
     /**

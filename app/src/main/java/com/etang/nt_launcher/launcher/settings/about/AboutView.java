@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
  * @ClassName: AboutView
  * @Description: 绘制AboutActivity（关于界面）中间的环形虚线
  * @CreateDate: 2021/3/16 8:55
- * @UpdateDate: 2021/3/16 8:55
+ * @UpdateDate: 2021/3/19 8:09
  */
 public class AboutView extends View {
     //高
