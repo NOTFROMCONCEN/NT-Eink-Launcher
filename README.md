@@ -14,11 +14,10 @@
 >
 > あなたの言語に応じて対応するリンクをクリックして、異なる言語のREADME.mdを確認してください
 
-| 语言\|言語\|Language | 链接\|リンク\|Link                                           | 版本\|バージョン\|Version |
 | -------------------- | ------------------------------------------------------------ | ------------------------- |
-| English              | [English VERSION](https://gitee.com/rabbitTang_admin/S.H.Test/blob/master/README_ENG.md) | v1.0                      |
-| 中文                 | [中文 VERSION](https://gitee.com/rabbitTang_admin/S.H.Test/blob/master/README.md) | v1.0                      |
-| 日本語               | [日本語 VERSION](https://gitee.com/rabbitTang_admin/S.H.Test/blob/master/README_JPN.md) | v1.0                      |
+| English              | [English VERSION](https://gitee.com/rabbitTang_admin/NT-Eink-Launcher/blob/master/README_ENG.md) | v1.0                      |
+| 中文                 | [中文 VERSION](https://gitee.com/rabbitTang_admin/NT-Eink-Launcher/blob/master/README.md) | v1.0                      |
+| 日本語               | [日本語 VERSION](https://gitee.com/rabbitTang_admin/NT-Eink-Launcher/blob/master/README_JPN.md) | v1.0                      |
 
 #### 最新更新地址 | 最新の更新アドレス | Latest update address
 
@@ -41,17 +40,17 @@
 
 | 目标            | 详情                                                         | 大概时间       |
 | --------------- | ------------------------------------------------------------ | -------------- |
-| 集成小米账号SDK | 使用小米SDK完成登录功能，记录用户设置并上传到云端，方便备份和卸载重装时便捷一些 | 2021年第一季度 |
-| 多语言适配      | 目前适配中文、日文、英文。当前版本仅支持根据系统语言来切换APP语言，后续将提供手动更改接口和自动翻译接口。 | 2020年第一季度 |
+| 集成小米账号SDK | 使用小米SDK完成登录功能，记录用户设置并上传到云端，方便备份和卸载重装时便捷一些 | 2022年第一季度 |
+| 多语言适配      | 目前适配中文、日文、英文。当前版本仅支持根据系统语言来切换APP语言，后续将提供手动更改接口和自动翻译接口。 | 2022年第一季度 |
 
 ### 用户文档
 
 编写中
 
-## 打赏
+## 赞赏
 
 | 微信                                                         | 支付宝                                                       |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![微信](https://yp.nyanon.online/data/User/admin/home/image/gallery/pay_core/wechatpay.jpg) | ![支付宝](https://yp.nyanon.online/data/User/admin/home/image/gallery/pay_core/alipay.jpg) |
+| ![微信](https://rabbittang_admin.gitee.io/gallery/pay_core/wechatpay.jpg) | ![支付宝](https://rabbittang_admin.gitee.io/gallery/pay_core/alipay.jpg) |
 
-
+ 
