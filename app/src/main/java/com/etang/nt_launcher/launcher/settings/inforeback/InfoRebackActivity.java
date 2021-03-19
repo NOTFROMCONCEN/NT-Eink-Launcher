@@ -19,9 +19,12 @@ import com.etang.nt_launcher.R;
  * @UpdateDate: 2021/3/19 8:15
  */
 public class InfoRebackActivity extends AppCompatActivity {
-
+    //文本，按钮，返回
     private TextView tv_title_button, tv_title_text;
+    //返回LinearLayout
     private LinearLayout lv_back;
+    //当前TAG
+    private static String TAG = "InfoRebackActivity";
 
 
     @Override

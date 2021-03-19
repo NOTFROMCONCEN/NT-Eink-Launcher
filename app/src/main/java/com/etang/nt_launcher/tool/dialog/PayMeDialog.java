@@ -17,6 +17,8 @@ import com.etang.nt_launcher.R;
  * @UpdateDate: 2021/3/19 8:24
  */
 public class PayMeDialog {
+    //当前页面TAG
+    private static String TAG = "PayMeDialog";
 
     public static void show_dialog(final Activity activity) {
         final AlertDialog alertDialog = new AlertDialog.Builder(activity).create();

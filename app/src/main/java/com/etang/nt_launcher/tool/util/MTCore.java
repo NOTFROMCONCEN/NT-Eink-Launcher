@@ -13,6 +13,8 @@ import ru.alexbykov.nopermission.BuildConfig;
 public class MTCore {
     //APP名称
     public static String my_app_name = "梅糖桌面";
+    //当前页面TAG
+    public static String TAG = "MTCore";
 
     //APP ID
     public static String get_my_appAPPLICATION_ID() {

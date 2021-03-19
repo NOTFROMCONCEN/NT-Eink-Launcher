@@ -16,6 +16,9 @@ import com.etang.nt_launcher.tool.toast.DiyToast;
  * @UpdateDate: 2021/3/19 8:26
  */
 public class SavePermission {
+    //当前页面TAG
+    private static String TAG = "SavePermission";
+
     /**
      * 检查是否拥有存储权限
      */

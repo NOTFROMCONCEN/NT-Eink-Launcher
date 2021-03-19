@@ -32,16 +32,23 @@ import java.util.List;
  * @UpdateDate: 2021/3/19 8:14
  */
 public class HindAppSetting extends AppCompatActivity {
+    //APP列表
     private static List<AppInfo> appInfos = new ArrayList<AppInfo>();
+    //隐藏的APP列表
     private static List<AppInfo> appHindInfos = new ArrayList<AppInfo>();
+    //GridView列表
     private static GridView mHindGridView;
+    //文本，返回，按钮，标题
     private TextView tv_back, tv_button, tv_title;
+    //返回LinearLayout
     private LinearLayout lv_back;
+    //当前TAG
+    private static String TAG = "HindAppSetting";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        //全屏
+        //全屏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);// 无Title

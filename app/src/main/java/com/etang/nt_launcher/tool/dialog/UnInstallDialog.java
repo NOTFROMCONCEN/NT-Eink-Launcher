@@ -38,6 +38,7 @@ import java.util.List;
  * @UpdateDate: 2021/3/19 8:25
  */
 public class UnInstallDialog {
+    //当前页面TAG
     private static String TAG = "UnInstallDialog";
 
     public static void uninstall_app(final int position, final List<AppInfo> appInfos, final Context context, final Activity activity, final String pakename, final String app_name) {

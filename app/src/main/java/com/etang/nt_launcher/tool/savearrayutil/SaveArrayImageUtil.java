@@ -13,6 +13,8 @@ import java.util.ArrayList;
  * @UpdateDate: 2021/3/19 8:26
  */
 public class SaveArrayImageUtil {
+    private static String TAG = "SaveArrayImageUtil";
+
     /**
      * 将arrayList的内容保存到sp里
      */

@@ -23,6 +23,8 @@ public class AboutView extends View {
     private int width = 0;
     //半径
     private int radius = 0;
+    //当前TAG
+    private static String TAG = "AboutView";
 
     /**
      * 构造方法
@@ -82,6 +84,7 @@ public class AboutView extends View {
                     height - radius + 20, paint);
             canvas.restore();// 恢复画布
         }
+        //刷新重设画布
 //        invalidate();
     }
 }

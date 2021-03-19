@@ -41,12 +41,23 @@ import com.etang.nt_launcher.tool.toast.DiyToast;
  * @UpdateDate: 2021/3/19 8:16
  */
 public class SettingActivity extends Activity {
-
-    LinearLayout lv_back, lv_window_setting, lv_restart_setting, lv_inforeback_activity, lv_textsize_setting, lv_applist_setting, lv_about_activity, lv_desktop_setting, lv_exit_setting, lv_hindapp_setting, lv_name_setting, lv_uninstall_setting;
+    //线性布局LinearLayout，
+    // 返回、标题签名设置、重启桌面设置、
+    // 消息反馈设置、APP列表设置、
+    // 关于桌面设置、桌面设置、退出桌面设置、
+    // 隐藏APP设置、签名设置、卸载桌面设置
+    LinearLayout lv_back, lv_window_setting, lv_restart_setting, lv_inforeback_activity,
+            lv_textsize_setting, lv_applist_setting, lv_about_activity, lv_desktop_setting,
+            lv_exit_setting, lv_hindapp_setting, lv_name_setting, lv_uninstall_setting;
+    //复选框，隐藏设置图标（底栏）、离线模式、老年模式
     private CheckBox cb_hind_setting_ico, cb_setting_offlinemode, cb_setting_oldmanmode;
+    //数据库
     private MyDataBaseHelper dbHelper_name_sql;
     private SQLiteDatabase db;
+    //文本，返回、按钮、标题
     private TextView tv_back, tv_button, tv_title;
+    //当前页面TAG
+    private static String TAG = "SettingActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

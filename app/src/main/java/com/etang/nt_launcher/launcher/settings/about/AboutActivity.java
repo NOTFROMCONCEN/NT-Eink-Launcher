@@ -46,22 +46,12 @@ public class AboutActivity extends AppCompatActivity {
     private ImageView iv_about_logo;//关于 LOGO
     //文本，分别是文本_返回，文本_标题，文本_按钮，文本_关于APP版本，文本_关于捐赠我
     private TextView tv_back, tv_title, tv_button, tv_about_appversion, tv_about_juanzeng;
+    //返回LinearLayout
     private LinearLayout lv_back;
+    //检查更新按钮
     private Button btn_about_checkup_button;
-    //  进度条
-    private static ProgressBar mProgressBar;
-    //  对话框
-    private static Dialog mDownloadDialog;
-    //  判断是否停止
-    private static boolean mIsCancel = false;
-    //  进度
-    private static int mProgress;
-    //  文件保存路径
-    private static String mSavePath;
-    //  版本名称
-    private static String mVersion_name = "梅糖桌面";
     //当前TAG
-    private static String TAG = "CheckUpdateDialog";
+    private static String TAG = "AboutActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

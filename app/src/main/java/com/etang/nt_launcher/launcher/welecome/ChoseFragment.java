@@ -30,8 +30,12 @@ import java.util.Locale;
  * @UpdateDate: 2021/3/19 8:16
  */
 public class ChoseFragment extends Fragment {
+    //SharedPreferences本地存储
     private SharedPreferences sharedPreferences;
+    //单选按钮、自动语言、中文语言、英文语言、日语语言
     private RadioButton ra_welecome_auto, ra_welecome_cn, ra_welecome_en, ra_welecome_jp;
+    //当前页面TAG
+    private static String TAG = "ChoseFragment";
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Nullable

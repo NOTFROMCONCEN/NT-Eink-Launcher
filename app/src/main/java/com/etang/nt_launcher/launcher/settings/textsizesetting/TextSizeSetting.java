@@ -28,10 +28,16 @@ import com.etang.nt_launcher.tool.toast.DiyToast;
  * @UpdateDate: 2021/3/19 8:15
  */
 public class TextSizeSetting extends AppCompatActivity {
+    //按钮，小时、分钟、日期、签名、电池、重设文本大小
     private Button btn_timetext_hour_size, btn_timetext_min_size, btn_datetext_size, btn_nametext_size, btn_dianchitext_size, btn_textsize_resert;
+    //SharedPreferences本地存储，用于存储设置信息
     private SharedPreferences sharedPreferences;
+    //文本，返回，按钮，标题
     private TextView tv_back, tv_button, tv_title;
+    //返回LinearLayout
     private LinearLayout lv_back;
+    //当前页面TAG
+    private static String TAG = "TextSizeSetting";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

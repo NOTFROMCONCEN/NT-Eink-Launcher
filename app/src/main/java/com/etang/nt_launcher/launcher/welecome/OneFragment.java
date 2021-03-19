@@ -19,6 +19,9 @@ import com.etang.nt_launcher.R;
  * @UpdateDate: 2021/3/19 8:17
  */
 public class OneFragment extends Fragment {
+    //当前页面TAG
+    private static String TAG = "OneFragment";
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

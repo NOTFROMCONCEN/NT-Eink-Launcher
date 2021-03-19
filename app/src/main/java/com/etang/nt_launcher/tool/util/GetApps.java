@@ -27,6 +27,15 @@ import java.util.List;
  * @UpdateDate: 2021/3/19 8:28
  */
 public class GetApps {
+    //当前页面TAG
+    private static String TAG = "GetApps";
+
+    /**
+     * 获取APP列表
+     *
+     * @param context 继承context
+     * @return
+     */
     public static List<AppInfo> GetAppList1(Context context) {
         List<AppInfo> list = new ArrayList<AppInfo>();
         PackageManager pm = context.getPackageManager();

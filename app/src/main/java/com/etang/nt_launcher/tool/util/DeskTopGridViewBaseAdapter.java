@@ -29,9 +29,10 @@ import java.util.List;
  * @UpdateDate: 2021/3/19 8:27
  */
 public class DeskTopGridViewBaseAdapter extends BaseAdapter {
-
     Context context;
     List<AppInfo> appInfos = new ArrayList<AppInfo>();
+    //当前页面TAG
+    private static String TAG = "DeskTopGridViewBaseAdapter";
 
     public DeskTopGridViewBaseAdapter(List<AppInfo> appInfos, Context context) {
         this.appInfos = appInfos;

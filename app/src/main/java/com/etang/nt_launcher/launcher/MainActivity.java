@@ -103,6 +103,7 @@ public class MainActivity extends Activity implements OnClickListener {
     public static boolean offline_mode = false;
     private AppInstallServer appinstallserver;
     SharedPreferences sharedPreferences;
+    //当前页面TAG
     private static String TAG = "MainActivity";
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)

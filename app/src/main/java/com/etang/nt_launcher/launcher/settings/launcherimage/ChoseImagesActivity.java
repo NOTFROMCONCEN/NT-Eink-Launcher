@@ -36,12 +36,19 @@ import java.io.IOException;
  * @UpdateDate: 2021/3/19 8:15
  */
 public class ChoseImagesActivity extends AppCompatActivity {
+    //单选按钮，选择壁纸，妹子、情侣、APP列表、萝莉、治愈、显示壁纸、显示壁纸和APP列表
     private RadioButton ra_meizi, ra_qinglv, ra_applist, ra_luoli, ra_zhiyu, ra_wallpaper, ra_wallpaper_and_applist;
+    //设置系统壁纸
     private Button btn_set_wallpaperimage;
+    //说实话忘了这个有什么用了
     private static final int IMAGE_PICK = 2654;
+    //bitmap，用于存储壁纸
     Bitmap bitmap = null;
+    //文本，返回，按钮，标题
     private TextView tv_back, tv_button, tv_title;
+    //返回LinearLayout
     private LinearLayout lv_back;
+    //当前TAG
     private static String TAG = "ChoseImagesActivity";
 
     @Override

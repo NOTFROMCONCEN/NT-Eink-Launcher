@@ -18,6 +18,8 @@ import com.etang.nt_launcher.R;
  */
 public class DiyToast {
     private static Toast toast;
+    //当前页面TAG
+    private static String TAG = "DiyToast";
 
     public static void showToast(Context context, String s, boolean long_or_short) {
         if (toast != null) {

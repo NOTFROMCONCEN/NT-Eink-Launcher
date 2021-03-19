@@ -27,12 +27,19 @@ import com.etang.nt_launcher.R;
  * @UpdateDate: 2021/3/19 8:16
  */
 public class WeatherActivity extends Activity {
+    //按钮，确定，关闭
     private Button btn_wather_con, btn_wather_cls;
+    //输入城市
     private EditText et_city_get;
+    //数据库
     private MyDataBaseHelper dbHelper;
     private SQLiteDatabase db;
+    //文本，返回，按钮，标题
     private TextView tv_back, tv_button, tv_title;
+    //返回LinearLayout
     private LinearLayout lv_back;
+    //当前页面TAG
+    private static String TAG = "WeatherActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

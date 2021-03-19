@@ -29,15 +29,21 @@ import com.etang.nt_launcher.tool.toast.DiyToast;
  * @UpdateDate: 2021/3/19 8:14
  */
 public class DeskTopSettingActivity extends AppCompatActivity implements View.OnClickListener {
+    //单选按钮，功能：隐藏APP名称，显示一行APP名称，显示APP名称，显示边框，隐藏边框，APP底部对齐排列，APP顶部对齐排列，显示透明边框
     private RadioButton ra_appname_hind, ra_appname_one, ra_appname_nope, ra_app_show_blok, ra_app_hind_blok, ra_app_bottommode_bottom, ra_app_bottommode_top, ra_app_show_nocolor_blok;
+    //设置图标大小进度条
     private SeekBar sk_gridlist_iconsize;
+    //显示文本，反馈，按钮，标题，列表设置，列表图标设置
     private TextView tv_back, tv_button, tv_title, tv_gridlist_setting, tv_gridlist_iconsize;
+    //返回LinearLayout
     private LinearLayout lv_back;
+    //当前TAG
+    private static String TAG = "DeskTopSettingActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        //全屏
+        //全屏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);// 无Title

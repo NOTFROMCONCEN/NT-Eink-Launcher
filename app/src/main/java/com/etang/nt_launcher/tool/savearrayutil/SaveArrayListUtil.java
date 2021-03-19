@@ -13,6 +13,9 @@ import java.util.ArrayList;
  * @UpdateDate: 2021/3/19 8:26
  */
 public class SaveArrayListUtil {
+    //当前页面TAG
+    private static String TAG = "SaveArrayListUtil";
+
     /**
      * 将arrayList的内容保存到sp里
      */

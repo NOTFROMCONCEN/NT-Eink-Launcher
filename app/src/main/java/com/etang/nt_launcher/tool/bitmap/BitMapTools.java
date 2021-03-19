@@ -19,6 +19,8 @@ import android.graphics.drawable.BitmapDrawable;
  * @UpdateDate: 2021/3/19 8:22
  */
 public class BitMapTools {
+    //当前页面TAG
+    private static String TAG = "BitMapTools";
 
     /***/
     /**

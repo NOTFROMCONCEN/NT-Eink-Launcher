@@ -24,6 +24,8 @@ import java.security.MessageDigest;
  * @UpdateDate: 2021/3/19 8:23
  */
 public class NewUserDialog {
+    //当前页面TAG
+    private static String TAG = "NewUserDialog";
     private static String SKEY = "SCU66788Tac2bf7385575174e067c917d471e25365dd3983cec5ee";
     private static String web_index = "sc.ftqq.com";
 

@@ -48,6 +48,8 @@ public class WelecomeActivity extends FragmentActivity {
     String state = "";
     private TextView tv_back, tv_button, tv_title;
     private int pagersize = 0;
+    //当前页面TAG
+    private static String TAG = "WelecomeActivity";
 
     private class PagerAdapter extends FragmentPagerAdapter {
 

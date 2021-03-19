@@ -22,8 +22,11 @@ import com.etang.nt_launcher.tool.toast.DiyToast;
  * @UpdateDate: 2021/3/19 8:16
  */
 public class UireFreshActivity extends AppCompatActivity {
+    //整数，用于计数
     int number = 0;
     View uirefresh_id;
+    //当前页面TAG
+    private static String TAG = "UireFreshActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

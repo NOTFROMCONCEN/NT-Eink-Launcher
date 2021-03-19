@@ -59,7 +59,7 @@ public class CheckUpdateDialog {
     private static String mSavePath;
     //  版本名称
     private static String mVersion_name = "梅糖桌面";
-    //当前TAG
+    //当前页面TAG
     private static String TAG = "CheckUpdateDialog";
 
 

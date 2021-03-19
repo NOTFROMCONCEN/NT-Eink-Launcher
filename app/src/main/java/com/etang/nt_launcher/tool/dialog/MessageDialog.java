@@ -13,6 +13,9 @@ import android.content.DialogInterface;
  * @UpdateDate: 2021/3/19 8:23
  */
 public class MessageDialog {
+    //当前页面TAG
+    private static String TAG = "MessageDialog";
+
     private void show_dialog(final String msg, Activity activity) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("来自系统的消息");
