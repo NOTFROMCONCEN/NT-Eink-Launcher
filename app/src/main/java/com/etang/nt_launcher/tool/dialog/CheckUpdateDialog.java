@@ -88,11 +88,6 @@ public class CheckUpdateDialog {
                         DiyToast.showToast(context, "正在连接，请稍后", true);
                         alertDialog.setTitle("正在连接，请稍后");
                         alertDialog.show();
-                        try {
-                            Thread.sleep(2000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
                         break;
                     case "2":
                         DiyToast.showToast(context, "出现错误，请重试！", true);
