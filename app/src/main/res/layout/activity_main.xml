@@ -19,7 +19,6 @@
         android:layout_marginLeft="0dp"
         android:layout_marginEnd="0dp"
         android:layout_marginRight="0dp"
-        android:layout_weight="1"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -38,27 +37,31 @@
                 android:layout_alignBottom="@+id/tv_time_hour"
                 android:layout_toEndOf="@+id/tv_time_hour"
                 android:layout_toRightOf="@+id/tv_time_hour"
-                android:text="59"
+                android:text="@string/_59"
                 android:textColor="#353535"
-                android:textSize="40dp" />
+                android:textSize="40sp" />
 
             <TextView
                 android:id="@+id/tv_time_hour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
+                android:layout_marginStart="5sp"
                 android:layout_marginLeft="5sp"
-                android:text="23"
+                android:text="@string/_23"
                 android:textColor="#353535"
-                android:textSize="70dp" />
+                android:textSize="70sp" />
 
             <LinearLayout
                 android:id="@+id/line_wather"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
+                android:layout_marginEnd="21dp"
                 android:layout_marginRight="21dp"
                 android:orientation="vertical">
 
@@ -79,6 +82,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
+                android:contentDescription="@string/todo"
                 app:srcCompat="@drawable/mi_luoli" />
 
             <LinearLayout
@@ -112,6 +116,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/shaper_desk_top_show"
+        android:baselineAligned="false"
         android:gravity="center_vertical|center_horizontal"
         android:orientation="horizontal">
 
@@ -119,19 +124,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="left|center_vertical|center_horizontal"
+            android:gravity="start|center_vertical|center_horizontal"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_main_nowdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5sp"
                 android:layout_marginBottom="5dp"
-                android:text="2019年12月13日"
+                android:text="@string/year_2019_12_13"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="#000000" />
 
@@ -141,7 +144,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="right|center_vertical|center_horizontal"
+            android:gravity="end|center_vertical|center_horizontal"
             android:orientation="horizontal">
 
             <ImageView
@@ -149,6 +152,7 @@
                 android:layout_width="30sp"
                 android:layout_height="30sp"
                 android:layout_margin="5dp"
+                android:contentDescription="@string/todo_b"
                 android:src="@drawable/ic_clean" />
 
             <ImageView
@@ -156,6 +160,7 @@
                 android:layout_width="30sp"
                 android:layout_height="30sp"
                 android:layout_margin="5dp"
+                android:contentDescription="@string/todo_v"
                 android:src="@drawable/ic_setting" />
 
             <ImageView
@@ -163,6 +168,7 @@
                 android:layout_width="30sp"
                 android:layout_height="30sp"
                 android:layout_margin="5dp"
+                android:contentDescription="@string/todo_n"
                 android:src="@drawable/ic_update" />
 
             <ImageView
@@ -170,6 +176,7 @@
                 android:layout_width="30sp"
                 android:layout_height="30sp"
                 android:layout_margin="5dp"
+                android:contentDescription="@string/todo"
                 android:src="@drawable/ic_rss"
                 android:visibility="gone" />
 
@@ -178,6 +185,7 @@
                 android:layout_width="30sp"
                 android:layout_height="30sp"
                 android:layout_margin="5dp"
+                android:contentDescription="@string/todo_m"
                 android:src="@drawable/ic_yinliang"
                 android:visibility="gone" />
 
@@ -185,8 +193,10 @@
                 android:id="@+id/tg_apps_state"
                 android:layout_width="30sp"
                 android:layout_height="30sp"
+                android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/select_apps_state"
@@ -200,10 +210,11 @@
         android:id="@+id/tv_user_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_margin="5sp"
-        android:text="我的多看电纸书"
+        android:text="@string/info_moren_name"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#000000" />
 
@@ -212,9 +223,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_margin="5sp"
-        android:text="100% 使用中"
+        android:text="@string/_100"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#000000" />
 

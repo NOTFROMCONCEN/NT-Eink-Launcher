@@ -10,8 +10,8 @@
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 410000715,
-      "versionName": "Spring",
+      "versionCode": 440000715,
+      "versionName": "Summer",
       "outputFile": "app-release.apk"
     }
   ]

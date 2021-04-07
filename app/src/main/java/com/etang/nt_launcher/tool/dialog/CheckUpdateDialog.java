@@ -63,60 +63,43 @@ public class CheckUpdateDialog {
     private static String TAG = "CheckUpdateDialog";
 
 
-    public static void check_update(final Context context, final Activity activity) {
+    public static void check_update(final Context context, final Activity activity, final String where) {
         final Handler handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                /**
-                 * AlerDialog弹出框
-                 */
-                AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
-                View view = LayoutInflater.from(activity).inflate(R.layout.dialog_update_show_1, null, false);
-                alertDialog.setView(view);
-                alertDialog.setCanceledOnTouchOutside(false);
-//                alertDialog.show();
-                WindowManager.LayoutParams lp = alertDialog.getWindow().getAttributes();
-                lp.width = 400;//定义宽度
-                lp.height = 400;//定义高度
-                alertDialog.getWindow().setAttributes(lp);
-                ///////////////////////////////////////////////////
                 Bundle data = msg.getData();
                 String val = data.getString("weblink_state");
                 switch (val) {
                     case "1":
-                        DiyToast.showToast(context, "正在连接，请稍后", true);
-                        alertDialog.setTitle("正在连接，请稍后");
-                        alertDialog.show();
+                        if (where == "about") {
+                            DiyToast.showToast(context, "正在连接到ZOI云端，请稍后", true);
+                        }
                         break;
                     case "2":
-                        DiyToast.showToast(context, "出现错误，请重试！", true);
-                        Bundle data_error = msg.getData();
-                        String error_message = data_error.getString("error_message");
-                        DeBugDialog.debug_show_dialog(context, error_message, TAG);
-                        alertDialog.dismiss();
+                        if (where == "about") {
+                            DiyToast.showToast(context, "出现错误，请重试！", true);
+                            Bundle data_error = msg.getData();
+                            String error_message = data_error.getString("error_message");
+                            DeBugDialog.debug_show_dialog(context, error_message, TAG);
+                        }
                         break;
                     case "3":
-                        DiyToast.showToast(context, "连接成功，解析中", true);
-                        alertDialog.setTitle("连接成功，解析中");
+                        if (where == "about") {
+                            DiyToast.showToast(context, "连接成功，解析中", true);
+                        }
                         break;
                     case "4":
-                        DiyToast.showToast(context, "", true);
-                        alertDialog.setTitle("");
-                        try {
-                            Thread.sleep(2000);
-                        } catch (Exception e) {
+                        if (where == "about") {
+                            DiyToast.showToast(context, "", true);
                         }
-                        alertDialog.dismiss();
                         break;
                     case "5":
-                        DiyToast.showToast(context, "加载完成", true);
-                        alertDialog.dismiss();
                         Bundle data_version = msg.getData();
                         String version_message = data_version.getString("version_message");
                         String new_version_message = version_message.replace("<li>", ""); //得到新的字符串
                         new_version_message = new_version_message.replace("</li>", "");
-                        version_update(context, new_version_message, activity);
+                        version_update(context, new_version_message, activity, where);
                         break;
                 }
             }
@@ -130,7 +113,7 @@ public class CheckUpdateDialog {
                 msg_start.setData(data);
                 handler.sendMessage(msg_start);
                 try {
-                    Log.e("TAG111111111111111", "开始链接");
+                    Log.e("WEBLINK", "开始链接");
                     Document doc = Jsoup.connect(" https://blog.nyanon.online/24").get();
                     /**
                      * 连接成功
@@ -167,7 +150,7 @@ public class CheckUpdateDialog {
         }).start();
     }
 
-    private static void version_update(final Context context, String s, final Activity activity) {
+    private static void version_update(final Context context, String s, final Activity activity, final String where) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
         //截取之后的字符
         String version_web = s.substring(0, s.indexOf("(" + context.getPackageName() + ")"));
@@ -178,61 +161,65 @@ public class CheckUpdateDialog {
         String version = BuildConfig.VERSION_NAME;
         int version_code = BuildConfig.VERSION_CODE;
         int version_web_code = Integer.valueOf(version_web_5);
-        if (version.indexOf("beta") != -1) { //"如果是beta版"
-            check_beta(builder, version_code, version_web_code, context, activity, true);//内测版
-        } else {
-            check_beta(builder, version_code, version_web_code, context, activity, false);//稳定版
+        if (where == "about") {
+            check_beta(builder, version_code, version_web_code, context, activity, where);//稳定版
+            builder.setPositiveButton("博客地址", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    DiyToast.showToast(context, "https://blog.nyanon.online/nt_launcher", true);
+                    web_html(context);
+                }
+            });
+            builder.setTitle("当前APP版本：" + BuildConfig.VERSION_NAME);
+            builder.show();
         }
-        builder.setPositiveButton("博客地址", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                DiyToast.showToast(context, "https://blog.nyanon.online/nt_launcher", true);
-                web_html(context);
-            }
-        });
-        builder.setTitle("当前APP版本：" + BuildConfig.VERSION_NAME);
-        builder.show();
+        if (where == "main") {
+            check_beta(builder, version_code, version_web_code, context, activity, where);//稳定版
+        }
     }
 
-    private static void check_beta(final AlertDialog.Builder builder, int version_code, int version_web_code, final Context context, final Activity activity, boolean is_beta) {
+    private static void check_beta(final AlertDialog.Builder builder,
+                                   int version_code,
+                                   int version_web_code,
+                                   final Context context,
+                                   final Activity activity,
+                                   final String where) {
         if (version_code != version_web_code) {
-            if (is_beta) {
-                mVersion_name = mVersion_name + "_beta";
-                builder.setMessage("你是内测版，请前往“爱发电”电圈内查看是否有新版本，或者尝试直接下载。");
+            if (version_code > version_web_code) {
+                if (where == "about") {
+                    mVersion_name = mVersion_name + "_" + String.valueOf(version_web_code);
+                    builder.setMessage("当前版本：\n" + String.valueOf(version_code) + "\n最新版本：\n" + String.valueOf(version_web_code) + "\n\n你的版本比目前发布的稳定版还要高，可能你使用的是内测版或者第三方修改的不稳定版本");
+                    DiyToast.showToast(context, "你的版本比目前发布的稳定版还要高，可能你使用的是内测版或者第三方修改的不稳定版本。", true);
+                    builder.setNeutralButton("关闭", null);
+                    builder.show();
+                }
+            } else {
+                DiyToast.showToast(context, "发现新版本 | 来自ZOI的消息", true);
+                mVersion_name = mVersion_name + "_" + String.valueOf(version_web_code);
+                builder.setMessage("当前版本：\n" + String.valueOf(version_code) + "\n最新版本：\n" + String.valueOf(version_web_code) + "\n\n你的“奶糖桌面”需要更新，请到酷安、博客，或者点击“更新”进行更新。");
                 builder.setNeutralButton("更新", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         startUpdate(context, activity);
                     }
                 });
-            } else {
-                if (version_code > version_web_code) {
-                    mVersion_name = mVersion_name + "_" + String.valueOf(version_web_code);
-                    builder.setMessage("当前版本：\n" + String.valueOf(version_code) + "\n最新版本：\n" + String.valueOf(version_web_code) + "\n\n你的版本比目前发布的稳定版还要高，可能你使用的是内测版或者第三方修改的不稳定版本");
-                    DiyToast.showToast(context, "你的版本比目前发布的稳定版还要高，可能你使用的是内测版或者第三方修改的不稳定版本。", true);
-                    builder.setNeutralButton("关闭", null);
-                } else {
-                    mVersion_name = mVersion_name + "_" + String.valueOf(version_web_code);
-                    builder.setMessage("当前版本：\n" + String.valueOf(version_code) + "\n最新版本：\n" + String.valueOf(version_web_code) + "\n\n你的“奶糖桌面”需要更新，请到酷安、博客，或者点击“更新”进行更新。");
-                    DiyToast.showToast(context, "检查到新版本", true);
-                    builder.setNeutralButton("更新", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            startUpdate(context, activity);
-                        }
-                    });
-                }
+                builder.setPositiveButton("关闭", null);
+                builder.show();
             }
         } else {
-            mVersion_name = mVersion_name + "_" + String.valueOf(version_web_code);
-            builder.setMessage("当前版本：" + "\n" + String.valueOf(version_code) + "\n" + "现有版本：" + "\n" + version_web_code + "\n" + "\n你已经是最新版本了");
-            DiyToast.showToast(context, "你已经是最新版本了", true);
-            builder.setNeutralButton("重新下载", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    startUpdate(context, activity);
-                }
-            });
+            if (where == "about") {
+                mVersion_name = mVersion_name + "_" + String.valueOf(version_web_code);
+                builder.setMessage("当前版本：" + "\n" + String.valueOf(version_code) + "\n" + "现有版本：" + "\n" + version_web_code + "\n" + "\n你已经是最新版本了");
+                DiyToast.showToast(context, "你已经是最新版本了", true);
+                builder.setNeutralButton("重新下载", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startUpdate(context, activity);
+                    }
+                });
+                builder.setPositiveButton("关闭", null);
+                builder.show();
+            }
         }
     }
 
@@ -322,8 +309,7 @@ public class CheckUpdateDialog {
     protected static void showDownloadDialog(Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         builder.setTitle("下载中，请勿退出");
-        builder.setMessage("下载目录为：根目录/ntlauncher,\n下载完成后会自动打开文件管理器，请到指定目录进行安装，\n如果本软件无法唤起设定的文件管理器，请您回到桌面手动打开文件管理器进行安装。" +
-                "\n如果无法下载，请访问博客或酷安进行下载");
+        builder.setMessage("下载目录为：/根目录/ntlauncher\n请打开文件管理器到指定目录进行安装\n或访问博客或酷安进行下载");
         View view = LayoutInflater.from(mContext).inflate(R.layout.dialog_progress, null);
         mProgressBar = (ProgressBar) view.findViewById(R.id.id_progress);
         builder.setView(view);

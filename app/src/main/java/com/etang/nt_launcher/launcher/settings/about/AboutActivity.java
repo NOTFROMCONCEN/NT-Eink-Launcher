@@ -40,7 +40,7 @@ import javax.net.ssl.HttpsURLConnection;
  * @ClassName: AboutActivity
  * @Description: “关于”界面
  * @CreateDate: 2021/3/16 8:51
- * @UpdateDate: 2021/3/19 8:09
+ * @UpdateDate: 2021/4/04 01:50
  */
 public class AboutActivity extends AppCompatActivity {
     private ImageView iv_about_logo;//关于 LOGO
@@ -65,7 +65,9 @@ public class AboutActivity extends AppCompatActivity {
         //标题
         tv_title.setText(getString(R.string.string_about));
         tv_button.setText(getString(R.string.string_version));
+        //APP关于 文本
         tv_about_appversion.setText(MTCore.get_my_appVERSIONNAME());
+        //按钮 文本
         tv_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,41 +77,55 @@ public class AboutActivity extends AppCompatActivity {
                         .setNegativeButton("关闭", null).show();
             }
         });
+        //返回 文本 点击事件
         tv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+        //返回 线性布局 点击事件
         lv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+        //关于logo 图片 点击事件
         iv_about_logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //检查存储权限
                 SavePermission.check_save_permission(AboutActivity.this);
-                CheckUpdateDialog.check_update(AboutActivity.this, AboutActivity.this);
+                //检查更新
+                CheckUpdateDialog.check_update(AboutActivity.this, AboutActivity.this, "about");
             }
         });
+        //关于检查更新 按钮 点击事件
         btn_about_checkup_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //检查存储权限
                 SavePermission.check_save_permission(AboutActivity.this);
-                CheckUpdateDialog.check_update(AboutActivity.this, AboutActivity.this);
+                //检查更新
+                CheckUpdateDialog.check_update(AboutActivity.this, AboutActivity.this, "about");
             }
         });
+        //关于捐赠 文本 点击事件
         tv_about_juanzeng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Toast提示
                 DiyToast.showToast(getApplicationContext(), "请注意：捐赠与否并不影响正常使用", true);
+                //显示弹出框
                 PayMeDialog.show_dialog(AboutActivity.this);
             }
         });
     }
 
+    /**
+     * 绑定控件
+     */
     private void initView() {
         lv_back = (LinearLayout) findViewById(R.id.lv_back);
         iv_about_logo = (ImageView) findViewById(R.id.iv_about_logo);
@@ -121,6 +137,9 @@ public class AboutActivity extends AppCompatActivity {
         tv_about_juanzeng = (TextView) findViewById(R.id.tv_about_juanzeng);
     }
 
+    /**
+     * 设置当前Activity结束时，无动画
+     */
     @Override
     public void finish() {
         super.finish();

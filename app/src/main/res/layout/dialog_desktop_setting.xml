@@ -35,8 +35,10 @@
     <SeekBar
         android:id="@+id/seekBar_listnumber"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="5" />
+        android:layout_height="40dp"
+        android:max="20"
+        android:progressDrawable="@drawable/layer_list_progressbarback"
+        android:thumb="@null" />
 
     <TextView
         android:id="@+id/tv_listnumber_number"
