@@ -73,15 +73,4 @@
     <string name="inback_title">TextView</string>
     <string name="inback_button">Button</string>
     <string name="setting_textsize_time_hour">时间大小（小时）</string>
-    <string name="_59">59</string>
-    <string name="_100">100% 使用中</string>
-    <string name="info_moren_name">我的多看电纸书</string>
-    <string name="_23">23</string>
-    <string name="todo">TODO</string>
-    <string name="todo">TODO</string>
-    <string name="todo_m">TODO</string>
-    <string name="year_2019_12_13">2019年12月13日</string>
-    <string name="todo_n">TODO</string>
-    <string name="todo_b">TODO</string>
-    <string name="todo_v">TODO</string>
 </resources>

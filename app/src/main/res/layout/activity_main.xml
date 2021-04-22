@@ -37,7 +37,7 @@
                 android:layout_alignBottom="@+id/tv_time_hour"
                 android:layout_toEndOf="@+id/tv_time_hour"
                 android:layout_toRightOf="@+id/tv_time_hour"
-                android:text="@string/_59"
+                android:text="59"
                 android:textColor="#353535"
                 android:textSize="40sp" />
 
@@ -50,7 +50,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="5sp"
                 android:layout_marginLeft="5sp"
-                android:text="@string/_23"
+                android:text="23"
                 android:textColor="#353535"
                 android:textSize="70sp" />
 
@@ -82,7 +82,6 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:contentDescription="@string/todo"
                 app:srcCompat="@drawable/mi_luoli" />
 
             <LinearLayout
@@ -134,7 +133,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5sp"
                 android:layout_marginBottom="5dp"
-                android:text="@string/year_2019_12_13"
+                android:text="2019_12_13"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="#000000" />
 
@@ -152,7 +151,6 @@
                 android:layout_width="30sp"
                 android:layout_height="30sp"
                 android:layout_margin="5dp"
-                android:contentDescription="@string/todo_b"
                 android:src="@drawable/ic_clean" />
 
             <ImageView
@@ -160,7 +158,6 @@
                 android:layout_width="30sp"
                 android:layout_height="30sp"
                 android:layout_margin="5dp"
-                android:contentDescription="@string/todo_v"
                 android:src="@drawable/ic_setting" />
 
             <ImageView
@@ -168,7 +165,6 @@
                 android:layout_width="30sp"
                 android:layout_height="30sp"
                 android:layout_margin="5dp"
-                android:contentDescription="@string/todo_n"
                 android:src="@drawable/ic_update" />
 
             <ImageView
@@ -176,7 +172,6 @@
                 android:layout_width="30sp"
                 android:layout_height="30sp"
                 android:layout_margin="5dp"
-                android:contentDescription="@string/todo"
                 android:src="@drawable/ic_rss"
                 android:visibility="gone" />
 
@@ -185,7 +180,6 @@
                 android:layout_width="30sp"
                 android:layout_height="30sp"
                 android:layout_margin="5dp"
-                android:contentDescription="@string/todo_m"
                 android:src="@drawable/ic_yinliang"
                 android:visibility="gone" />
 
@@ -214,7 +208,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_margin="5sp"
-        android:text="@string/info_moren_name"
+        android:text="MyEinkBook"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#000000" />
 
@@ -226,7 +220,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_margin="5sp"
-        android:text="@string/_100"
+        android:text="100%"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#000000" />
 

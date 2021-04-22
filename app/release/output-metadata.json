@@ -10,8 +10,8 @@
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 440000715,
-      "versionName": "Summer",
+      "versionCode": 460000715,
+      "versionName": "Summer 4.6",
       "outputFile": "app-release.apk"
     }
   ]
