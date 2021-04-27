@@ -116,7 +116,7 @@ public class AboutActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast提示
-                DiyToast.showToast(getApplicationContext(), "请注意：捐赠与否并不影响正常使用", true);
+                DiyToast.showToast(getApplicationContext(), "请注意：捐赠并不影响正常使用", true);
                 //显示弹出框
                 PayMeDialog.show_dialog(AboutActivity.this);
             }
