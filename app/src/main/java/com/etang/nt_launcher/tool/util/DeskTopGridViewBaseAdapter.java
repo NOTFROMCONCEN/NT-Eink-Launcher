@@ -134,17 +134,29 @@ public class DeskTopGridViewBaseAdapter extends BaseAdapter {
                 if (appblok_state.equals("hind_blok")) {
                     holder.line_appinfo.setBackground(null);
                 }
-                if (appblok_state.equals("show_blok")) {
+                if (appblok_state.equals("show_blok_line")) {
                     holder.line_appinfo.setBackgroundResource(R.drawable.shaper_zhijiao_lins_show);
                 }
-                if (appblok_state.equals("show_nocolor_blok")) {
+                if (appblok_state.equals("show_blok_yuan")) {
+                    holder.line_appinfo.setBackgroundResource(R.drawable.shaper_yuanjiao_lins_show);
+                }
+                if (appblok_state.equals("show_nocolor_blok_line")) {
                     holder.line_appinfo.setBackgroundResource(R.drawable.shaper_zhijiao_lins_nocolor);
+                }
+                if (appblok_state.equals("show_nocolor_blok_yuan")) {
+                    holder.line_appinfo.setBackgroundResource(R.drawable.shaper_yuanjiao_nocolor_show);
+                }
+                if (appblok_state.equals("show_blok")) {
+                    holder.line_appinfo.setBackgroundResource(R.drawable.shaper_yuanjiao_lins_show);
+                }
+                if (appblok_state.equals("show_nocolor_blok")) {
+                    holder.line_appinfo.setBackgroundResource(R.drawable.shaper_yuanjiao_nocolor_show);
                 }
             }
         } catch (Exception e) {
             SharedPreferences.Editor editor = context.getSharedPreferences("info_app_list_state", context.MODE_PRIVATE).edit();
-            editor.putString("appname_state", "null");
-            editor.putString("appblok_state", "show_nocolor_blok");
+            editor.putString("appname_state", "one");
+            editor.putString("appblok_state", "show_nocolor_blok_yuan");
             editor.apply();
             get_appname_info(holder);
         }

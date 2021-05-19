@@ -48,6 +48,7 @@ public class WelecomeActivity extends FragmentActivity {
     String state = "";
     private TextView tv_back, tv_button, tv_title;
     private int pagersize = 0;
+
     //当前页面TAG
     private static String TAG = "WelecomeActivity";
 
@@ -214,35 +215,35 @@ public class WelecomeActivity extends FragmentActivity {
     }
 
     private void dialog_newuser(final boolean show_or_notshow) {
-        final AlertDialog alertDialog = new AlertDialog.Builder(WelecomeActivity.this).create();
-        View view = LayoutInflater.from(WelecomeActivity.this).inflate(R.layout.dialog_newuserchecker, null, false);
-        alertDialog.setView(view);
-        alertDialog.setCanceledOnTouchOutside(false);
-        Button btn_con = (Button) view.findViewById(R.id.btn_newusercheck_con);
-        Button btn_cls = (Button) view.findViewById(R.id.btn_newusercheck_cls);
         if (show_or_notshow) {
+            final AlertDialog alertDialog = new AlertDialog.Builder(WelecomeActivity.this).create();
+            View view = LayoutInflater.from(WelecomeActivity.this).inflate(R.layout.dialog_newuserchecker, null, false);
+            alertDialog.setView(view);
+            alertDialog.setCanceledOnTouchOutside(false);
+            Button btn_con = (Button) view.findViewById(R.id.btn_newusercheck_con);
+            Button btn_cls = (Button) view.findViewById(R.id.btn_newusercheck_cls);
+            btn_cls.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alertDialog.dismiss();
+                    startActivity(new Intent(WelecomeActivity.this, MainActivity.class));
+                    finish();
+                }
+            });
+            btn_con.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    NewUserDialog.dialog_show(WelecomeActivity.this, "设备激活（新用户）：", true);
+                    alertDialog.dismiss();
+                    startActivity(new Intent(WelecomeActivity.this, MainActivity.class));
+                    finish();
+                }
+            });
             alertDialog.show();
         } else {
             startActivity(new Intent(WelecomeActivity.this, MainActivity.class));
             finish();
         }
-        btn_cls.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-                startActivity(new Intent(WelecomeActivity.this, MainActivity.class));
-                finish();
-            }
-        });
-        btn_con.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NewUserDialog.dialog_show(WelecomeActivity.this, "设备激活（新用户）：", true);
-                alertDialog.dismiss();
-                startActivity(new Intent(WelecomeActivity.this, MainActivity.class));
-                finish();
-            }
-        });
     }
 
     @Override

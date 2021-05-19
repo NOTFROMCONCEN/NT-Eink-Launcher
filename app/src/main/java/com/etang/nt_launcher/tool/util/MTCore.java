@@ -15,6 +15,10 @@ public class MTCore {
     public static String my_app_name = "梅糖桌面";
     //当前页面TAG
     public static String TAG = "MTCore";
+    //服务器URL
+    public static String SERVER_WEB_URL = "";
+    //用于时间的计数器
+    public static int i_for_weather = 0;
 
     //APP ID
     public static String get_my_appAPPLICATION_ID() {

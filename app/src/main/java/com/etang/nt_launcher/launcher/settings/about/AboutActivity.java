@@ -40,12 +40,12 @@ import javax.net.ssl.HttpsURLConnection;
  * @ClassName: AboutActivity
  * @Description: “关于”界面
  * @CreateDate: 2021/3/16 8:51
- * @UpdateDate: 2021/4/04 01:50
+ * @UpdateDate: 2021/5/10 01:50
  */
 public class AboutActivity extends AppCompatActivity {
     private ImageView iv_about_logo;//关于 LOGO
-    //文本，分别是文本_返回，文本_标题，文本_按钮，文本_关于APP版本，文本_关于捐赠我
-    private TextView tv_back, tv_title, tv_button, tv_about_appversion, tv_about_juanzeng;
+    //文本，分别是文本_返回，文本_标题，文本_按钮，文本_关于捐赠我
+    private TextView tv_back, tv_title, tv_button, tv_about_juanzeng;
     //返回LinearLayout
     private LinearLayout lv_back;
     //检查更新按钮
@@ -59,14 +59,15 @@ public class AboutActivity extends AppCompatActivity {
         //设置填充屏幕
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);// 无Title
+        //设置Activity没有title栏
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //设置xml界面
         setContentView(R.layout.setting_about);
+        //绑定控件
         initView();
         //标题
         tv_title.setText(getString(R.string.string_about));
         tv_button.setText(getString(R.string.string_version));
-        //APP关于 文本
-        tv_about_appversion.setText(MTCore.get_my_appVERSIONNAME());
         //按钮 文本
         tv_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +117,7 @@ public class AboutActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast提示
-                DiyToast.showToast(getApplicationContext(), "请注意：捐赠并不影响正常使用", true);
+                DiyToast.showToast(getApplicationContext(), "请注意：是否捐赠并不影响正常使用", true);
                 //显示弹出框
                 PayMeDialog.show_dialog(AboutActivity.this);
             }
@@ -133,7 +134,6 @@ public class AboutActivity extends AppCompatActivity {
         tv_button = (TextView) findViewById(R.id.tv_title_button);
         tv_title = (TextView) findViewById(R.id.tv_title_text);
         btn_about_checkup_button = (Button) findViewById(R.id.btn_about_checkup_button);
-        tv_about_appversion = (TextView) findViewById(R.id.tv_about_appversion);
         tv_about_juanzeng = (TextView) findViewById(R.id.tv_about_juanzeng);
     }
 

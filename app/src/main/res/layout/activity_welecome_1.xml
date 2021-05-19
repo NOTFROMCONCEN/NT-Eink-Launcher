@@ -121,28 +121,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/welecome_string_system_alert_window"
-            android:textColor="#000" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/quanxian_tanchuduihuakuang" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/welecome_string_system_overlay_window"
-            android:textColor="#000" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/quanxian_tanchuduihuakuang" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/welecome_string_write_external_storage"
             android:textColor="#000" />
 
@@ -150,28 +128,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/quanxian_sdcardreader" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/welecome_string_request_install_packages"
-            android:textColor="#000" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/quanxian_installerq" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/welecome_string_read_phone_state"
-            android:textColor="#000" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/quanxian_imei" />
 
 
     </LinearLayout>

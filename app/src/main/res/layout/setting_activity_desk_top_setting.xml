@@ -17,6 +17,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="@drawable/shaper_yuanjiao_lins_show"
             android:orientation="vertical"
             android:padding="10dp">
 
@@ -47,7 +48,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="显示"
-                    android:textColor="#90000000" />
+                    android:textColor="#90000000"
+                    android:visibility="gone" />
 
                 <RadioButton
                     android:id="@+id/ra_appname_one"
@@ -71,10 +73,31 @@
                     android:textSize="15sp" />
 
                 <RadioButton
-                    android:id="@+id/ra_app_show_blok"
+                    android:id="@+id/ra_app_show_blok_line"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="显示"
+                    android:text="白色显示直角"
+                    android:textColor="#90000000" />
+
+                <RadioButton
+                    android:id="@+id/ra_app_show_blok_yuan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="白色显示圆角"
+                    android:textColor="#90000000" />
+
+                <RadioButton
+                    android:id="@+id/ra_app_show_nocolor_blok_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="透明显示直角"
+                    android:textColor="#90000000" />
+
+                <RadioButton
+                    android:id="@+id/ra_app_show_nocolor_blok_yuan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="透明显示圆角"
                     android:textColor="#90000000" />
 
                 <RadioButton
@@ -82,13 +105,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="隐藏"
-                    android:textColor="#90000000" />
-
-                <RadioButton
-                    android:id="@+id/ra_app_show_nocolor_blok"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="透明边框"
                     android:textColor="#90000000" />
             </RadioGroup>
 

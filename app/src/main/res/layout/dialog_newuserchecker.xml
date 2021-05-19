@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="15dp"
-    android:background="#FFFFFF"
     android:gravity="center_vertical|center_horizontal"
     android:orientation="vertical"
     android:padding="15dp">
@@ -17,13 +16,15 @@
         android:background="@drawable/shaper_desk_top_show"
         android:padding="5dp"
         android:text="@string/dialog_newuser_title"
+        android:textColor="#000"
         android:textSize="25sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:text="@string/dialog_newuser_message" />
+        android:text="@string/dialog_newuser_message"
+        android:textColor="#000" />
 
     <LinearLayout
         style="?android:attr/buttonBarStyle"

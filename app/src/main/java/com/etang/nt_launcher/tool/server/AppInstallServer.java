@@ -39,14 +39,14 @@ public class AppInstallServer extends BroadcastReceiver {
             //接收安装广播
             if (intent.getAction().equals(Intent.ACTION_PACKAGE_ADDED)) {
                 String packageName = intent.getData().getSchemeSpecificPart();
-                Log.e("服务安装", "onReceive: " + packageName);
+//                Log.e("服务安装", "onReceive: " + packageName);
                 DiyToast.showToast(context, "安装了" + packageName, true);
                 MainActivity.initAppList(context);
             }
             //接收卸载广播
             if (intent.getAction().equals(Intent.ACTION_PACKAGE_REMOVED)) {
                 String packageName = intent.getData().getSchemeSpecificPart();
-                Log.e("服务卸载", "onReceive: " + packageName);
+//                Log.e("服务卸载", "onReceive: " + packageName);
                 boolean isReplace = intent.getBooleanExtra(Intent.EXTRA_REPLACING, false);
                 DiyToast.showToast(context, "卸载了" + packageName, true);
                 MainActivity.initAppList(context);
@@ -54,8 +54,8 @@ public class AppInstallServer extends BroadcastReceiver {
             //接收升级更新广播
             if (intent.getAction().equals(Intent.ACTION_PACKAGE_REPLACED)) {
                 String packageName = intent.getData().getSchemeSpecificPart();
-                Log.e("服务更新", "onReceive: " + packageName);
-                DiyToast.showToast(context, "更新了" + packageName, true);
+//                Log.e("服务更新", "onReceive: " + packageName);
+//                DiyToast.showToast(context, "更新了" + packageName, true);
                 MainActivity.initAppList(context);
             }
         } catch (Exception e) {

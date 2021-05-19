@@ -26,11 +26,11 @@ import com.etang.nt_launcher.tool.toast.DiyToast;
  * @ClassName: DeskTopSettingActivity
  * @Description: “桌面列表”设置
  * @CreateDate: 2021/3/19 8:14
- * @UpdateDate: 2021/3/19 8:14
+ * @UpdateDate: 2021/5/10 8:14
  */
 public class DeskTopSettingActivity extends AppCompatActivity implements View.OnClickListener {
     //单选按钮，功能：隐藏APP名称，显示一行APP名称，显示APP名称，显示边框，隐藏边框，APP底部对齐排列，APP顶部对齐排列，显示透明边框
-    private RadioButton ra_appname_hind, ra_appname_one, ra_appname_nope, ra_app_show_blok, ra_app_hind_blok, ra_app_bottommode_bottom, ra_app_bottommode_top, ra_app_show_nocolor_blok;
+    private RadioButton ra_appname_hind, ra_appname_one, ra_appname_nope, ra_app_show_blok_line, ra_app_show_blok_yuan, ra_app_hind_blok, ra_app_bottommode_bottom, ra_app_bottommode_top, ra_app_show_nocolor_blok_line, ra_app_show_nocolor_blok_yuan;
     //设置图标大小进度条
     private SeekBar sk_gridlist_iconsize;
     //显示文本，反馈，按钮，标题，列表设置，列表图标设置
@@ -125,11 +125,23 @@ public class DeskTopSettingActivity extends AppCompatActivity implements View.On
             case "hind_blok":
                 ra_app_hind_blok.setChecked(true);
                 break;
+            case "show_blok_line":
+                ra_app_show_blok_line.setChecked(true);
+                break;
+            case "show_blok_yuan":
+                ra_app_show_blok_yuan.setChecked(true);
+                break;
+            case "show_nocolor_blok_line":
+                ra_app_show_nocolor_blok_line.setChecked(true);
+                break;
+            case "show_nocolor_blok_yuan":
+                ra_app_show_nocolor_blok_yuan.setChecked(true);
+                break;
             case "show_blok":
-                ra_app_show_blok.setChecked(true);
+                ra_app_show_blok_yuan.setChecked(true);
                 break;
             case "show_nocolor_blok":
-                ra_app_show_nocolor_blok.setChecked(true);
+                ra_app_show_nocolor_blok_yuan.setChecked(true);
                 break;
         }
     }
@@ -147,8 +159,10 @@ public class DeskTopSettingActivity extends AppCompatActivity implements View.On
         ra_appname_one.setOnClickListener(this);
         ra_appname_nope = (RadioButton) findViewById(R.id.ra_appname_nope);
         ra_appname_nope.setOnClickListener(this);
-        ra_app_show_blok = (RadioButton) findViewById(R.id.ra_app_show_blok);
-        ra_app_show_blok.setOnClickListener(this);
+        ra_app_show_blok_line = (RadioButton) findViewById(R.id.ra_app_show_blok_line);
+        ra_app_show_blok_line.setOnClickListener(this);
+        ra_app_show_blok_yuan = (RadioButton) findViewById(R.id.ra_app_show_blok_yuan);
+        ra_app_show_blok_yuan.setOnClickListener(this);
         ra_app_hind_blok = (RadioButton) findViewById(R.id.ra_app_hind_blok);
         ra_app_hind_blok.setOnClickListener(this);
         tv_gridlist_setting = (TextView) findViewById(R.id.tv_gridlist_setting);
@@ -157,8 +171,10 @@ public class DeskTopSettingActivity extends AppCompatActivity implements View.On
         ra_app_bottommode_bottom.setOnClickListener(this);
         ra_app_bottommode_top = (RadioButton) findViewById(R.id.ra_app_bottommode_top);
         ra_app_bottommode_top.setOnClickListener(this);
-        ra_app_show_nocolor_blok = (RadioButton) findViewById(R.id.ra_app_show_nocolor_blok);
-        ra_app_show_nocolor_blok.setOnClickListener(this);
+        ra_app_show_nocolor_blok_line = (RadioButton) findViewById(R.id.ra_app_show_nocolor_blok_line);
+        ra_app_show_nocolor_blok_line.setOnClickListener(this);
+        ra_app_show_nocolor_blok_yuan = (RadioButton) findViewById(R.id.ra_app_show_nocolor_blok_yuan);
+        ra_app_show_nocolor_blok_yuan.setOnClickListener(this);
     }
 
     public void show_gridlist_setting() {
@@ -265,17 +281,29 @@ public class DeskTopSettingActivity extends AppCompatActivity implements View.On
                 DiyToast.showToast(getApplicationContext(), "已设置为：隐藏边框", true);
                 MainActivity.initAppList(DeskTopSettingActivity.this);
                 break;
-            case R.id.ra_app_show_blok:
-                editor.putString("appblok_state", "show_blok");
+            case R.id.ra_app_show_blok_line:
+                editor.putString("appblok_state", "show_blok_line");
                 editor.apply();
                 MainActivity.initAppList(DeskTopSettingActivity.this);
-                DiyToast.showToast(getApplicationContext(), "已设置为：显示边框", true);
+                DiyToast.showToast(getApplicationContext(), "已设置为：显示边框（直角）", true);
                 break;
-            case R.id.ra_app_show_nocolor_blok:
-                editor.putString("appblok_state", "show_nocolor_blok");
+            case R.id.ra_app_show_blok_yuan:
+                editor.putString("appblok_state", "show_blok_yuan");
                 editor.apply();
                 MainActivity.initAppList(DeskTopSettingActivity.this);
-                DiyToast.showToast(getApplicationContext(), "已设置为：显示边框，背景透明", true);
+                DiyToast.showToast(getApplicationContext(), "已设置为：显示边框（圆角）", true);
+                break;
+            case R.id.ra_app_show_nocolor_blok_line:
+                editor.putString("appblok_state", "show_nocolor_blok_line");
+                editor.apply();
+                MainActivity.initAppList(DeskTopSettingActivity.this);
+                DiyToast.showToast(getApplicationContext(), "已设置为：显示直角边框，背景透明", true);
+                break;
+            case R.id.ra_app_show_nocolor_blok_yuan:
+                editor.putString("appblok_state", "show_nocolor_blok_yuan");
+                editor.apply();
+                MainActivity.initAppList(DeskTopSettingActivity.this);
+                DiyToast.showToast(getApplicationContext(), "已设置为：显示圆角边框，背景透明", true);
                 break;
             case R.id.ra_appname_one:
                 editor.putString("appname_state", "one");

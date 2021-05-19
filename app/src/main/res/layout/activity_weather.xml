@@ -13,7 +13,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></include>
 
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -41,17 +40,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/weather_citylist"
-            android:textColor="#000" />
+            android:textColor="#90000000" />
 
         <EditText
             android:id="@+id/et_city_get"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:autofillHints=""
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shaper_yuanjiao_lins_show"
             android:ems="10"
             android:hint="@string/weather_city"
             android:importantForAutofill="no"
             android:inputType="none"
+            android:padding="10dp"
             android:textColor="#000"></EditText>
 
         <RadioGroup
@@ -111,4 +112,5 @@
         app:layout_constraintEnd_toStartOf="@+id/btn_wather_cls"
         app:layout_constraintTop_toTopOf="@+id/btn_wather_cls"
         app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

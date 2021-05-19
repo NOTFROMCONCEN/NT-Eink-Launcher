@@ -12,22 +12,32 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
-        android:orientation="vertical">
+        android:background="@drawable/shaper_yuanjiao_lins_show"
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></EditText>
+            android:layout_height="wrap_content"
+            android:hint="请输入"></EditText>
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:background="@drawable/shaper_yuanjiao_lins_show"
+            android:text="发送" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="提示：此功能暂未完成\n提示：此功能暂未完成\n提示：此功能暂未完成\n提示：此功能暂未完成\n提示：此功能暂未完成\n提示：此功能暂未完成\n提示：此功能暂未完成\n提示：此功能暂未完成\n提示：此功能暂未完成\n提示：此功能暂未完成\n" />
 
 
 </LinearLayout>

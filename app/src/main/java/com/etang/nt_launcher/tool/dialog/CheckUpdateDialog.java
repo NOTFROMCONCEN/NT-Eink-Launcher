@@ -26,6 +26,7 @@ import com.etang.nt_launcher.R;
 import com.etang.nt_launcher.launcher.MainActivity;
 import com.etang.nt_launcher.tool.permission.SavePermission;
 import com.etang.nt_launcher.tool.toast.DiyToast;
+import com.etang.nt_launcher.tool.util.MTCore;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -57,10 +58,9 @@ public class CheckUpdateDialog {
     private static int mProgress;
     //  文件保存路径
     private static String mSavePath;
-    //  版本名称
-    private static String mVersion_name = "梅糖桌面";
     //当前页面TAG
     private static String TAG = "CheckUpdateDialog";
+    private static String mVersion_name = "";
 
 
     public static void check_update(final Context context, final Activity activity, final String where) {
@@ -163,15 +163,15 @@ public class CheckUpdateDialog {
         int version_web_code = Integer.valueOf(version_web_5);
         if (where == "about") {
             check_beta(builder, version_code, version_web_code, context, activity, where);//稳定版
-            builder.setPositiveButton("博客地址", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    DiyToast.showToast(context, "https://blog.nyanon.online/nt_launcher", true);
-                    web_html(context);
-                }
-            });
-            builder.setTitle("当前APP版本：" + BuildConfig.VERSION_NAME);
-            builder.show();
+//            builder.setPositiveButton("博客地址", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                    DiyToast.showToast(context, "https://blog.nyanon.online/nt_launcher", true);
+//                    web_html(context);
+//                }
+//            });
+//            builder.setTitle("当前APP版本：" + BuildConfig.VERSION_NAME);
+//            builder.show();
         }
         if (where == "main") {
             check_beta(builder, version_code, version_web_code, context, activity, where);//稳定版
@@ -187,7 +187,7 @@ public class CheckUpdateDialog {
         if (version_code != version_web_code) {
             if (version_code > version_web_code) {
                 if (where == "about") {
-                    mVersion_name = mVersion_name + "_" + String.valueOf(version_web_code);
+                    mVersion_name = MTCore.my_app_name + "_" + String.valueOf(version_web_code);
                     builder.setMessage("当前版本：\n" + String.valueOf(version_code) + "\n最新版本：\n" + String.valueOf(version_web_code) + "\n\n你的版本比目前发布的稳定版还要高，可能你使用的是内测版或者第三方修改的不稳定版本");
                     DiyToast.showToast(context, "你的版本比目前发布的稳定版还要高，可能你使用的是内测版或者第三方修改的不稳定版本。", true);
                     builder.setNeutralButton("关闭", null);
@@ -195,7 +195,7 @@ public class CheckUpdateDialog {
                 }
             } else {
                 DiyToast.showToast(context, "发现新版本 | 来自ZOI的消息", true);
-                mVersion_name = mVersion_name + "_" + String.valueOf(version_web_code);
+                mVersion_name = MTCore.my_app_name + "_" + String.valueOf(version_web_code);
                 builder.setMessage("当前版本：\n" + String.valueOf(version_code) + "\n最新版本：\n" + String.valueOf(version_web_code) + "\n\n你的“奶糖桌面”需要更新，请到酷安、博客，或者点击“更新”进行更新。");
                 builder.setNeutralButton("更新", new DialogInterface.OnClickListener() {
                     @Override
@@ -208,7 +208,7 @@ public class CheckUpdateDialog {
             }
         } else {
             if (where == "about") {
-                mVersion_name = mVersion_name + "_" + String.valueOf(version_web_code);
+                mVersion_name = MTCore.my_app_name + "_" + String.valueOf(version_web_code);
                 builder.setMessage("当前版本：" + "\n" + String.valueOf(version_code) + "\n" + "现有版本：" + "\n" + version_web_code + "\n" + "\n你已经是最新版本了");
                 DiyToast.showToast(context, "你已经是最新版本了", true);
                 builder.setNeutralButton("重新下载", new DialogInterface.OnClickListener() {
@@ -231,56 +231,6 @@ public class CheckUpdateDialog {
         builder.show();
     }
 
-    protected static File downLoadFile(String httpUrl, Context context) {
-        // TODO Auto-generated method stub
-        final String fileName = "updata.apk";
-        File tmpFile = new File("/sdcard/");
-        if (!tmpFile.exists()) {
-            tmpFile.mkdir();
-        }
-        final File file = new File("/sdcard/" + fileName);
-        try {
-            URL url = new URL(httpUrl);
-            try {
-                HttpURLConnection conn = (HttpURLConnection) url
-                        .openConnection();
-                InputStream is = conn.getInputStream();
-                FileOutputStream fos = new FileOutputStream(file);
-                byte[] buf = new byte[256];
-                conn.connect();
-                double count = 0;
-                if (conn.getResponseCode() >= 400) {
-                    DiyToast.showToast(context, "连接超时", true);
-                } else {
-                    while (count <= 100) {
-                        if (is != null) {
-                            int numRead = is.read(buf);
-                            if (numRead <= 0) {
-                                break;
-                            } else {
-                                fos.write(buf, 0, numRead);
-                            }
-                        } else {
-                            break;
-                        }
-                    }
-                }
-                conn.disconnect();
-                fos.close();
-                is.close();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-
-                e.printStackTrace();
-            }
-        } catch (
-                MalformedURLException e) {
-            // TODO Auto-generated catch block
-
-            e.printStackTrace();
-        }
-        return file;
-    }
 
     //打开APK程序代码
     private static void openFile(File file, Context context) {
@@ -408,40 +358,32 @@ public class CheckUpdateDialog {
                     // 隐藏当前下载对话框
                     mDownloadDialog.dismiss();
                     // 安装 APK 文件
-                    installAPK(mContext);
+                    DiyToast.showToast(mContext, "下载完成，请打开“ntlauncher”目录找到安装包进行安装", true);
+                    String s_clean = Build.BRAND;
+                    AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                    if (s_clean.equals("Allwinner")) {
+                        builder.setTitle("你的设备是：\n 多看电纸书");
+                        builder.setMessage("由于 多看电纸书权限申请限制 和 Android 7 安全限制，无法自动安装，点击确定后自动跳转到文件管理，请到“ntlauncher”目录进行安装更新");
+                        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent();
+                                ComponentName cn = new ComponentName("com.softwinner.explore", "com.softwinner.explore.Main");
+                                intent.setComponent(cn);
+                                mContext.startActivity(intent);
+                            }
+                        });
+                        builder.setNeutralButton("稍后安装", null);
+                    } else {
+                        builder.setTitle("你的设备是：\n暂未适配");
+                        builder.setMessage("由于 Android 7 及以上版本新增权限限制，而且电纸书设备申请权限有BUG，所以请点击确定后请手动打开系统自带的文件管理，到“ntlauncher”目录进行安装更新");
+                        builder.setNeutralButton("确定", null);
+                    }
+                    builder.show();
             }
         }
 
         ;
     };
-
-
-    /*
-     * 下载到本地后执行安装
-     */
-    protected static void installAPK(final Context context) {
-        DiyToast.showToast(context, "下载完成，请打开“ntlauncher”目录找到安装包进行安装", true);
-        String s_clean = Build.BRAND;
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        if (s_clean.equals("Allwinner")) {
-            builder.setTitle("你的设备是：\n 多看电纸书");
-            builder.setMessage("由于 多看电纸书权限申请限制 和 Android 7 安全限制，无法自动安装，点击确定后自动跳转到文件管理，请到“ntlauncher”目录进行安装更新");
-            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Intent intent = new Intent();
-                    ComponentName cn = new ComponentName("com.softwinner.explore", "com.softwinner.explore.Main");
-                    intent.setComponent(cn);
-                    context.startActivity(intent);
-                }
-            });
-            builder.setNeutralButton("稍后安装", null);
-        } else {
-            builder.setTitle("你的设备是：\n暂未适配");
-            builder.setMessage("由于 Android 7 及以上版本新增权限限制，而且电纸书设备申请权限有BUG，所以请点击确定后请手动打开系统自带的文件管理，到“ntlauncher”目录进行安装更新");
-            builder.setNeutralButton("确定", null);
-        }
-        builder.show();
-    }
 
 }

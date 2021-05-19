@@ -28,6 +28,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -63,6 +64,7 @@ import com.etang.nt_launcher.tool.toast.DiyToast;
 import com.etang.nt_launcher.tool.util.AppInfo;
 import com.etang.nt_launcher.tool.util.DeskTopGridViewBaseAdapter;
 import com.etang.nt_launcher.tool.util.GetApps;
+import com.etang.nt_launcher.tool.util.MTCore;
 import com.etang.nt_launcher.tool.util.StreamTool;
 
 import org.json.JSONArray;
@@ -93,7 +95,7 @@ public class MainActivity extends Activity implements OnClickListener {
     private static MyDataBaseHelper dbHelper_name_sql;
     private static SQLiteDatabase db;
     public static TextView tv_user_id, tv_time_hour, tv_time_min,
-            tv_main_batterystate, tv_city, tv_wind, tv_temp_state,
+            tv_main_batterystate, tv_city, tv_temp_state,
             tv_last_updatetime, tv_main_nowdate;
     public static ImageView iv_setting_button, iv_setting_yinliang, iv_setting_refresh, iv_setting_rss, iv_clean_button, iv_index_back;
     public static ToggleButton tg_apps_state;
@@ -103,8 +105,7 @@ public class MainActivity extends Activity implements OnClickListener {
     public static List<AppInfo> appInfos = new ArrayList<AppInfo>();
     public static boolean offline_mode = false;
     private AppInstallServer appinstallserver;
-    SharedPreferences sharedPreferences;
-    //当前页面TAG
+    private SharedPreferences sharedPreferences;
     private static String TAG = "MainActivity";
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -537,6 +538,7 @@ public class MainActivity extends Activity implements OnClickListener {
          */
         if (!offline_mode) {
             if (tv_time_min.getText().toString().equals("00") || tv_time_min.getText().toString().equals("30")) {
+                line_wather.setVisibility(View.VISIBLE);
                 Cursor cursor = db.rawQuery("select * from wather_city", null);
                 if (cursor.getCount() != 0) {
                     cursor.moveToFirst();
@@ -621,6 +623,27 @@ public class MainActivity extends Activity implements OnClickListener {
                 tv_time_min.setText(simpleDateFormat_min
                         .format(new java.util.Date()));
                 handler.postDelayed(runnable, 1000);
+                MTCore.i_for_weather++;
+                if (MTCore.i_for_weather > 5) {
+                    MTCore.i_for_weather = 0;
+                    Log.e("更新时间", "----------");
+                    if (!offline_mode) {
+                        if (tv_time_min.getText().toString().equals("00") || tv_time_min.getText().toString().equals("30")) {
+                            line_wather.setVisibility(View.VISIBLE);
+                            Cursor cursor = db.rawQuery("select * from wather_city", null);
+                            if (cursor.getCount() != 0) {
+                                cursor.moveToFirst();
+                                update_wather(MainActivity.this,
+                                        cursor.getString(cursor.getColumnIndex("city")));
+                            }
+                            SharedPreferences sharedPreferences;
+                            sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
+                            update_wathers(sharedPreferences);
+                        }
+                    } else {
+                        line_wather.setVisibility(View.INVISIBLE);
+                    }
+                }
             }
         };
         handler.post(runnable);
@@ -646,7 +669,6 @@ public class MainActivity extends Activity implements OnClickListener {
         line_wather = (LinearLayout) findViewById(R.id.line_wather);
         tv_city = (TextView) findViewById(R.id.tv_city);
         iv_setting_yinliang = (ImageView) findViewById(R.id.iv_setting_yinliang);
-        tv_wind = (TextView) findViewById(R.id.tv_wind);
         iv_index_back = (ImageView) findViewById(R.id.iv_index_back);
         tv_temp_state = (TextView) findViewById(R.id.tv_temp_state);
         tv_last_updatetime = (TextView) findViewById(R.id.tv_last_updatetime);
@@ -673,7 +695,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
     private void update_wathers(SharedPreferences sharedPreferences) {
         if (!offline_mode) {
-            tv_wind.setText(sharedPreferences.getString("wather_info_wind", null));
+            line_wather.setVisibility(View.VISIBLE);
             tv_temp_state.setText(sharedPreferences.getString("wather_info_temp", null));
             tv_last_updatetime.setText(sharedPreferences.getString("wather_info_updatetime", null));
             tv_city.setText(sharedPreferences.getString("wather_info_citytype", null));
@@ -709,6 +731,9 @@ public class MainActivity extends Activity implements OnClickListener {
                     JSONArray dataArray = (JSONArray) msg.obj;
                     try {
                         String json_today = dataArray.getString(0);
+
+                        System.out.println("-----------" + json_today);
+
                         JSONObject jsonObject = dataArray.getJSONObject(0);
                         System.out.println(jsonObject);
                         if (jsonObject != null) {
@@ -726,7 +751,7 @@ public class MainActivity extends Activity implements OnClickListener {
                             tv_city.setText(cursor.getString(cursor
                                     .getColumnIndex("city")) + "  " + type);
                         } else {
-                            DiyToast.showToast(getApplicationContext(), "请设置城市", true);
+                            DiyToast.showToast(getApplicationContext(), "请到“梅糖天气”设置位置信息", true);
                         }
                         SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
                         editor.putString("wather_info_citytype", cursor.getString(cursor
@@ -925,7 +950,6 @@ public class MainActivity extends Activity implements OnClickListener {
                         SharedPreferences sharedPreferences;
                         sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
                         update_wathers(sharedPreferences);
-                        DiyToast.showToast(getApplicationContext(), "已刷新", true);
                     }
                 } else {
                     DiyToast.showToast(getApplicationContext(), "当前处于离线模式", true);

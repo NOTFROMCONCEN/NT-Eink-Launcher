@@ -2,6 +2,7 @@ package com.etang.nt_launcher.tool.dialog;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +27,11 @@ public class PayMeDialog {
         alertDialog.setView(view);
         //绑定控件
         ImageView iv_ali = (ImageView) view.findViewById(R.id.iv_alipay);
+        iv_ali.setImageResource(R.drawable.im_alipay);
         ImageView iv_wechat = (ImageView) view.findViewById(R.id.iv_wechatpay);
+        iv_wechat.setImageResource(R.drawable.im_wechatpay);
+        ImageView iv_aifadian = (ImageView) view.findViewById(R.id.iv_aifadian);
+        iv_aifadian.setImageResource(R.drawable.im_aifadian);
         Button btn_payme_close = (Button) view.findViewById(R.id.btn_payme_close);
         btn_payme_close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,34 +53,13 @@ public class PayMeDialog {
                 new AlertDialog.Builder(activity).setTitle("请扫码——微信").setView(view).setPositiveButton("关闭", null).show();
             }
         });
+        iv_aifadian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                View view = LayoutInflater.from(activity).inflate(R.layout.dialog_payme_aifadian, null, false);
+                new AlertDialog.Builder(activity).setTitle("请扫码——爱发电").setView(view).setPositiveButton("关闭", null).show();
+            }
+        });
         alertDialog.show();
-//        if (number.equals("no")) {
-//            View view = LayoutInflater.from(activity).inflate(R.layout.dialog_payme, null, false);
-//            builder.setView(view);
-//        } else if (number.equals("ali")) {
-//            View view = LayoutInflater.from(activity).inflate(R.layout.dialog_payme_ali, null, false);
-//            builder.setView(view);
-//        } else if (number.equals("aifadian")) {
-//            View view = LayoutInflater.from(activity).inflate(R.layout.dialog_payme_aifadian, null, false);
-//            builder.setView(view);
-//        } else if (number.equals("wechat")) {
-//            View view = LayoutInflater.from(activity).inflate(R.layout.dialog_payme_wechat, null, false);
-//            builder.setView(view);
-//        }
-//        builder.setTitle("请选择平台");
-//        builder.setPositiveButton("支付宝", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                show_dialog(activity, "ali");
-//            }
-//        });
-//        builder.setNegativeButton("微信", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                show_dialog(activity, "wechat");
-//            }
-//        });
-//        builder.setNeutralButton("关闭", null);
-//        builder.show();
     }
 }

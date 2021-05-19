@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
  * @ClassName: AboutView
  * @Description: 绘制AboutActivity（关于界面）中间的环形虚线
  * @CreateDate: 2021/3/16 8:55
- * @UpdateDate: 2021/4/04 01:50
+ * @UpdateDate: 2021/5/10 01:50
  */
 public class AboutView extends View {
     //高
@@ -74,7 +74,7 @@ public class AboutView extends View {
         //设置画笔宽度
         paint.setStrokeWidth(4);
         //设置半径
-        radius = height - 3;
+        radius = height - 10;
         //循环绘制
         for (int i = 0; i < 200; i++) {
             canvas.save();// 保存画布
@@ -84,7 +84,5 @@ public class AboutView extends View {
                     height - radius + 20, paint);
             canvas.restore();// 恢复画布
         }
-        //刷新重设画布
-//        invalidate();
     }
 }

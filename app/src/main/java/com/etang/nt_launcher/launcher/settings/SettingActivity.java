@@ -84,13 +84,6 @@ public class SettingActivity extends Activity {
         //隐藏暂时无用的选项
 //        if (!Build.BRAND.toString().equals("Allwinner")) {
 //        }
-        //打开关于界面
-        lv_about_activity.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SettingActivity.this, AboutActivity.class));
-            }
-        });
 //        //打开系统设置
 //        lv_open_dksetting.setOnClickListener(new OnClickListener() {
 //            @Override
@@ -120,6 +113,14 @@ public class SettingActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SettingActivity.this, ChoseImagesActivity.class));
+                overridePendingTransition(0, 0);
+            }
+        });
+        //打开关于界面
+        lv_about_activity.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SettingActivity.this, AboutActivity.class));
                 overridePendingTransition(0, 0);
             }
         });
@@ -169,6 +170,7 @@ public class SettingActivity extends Activity {
                 UnInstallDialog.UninstallApk(SettingActivity.this, SettingActivity.this, getPackageName());
             }
         });
+        //重启APP
         lv_restart_setting.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -219,7 +221,7 @@ public class SettingActivity extends Activity {
                     SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
                     editor.putString("oldman", "true");//日期文本大小
                     editor.apply();
-                    DiyToast.showToast(SettingActivity.this, "有时需要重启设备以应用更改", true);
+                    DiyToast.showToast(SettingActivity.this, "有时需要重启设备以应用更改，请使用“重载梅糖桌面”功能", true);
                     SharedPreferences sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
                     MainActivity.check_oldman_mode(SettingActivity.this, sharedPreferences);
                 } else {
@@ -227,7 +229,7 @@ public class SettingActivity extends Activity {
                     SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
                     editor.putString("oldman", "false");//日期文本大小
                     editor.apply();
-                    DiyToast.showToast(SettingActivity.this, "有时需要重启设备以应用更改", true);
+                    DiyToast.showToast(SettingActivity.this, "有时需要重启设备以应用更改，请使用“重载梅糖桌面”功能", true);
                     SharedPreferences sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
                     MainActivity.check_oldman_mode(SettingActivity.this, sharedPreferences);
                 }
@@ -240,14 +242,14 @@ public class SettingActivity extends Activity {
                     SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
                     editor.putString("setting_ico_hind", "true");//日期文本大小
                     editor.apply();
-                    DiyToast.showToast(SettingActivity.this, "有时需要重启设备以应用更改，长按桌面中的“小时”可以打开设置", true);
+                    DiyToast.showToast(SettingActivity.this, "有时需要重启设备以应用更改，请使用“重载梅糖桌面”功能，长按桌面中的“小时”可以打开设置", true);
                     SharedPreferences sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
                     MainActivity.check_view_hind(SettingActivity.this, sharedPreferences);
                 } else {
                     SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
                     editor.putString("setting_ico_hind", "false");//日期文本大小
                     editor.apply();
-                    DiyToast.showToast(SettingActivity.this, "有时需要重启设备以应用更改，点击桌面中的“小时”可以打开设置", true);
+                    DiyToast.showToast(SettingActivity.this, "有时需要重启设备以应用更改，请使用“重载梅糖桌面”功能，长按桌面中的“小时”可以打开设置", true);
                     SharedPreferences sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
                     MainActivity.check_view_hind(SettingActivity.this, sharedPreferences);
                 }
@@ -261,7 +263,7 @@ public class SettingActivity extends Activity {
                     SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
                     editor.putString("offline", "true");//日期文本大小
                     editor.apply();
-                    DiyToast.showToast(SettingActivity.this, "有时需要重启设备以应用更改", true);
+                    DiyToast.showToast(SettingActivity.this, "有时需要重启设备以应用更改，请使用“重载梅糖桌面”功能", true);
                     SharedPreferences sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
                     MainActivity.check_offline_mode(SettingActivity.this, sharedPreferences);
                 } else {
@@ -269,7 +271,7 @@ public class SettingActivity extends Activity {
                     SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
                     editor.putString("offline", "false");//日期文本大小
                     editor.apply();
-                    DiyToast.showToast(SettingActivity.this, "有时需要重启设备以应用更改", true);
+                    DiyToast.showToast(SettingActivity.this, "有时需要重启设备以应用更改，请使用“重载梅糖桌面”功能", true);
                     SharedPreferences sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
                     MainActivity.check_offline_mode(SettingActivity.this, sharedPreferences);
                 }

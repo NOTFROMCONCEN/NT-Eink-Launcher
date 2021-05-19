@@ -22,7 +22,7 @@
     <string name="hinddin">隐藏</string>
     <string name="uninstall">卸载</string>
     <string name="hind_tips">隐藏后的应用可以在桌面设置-应用管理中恢复</string>
-    <string name="weather_city">请输入您居住的城市：</string>
+    <string name="weather_city">在这里输入</string>
     <string name="weather_olay_somewhere">仅限中国大陆地区</string>
     <string name="weather_citylist">例：枣庄市 或：峄城区</string>
     <string name="weather_show_or_hind">设置“天气”模块是否显示在桌面上</string>

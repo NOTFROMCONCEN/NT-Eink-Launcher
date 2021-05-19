@@ -7,7 +7,7 @@
     android:background="#FFFFFF"
     android:gravity="center|center_horizontal|center_vertical"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="15dp">
 
     <TextView
         android:id="@+id/textView6"
@@ -16,7 +16,7 @@
         android:layout_gravity="center_vertical|center_horizontal|center"
         android:layout_marginBottom="30dp"
         android:gravity="center|center_horizontal|center_vertical"
-        android:text="请选择你的支付方式"
+        android:text="请选择你的捐赠支付方式"
         android:textColor="#000000"
         android:textSize="20dp" />
 
@@ -24,32 +24,104 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|center_horizontal|center"
-        android:layout_margin="10dp"
-        android:background="@drawable/shaper_toast_show"
+        android:background="@drawable/shaper_yuanjiao_lins_show"
         android:gravity="center|center_horizontal|center_vertical"
         android:orientation="horizontal"
         android:padding="10dp">
 
-
-        <ImageView
-            android:id="@+id/iv_alipay"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal|center"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/im_alipay" />
+            android:background="@drawable/shaper_toast_show"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:orientation="vertical"
+            android:padding="5dp">
 
-        <ImageView
-            android:id="@+id/iv_wechatpay"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:text="支付宝"
+                android:textColor="#000000" />
+
+            <ImageView
+                android:id="@+id/iv_alipay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/im_alipay" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal|center"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/im_wechatpay" />
+            android:background="@drawable/shaper_toast_show"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:text="微信"
+                android:textColor="#000000" />
+
+            <ImageView
+                android:id="@+id/iv_wechatpay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/im_wechatpay" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal|center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/shaper_toast_show"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:text="爱发电"
+                android:textColor="#000000" />
+
+            <ImageView
+                android:id="@+id/iv_aifadian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/im_aifadian" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <Button
         android:id="@+id/btn_payme_close"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal|center_vertical|center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shaper_yuanjiao_lins_show"
+        android:gravity="center|center_horizontal|center_vertical"
         android:text="关闭" />
 </LinearLayout>

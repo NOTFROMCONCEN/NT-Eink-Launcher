@@ -13,25 +13,26 @@
         android:background="#ffffff"
         android:orientation="vertical">
 
-        <ImageView
+        <Button
+            android:id="@+id/btn_welecome_show_paycode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="30dp"
             android:layout_weight="1"
-            android:contentDescription="@null"
-            android:src="@drawable/iv_shuomingshu" />
+            android:text="点此支持开发" />
+
+        <Button
+            android:id="@+id/btn_welecome_show_shuomingshu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="点击查看说明书或扫描下方二维码" />
+
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="30dp"
-            android:layout_weight="1"
             android:contentDescription="@null"
-            android:src="@drawable/iv_zanzhu" />
+            android:src="@drawable/iv_shuomingshu" />
     </LinearLayout>
 
 
