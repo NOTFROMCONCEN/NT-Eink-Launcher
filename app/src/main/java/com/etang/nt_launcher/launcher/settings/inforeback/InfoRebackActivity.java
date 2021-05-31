@@ -12,11 +12,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.etang.nt_launcher.R;
 
 /**
- * @Package: com.etang.nt_launcher.launcher.settings.inforeback
- * @ClassName: InfoRebackActivity
- * @Description: “意见反馈”界面
- * @CreateDate: 2021/3/19 8:15
- * @UpdateDate: 2021/3/19 8:15
+ * @ProjectName: NT-Eink-Launcher
+ * @Package: com.etang.nt_launcher.launcher.settings.about
+ * @ClassName: HindAppSetting
+ * @Description: 梅糖桌面信息反馈相关界面和功能
+ * @Author: 作者名：奶油话梅糖
+ * @CreateDate: 2021/5/29 0029 22:14
+ * @UpdateUser: 更新者：奶油话梅糖
+ * @UpdateDate: 2021/5/29 0029 22:14
+ * @UpdateRemark: 更新说明：修复UI问题
  */
 public class InfoRebackActivity extends AppCompatActivity {
     //文本，按钮，返回

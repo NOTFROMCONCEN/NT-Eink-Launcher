@@ -38,7 +38,7 @@ import com.etang.nt_launcher.tool.toast.DiyToast;
  * @ClassName: SettingActivity
  * @Description: “设置”界面
  * @CreateDate: 2021/3/19 8:16
- * @UpdateDate: 2021/3/19 8:16
+ * @UpdateDate: 2021/5/29 21:52
  */
 public class SettingActivity extends Activity {
     //线性布局LinearLayout，

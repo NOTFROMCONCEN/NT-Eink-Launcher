@@ -24,7 +24,7 @@ import com.etang.nt_launcher.R;
  * @ClassName: WeatherActivity
  * @Description: “天气”设置
  * @CreateDate: 2021/3/19 8:16
- * @UpdateDate: 2021/3/19 8:16
+ * @UpdateDate: 2021/5/29 21:52
  */
 public class WeatherActivity extends Activity {
     //按钮，确定，关闭

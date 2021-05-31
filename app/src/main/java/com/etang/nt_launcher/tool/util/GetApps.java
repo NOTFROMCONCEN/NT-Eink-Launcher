@@ -122,6 +122,16 @@ public class GetApps {
         Bitmap bmp_uirefresh = BitmapFactory.decodeResource(r_uirefresh, R.drawable.ic_update);
         mInfo_uirefresh.setIco(Bitmap.createBitmap(bmp_uirefresh));
         list.add(mInfo_uirefresh);
+        /**
+         * \添加“使用向导”
+         */
+        AppInfo mInfo_userhelper = new AppInfo();
+        mInfo_userhelper.setName("使用向导");
+        mInfo_userhelper.setPackageName(context.getPackageName() + ".userhelper");
+        Resources r_userhelper = context.getResources();
+        Bitmap bmp_userhelper = BitmapFactory.decodeResource(r_userhelper, R.drawable.ic_launcher);
+        mInfo_userhelper.setIco(Bitmap.createBitmap(bmp_userhelper));
+        list.add(mInfo_userhelper);
     }
 
     /**

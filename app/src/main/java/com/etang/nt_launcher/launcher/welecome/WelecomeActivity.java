@@ -37,7 +37,7 @@ import java.util.List;
  * @ClassName: WelecomeActivity
  * @Description: “欢迎界面”FragmentActivity
  * @CreateDate: 2021/3/19 8:17
- * @UpdateDate: 2021/3/19 8:17
+ * @UpdateDate: 2021/5/29 21:52
  */
 public class WelecomeActivity extends FragmentActivity {
 

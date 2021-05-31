@@ -22,11 +22,15 @@ import com.etang.nt_launcher.launcher.MainActivity;
 import com.etang.nt_launcher.tool.toast.DiyToast;
 
 /**
- * @Package: com.etang.nt_launcher.launcher.settings.desktopsetting
+ * @ProjectName: NT-Eink-Launcher
+ * @Package: com.etang.nt_launcher.launcher.settings.about
  * @ClassName: DeskTopSettingActivity
- * @Description: “桌面列表”设置
- * @CreateDate: 2021/3/19 8:14
- * @UpdateDate: 2021/5/10 8:14
+ * @Description: 梅糖桌面桌面设置相关界面和功能
+ * @Author: 作者名：奶油话梅糖
+ * @CreateDate: 2021/5/29 0029 22:14
+ * @UpdateUser: 更新者：奶油话梅糖
+ * @UpdateDate: 2021/5/29 0029 22:14
+ * @UpdateRemark: 更新说明：修复UI问题
  */
 public class DeskTopSettingActivity extends AppCompatActivity implements View.OnClickListener {
     //单选按钮，功能：隐藏APP名称，显示一行APP名称，显示APP名称，显示边框，隐藏边框，APP底部对齐排列，APP顶部对齐排列，显示透明边框

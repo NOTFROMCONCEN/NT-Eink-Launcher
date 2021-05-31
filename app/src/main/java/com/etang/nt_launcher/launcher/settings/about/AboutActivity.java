@@ -36,11 +36,15 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
+ * @ProjectName: NT-Eink-Launcher
  * @Package: com.etang.nt_launcher.launcher.settings.about
  * @ClassName: AboutActivity
- * @Description: “关于”界面
- * @CreateDate: 2021/3/16 8:51
- * @UpdateDate: 2021/5/10 01:50
+ * @Description: 关于梅糖桌面功能相关界面
+ * @Author: 作者名：奶油话梅糖
+ * @CreateDate: 2021/5/29 0029 22:14
+ * @UpdateUser: 更新者：奶油话梅糖
+ * @UpdateDate: 2021/5/29 0029 22:14
+ * @UpdateRemark: 更新说明：修复UI问题
  */
 public class AboutActivity extends AppCompatActivity {
     private ImageView iv_about_logo;//关于 LOGO

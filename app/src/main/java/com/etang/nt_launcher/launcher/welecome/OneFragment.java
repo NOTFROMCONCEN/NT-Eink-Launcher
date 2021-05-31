@@ -16,7 +16,7 @@ import com.etang.nt_launcher.R;
  * @ClassName: OneFragment
  * @Description: “欢迎界面”第一个碎片
  * @CreateDate: 2021/3/19 8:17
- * @UpdateDate: 2021/3/19 8:17
+ * @UpdateDate: 2021/5/29 21:52
  */
 public class OneFragment extends Fragment {
     //当前页面TAG

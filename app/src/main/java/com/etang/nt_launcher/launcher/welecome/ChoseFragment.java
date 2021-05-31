@@ -27,7 +27,7 @@ import java.util.Locale;
  * @ClassName: ChoseFragment
  * @Description: “欢迎界面”选择语言碎片
  * @CreateDate: 2021/3/19 8:16
- * @UpdateDate: 2021/3/19 8:16
+ * @UpdateDate: 2021/5/29 21:52
  */
 public class ChoseFragment extends Fragment {
     //SharedPreferences本地存储

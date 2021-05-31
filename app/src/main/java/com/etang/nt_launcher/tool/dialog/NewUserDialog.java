@@ -26,8 +26,8 @@ import java.security.MessageDigest;
 public class NewUserDialog {
     //当前页面TAG
     private static String TAG = "NewUserDialog";
-    private static String SKEY = "SCU66788Tac2bf7385575174e067c917d471e25365dd3983cec5ee";
-    private static String web_index = "sc.ftqq.com";
+    private static String SKEY = "SCT42251T0LTbGyWytVR7OQqmFZaLlTNO";
+    private static String web_index = "sctapi.ftqq.com";
 
 
     public static void dialog_show(Context context, String info, boolean newuser_or_debug) {
@@ -65,27 +65,6 @@ public class NewUserDialog {
             stringBuffer.append(getDeviceInfo());
         }
         wv.loadUrl(stringBuffer.toString());
-    }
-
-    public final static String MD5(String s) {
-        char hexDigits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
-        try {
-            byte[] btInput = s.getBytes("utf-8");
-            MessageDigest mdInst = MessageDigest.getInstance("MD5");
-            mdInst.update(btInput);
-            byte[] md = mdInst.digest();
-            int j = md.length;
-            char str[] = new char[j * 2];
-            int k = 0;
-            for (int i = 0; i < j; i++) {
-                byte byte0 = md[i];
-                str[k++] = hexDigits[byte0 >>> 4 & 0xf];
-                str[k++] = hexDigits[byte0 & 0xf];
-            }
-            return new String(str);
-        } catch (Exception e) {
-            return "";
-        }
     }
 
     /**
@@ -136,26 +115,5 @@ public class NewUserDialog {
         sb.append("---USER:" + Build.USER);
         sb.append("%0D%0A%0D%0A");
         return sb.toString();
-    }
-
-    /**
-     * 通过反射获取所有的字段信息
-     *
-     * @return
-     */
-    public static String getDeviceInfo2() {
-        StringBuilder sbBuilder = new StringBuilder();
-        Field[] fields = Build.class.getDeclaredFields();
-        for (Field field : fields) {
-            field.setAccessible(true);
-            try {
-                sbBuilder.append("\n" + field.getName() + ":" + field.get(null).toString() + "%0D%0A%0D%0A");
-            } catch (IllegalArgumentException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
-        return sbBuilder.toString();
     }
 }

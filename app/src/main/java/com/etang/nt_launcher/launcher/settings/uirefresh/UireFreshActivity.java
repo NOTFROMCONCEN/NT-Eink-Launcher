@@ -19,7 +19,7 @@ import com.etang.nt_launcher.tool.toast.DiyToast;
  * @ClassName: UireFreshActivity
  * @Description: “界面刷新”设置
  * @CreateDate: 2021/3/19 8:16
- * @UpdateDate: 2021/3/19 8:16
+ * @UpdateDate: 2021/5/29 21:52
  */
 public class UireFreshActivity extends AppCompatActivity {
     //整数，用于计数

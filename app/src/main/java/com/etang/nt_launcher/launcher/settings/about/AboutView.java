@@ -10,11 +10,15 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 /**
+ * @ProjectName: NT-Eink-Launcher
  * @Package: com.etang.nt_launcher.launcher.settings.about
  * @ClassName: AboutView
- * @Description: 绘制AboutActivity（关于界面）中间的环形虚线
- * @CreateDate: 2021/3/16 8:55
- * @UpdateDate: 2021/5/10 01:50
+ * @Description: 关于梅糖桌面UI部分上面的那个圆圈
+ * @Author: 作者名：奶油话梅糖
+ * @CreateDate: 2021/5/29 0029 22:14
+ * @UpdateUser: 更新者：奶油话梅糖
+ * @UpdateDate: 2021/5/29 0029 22:14
+ * @UpdateRemark: 更新说明：修复UI问题
  */
 public class AboutView extends View {
     //高

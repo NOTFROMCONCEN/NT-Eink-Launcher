@@ -25,11 +25,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Package: com.etang.nt_launcher.launcher.settings.hindapp
+ * @ProjectName: NT-Eink-Launcher
+ * @Package: com.etang.nt_launcher.launcher.settings.about
  * @ClassName: HindAppSetting
- * @Description: “隐藏APP”设置
- * @CreateDate: 2021/3/19 8:14
- * @UpdateDate: 2021/3/19 8:14
+ * @Description: 梅糖桌面隐藏APP设置相关界面和功能
+ * @Author: 作者名：奶油话梅糖
+ * @CreateDate: 2021/5/29 0029 22:14
+ * @UpdateUser: 更新者：奶油话梅糖
+ * @UpdateDate: 2021/5/29 0029 22:14
+ * @UpdateRemark: 更新说明：修复UI问题
  */
 public class HindAppSetting extends AppCompatActivity {
     //APP列表

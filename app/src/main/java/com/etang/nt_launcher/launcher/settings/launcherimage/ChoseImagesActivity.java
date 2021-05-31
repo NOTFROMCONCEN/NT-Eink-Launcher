@@ -33,7 +33,7 @@ import java.io.IOException;
  * @ClassName: ChoseImagesActivity
  * @Description: “壁纸设置”界面
  * @CreateDate: 2021/3/19 8:15
- * @UpdateDate: 2021/3/19 8:15
+ * @UpdateDate: 2021/5/29 21:52
  */
 public class ChoseImagesActivity extends AppCompatActivity {
     //单选按钮，选择壁纸，妹子、情侣、APP列表、萝莉、治愈、显示壁纸、显示壁纸和APP列表

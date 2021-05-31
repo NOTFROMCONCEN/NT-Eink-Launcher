@@ -16,7 +16,7 @@ import android.graphics.drawable.BitmapDrawable;
  * @ClassName: BitMapTools
  * @Description: 处理图片的bitmap（转换成黑白图片）
  * @CreateDate: 2021/3/19 8:22
- * @UpdateDate: 2021/3/19 8:22
+ * @UpdateDate: 2021/5/29 21:52
  */
 public class BitMapTools {
     //当前页面TAG

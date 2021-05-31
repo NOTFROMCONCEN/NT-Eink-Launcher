@@ -42,9 +42,7 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
-/**
- * 用于展示软件更新信息的弹出框
- */
+
 public class CheckUpdateDialog {
     //  上下文
     private static Context mContext;

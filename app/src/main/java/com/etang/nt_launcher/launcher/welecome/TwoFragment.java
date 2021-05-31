@@ -18,7 +18,7 @@ import com.etang.nt_launcher.tool.dialog.PayMeDialog;
  * @ClassName: TwoFragment
  * @Description: “欢迎界面”第二个碎片
  * @CreateDate: 2021/3/19 8:17
- * @UpdateDate: 2021/3/19 8:17
+ * @UpdateDate: 2021/5/29 21:52
  */
 public class TwoFragment extends Fragment {
     //当前页面TAG

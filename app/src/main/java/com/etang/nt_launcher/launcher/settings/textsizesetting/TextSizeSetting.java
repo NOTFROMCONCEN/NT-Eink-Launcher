@@ -25,7 +25,7 @@ import com.etang.nt_launcher.tool.toast.DiyToast;
  * @ClassName: TextSizeSetting
  * @Description: “文本大小”设置
  * @CreateDate: 2021/3/19 8:15
- * @UpdateDate: 2021/3/19 8:15
+ * @UpdateDate: 2021/5/29 21:52
  */
 public class TextSizeSetting extends AppCompatActivity {
     //按钮，小时、分钟、日期、签名、电池、重设文本大小
