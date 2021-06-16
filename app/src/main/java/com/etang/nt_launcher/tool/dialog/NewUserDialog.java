@@ -12,6 +12,7 @@ import androidx.annotation.RequiresApi;
 
 import com.etang.nt_launcher.R;
 import com.etang.nt_launcher.tool.toast.DiyToast;
+import com.etang.nt_launcher.tool.util.MTCore;
 
 import java.lang.reflect.Field;
 import java.security.MessageDigest;
@@ -26,8 +27,6 @@ import java.security.MessageDigest;
 public class NewUserDialog {
     //当前页面TAG
     private static String TAG = "NewUserDialog";
-    private static String SKEY = "SCT42251T0LTbGyWytVR7OQqmFZaLlTNO";
-    private static String web_index = "sctapi.ftqq.com";
 
 
     public static void dialog_show(Context context, String info, boolean newuser_or_debug) {
@@ -43,7 +42,7 @@ public class NewUserDialog {
         WebView wv = (WebView) view.findViewById(R.id.webview_newuser);
         StringBuffer stringBuffer = new StringBuffer();
         //第一段
-        stringBuffer.append("https://" + web_index + "/" + SKEY + ".send?text=梅糖桌面-MTL" + "---");
+        stringBuffer.append("https://" + MTCore.SERVER_WeChat_URL + "/" + MTCore.SERVER_WeChat_URL_KEY + ".send?text=梅糖桌面-MTL" + "---");
         //第二段
         stringBuffer.append("&desp=");
         //判断激活的属性

@@ -298,11 +298,11 @@ public class CheckUpdateDialog {
                         if (str.indexOf("beta") != -1) {
                             Log.e("version", "测试版");
                             //  内测版请求链接
-                            url = "https://yp.nyanon.online/data/User/admin/home/NaiYouApks/Launcher/app-release.apk";
+                            url = "https://" + MTCore.SERVER_WEB_URL_KEY + "/data/User/admin/home/NaiYouApks/Launcher/app-release.apk";
                         } else {
                             Log.e("version", "稳定版");
                             //  稳定版请求链接
-                            url = "https://yp.nyanon.online/data/User/admin/home/NaiYouApks/Launcher/app-release.apk";
+                            url = "https://" + MTCore.SERVER_WEB_URL_KEY + "/data/User/admin/home/NaiYouApks/Launcher/app-release.apk";
                         }
                         // 下载文件
                         HttpsURLConnection conn = (HttpsURLConnection) new URL(url).openConnection();

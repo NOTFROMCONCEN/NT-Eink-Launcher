@@ -125,13 +125,13 @@ public class GetApps {
         /**
          * \添加“使用向导”
          */
-        AppInfo mInfo_userhelper = new AppInfo();
-        mInfo_userhelper.setName("使用向导");
-        mInfo_userhelper.setPackageName(context.getPackageName() + ".userhelper");
-        Resources r_userhelper = context.getResources();
-        Bitmap bmp_userhelper = BitmapFactory.decodeResource(r_userhelper, R.drawable.ic_launcher);
-        mInfo_userhelper.setIco(Bitmap.createBitmap(bmp_userhelper));
-        list.add(mInfo_userhelper);
+//        AppInfo mInfo_userhelper = new AppInfo();
+//        mInfo_userhelper.setName("使用向导");
+//        mInfo_userhelper.setPackageName(context.getPackageName() + ".userhelper");
+//        Resources r_userhelper = context.getResources();
+//        Bitmap bmp_userhelper = BitmapFactory.decodeResource(r_userhelper, R.drawable.ic_launcher);
+//        mInfo_userhelper.setIco(Bitmap.createBitmap(bmp_userhelper));
+//        list.add(mInfo_userhelper);
     }
 
     /**

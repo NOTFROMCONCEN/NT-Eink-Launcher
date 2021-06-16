@@ -184,10 +184,11 @@ public class MainActivity extends Activity implements OnClickListener {
                             sendBroadcast(intent_clear);
                         }
                     } else if (appInfos.get(position).getPackageName().equals(getPackageName() + ".userhelper")) {
-//                        intent.putExtra("state","false");
-//                        intent = new Intent(MainActivity.this, WelecomeActivity.class);
-//                        startActivity(intent);
-//                        overridePendingTransition(0, 0);
+                        DiyToast.showToast(getApplicationContext(), "打开", true);
+                        intent.putExtra("state", "false");
+                        intent = new Intent(MainActivity.this, WelecomeActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
                     } else {//出现异常
                         DeBugDialog.debug_show_dialog(MainActivity.this, "启动APP时出现“Intent”相关的异常", TAG);
                     }

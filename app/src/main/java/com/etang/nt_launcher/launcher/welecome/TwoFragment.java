@@ -24,7 +24,7 @@ public class TwoFragment extends Fragment {
     //当前页面TAG
     private static String TAG = "TwoFragment";
     //支持开发按钮
-    private Button btn_welecome_show_paycode;
+    private Button btn_welecome_show_paycode, btn_welecome_show_shuomingshu;
 
     @Nullable
     @Override
@@ -37,10 +37,17 @@ public class TwoFragment extends Fragment {
                 PayMeDialog.show_dialog(getActivity());
             }
         });
+        btn_welecome_show_shuomingshu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         return view;
     }
 
     private void initView(View view) {
         btn_welecome_show_paycode = (Button) view.findViewById(R.id.btn_welecome_show_paycode);
+        btn_welecome_show_shuomingshu = (Button) view.findViewById(R.id.btn_welecome_show_shuomingshu);
     }
 }

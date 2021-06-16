@@ -16,9 +16,13 @@ public class MTCore {
     //当前页面TAG
     public static String TAG = "MTCore";
     //服务器URL
-    public static String SERVER_WEB_URL = "";
+    public static String SERVER_WEB_URL_KEY = "yp.nyanon.online";
     //用于时间的计数器
     public static int i_for_weather = 0;
+    //微信推送KEY
+    public static String SERVER_WeChat_URL_KEY = "SCT42251T0LTbGyWytVR7OQqmFZaLlTNO";
+    //微信推送URL
+    public static String SERVER_WeChat_URL = "sctapi.ftqq.com";
 
     //APP ID
     public static String get_my_appAPPLICATION_ID() {

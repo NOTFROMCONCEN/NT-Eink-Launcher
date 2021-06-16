@@ -43,6 +43,8 @@ public class DeskTopSettingActivity extends AppCompatActivity implements View.On
     private LinearLayout lv_back;
     //当前TAG
     private static String TAG = "DeskTopSettingActivity";
+    //当前TAG中文名
+    private static String TAG_zh = "桌面设置Activity活动界面";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
