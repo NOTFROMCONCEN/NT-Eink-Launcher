@@ -150,7 +150,10 @@
                 <SeekBar
                     android:id="@+id/sk_gridlist_iconsize"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="45dp"
+                    android:max="100"
+                    android:progressDrawable="@drawable/layer_list_progressbarback"
+                    android:thumb="@null" />
             </RadioGroup>
 
             <TextView
