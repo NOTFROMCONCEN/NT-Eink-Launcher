@@ -42,13 +42,13 @@ public class TextSizeSetting extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        //全屏
+        //全屏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);// 无Title
         setContentView(R.layout.setting_textsize);
+        //绑定控件
         initView();
-        sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
         tv_title.setText("文本设置");
         tv_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,27 +127,41 @@ public class TextSizeSetting extends AppCompatActivity {
         });
     }
 
+    /**
+     * 展示文本大小设置对话框
+     *
+     * @param name     当前选择的东西
+     * @param textSize 文本大小
+     */
     private void show_size_dialog(final String name, String textSize) {
-        String setting_number = "";
+        //新建dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(TextSizeSetting.this);
+        //从资源文件导入view
         View view = LayoutInflater.from(TextSizeSetting.this).inflate(R.layout.dialog_seekbar_and_edittext, null);
+        //判断当前name是什么，即选择的什么，用于dialog对话框的title标题
         switch (name) {
             case "timetext_min_size":
+                //时间文本大小（分钟）
                 builder.setTitle("时间文本大小设置（分钟\n当前值：" + textSize);
                 break;
             case "timetext_hour_size":
+                //时间文本大小（小时）
                 builder.setTitle("时间文本大小设置（小时\n当前值：" + textSize);
                 break;
             case "nametext_size":
+                //昵称文本大小
                 builder.setTitle("昵称文本大小设置\n当前值：" + textSize);
                 break;
             case "dianchitext_size":
+                //电池文本大小
                 builder.setTitle("电池文本大小设置\n当前值：" + textSize);
                 break;
             case "datetext_size":
+                //日期文本大小
                 builder.setTitle("日期文本大小设置\n当前值：" + textSize);
                 break;
         }
+        //给dialog设置自定义view界面
         builder.setView(view);
         final int[] number = {0};
         final SeekBar dialog_seekbar = (SeekBar) view.findViewById(R.id.dialog_seekbar);
@@ -183,8 +197,13 @@ public class TextSizeSetting extends AppCompatActivity {
         builder.show();
     }
 
+    /**
+     * 控件绑定
+     */
     private void initView() {
         // TODO Auto-generated method stub
+        //获取sharedPreferences本地存储
+        sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
         lv_back = (LinearLayout) findViewById(R.id.lv_back);
         btn_textsize_resert = (Button) findViewById(R.id.btn_textsize_resert);
         btn_timetext_min_size = (Button) findViewById(R.id.btn_timetext_min_size);
@@ -197,6 +216,9 @@ public class TextSizeSetting extends AppCompatActivity {
         tv_title = (TextView) findViewById(R.id.tv_title_text);
     }
 
+    /**
+     * 结束当前界面时关闭所有动画
+     */
     @Override
     public void finish() {
         super.finish();

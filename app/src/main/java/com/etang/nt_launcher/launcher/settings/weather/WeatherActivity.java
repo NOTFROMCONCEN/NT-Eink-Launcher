@@ -34,10 +34,14 @@ public class WeatherActivity extends Activity {
     //数据库
     private MyDataBaseHelper dbHelper;
     private SQLiteDatabase db;
+    //SharedPreferences存储
+    SharedPreferences sharedPreferences;
     //文本，返回，按钮，标题
     private TextView tv_back, tv_button, tv_title;
     //返回LinearLayout
     private LinearLayout lv_back;
+    //单选框
+    private RadioButton ra_weather_view_vis, ra_weather_view_gone;
     //当前页面TAG
     private static String TAG = "WeatherActivity";
 
@@ -49,43 +53,59 @@ public class WeatherActivity extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);// 无Title
         setContentView(R.layout.activity_weather);
+        //绑定控件
         initView();
+        //检查sharedPreferences存储并配置单选按钮状态
+        check_radiobutton();
+        //确定按钮
         btn_wather_con.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                //如果文本框为空
                 if (et_city_get.getText().toString().isEmpty()) {
+                    //提示
                     DiyToast.showToast(getApplicationContext(), "请输入城市", true);
                 } else {
+                    //向数据库内插入输入的城市
                     db.execSQL("update wather_city set city = ? ",
                             new String[]{et_city_get.getText().toString()});
+                    //结束当前界面
                     finish();
                 }
             }
         });
+        //关闭按钮
         btn_wather_cls.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        ((RadioButton) findViewById(R.id.ra_weather_view_vis)).setOnClickListener(new View.OnClickListener() {
+        //显示天气文本内容单选按钮
+        ra_weather_view_vis.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
                 editor.putBoolean("isHind_weather", false);
                 editor.apply();
+                //重新读取设置单选按钮状态
+                check_radiobutton();
             }
         });
-        ((RadioButton) findViewById(R.id.ra_weather_view_gone)).setOnClickListener(new View.OnClickListener() {
+        //隐藏天气文本内容单选按钮
+        ra_weather_view_gone.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
                 editor.putBoolean("isHind_weather", true);
                 editor.apply();
+                //重新读取设置单选按钮状态
+                check_radiobutton();
             }
         });
+        //title栏N个返回控件
         tv_back.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,8 +122,30 @@ public class WeatherActivity extends Activity {
         });
     }
 
+    /**
+     * 从sharedPreferences中读取配置信息，然后设置在单选按钮上
+     */
+    private void check_radiobutton() {
+        if (sharedPreferences.getBoolean("isHind_weather", false) == true) {
+            ra_weather_view_gone.setChecked(true);
+        } else {
+            ra_weather_view_vis.setChecked(true);
+        }
+    }
+
+    /**
+     * 绑定控件
+     */
     private void initView() {
         // TODO Auto-generated method stub
+        //数据库
+        dbHelper = new MyDataBaseHelper(getApplicationContext(), "info.db",
+                null, 2);
+        db = dbHelper.getWritableDatabase();
+        //设置sharedPreferences存储
+        sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
+        ra_weather_view_gone = (RadioButton) findViewById(R.id.ra_weather_view_gone);
+        ra_weather_view_vis = (RadioButton) findViewById(R.id.ra_weather_view_vis);
         lv_back = (LinearLayout) findViewById(R.id.lv_back);
         tv_back = (TextView) findViewById(R.id.tv_title_back);
         tv_button = (TextView) findViewById(R.id.tv_title_button);
@@ -112,11 +154,11 @@ public class WeatherActivity extends Activity {
         btn_wather_cls = (Button) findViewById(R.id.btn_wather_cls);
         btn_wather_con = (Button) findViewById(R.id.btn_wather_con);
         et_city_get = (EditText) findViewById(R.id.et_city_get);
-        dbHelper = new MyDataBaseHelper(getApplicationContext(), "info.db",
-                null, 2);
-        db = dbHelper.getWritableDatabase();
     }
 
+    /**
+     * 设置界面被关闭时没有动画
+     */
     @Override
     public void finish() {
         super.finish();

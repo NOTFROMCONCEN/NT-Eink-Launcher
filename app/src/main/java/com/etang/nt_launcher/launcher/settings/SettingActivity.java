@@ -67,7 +67,7 @@ public class SettingActivity extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);// 无Title
         setContentView(R.layout.activity_setting_new);
-        initView();
+        initView();//绑定控件
         tv_title.setText("桌面设置");
         tv_back.setOnClickListener(new OnClickListener() {
             @Override
@@ -97,7 +97,9 @@ public class SettingActivity extends Activity {
 //                finish();
 //            }
 //        });
+        //设置title文本
         tv_button.setText("语言|权限|说明书");
+        //设置title点击事件
         tv_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -184,11 +186,13 @@ public class SettingActivity extends Activity {
                 show_name_dialog();
             }
         });
+        //绑定sharedPreferences本地存储
         SharedPreferences sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
         String ico_info = sharedPreferences.getString("setting_ico_hind", null);
         String offline_info = sharedPreferences.getString("offline", null);
         String oldman_info = sharedPreferences.getString("oldman", null);
         try {
+            //判断隐藏底栏是否被选中
             if (ico_info.equals("true")) {
                 cb_hind_setting_ico.setChecked(true);
 //                MainActivity.check_view_hind(SettingActivity.this, sharedPreferences);
@@ -196,23 +200,27 @@ public class SettingActivity extends Activity {
                 cb_hind_setting_ico.setChecked(false);
 //                MainActivity.check_view_hind(SettingActivity.this, sharedPreferences);
             }
+            //判断离线模式是否被选中
             if (offline_info.equals("true")) {
                 cb_setting_offlinemode.setChecked(true);
             } else {
                 cb_setting_offlinemode.setChecked(false);
             }
+            //判断老年模式是否被选中
             if (oldman_info.equals("true")) {
                 cb_setting_oldmanmode.setChecked(true);
             } else {
                 cb_setting_oldmanmode.setChecked(false);
             }
         } catch (Exception e) {
+            //如果检查上面三个模式状态出现问题时，插入默认数据
             SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
             editor.putString("setting_ico_hind", "false");//关闭隐藏底栏
             editor.putString("offline", "false");//关闭离线模式
             editor.putString("oldman", "false");//关闭老年模式
             editor.apply();
         }
+        //老年模式选中事件监听
         cb_setting_oldmanmode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -235,6 +243,7 @@ public class SettingActivity extends Activity {
                 }
             }
         });
+        //隐藏底栏模式选中事件监听
         cb_hind_setting_ico.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -255,6 +264,7 @@ public class SettingActivity extends Activity {
                 }
             }
         });
+        //离线模式选中事件监听
         cb_setting_offlinemode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -291,10 +301,13 @@ public class SettingActivity extends Activity {
      * 设置主界面的顶部文案
      */
     private void show_name_dialog() {
+        //新建一个dialog
         final AlertDialog builder = new AlertDialog.Builder(
                 SettingActivity.this).create();
+        //绑定一个自定义View
         View view = LayoutInflater.from(SettingActivity.this).inflate(
                 R.layout.dialog_name_show, null, false);
+        //设置自定义view
         builder.setView(view);
         final EditText et_name_get = (EditText) view
                 .findViewById(R.id.et_title_name);
@@ -308,21 +321,29 @@ public class SettingActivity extends Activity {
                 .findViewById(R.id.radio3);
         final Button btn_con = (Button) view.findViewById(R.id.btn_dialog_rename_con);
         final Button btn_cls = (Button) view.findViewById(R.id.btn_dialog_rename_cls);
+        //关闭按钮
         btn_cls.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 builder.dismiss();
             }
         });
+        //确定按钮
         btn_con.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                //判断文本框、单选按钮是否被选中
                 if (et_name_get.getText().toString().isEmpty()
                         && !ra_0.isChecked() && !ra_2.isChecked()
                         && !ra_3.isChecked() && !ra_1.isChecked()) {
+                    //插入空白数据
                     db.execSQL("update name set username = ?",
                             new String[]{""});
                 } else {
+                    /**
+                     * 很老的代码，等待更新
+                     */
+                    //判断哪个单选按钮被选中
                     if (ra_0.isChecked() || ra_1.isChecked()
                             || ra_2.isChecked() || ra_3.isChecked()) {
                         if (ra_0.isChecked()) {
@@ -355,13 +376,19 @@ public class SettingActivity extends Activity {
                                         .getText().toString()});
                     }
                 }
+                //关闭dialog
                 builder.dismiss();
+                //重新载入MainActivity顶上的文本
                 MainActivity.rember_name(SettingActivity.this);
             }
         });
+        //现实dialog
         builder.show();
     }
 
+    /**
+     * 绑定控件
+     */
     private void initView() {
         // TODO Auto-generated method stub
         lv_back = (LinearLayout) findViewById(R.id.lv_back);
@@ -382,11 +409,15 @@ public class SettingActivity extends Activity {
         lv_about_activity = (LinearLayout) findViewById(R.id.lv_about_activity);
         lv_applist_setting = (LinearLayout) findViewById(R.id.lv_applist_setting);
         lv_window_setting = (LinearLayout) findViewById(R.id.lv_window_setting);
+        //数据库
         dbHelper_name_sql = new MyDataBaseHelper(getApplicationContext(), "info.db",
                 null, 2);
         db = dbHelper_name_sql.getWritableDatabase();
     }
 
+    /**
+     * 结束当前Activity时，关闭所有动画
+     */
     @Override
     public void finish() {
         super.finish();

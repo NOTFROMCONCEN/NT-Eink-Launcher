@@ -36,8 +36,9 @@ public class UireFreshActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);// 无Title
         setContentView(R.layout.activity_uirefresh);
+        //绑定控件
         uirefresh_id = (View) findViewById(R.id.uirefresh_id);
-        DiyToast.showToast(UireFreshActivity.this, "刷新中", true);
+        //启动背景切换线程
         handler.post(timeRunnable);
     }
 

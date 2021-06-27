@@ -17,9 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.etang.nt_launcher.R;
 import com.etang.nt_launcher.tool.savearrayutil.SaveArrayListUtil;
 import com.etang.nt_launcher.tool.toast.DiyToast;
-import com.etang.nt_launcher.tool.util.AppInfo;
-import com.etang.nt_launcher.tool.util.DeskTopGridViewBaseAdapter;
-import com.etang.nt_launcher.tool.util.GetApps;
+import com.etang.nt_launcher.tool.getapps.AppInfo;
+import com.etang.nt_launcher.tool.getapps.DeskTopGridViewBaseAdapter;
+import com.etang.nt_launcher.tool.getapps.GetApps;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,8 +57,11 @@ public class HindAppSetting extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);// 无Title
         setContentView(R.layout.setting_hind_app);
+        //绑定空间
         initView();
+        //加载软件列表
         initAppList(HindAppSetting.this);
+        //设置标题
         tv_title.setText("应用管理");
         tv_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,8 +91,15 @@ public class HindAppSetting extends AppCompatActivity {
         });
     }
 
+    /**
+     * 展示软件信息dialog
+     *
+     * @param packname 包名
+     */
     private void show_dialog_helper(final String packname) {
+        //新建一个dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(HindAppSetting.this);
+        //设置dialog标题
         builder.setTitle("要取消隐藏应用吗？");
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override

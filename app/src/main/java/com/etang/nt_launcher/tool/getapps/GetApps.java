@@ -1,4 +1,4 @@
-package com.etang.nt_launcher.tool.util;
+package com.etang.nt_launcher.tool.getapps;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -14,7 +14,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 
 import com.etang.nt_launcher.R;
-import com.etang.nt_launcher.tool.bitmap.BitMapTools;
 
 import java.util.ArrayList;
 import java.util.List;

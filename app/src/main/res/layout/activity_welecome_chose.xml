@@ -101,6 +101,8 @@
                 android:id="@+id/btn_welecome_resart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/shaper_yuanjiao_lins_show"
                 android:text="@string/welecome_huanying_quedingandreboot" />
         </RadioGroup>
     </LinearLayout>

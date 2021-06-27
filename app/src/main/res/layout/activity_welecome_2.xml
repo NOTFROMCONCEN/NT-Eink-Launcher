@@ -20,7 +20,7 @@
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:background="@drawable/shaper_yuanjiao_lins_show"
-            android:text="点此支持开发" />
+            android:text="点此查看捐赠二维码" />
 
         <Button
             android:id="@+id/btn_welecome_show_shuomingshu"
@@ -29,14 +29,7 @@
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:background="@drawable/shaper_yuanjiao_lins_show"
-            android:text="点击查看说明书或扫描下方二维码" />
-
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="@null"
-            android:src="@drawable/iv_shuomingshu" />
+            android:text="点此查阅说明书" />
     </LinearLayout>
 
 

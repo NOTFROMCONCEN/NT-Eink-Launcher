@@ -61,9 +61,9 @@ import com.etang.nt_launcher.tool.savearrayutil.SaveArrayListUtil;
 import com.etang.nt_launcher.tool.server.AppInstallServer;
 import com.etang.nt_launcher.tool.sql.MyDataBaseHelper;
 import com.etang.nt_launcher.tool.toast.DiyToast;
-import com.etang.nt_launcher.tool.util.AppInfo;
-import com.etang.nt_launcher.tool.util.DeskTopGridViewBaseAdapter;
-import com.etang.nt_launcher.tool.util.GetApps;
+import com.etang.nt_launcher.tool.getapps.AppInfo;
+import com.etang.nt_launcher.tool.getapps.DeskTopGridViewBaseAdapter;
+import com.etang.nt_launcher.tool.getapps.GetApps;
 import com.etang.nt_launcher.tool.util.MTCore;
 import com.etang.nt_launcher.tool.util.StreamTool;
 
@@ -303,6 +303,7 @@ public class MainActivity extends Activity implements OnClickListener {
         images_upgrade(MainActivity.this, sharedPreferences);//更新图像信息
         set_app_setStackFromBottomMode(sharedPreferences);//检查并设置APP列表排列方式
     }
+
 
     public static void initSkinMode(Context context, String s) {
         try {

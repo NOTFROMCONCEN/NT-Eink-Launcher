@@ -76,6 +76,7 @@ public class AboutActivity extends AppCompatActivity {
         tv_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //新建一个dialog
                 new AlertDialog.Builder(AboutActivity.this)
                         .setTitle("部分图片来自：iconfont.cn")
                         .setMessage("图标（launcher icon）：小白熊_猫草君 | \"糖果\"icon")
@@ -122,7 +123,7 @@ public class AboutActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Toast提示
                 DiyToast.showToast(getApplicationContext(), "请注意：是否捐赠并不影响正常使用", true);
-                //显示弹出框
+                //显示捐赠弹出框
                 PayMeDialog.show_dialog(AboutActivity.this);
             }
         });

@@ -24,7 +24,6 @@
         android:testOnly="false"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".launcher.welecome.TestFragmentActivity"></activity>
         <activity
             android:name=".launcher.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -50,9 +49,6 @@
 
         <activity
             android:name=".launcher.welecome.WelecomeActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".launcher.settings.reward.RewardActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".launcher.settings.uirefresh.UireFreshActivity"

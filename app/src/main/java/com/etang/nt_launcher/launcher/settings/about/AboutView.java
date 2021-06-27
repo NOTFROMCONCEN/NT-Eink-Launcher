@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -82,10 +84,10 @@ public class AboutView extends View {
         //循环绘制
         for (int i = 0; i < 200; i++) {
             canvas.save();// 保存画布
-            canvas.rotate(i * 5, width, height);// 旋转画布
+            canvas.rotate(i * 10, width, height);// 旋转画布
             // 绘制线条
             canvas.drawLine(width, height - radius, width,
-                    height - radius + 20, paint);
+                    height - radius + 10, paint);
             canvas.restore();// 恢复画布
         }
     }

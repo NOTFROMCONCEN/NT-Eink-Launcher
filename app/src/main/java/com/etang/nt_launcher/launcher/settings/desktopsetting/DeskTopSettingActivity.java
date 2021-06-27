@@ -69,6 +69,7 @@ public class DeskTopSettingActivity extends AppCompatActivity implements View.On
                 finish();
             }
         });
+        //title栏的linelayout布局点击事件
         lv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,9 +80,13 @@ public class DeskTopSettingActivity extends AppCompatActivity implements View.On
          * 获取icon大小
          */
         final SharedPreferences sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
-        int size = Integer.valueOf(sharedPreferences.getString("icon_size", null));
-        tv_gridlist_iconsize.setText(String.valueOf(size));
-        sk_gridlist_iconsize.setProgress(size);
+        //进度条进度
+        int progress = Integer.valueOf(sharedPreferences.getString("icon_size", null));
+        //在文本上显示已存储的进度
+        tv_gridlist_iconsize.setText(String.valueOf(progress));
+        //设置SeekBar的进度
+        sk_gridlist_iconsize.setProgress(progress);
+        //设置SeekBar滑动事件监听
         sk_gridlist_iconsize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -96,11 +101,15 @@ public class DeskTopSettingActivity extends AppCompatActivity implements View.On
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                //重新载入一遍软件列表以应用更改后的图标大小
                 MainActivity.initAppList(DeskTopSettingActivity.this);
             }
         });
     }
 
+    /**
+     * 检查排列方式并选中对应的单选框
+     */
     private void check_app_bottom() {
         SharedPreferences sharedPreferences_applist_bottom = getSharedPreferences("info", MODE_PRIVATE);
         if (sharedPreferences_applist_bottom.getBoolean("app_setStackFromBottomMode", true) == false) {

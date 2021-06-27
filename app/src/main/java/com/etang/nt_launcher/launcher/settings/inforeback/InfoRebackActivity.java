@@ -48,6 +48,9 @@ public class InfoRebackActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * 绑定控件
+     */
     private void initView() {
         tv_title_button = (TextView) findViewById(R.id.tv_title_button);
         tv_title_button.setVisibility(View.INVISIBLE);
@@ -56,6 +59,10 @@ public class InfoRebackActivity extends AppCompatActivity {
         lv_back = (LinearLayout) findViewById(R.id.lv_back);
     }
 
+
+    /**
+     * 结束当前Activity时，关闭所有动画
+     */
     @Override
     public void finish() {
         super.finish();

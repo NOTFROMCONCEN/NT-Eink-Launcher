@@ -42,19 +42,22 @@ public class ChoseFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_welecome_chose, null, false);
-        initView(view);
-        if (sharedPreferences.getString("language", null).equals("0")) {
-            ra_welecome_auto.setChecked(true);
-        }
-        if (sharedPreferences.getString("language", null).equals("1")) {
-            ra_welecome_cn.setChecked(true);
-        }
-        if (sharedPreferences.getString("language", null).equals("2")) {
-            ra_welecome_en.setChecked(true);
-        }
-        if (sharedPreferences.getString("language", null).equals("3")) {
-            ra_welecome_jp.setChecked(true);
-        }
+        initView(view);//绑定控件
+        CheckLanguage();//检查语言
+        //已停用代码
+//        if (sharedPreferences.getString("language", null).equals("0")) {
+//            ra_welecome_auto.setChecked(true);
+//        }
+//        if (sharedPreferences.getString("language", null).equals("1")) {
+//            ra_welecome_cn.setChecked(true);
+//        }
+//        if (sharedPreferences.getString("language", null).equals("2")) {
+//            ra_welecome_en.setChecked(true);
+//        }
+//        if (sharedPreferences.getString("language", null).equals("3")) {
+//            ra_welecome_jp.setChecked(true);
+//        }
+        //自动选择语言
         ra_welecome_auto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,6 +71,7 @@ public class ChoseFragment extends Fragment {
                 getActivity().finish();
             }
         });
+        //选择中文
         ra_welecome_cn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,6 +85,7 @@ public class ChoseFragment extends Fragment {
                 getActivity().finish();
             }
         });
+        //选择英文
         ra_welecome_en.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,6 +99,7 @@ public class ChoseFragment extends Fragment {
                 getActivity().finish();
             }
         });
+        //选择日语
         ra_welecome_jp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,6 +116,57 @@ public class ChoseFragment extends Fragment {
         return view;
     }
 
+    /**
+     * 检查已存储语言
+     */
+    private void CheckLanguage() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                switch (sharedPreferences.getString("language", null)) {
+                    case "0":
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ra_welecome_auto.setChecked(true);
+                            }
+                        });
+                        break;
+                    case "1":
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ra_welecome_cn.setChecked(true);
+                            }
+                        });
+                        break;
+                    case "2":
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ra_welecome_en.setChecked(true);
+                            }
+                        });
+                        break;
+                    case "3":
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ra_welecome_jp.setChecked(true);
+                            }
+                        });
+                        break;
+                }
+            }
+        }).start();
+    }
+
+    /**
+     * 检查系统语言
+     *
+     * @param context
+     * @param sharedPreferences
+     */
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void check_Language(Context context, SharedPreferences sharedPreferences) {
         int language = 0;
@@ -147,7 +204,11 @@ public class ChoseFragment extends Fragment {
         resources.updateConfiguration(configuration, displayMetrics);
     }
 
-
+    /**
+     * 绑定控件
+     *
+     * @param view
+     */
     private void initView(View view) {
         sharedPreferences = getActivity().getSharedPreferences("info", Context.MODE_PRIVATE);
         ra_welecome_auto = (RadioButton) view.findViewById(R.id.ra_welecome_auto);

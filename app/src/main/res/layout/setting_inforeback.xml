@@ -23,12 +23,15 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="请输入"></EditText>
+            android:background="@drawable/shaper_yuanjiao_lins_show"
+            android:hint="请输入"
+            android:padding="20dp"></EditText>
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:background="@drawable/shaper_yuanjiao_lins_show"
             android:text="发送" />
     </LinearLayout>

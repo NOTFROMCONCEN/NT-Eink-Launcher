@@ -25,7 +25,7 @@ import com.etang.nt_launcher.tool.permission.SavePermission;
 import com.etang.nt_launcher.tool.savearrayutil.SaveArrayImageUtil;
 import com.etang.nt_launcher.tool.savearrayutil.SaveArrayListUtil;
 import com.etang.nt_launcher.tool.toast.DiyToast;
-import com.etang.nt_launcher.tool.util.AppInfo;
+import com.etang.nt_launcher.tool.getapps.AppInfo;
 
 import java.util.ArrayList;
 import java.util.List;

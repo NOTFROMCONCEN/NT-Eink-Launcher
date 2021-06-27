@@ -1,4 +1,4 @@
-package com.etang.nt_launcher.tool.util;
+package com.etang.nt_launcher.tool.getapps;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
