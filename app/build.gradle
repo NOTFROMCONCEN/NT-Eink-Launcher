@@ -13,15 +13,15 @@ android {
     }
     signingConfigs {
         debug {
-            keyAlias 'etangkey'
+            keyAlias 'etang'
             keyPassword 'xiaoyu0632'
-            storeFile file('C:/Users/10976/Desktop/myAPP-KEY.jks')
+            storeFile file('C:/Users/10976/Desktop/Project/Android Project/Android Keys/home/MyNewAppKey.jks')
             storePassword 'xiaoyu0632'
         }
         release {
-            keyAlias 'etangkey'
+            keyAlias 'etang'
             keyPassword 'xiaoyu0632'
-            storeFile file('C:/Users/10976/Desktop/myAPP-KEY.jks')
+            storeFile file('C:/Users/10976/Desktop/Project/Android Project/Android Keys/home/MyNewAppKey.jks')
             storePassword 'xiaoyu0632'
         }
     }
