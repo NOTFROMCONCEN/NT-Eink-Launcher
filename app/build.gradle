@@ -4,24 +4,24 @@ android {
     compileSdkVersion 30
     buildToolsVersion '30.0.2'
     defaultConfig {
-        applicationId "com.etang.nt_launcher"
+        applicationId "com.etang.mt_launcher"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 483600715
-        versionName "4.8.36"
+        versionCode 1
+        versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
         debug {
             keyAlias 'etang'
             keyPassword 'xiaoyu0632'
-            storeFile file('C:/Users/10976/Desktop/Project/Android Project/Android Keys/home/MyNewAppKey.jks')
+            storeFile file('siginFile/MyNewAppKey.jks')
             storePassword 'xiaoyu0632'
         }
         release {
             keyAlias 'etang'
             keyPassword 'xiaoyu0632'
-            storeFile file('C:/Users/10976/Desktop/Project/Android Project/Android Keys/home/MyNewAppKey.jks')
+            storeFile file('siginFile/MyNewAppKey.jks')
             storePassword 'xiaoyu0632'
         }
     }

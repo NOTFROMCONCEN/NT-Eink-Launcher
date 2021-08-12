@@ -11,7 +11,7 @@
         layout="@layout/layout_in_back"></include>
 
 
-    <com.etang.nt_launcher.launcher.settings.about.AboutView
+    <com.etang.mt_launcher.launcher.settings.about.AboutView
         android:id="@+id/about_view"
         android:layout_width="200dp"
         android:layout_height="200dp"
@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="@+id/iv_about_logo"
         app:layout_constraintTop_toTopOf="@+id/iv_about_logo">
 
-    </com.etang.nt_launcher.launcher.settings.about.AboutView>
+    </com.etang.mt_launcher.launcher.settings.about.AboutView>
 
     <ImageView
         android:id="@+id/iv_about_logo"
