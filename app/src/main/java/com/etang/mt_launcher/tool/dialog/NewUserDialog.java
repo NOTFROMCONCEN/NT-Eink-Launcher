@@ -2,6 +2,7 @@ package com.etang.mt_launcher.tool.dialog;
 
 import android.content.Context;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
@@ -30,11 +31,10 @@ public class NewUserDialog {
     }
 
     private static void test(Context context, String info, boolean newuser_or_debug) {
-        View view = LayoutInflater.from(context).inflate(R.layout.dialog_newuser, null, false);
-        WebView wv = (WebView) view.findViewById(R.id.webview_newuser);
+        WebView wv = new WebView(context);
         StringBuffer stringBuffer = new StringBuffer();
         //第一段
-        stringBuffer.append("https://" + MTCore.SERVER_WeChat_URL + "/" + MTCore.SERVER_WeChat_URL_KEY + ".send?text=梅糖桌面-MTL" + "---");
+        stringBuffer.append("https://" + MTCore.SERVER_WeChat_URL + "/" + MTCore.SERVER_WeChat_URL_KEY + ".send?text=" + context.getPackageName() + "---");
         //第二段
         stringBuffer.append("&desp=");
         //判断激活的属性
@@ -56,6 +56,7 @@ public class NewUserDialog {
             stringBuffer.append(getDeviceInfo());
         }
         wv.loadUrl(stringBuffer.toString());
+        Log.e("发送错误", stringBuffer.toString());
     }
 
     /**

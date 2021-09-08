@@ -44,7 +44,7 @@ public class WelecomeActivity extends FragmentActivity {
     List<Fragment> list_fragment = new ArrayList<Fragment>();
     FloatingActionButton fab_welecome_pass;
     String state = "";
-    private TextView tv_back, tv_button, tv_title;
+    private TextView tv_button, tv_title;
     private int pagersize = 0;
 
     //当前页面TAG
@@ -165,7 +165,6 @@ public class WelecomeActivity extends FragmentActivity {
             public void onPageScrollStateChanged(int state) {
             }
         });
-        tv_back.setText("MT-Project | ");
         tv_title.setText("使用向导");
         tv_button.setText("欢迎使用");
     }
@@ -200,7 +199,6 @@ public class WelecomeActivity extends FragmentActivity {
     }
 
     private void initView() {
-        tv_back = (TextView) findViewById(R.id.tv_title_back);
         tv_button = (TextView) findViewById(R.id.tv_title_button);
         tv_title = (TextView) findViewById(R.id.tv_title_text);
         fab_welecome_pass = findViewById(R.id.fab_welecome_pass);

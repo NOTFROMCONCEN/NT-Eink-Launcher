@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/drawable/layer_list_progressbarback.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/drawable/select_apps_state.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/drawable/shaper_apks_button_window_show.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/drawable/shaper_desk_top_show.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/drawable/shaper_edittext_back.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/drawable/shaper_toast_show.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/drawable/shaper_yuanjiao_lins_show.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/drawable/shaper_yuanjiao_nocolor_show.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/drawable/shaper_zhijiao_lins_nocolor.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/drawable/shaper_zhijiao_lins_show.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/layout/activity_main.xml" value="0.19972826086956522" />
+        <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/layout/activity_setting.xml" value="0.19972826086956522" />
+        <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/layout/activity_setting_new.xml" value="0.264" />
+        <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/layout/dialog_newuser.xml" value="0.23097826086956522" />
+        <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/layout/dialog_newuserchecker.xml" value="0.23097826086956522" />
+        <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/layout/dialog_progress.xml" value="0.23097826086956522" />
+        <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/layout/layout_in_back.xml" value="0.19972826086956522" />
+        <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/layout/setting_about.xml" value="0.23097826086956522" />
+        <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/xml/file_paths.xml" value="0.23097826086956522" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

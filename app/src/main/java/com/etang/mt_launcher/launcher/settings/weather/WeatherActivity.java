@@ -36,7 +36,7 @@ public class WeatherActivity extends Activity {
     //SharedPreferences存储
     SharedPreferences sharedPreferences;
     //文本，返回，按钮，标题
-    private TextView tv_back, tv_button, tv_title;
+    private TextView tv_button, tv_title;
     //返回LinearLayout
     private LinearLayout lv_back;
     //单选框
@@ -104,13 +104,6 @@ public class WeatherActivity extends Activity {
                 check_radiobutton();
             }
         });
-        //title栏N个返回控件
-        tv_back.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
         tv_button.setVisibility(View.INVISIBLE);
         tv_title.setText("天气设置");
         lv_back.setOnClickListener(new View.OnClickListener() {
@@ -146,7 +139,6 @@ public class WeatherActivity extends Activity {
         ra_weather_view_gone = (RadioButton) findViewById(R.id.ra_weather_view_gone);
         ra_weather_view_vis = (RadioButton) findViewById(R.id.ra_weather_view_vis);
         lv_back = (LinearLayout) findViewById(R.id.lv_back);
-        tv_back = (TextView) findViewById(R.id.tv_title_back);
         tv_button = (TextView) findViewById(R.id.tv_title_button);
         tv_title = (TextView) findViewById(R.id.tv_title_text);
         tv_title = (TextView) findViewById(R.id.tv_title_text);

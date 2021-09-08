@@ -43,7 +43,7 @@ public class HindAppSetting extends AppCompatActivity {
     //GridView列表
     private static GridView mHindGridView;
     //文本，返回，按钮，标题
-    private TextView tv_back, tv_button, tv_title;
+    private TextView tv_button, tv_title;
     //返回LinearLayout
     private LinearLayout lv_back;
     //当前TAG
@@ -63,12 +63,6 @@ public class HindAppSetting extends AppCompatActivity {
         initAppList(HindAppSetting.this);
         //设置标题
         tv_title.setText("应用管理");
-        tv_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
         lv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,7 +117,6 @@ public class HindAppSetting extends AppCompatActivity {
 
     private void initView() {
         lv_back = (LinearLayout) findViewById(R.id.lv_back);
-        tv_back = (TextView) findViewById(R.id.tv_title_back);
         tv_button = (TextView) findViewById(R.id.tv_title_button);
         tv_title = (TextView) findViewById(R.id.tv_title_text);
         mHindGridView = (GridView) findViewById(R.id.mHindGridView);

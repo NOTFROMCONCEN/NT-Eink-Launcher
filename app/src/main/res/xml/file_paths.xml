@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <paths>
+        <external-path
+            name="files_root"
+            path="Android/data/com.etang.mt_launcher/" />
+        <external-path
+            name="external_storage_root"
+            path="." />
+    </paths>
+    <!--<root-path/> ：代表设备的根目录new File("/")-->
+    <!--<files-path/> : 代表context.getFilesDir()-->
+    <!--<cache-path/> : 代表context.getCacheDir()-->
+    <!--<external-path/> : 代表Environment.getExternalStorageDirectory()-->
+    <!--<external-files-path/> : 代表context.getExternalFilesDirs()-->
+    <!--<external-cache-path/> : 代表getExternalCacheDirs()-->
+    <!--path节点支持name和path两个属性，配置了path属性就相当于在相应路径下子目录，-->
+</resources>

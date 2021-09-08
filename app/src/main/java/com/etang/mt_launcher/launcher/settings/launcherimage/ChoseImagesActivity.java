@@ -45,7 +45,7 @@ public class ChoseImagesActivity extends AppCompatActivity {
     //bitmap，用于存储壁纸
     Bitmap bitmap = null;
     //文本，返回，按钮，标题
-    private TextView tv_back, tv_button, tv_title;
+    private TextView tv_button, tv_title;
     //返回LinearLayout
     private LinearLayout lv_back;
     //当前TAG
@@ -167,12 +167,6 @@ public class ChoseImagesActivity extends AppCompatActivity {
                 MainActivity.mListView.setVisibility(View.VISIBLE);
                 DiyToast.showToast(ChoseImagesActivity.this, "已更换：系统壁纸和应用列表", true);
                 MainActivity.initSkinMode(ChoseImagesActivity.this, "app_wallpaper_applist");
-            }
-        });
-        tv_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
             }
         });
         tv_title.setText("壁纸设置");
@@ -302,7 +296,6 @@ public class ChoseImagesActivity extends AppCompatActivity {
      */
     private void initView() {
         lv_back = (LinearLayout) findViewById(R.id.lv_back);
-        tv_back = (TextView) findViewById(R.id.tv_title_back);
         tv_button = (TextView) findViewById(R.id.tv_title_button);
         tv_title = (TextView) findViewById(R.id.tv_title_text);
         btn_set_wallpaperimage = (Button) findViewById(R.id.btn_set_wallpaperimage);

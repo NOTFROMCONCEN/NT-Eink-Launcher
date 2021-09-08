@@ -8,53 +8,49 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/layout_in_back"></include>
+        layout="@layout/layout_in_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></include>
 
 
-    <com.etang.mt_launcher.launcher.settings.about.AboutView
-        android:id="@+id/about_view"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_about_logo"
-        app:layout_constraintEnd_toEndOf="@+id/iv_about_logo"
-        app:layout_constraintStart_toStartOf="@+id/iv_about_logo"
-        app:layout_constraintTop_toTopOf="@+id/iv_about_logo">
-
-    </com.etang.mt_launcher.launcher.settings.about.AboutView>
-
-    <ImageView
-        android:id="@+id/iv_about_logo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:contentDescription="@null"
-        android:src="@drawable/ic_weather"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shaper_yuanjiao_nocolor_show"
+        android:gravity="center_vertical|center|center_horizontal"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_about_checkup_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include"
-        app:layout_constraintVertical_bias="0.209" />
+        app:layout_constraintVertical_bias="0.209">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:gravity="center|center_horizontal|center_vertical"
-        android:text="我一直在追寻的\n却是被禁锢的浪漫"
-        android:textColor="#70000000"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/about_view"
-        app:layout_constraintStart_toStartOf="@+id/about_view"
-        app:layout_constraintTop_toBottomOf="@+id/about_view" />
+        <ImageView
+            android:id="@+id/iv_about_logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_about_showversion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center|center_vertical"
+            android:text="梅糖桌面 Project"
+            android:textSize="20dp"></TextView>
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/btn_about_checkup_button"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="20dp"
+        android:layout_margin="25dp"
         android:background="@drawable/shaper_apks_button_window_show"
         android:text="检查更新"
         android:textSize="15dp"
@@ -66,9 +62,9 @@
         android:id="@+id/tv_about_juanzeng"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_margin="15dp"
         android:background="@drawable/shaper_toast_show"
-        android:padding="10dp"
+        android:padding="5dp"
         android:text="点击此捐赠|支持开发"
         android:textSize="15dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_about_checkup_button"

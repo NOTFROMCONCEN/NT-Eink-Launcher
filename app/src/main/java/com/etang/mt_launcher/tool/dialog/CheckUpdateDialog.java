@@ -1,28 +1,26 @@
 package com.etang.mt_launcher.tool.dialog;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.ComponentName;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ProgressBar;
+
+import androidx.core.content.FileProvider;
 
 import com.etang.mt_launcher.BuildConfig;
 import com.etang.mt_launcher.R;
-import com.etang.mt_launcher.tool.permission.SavePermission;
-import com.etang.mt_launcher.tool.toast.DiyToast;
-import com.etang.mt_launcher.tool.util.MTCore;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -39,10 +37,10 @@ import javax.net.ssl.HttpsURLConnection;
 public class CheckUpdateDialog {
     //  上下文
     private static Context mContext;
-    //  进度条
-    private static ProgressBar mProgressBar;
+    //  Activity
+    private static Activity mActivity;
     //  对话框
-    private static Dialog mDownloadDialog;
+    private static ProgressDialog mDownloadDialog;
     //  判断是否停止
     private static boolean mIsCancel = false;
     //  进度
@@ -51,10 +49,15 @@ public class CheckUpdateDialog {
     private static String mSavePath;
     //当前页面TAG
     private static String TAG = "CheckUpdateDialog";
-    private static String mVersion_name = "";
+    //最新版本号
+    private static int mVersion_new = 0;
+    //当前下载链接
+    private static String mVersion_Url = "";
 
 
     public static void check_update(final Context context, final Activity activity, final String where) {
+        mContext = context;
+        mActivity = activity;
         final Handler handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -64,12 +67,10 @@ public class CheckUpdateDialog {
                 switch (val) {
                     case "1":
                         if (where == "about") {
-                            DiyToast.showToast(context, "正在连接到ZOI云端，请稍后", true);
                         }
                         break;
                     case "2":
                         if (where == "about") {
-                            DiyToast.showToast(context, "出现错误，请重试！", true);
                             Bundle data_error = msg.getData();
                             String error_message = data_error.getString("error_message");
                             DeBugDialog.debug_show_dialog(context, error_message, TAG);
@@ -77,16 +78,33 @@ public class CheckUpdateDialog {
                         break;
                     case "4":
                         if (where == "about") {
-                            DiyToast.showToast(context, "", true);
                         }
                         break;
                     case "5":
                         Bundle data_version = msg.getData();
-                        String version_message = data_version.getString("version_message");
-                        String new_version_message = version_message.replace("<li>", ""); //得到新的字符串
-                        new_version_message = new_version_message.replace("</li>", "");
-                        Log.e("TAG_test", new_version_message);
-                        version_update(context, new_version_message, activity, where);
+                        //获取APP名称
+                        String version_Apps = data_version.getString("version_Apps")
+                                .replace("<app>", "")
+                                .replace("</app>", "")
+                                .replace(" ", "");
+                        //获取版本号Code
+                        String version_Code = data_version.getString("version_Code")
+                                .replace("<code>", "")
+                                .replace("</code>", "")
+                                .replace(" ", "");
+                        //获取版本号名字
+                        String version_Name = data_version.getString("version_Name")
+                                .replace("<name>", "")
+                                .replace("</name>", "")
+                                .replace(" ", "");
+                        //获取下载链接
+                        String version_Urls = data_version.getString("version_Urls")
+                                .replace("<updateurl>", "")
+                                .replace("</updateurl>", "")
+                                .replace(" ", "");
+                        mVersion_new = Integer.valueOf(version_Code);
+                        mVersion_Url = version_Urls;
+                        check_beta(where);
                         break;
                 }
             }
@@ -101,18 +119,24 @@ public class CheckUpdateDialog {
                 msg_start.setData(data);
                 handler.sendMessage(msg_start);
                 try {
-                    Document doc = Jsoup.connect(" https://blog.nyanon.online/25").get();
+                    Document doc = Jsoup.connect(
+                            "https://yp.nyanon.online/data/User/admin/home/NaiYouApks/for%20web/Android/js/"
+                                    + mContext.getPackageName() +
+                                    ".xml").get();
                     /**
                      * 开始解析
                      * */
-                    final Elements titleAndPic = doc.select("div.post-body");
+                    final Elements titleAndPic = doc.select("books");
                     /**
                      * 发送结果
                      * */
                     Message msg_version = new Message();
                     Bundle data_version = new Bundle();
                     data_version.putString("weblink_state", "5");
-                    data_version.putString("version_message", String.valueOf(titleAndPic.get(0).select("ul").select("li")));
+                    data_version.putString("version_Apps", String.valueOf(titleAndPic.get(0).select("app")));
+                    data_version.putString("version_Code", String.valueOf(titleAndPic.get(0).select("code")));
+                    data_version.putString("version_Name", String.valueOf(titleAndPic.get(0).select("name")));
+                    data_version.putString("version_Urls", String.valueOf(titleAndPic.get(0).select("updateurl")));
                     msg_version.setData(data_version);
                     handler.sendMessage(msg_version);
                 } catch (Exception e) {
@@ -127,47 +151,16 @@ public class CheckUpdateDialog {
         }).start();
     }
 
-    private static void version_update(final Context context, String s, final Activity activity, final String where) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        //截取之后的字符
-        String version_web = s.substring(0, s.indexOf("(" + context.getPackageName() + ")"));
-        String version_web_1 = version_web.substring(s.indexOf("code"));
-        String version_web_5 = version_web_1.substring(version_web_1.indexOf("code"));
-        version_web_5 = version_web_5.replace("code", ""); //得到新的字符串
-        String version = BuildConfig.VERSION_NAME;
+    private static void check_beta(final String where) {
         int version_code = BuildConfig.VERSION_CODE;
-        int version_web_code = Integer.valueOf(version_web_5);
-        if (where == "about") {
-            check_beta(builder, version_code, version_web_code, context, activity, where);//稳定版
-        }
-        if (where == "main") {
-            check_beta(builder, version_code, version_web_code, context, activity, where);//稳定版
-        }
-    }
-
-    private static void check_beta(final AlertDialog.Builder builder,
-                                   int version_code,
-                                   int version_web_code,
-                                   final Context context,
-                                   final Activity activity,
-                                   final String where) {
-        if (version_code != version_web_code) {
-            if (version_code > version_web_code) {
-                if (where == "about") {
-                    mVersion_name = MTCore.my_app_name + "_" + String.valueOf(version_web_code);
-                    builder.setMessage("当前版本：\n" + String.valueOf(version_code) + "\n最新版本：\n" + String.valueOf(version_web_code) + "\n\n你的版本比目前发布的稳定版还要高，可能你使用的是内测版或者第三方修改的不稳定版本");
-                    DiyToast.showToast(context, "你的版本比目前发布的稳定版还要高，可能你使用的是内测版或者第三方修改的不稳定版本。", true);
-                    builder.setNeutralButton("关闭", null);
-                    builder.show();
-                }
-            } else {
-                DiyToast.showToast(context, "发现新版本 | 来自ZOI的消息", true);
-                mVersion_name = MTCore.my_app_name + "_" + String.valueOf(version_web_code);
-                builder.setMessage("当前版本：\n" + String.valueOf(version_code) + "\n最新版本：\n" + String.valueOf(version_web_code) + "\n\n你的“奶糖桌面”需要更新，请到酷安、博客，或者点击“更新”进行更新。");
+        if (version_code != mVersion_new) {
+            if (version_code < mVersion_new) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setMessage("发现最新版本：\n" + String.valueOf(mVersion_new) + "\n你的“梅糖桌面”需要更新，可以前往“酷安APP”或者点击“更新”进行更新。");
                 builder.setNeutralButton("更新", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        startUpdate(context, activity);
+                        startUpdate();
                     }
                 });
                 builder.setPositiveButton("关闭", null);
@@ -175,13 +168,12 @@ public class CheckUpdateDialog {
             }
         } else {
             if (where == "about") {
-                mVersion_name = MTCore.my_app_name + "_" + String.valueOf(version_web_code);
-                builder.setMessage("当前版本：" + "\n" + String.valueOf(version_code) + "\n" + "现有版本：" + "\n" + version_web_code + "\n" + "\n你已经是最新版本了");
-                DiyToast.showToast(context, "你已经是最新版本了", true);
+                final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setMessage("当前版本：" + "\n" + String.valueOf(version_code) + "\n" + "现有版本：" + "\n" + mVersion_new + "\n" + "\n你已经是最新版本了");
                 builder.setNeutralButton("重新下载", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        startUpdate(context, activity);
+                        startUpdate();
                     }
                 });
                 builder.setPositiveButton("关闭", null);
@@ -191,37 +183,43 @@ public class CheckUpdateDialog {
     }
 
 
-    //打开APK程序代码
-    private static void openFile(File file, Context context) {
-        // TODO Auto-generated method stub
-        Intent intent = new Intent();
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.setAction(android.content.Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.fromFile(file),
-                "application/vnd.android.package-archive");
-        context.startActivity(intent);
-    }
-
-    private static void startUpdate(Context context, Activity activity) {
-        SavePermission.check_save_permission(activity);
+    private static void startUpdate() {
+        boolean isGranted = true;
+        if (android.os.Build.VERSION.SDK_INT >= 23) {
+            if (mActivity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                //如果没有写sd卡权限
+                isGranted = false;
+            }
+            if (mActivity.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                isGranted = false;
+            }
+            if (!isGranted) {
+                mActivity.requestPermissions(
+                        new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission
+                                .ACCESS_FINE_LOCATION,
+                                Manifest.permission.READ_EXTERNAL_STORAGE,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        102);
+            } else {
+            }
+        }
         mIsCancel = false;
-//              展示对话框
-        mContext = context;
-        showDownloadDialog(context);
+        showDownloadDialog();
     }
 
 
     /*
      * 显示正在下载对话框
      */
-    protected static void showDownloadDialog(Context context) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-        builder.setTitle("下载中，请勿退出");
-        builder.setMessage("下载目录为：/根目录/ntlauncher\n请打开文件管理器到指定目录进行安装\n或访问博客或酷安进行下载");
-        View view = LayoutInflater.from(mContext).inflate(R.layout.dialog_progress, null);
-        mProgressBar = (ProgressBar) view.findViewById(R.id.id_progress);
-        builder.setView(view);
-        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+    protected static void showDownloadDialog() {
+        ProgressDialog dialog = new ProgressDialog(mContext);
+        dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);// 设置水平进度条
+        dialog.setCancelable(false);// 设置是否可以通过点击Back键取消
+        dialog.setCanceledOnTouchOutside(false);// 设置在点击Dialog外是否取消Dialog进度条
+        dialog.setIcon(R.drawable.ic_launcher);// 设置提示的title的图标，默认是没有的
+        dialog.setTitle("正在下载......");// 设置标题
+        dialog.setMessage("如果安装失败，请前往 根目录/" + mContext.getPackageName() + "/ 目录下进行安装");
+        dialog.setButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // 隐藏当前对话框
@@ -230,16 +228,17 @@ public class CheckUpdateDialog {
                 mIsCancel = true;
             }
         });
-        mDownloadDialog = builder.create();
+        dialog.setMax(100);
+        mDownloadDialog = dialog;
         mDownloadDialog.show();
         // 下载文件
-        downloadAPK(context);
+        downloadAPK();
     }
 
     /*
      * 开启新线程下载apk文件
      */
-    private static void downloadAPK(final Context context) {
+    private static void downloadAPK() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -247,26 +246,17 @@ public class CheckUpdateDialog {
                     if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                         String sdPath = Environment.getExternalStorageDirectory() + "/";
 //                      文件保存路径
-                        mSavePath = sdPath + "mt_launcher";
+                        mSavePath = sdPath + mContext.getPackageName() + "/";
                         File dir = new File(mSavePath);
                         if (!dir.exists()) {
                             dir.mkdir();
                         }
-                        String str = BuildConfig.VERSION_NAME;
-                        String url = "";
-                        if (str.indexOf("beta") != -1) {
-                            //  内测版请求链接
-                            url = "https://" + MTCore.SERVER_WEB_URL_KEY + "/data/User/admin/home/NaiYouApks/Launcher/app-release.apk";
-                        } else {
-                            //  稳定版请求链接
-                            url = "https://" + MTCore.SERVER_WEB_URL_KEY + "/data/User/admin/home/NaiYouApks/Launcher/app-release.apk";
-                        }
                         // 下载文件
-                        HttpsURLConnection conn = (HttpsURLConnection) new URL(url).openConnection();
+                        HttpsURLConnection conn = (HttpsURLConnection) new URL(mVersion_Url).openConnection();
                         conn.connect();
                         InputStream is = conn.getInputStream();
                         int length = conn.getContentLength();
-                        File apkFile = new File(mSavePath, mVersion_name + ".apk");
+                        File apkFile = new File(mSavePath, mContext.getPackageName() + "_" + mVersion_new + ".apk");
                         FileOutputStream fos = new FileOutputStream(apkFile);
                         int count = 0;
                         byte[] buffer = new byte[5120];
@@ -279,11 +269,7 @@ public class CheckUpdateDialog {
                             mUpdateProgressHandler.sendEmptyMessage(1);
                             // 下载完成
                             if (numread < 0) {
-                                try {
-                                    openFile(apkFile, context);
-                                } catch (Exception e) {
-                                    mUpdateProgressHandler.sendEmptyMessage(2);
-                                }
+                                mUpdateProgressHandler.sendEmptyMessage(2);
                                 break;
                             }
                             fos.write(buffer, 0, numread);
@@ -307,38 +293,45 @@ public class CheckUpdateDialog {
             switch (msg.what) {
                 case 1:
                     // 设置进度条
-                    mProgressBar.setProgress(mProgress);
+                    mDownloadDialog.setProgress(mProgress);
                     break;
                 case 2:
                     // 隐藏当前下载对话框
                     mDownloadDialog.dismiss();
                     // 安装 APK 文件
-                    DiyToast.showToast(mContext, "下载完成，请打开“mt_launcher”目录找到安装包进行安装", true);
-                    String s_clean = Build.BRAND;
                     AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                    if (s_clean.equals("Allwinner")) {
-                        builder.setTitle("你的设备是：\n 多看电纸书");
-                        builder.setMessage("由于 多看电纸书权限申请限制 和 Android 7 安全限制，无法自动安装，点击确定后自动跳转到文件管理，请到“ntlauncher”目录进行安装更新");
-                        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent();
-                                ComponentName cn = new ComponentName("com.softwinner.explore", "com.softwinner.explore.Main");
-                                intent.setComponent(cn);
-                                mContext.startActivity(intent);
-                            }
-                        });
-                        builder.setNeutralButton("稍后安装", null);
-                    } else {
-                        builder.setTitle("你的设备是：\n暂未适配");
-                        builder.setMessage("由于 Android 7 及以上版本新增权限限制，而且电纸书设备申请权限有BUG，所以请点击确定后请手动打开系统自带的文件管理，到“ntlauncher”目录进行安装更新");
-                        builder.setNeutralButton("确定", null);
-                    }
+                    builder.setTitle("安装");
+                    builder.setMessage("如果安装失败请前往 根目录/" + mContext.getPackageName() + "/ 目录下进行安装");
+                    builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            installApk(mSavePath);
+                        }
+                    });
+                    builder.setNeutralButton("稍后安装", null);
                     builder.show();
             }
         }
 
-        ;
     };
 
+    public static void installApk(String apkPath) {
+        if (mContext == null || TextUtils.isEmpty(apkPath)) {
+            return;
+        }
+        File file = new File(mSavePath, mContext.getPackageName() + "_" + mVersion_new + ".apk");
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        //判读版本是否在7.0以上
+        if (Build.VERSION.SDK_INT >= 24) {
+            //provider authorities
+            Uri apkUri = FileProvider.getUriForFile(mContext, mContext.getPackageName() + ".fileprovider", file);
+            //Granting Temporary Permissions to a URI
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.setDataAndType(apkUri, "application/vnd.android.package-archive");
+        } else {
+            intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+        }
+        mActivity.finish();
+        mContext.startActivity(intent);
+    }
 }

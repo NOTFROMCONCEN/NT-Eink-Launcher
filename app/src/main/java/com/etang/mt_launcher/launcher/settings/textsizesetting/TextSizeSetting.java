@@ -32,7 +32,7 @@ public class TextSizeSetting extends AppCompatActivity {
     //SharedPreferences本地存储，用于存储设置信息
     private SharedPreferences sharedPreferences;
     //文本，返回，按钮，标题
-    private TextView tv_back, tv_button, tv_title;
+    private TextView tv_button, tv_title;
     //返回LinearLayout
     private LinearLayout lv_back;
     //当前页面TAG
@@ -49,12 +49,6 @@ public class TextSizeSetting extends AppCompatActivity {
         //绑定控件
         initView();
         tv_title.setText("文本设置");
-        tv_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
         lv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -210,7 +204,6 @@ public class TextSizeSetting extends AppCompatActivity {
         btn_dianchitext_size = (Button) findViewById(R.id.btn_dianchitext_size);
         btn_nametext_size = (Button) findViewById(R.id.btn_nametext_size);
         btn_datetext_size = (Button) findViewById(R.id.btn_datetext_size);
-        tv_back = (TextView) findViewById(R.id.tv_title_back);
         tv_button = (TextView) findViewById(R.id.tv_title_button);
         tv_title = (TextView) findViewById(R.id.tv_title_text);
     }

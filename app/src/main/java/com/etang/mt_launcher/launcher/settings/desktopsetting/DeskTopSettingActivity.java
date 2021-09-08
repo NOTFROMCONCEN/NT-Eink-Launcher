@@ -38,7 +38,7 @@ public class DeskTopSettingActivity extends AppCompatActivity implements View.On
     //设置图标大小进度条
     private SeekBar sk_gridlist_iconsize;
     //显示文本，反馈，按钮，标题，列表设置，列表图标设置
-    private TextView tv_back, tv_button, tv_title, tv_gridlist_setting, tv_gridlist_iconsize;
+    private TextView tv_title, tv_gridlist_setting, tv_gridlist_iconsize;
     //返回LinearLayout
     private LinearLayout lv_back;
     //当前TAG
@@ -63,12 +63,6 @@ public class DeskTopSettingActivity extends AppCompatActivity implements View.On
          * 设置title
          */
         tv_title.setText("应用列表设置");
-        tv_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
         //title栏的linelayout布局点击事件
         lv_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,8 +157,6 @@ public class DeskTopSettingActivity extends AppCompatActivity implements View.On
 
     private void initView() {
         lv_back = (LinearLayout) findViewById(R.id.lv_back);
-        tv_back = (TextView) findViewById(R.id.tv_title_back);
-        tv_button = (TextView) findViewById(R.id.tv_title_button);
         tv_title = (TextView) findViewById(R.id.tv_title_text);
         sk_gridlist_iconsize = (SeekBar) findViewById(R.id.sk_gridlist_iconsize);
         tv_gridlist_iconsize = (TextView) findViewById(R.id.tv_gridlist_iconsize);

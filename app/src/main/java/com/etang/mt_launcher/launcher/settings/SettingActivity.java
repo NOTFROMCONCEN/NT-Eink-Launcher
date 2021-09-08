@@ -54,7 +54,7 @@ public class SettingActivity extends Activity {
     private MyDataBaseHelper dbHelper_name_sql;
     private SQLiteDatabase db;
     //文本，返回、按钮、标题
-    private TextView tv_back, tv_button, tv_title;
+    private TextView tv_button, tv_title;
     //当前页面TAG
     private static String TAG = "SettingActivity";
 
@@ -68,34 +68,12 @@ public class SettingActivity extends Activity {
         setContentView(R.layout.activity_setting_new);
         initView();//绑定控件
         tv_title.setText("桌面设置");
-        tv_back.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
         lv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        //隐藏暂时无用的选项
-//        if (!Build.BRAND.toString().equals("Allwinner")) {
-//        }
-//        //打开系统设置
-//        lv_open_dksetting.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //启动其他APP的Activity示例
-//                Intent intent = new Intent(Intent.ACTION_MAIN);
-//                intent.addCategory(Intent.CATEGORY_LAUNCHER);
-//                ComponentName cn = new ComponentName("com.duokan.mireader", "com.duokan.home.SystemSettingActivity");
-//                intent.setComponent(cn);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
         //设置title文本
         tv_button.setText("语言|权限|说明书");
         //设置title点击事件
@@ -391,7 +369,6 @@ public class SettingActivity extends Activity {
     private void initView() {
         // TODO Auto-generated method stub
         lv_back = (LinearLayout) findViewById(R.id.lv_back);
-        tv_back = (TextView) findViewById(R.id.tv_title_back);
         tv_button = (TextView) findViewById(R.id.tv_title_button);
         tv_title = (TextView) findViewById(R.id.tv_title_text);
         lv_restart_setting = (LinearLayout) findViewById(R.id.lv_restart_setting);
