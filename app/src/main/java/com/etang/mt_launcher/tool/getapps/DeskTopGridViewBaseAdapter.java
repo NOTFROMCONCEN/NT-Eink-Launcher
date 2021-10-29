@@ -128,6 +128,8 @@ public class DeskTopGridViewBaseAdapter extends BaseAdapter {
                     holder.Name.setSingleLine(true);
                     holder.Name.setVisibility(View.VISIBLE);
                 }
+
+
                 if (appblok_state.equals("null")) {
                     holder.line_appinfo.setBackground(null);
                 }
@@ -162,7 +164,7 @@ public class DeskTopGridViewBaseAdapter extends BaseAdapter {
         }
     }
 
-    static class Holder {
+    private static class Holder {
         ImageView ico;
         TextView Name;
         LinearLayout line_appinfo;

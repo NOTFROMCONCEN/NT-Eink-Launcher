@@ -33,7 +33,6 @@ public class BitMapTools {
         int width, height;
         height = bmpOriginal.getHeight();
         width = bmpOriginal.getWidth();
-
         Bitmap bmpGrayscale = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
         Canvas c = new Canvas(bmpGrayscale);
         Paint paint = new Paint();

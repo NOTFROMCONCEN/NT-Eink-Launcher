@@ -1,7 +1,6 @@
 package com.etang.mt_launcher.launcher.settings.about;
 
 import android.app.AlertDialog;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;

@@ -15,12 +15,11 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.util.Log;
+import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
 
 import com.etang.mt_launcher.BuildConfig;
-import com.etang.mt_launcher.R;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -33,7 +32,10 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
-
+/**
+ * ver01.于 2021年10月22日 23点01分 尝试解耦
+ * 别看了，以前的版本早就找不到了，现在的能用就行
+ */
 public class CheckUpdateDialog {
     //  上下文
     private static Context mContext;
@@ -47,14 +49,18 @@ public class CheckUpdateDialog {
     private static int mProgress;
     //  文件保存路径
     private static String mSavePath;
-    //当前页面TAG
-    private static String TAG = "CheckUpdateDialog";
     //最新版本号
     private static int mVersion_new = 0;
     //当前下载链接
     private static String mVersion_Url = "";
 
-
+    /**
+     * 检查更新
+     *
+     * @param context  继承上下文
+     * @param activity 继承活动
+     * @param where    从哪里调用的本方法
+     */
     public static void check_update(final Context context, final Activity activity, final String where) {
         mContext = context;
         mActivity = activity;
@@ -66,18 +72,23 @@ public class CheckUpdateDialog {
                 String val = data.getString("weblink_state");
                 switch (val) {
                     case "1":
-                        if (where == "about") {
+                        if (where.equals("about")) {
                         }
                         break;
                     case "2":
-                        if (where == "about") {
+                        if (where.equals("about")) {
                             Bundle data_error = msg.getData();
                             String error_message = data_error.getString("error_message");
-                            DeBugDialog.debug_show_dialog(context, error_message, TAG);
+                            Toast.makeText(mContext, "Error：" + error_message, Toast.LENGTH_SHORT).show();
                         }
                         break;
+                    case "3":
+                        if (where.equals("about")) {
+
+                        }
                     case "4":
-                        if (where == "about") {
+                        if (where.equals("about")) {
+
                         }
                         break;
                     case "5":
@@ -156,7 +167,9 @@ public class CheckUpdateDialog {
         if (version_code != mVersion_new) {
             if (version_code < mVersion_new) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                builder.setMessage("发现最新版本：\n" + String.valueOf(mVersion_new) + "\n你的“梅糖桌面”需要更新，可以前往“酷安APP”或者点击“更新”进行更新。");
+                builder.setCancelable(false);// 设置是否可以通过点击Back键取消
+                builder.setTitle("发现更新");
+                builder.setMessage("发现最新版本：\n" + String.valueOf(mVersion_new) + "\nAPP需要更新。");
                 builder.setNeutralButton("更新", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -169,6 +182,8 @@ public class CheckUpdateDialog {
         } else {
             if (where == "about") {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setCancelable(false);// 设置是否可以通过点击Back键取消
+                builder.setTitle("未发现更新");
                 builder.setMessage("当前版本：" + "\n" + String.valueOf(version_code) + "\n" + "现有版本：" + "\n" + mVersion_new + "\n" + "\n你已经是最新版本了");
                 builder.setNeutralButton("重新下载", new DialogInterface.OnClickListener() {
                     @Override
@@ -216,9 +231,8 @@ public class CheckUpdateDialog {
         dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);// 设置水平进度条
         dialog.setCancelable(false);// 设置是否可以通过点击Back键取消
         dialog.setCanceledOnTouchOutside(false);// 设置在点击Dialog外是否取消Dialog进度条
-        dialog.setIcon(R.drawable.ic_launcher);// 设置提示的title的图标，默认是没有的
         dialog.setTitle("正在下载......");// 设置标题
-        dialog.setMessage("如果安装失败，请前往 根目录/" + mContext.getPackageName() + "/ 目录下进行安装");
+        dialog.setMessage("请不要离开本页面。如果安装失败，请前往 根目录/" + mContext.getPackageName() + "/ 目录下进行安装");
         dialog.setButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -300,8 +314,9 @@ public class CheckUpdateDialog {
                     mDownloadDialog.dismiss();
                     // 安装 APK 文件
                     AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                    builder.setCancelable(false);// 设置是否可以通过点击Back键取消
                     builder.setTitle("安装");
-                    builder.setMessage("如果安装失败请前往 根目录/" + mContext.getPackageName() + "/ 目录下进行安装");
+                    builder.setMessage("请点击“确定”按钮进行安装，如果安装失败请前往 根目录/" + mContext.getPackageName() + "/ 目录下进行安装");
                     builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
