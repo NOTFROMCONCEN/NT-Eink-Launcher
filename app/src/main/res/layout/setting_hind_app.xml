@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal|center_vertical"
-            android:text="点击图标可以取消隐藏" />
+            android:text="长按图标可以取消隐藏\n点击图标打开APP" />
 
         <GridView
             android:id="@+id/mHindGridView"

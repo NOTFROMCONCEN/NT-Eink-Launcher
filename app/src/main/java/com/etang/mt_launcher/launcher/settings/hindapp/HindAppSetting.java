@@ -2,7 +2,10 @@ package com.etang.mt_launcher.launcher.settings.hindapp;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,6 +18,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.etang.mt_launcher.R;
+import com.etang.mt_launcher.launcher.MainActivity;
+import com.etang.mt_launcher.launcher.settings.SettingActivity;
+import com.etang.mt_launcher.launcher.settings.about.AboutActivity;
+import com.etang.mt_launcher.launcher.settings.uirefresh.UireFreshActivity;
+import com.etang.mt_launcher.launcher.settings.weather.WeatherActivity;
+import com.etang.mt_launcher.launcher.welecome.WelecomeActivity;
+import com.etang.mt_launcher.tool.dialog.DeBugDialog;
 import com.etang.mt_launcher.tool.savearrayutil.SaveArrayListUtil;
 import com.etang.mt_launcher.tool.toast.DiyToast;
 import com.etang.mt_launcher.tool.getapps.AppInfo;
@@ -69,10 +79,11 @@ public class HindAppSetting extends AppCompatActivity {
                 finish();
             }
         });
-        mHindGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mHindGridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 show_dialog_helper(appHindInfos.get(position).getPackageName());
+                return true;
             }
         });
         tv_button.setText("刷新");
@@ -81,6 +92,67 @@ public class HindAppSetting extends AppCompatActivity {
             public void onClick(View v) {
                 DiyToast.showToast(getApplicationContext(), "刷新成功", false);
                 initAppList(getApplicationContext());
+            }
+        });
+        // 当点击GridView时，获取ID和应用包名并启动
+        mHindGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                try {
+                    // Intent intent=appInfos.get(position).getIntent();
+                    // startActivity(intent);
+                    Intent intent = getPackageManager().getLaunchIntentForPackage(
+                            appHindInfos.get(position).getPackageName());
+
+                    Log.e("TAG", String.valueOf(intent));
+
+                    if (intent != null) {//点击的APP无异常
+                        intent.putExtra("type", "110");
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    } else if (appHindInfos.get(position).getPackageName().equals(getPackageName() + ".weather")) {//点击了“天气”
+                        intent = new Intent(HindAppSetting.this, WeatherActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    } else if (appHindInfos.get(position).getPackageName().equals(getPackageName() + ".systemupdate")) {//点击了“检查更新”
+                        intent = new Intent(HindAppSetting.this, AboutActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+//                        CheckUpdateDialog.check_update(MainActivity.this, MainActivity.this);
+                    } else if (appHindInfos.get(position).getPackageName().equals(getPackageName() + ".launchersetting")) {//点击了“桌面设置”
+                        intent = new Intent(HindAppSetting.this, SettingActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    } else if (appHindInfos.get(position).getPackageName().equals(getPackageName() + ".uirefresh")) {//点击了“刷新屏幕”
+                        String s = Build.BRAND;
+                        if (s.equals("Allwinner")) {
+                            Intent intent_refresh = new Intent("android.eink.force.refresh");
+                            sendBroadcast(intent_refresh);
+                        } else {
+                            startActivity(new Intent(HindAppSetting.this, UireFreshActivity.class));
+                            overridePendingTransition(0, 0);
+                        }
+                    } else if (appHindInfos.get(position).getPackageName().equals(getPackageName() + ".systemclean")) {//点击了“清理”
+                        String s_clean = Build.BRAND;
+                        if (s_clean.equals("Allwinner")) {
+                            //唤醒广播
+                            Intent intent_clear = new Intent("com.mogu.clear_mem");
+                            sendBroadcast(intent_clear);
+                        }
+                    } else if (appHindInfos.get(position).getPackageName().equals(getPackageName() + ".userhelper")) {
+                        DiyToast.showToast(getApplicationContext(), "打开", true);
+                        intent.putExtra("state", "false");
+                        intent = new Intent(HindAppSetting.this, WelecomeActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    } else {//出现异常
+                        DeBugDialog.debug_show_dialog(HindAppSetting.this, "启动APP时出现“Intent”相关的异常", TAG);
+                    }
+                } catch (Exception e) {
+                    DeBugDialog.debug_show_dialog(HindAppSetting.this, e.toString(), TAG);
+                }
             }
         });
     }

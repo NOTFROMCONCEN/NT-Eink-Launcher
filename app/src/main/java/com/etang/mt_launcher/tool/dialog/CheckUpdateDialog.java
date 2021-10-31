@@ -15,11 +15,13 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
 
 import com.etang.mt_launcher.BuildConfig;
+import com.etang.mt_launcher.tool.toast.DiyToast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -53,6 +55,8 @@ public class CheckUpdateDialog {
     private static int mVersion_new = 0;
     //当前下载链接
     private static String mVersion_Url = "";
+    //当前更新日志
+    private static String mVersion_Logs = "";
 
     /**
      * 检查更新
@@ -68,6 +72,7 @@ public class CheckUpdateDialog {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
+                Toast.makeText(mContext, "正在连接，请稍后", Toast.LENGTH_SHORT).show();
                 Bundle data = msg.getData();
                 String val = data.getString("weblink_state");
                 switch (val) {
@@ -79,7 +84,7 @@ public class CheckUpdateDialog {
                         if (where.equals("about")) {
                             Bundle data_error = msg.getData();
                             String error_message = data_error.getString("error_message");
-                            Toast.makeText(mContext, "Error：" + error_message, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, "网络连接失败！请重试" + "\n" + "Error：" + error_message, Toast.LENGTH_LONG).show();
                         }
                         break;
                     case "3":
@@ -113,8 +118,21 @@ public class CheckUpdateDialog {
                                 .replace("<updateurl>", "")
                                 .replace("</updateurl>", "")
                                 .replace(" ", "");
+                        //获取更新日志
+                        String version_Logs = data_version.getString("version_Logs")
+                                .replace("<updatemessage>", "")
+                                .replace("</updatemessage>", "")
+                                .replace("<date>", "")
+                                .replace("</date>", "")
+                                .replace("<message>", "")
+                                .replace("</message>", "")
+                                .replace(" ", "");
+                        Log.e("TAG", "handleMessage: " + version_Logs);
                         mVersion_new = Integer.valueOf(version_Code);
                         mVersion_Url = version_Urls;
+                        mVersion_Logs = version_Logs;
+
+
                         check_beta(where);
                         break;
                 }
@@ -148,6 +166,7 @@ public class CheckUpdateDialog {
                     data_version.putString("version_Code", String.valueOf(titleAndPic.get(0).select("code")));
                     data_version.putString("version_Name", String.valueOf(titleAndPic.get(0).select("name")));
                     data_version.putString("version_Urls", String.valueOf(titleAndPic.get(0).select("updateurl")));
+                    data_version.putString("version_Logs", String.valueOf(titleAndPic.get(0).select("updatemessage")));
                     msg_version.setData(data_version);
                     handler.sendMessage(msg_version);
                 } catch (Exception e) {
@@ -169,7 +188,7 @@ public class CheckUpdateDialog {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                 builder.setCancelable(false);// 设置是否可以通过点击Back键取消
                 builder.setTitle("发现更新");
-                builder.setMessage("发现最新版本：\n" + String.valueOf(mVersion_new) + "\nAPP需要更新。");
+                builder.setMessage("发现最新版本：\n" + String.valueOf(mVersion_new) + "\nAPP需要更新。\n\n更新日志：\n" + mVersion_Logs);
                 builder.setNeutralButton("更新", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -184,7 +203,7 @@ public class CheckUpdateDialog {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                 builder.setCancelable(false);// 设置是否可以通过点击Back键取消
                 builder.setTitle("未发现更新");
-                builder.setMessage("当前版本：" + "\n" + String.valueOf(version_code) + "\n" + "现有版本：" + "\n" + mVersion_new + "\n" + "\n你已经是最新版本了");
+                builder.setMessage("当前版本：" + "\n" + String.valueOf(version_code) + "\n" + "现有版本：" + "\n" + mVersion_new + "\n" + "\n你已经是最新版本了\n\n更新日志：\n" + mVersion_Logs);
                 builder.setNeutralButton("重新下载", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

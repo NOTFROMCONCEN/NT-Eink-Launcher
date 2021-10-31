@@ -1,6 +1,15 @@
-## MT Launcher 梅糖桌面
+## S.H. Home Resert Project
 
-> 特别特别特别的简陋的一个桌面（＞人＜；)，给类似于多看、有道等安卓系统的Eink电纸书用的。
+ - 开源地址：https://gitee.com/rabbitTang_admin/S.H.Home-Project-Reset
+ - 下载地址：https://yp.nyanon.online/index.php?share/file&user=1&sid=CiVtskzP
+
+> 基于企想智能家居安装与维护平台开发的APP
+
+## 截图
+
+| 登录界面                                                     | 数据采集界面                                                 | 设备控制界面（打开）                                         | 设备控制界面（关闭）                                         | 软件设置界面                                                 | 加载界面                                                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![](https://rabbittang_admin.gitee.io/gallery/Screenshots/Screenshot_2021-08-07-01-47-52-448_S.H.%20Home.png) | ![](https://rabbittang_admin.gitee.io/gallery/Screenshots/Screenshot_2021-08-07-01-48-20-798_S.H.%20Home.png) | ![](https://rabbittang_admin.gitee.io/gallery/Screenshots/Screenshot_2021-08-07-01-48-53-907_S.H.%20Home.png) | ![](https://rabbittang_admin.gitee.io/gallery/Screenshots/Screenshot_2021-08-07-01-48-34-612_S.H.%20Home.png) | ![](https://rabbittang_admin.gitee.io/gallery/Screenshots/Screenshot_2021-08-07-01-49-19-720_S.H.%20Home.png) | ![](https://rabbittang_admin.gitee.io/gallery/Screenshots/Screenshot_2021-08-07-01-52-36-569_S.H.%20Home.png) |
 
 ## 前言
 
@@ -16,7 +25,7 @@
 
 #### 更新地址
 
-- 最新更新在：[Gitee码云](https://gitee.com/rabbitTang_admin/NT-Eink-Launcher)
+- 最新更新在：[Gitee码云](https://gitee.com/rabbitTang_admin/S.H.Home-Project-Reset)
 - 我的博客是：[どうして私だけが](https://blog.nyanon.online/)
 
 ## 介绍
@@ -41,4 +50,5 @@
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ![微信](https://rabbittang_admin.gitee.io/gallery/pay_core/wechatpay.jpg) | ![支付宝](https://rabbittang_admin.gitee.io/gallery/pay_core/alipay.jpg) |
 
- 
+
+

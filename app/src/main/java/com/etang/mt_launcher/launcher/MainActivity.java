@@ -123,8 +123,8 @@ public class MainActivity extends Activity implements OnClickListener {
         SavePermission.check_save_permission(MainActivity.this);//检查存取权限
         new_time_Thread();// 启用更新时间进程
         read_info_help(MainActivity.this, sharedPreferences);//集中存放读取信息相关方法
-        //检查更新
-        CheckUpdateDialog.check_update(MainActivity.this, MainActivity.this, "main");
+//        //检查更新
+//        CheckUpdateDialog.check_update(MainActivity.this, MainActivity.this, "main");
         // 长按弹出APP信息
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -195,6 +195,15 @@ public class MainActivity extends Activity implements OnClickListener {
                 } catch (Exception e) {
                     DeBugDialog.debug_show_dialog(MainActivity.this, e.toString(), TAG);
                 }
+            }
+        });
+        //桌面壁纸长按事件
+        iv_index_back.setOnLongClickListener(new OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                iv_index_back.setVisibility(View.GONE);
+                mListView.setVisibility(View.VISIBLE);
+                return true;
             }
         });
         //切换应用列表
@@ -316,7 +325,7 @@ public class MainActivity extends Activity implements OnClickListener {
             // 设置 背景
             if (s.equals("app_wallpaper")) {
                 MainActivity.iv_index_back.setVisibility(View.VISIBLE);
-                MainActivity.mListView.setVisibility(View.INVISIBLE);
+                MainActivity.mListView.setVisibility(View.GONE);
                 MainActivity.iv_index_back.setImageBitmap(bitmap);
                 MainActivity.tg_apps_state.setVisibility(View.VISIBLE);
                 tg_apps_state.setChecked(false);
@@ -520,7 +529,7 @@ public class MainActivity extends Activity implements OnClickListener {
             }
             if (images_mode.equals("")) {
                 iv_index_back.setImageResource(R.drawable.mi_haole);
-                iv_index_back.setVisibility(View.INVISIBLE);
+                iv_index_back.setVisibility(View.GONE);
                 mListView.setVisibility(View.VISIBLE);
                 DiyToast.showToast(this, "请选择壁纸或者应用列表（设置-壁纸设置）", false);
             }
