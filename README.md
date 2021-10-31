@@ -1,15 +1,14 @@
 ## S.H. Home Resert Project
 
- - 开源地址：https://gitee.com/rabbitTang_admin/S.H.Home-Project-Reset
- - 下载地址：https://yp.nyanon.online/index.php?share/file&user=1&sid=CiVtskzP
+ - 开源地址：https://gitee.com/rabbitTang_admin/NT-Eink-Launcher
+ - 下载地址：https://yp.nyanon.online/index.php?share/file&user=1&sid=6NX4WCR8
 
-> 基于企想智能家居安装与维护平台开发的APP
+> 给搭载Android系统的Eink电纸书使用的启动器
 
 ## 截图
 
-| 登录界面                                                     | 数据采集界面                                                 | 设备控制界面（打开）                                         | 设备控制界面（关闭）                                         | 软件设置界面                                                 | 加载界面                                                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![](https://rabbittang_admin.gitee.io/gallery/Screenshots/Screenshot_2021-08-07-01-47-52-448_S.H.%20Home.png) | ![](https://rabbittang_admin.gitee.io/gallery/Screenshots/Screenshot_2021-08-07-01-48-20-798_S.H.%20Home.png) | ![](https://rabbittang_admin.gitee.io/gallery/Screenshots/Screenshot_2021-08-07-01-48-53-907_S.H.%20Home.png) | ![](https://rabbittang_admin.gitee.io/gallery/Screenshots/Screenshot_2021-08-07-01-48-34-612_S.H.%20Home.png) | ![](https://rabbittang_admin.gitee.io/gallery/Screenshots/Screenshot_2021-08-07-01-49-19-720_S.H.%20Home.png) | ![](https://rabbittang_admin.gitee.io/gallery/Screenshots/Screenshot_2021-08-07-01-52-36-569_S.H.%20Home.png) |
+| ![](https://rabbittang_admin.gitee.io/gallery/Screenshots/mtlauncher/1.png) | ![](https://rabbittang_admin.gitee.io/gallery/Screenshots/mtlauncher/2.png) | ![](https://rabbittang_admin.gitee.io/gallery/Screenshots/mtlauncher/3.png) | ![](https://rabbittang_admin.gitee.io/gallery/Screenshots/mtlauncher/4.png) | ![](https://rabbittang_admin.gitee.io/gallery/Screenshots/mtlauncher/5.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 
 ## 前言
 
@@ -25,7 +24,7 @@
 
 #### 更新地址
 
-- 最新更新在：[Gitee码云](https://gitee.com/rabbitTang_admin/S.H.Home-Project-Reset)
+- 最新更新在：[Gitee码云](https://gitee.com/rabbitTang_admin/NT-Eink-Launcher)
 - 我的博客是：[どうして私だけが](https://blog.nyanon.online/)
 
 ## 介绍
