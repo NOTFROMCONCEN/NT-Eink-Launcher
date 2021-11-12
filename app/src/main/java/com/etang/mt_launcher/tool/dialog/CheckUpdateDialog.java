@@ -88,11 +88,9 @@ public class CheckUpdateDialog {
                         break;
                     case "3":
                         if (where.equals("about")) {
-
                         }
                     case "4":
                         if (where.equals("about")) {
-
                         }
                         break;
                     case "5":
@@ -130,8 +128,6 @@ public class CheckUpdateDialog {
                         mVersion_new = Integer.valueOf(version_Code);
                         mVersion_Url = version_Urls;
                         mVersion_Logs = version_Logs;
-
-
                         check_beta(where);
                         break;
                 }
