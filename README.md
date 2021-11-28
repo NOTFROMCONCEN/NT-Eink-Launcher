@@ -1,4 +1,4 @@
-## S.H. Home Resert Project
+## MT-Launcher 梅糖桌面
 
  - 开源地址：https://gitee.com/rabbitTang_admin/NT-Eink-Launcher
  - 下载地址：https://yp.nyanon.online/index.php?share/file&user=1&sid=6NX4WCR8
