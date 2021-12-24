@@ -7,7 +7,7 @@ import java.io.InputStream;
 /**
  * @Package: com.etang.nt_launcher.tool.util
  * @ClassName: StreamTool
- * @Description: 字节流工具
+ * @Description: 字节流工具，一种工具类，看不懂看不懂看不懂看不懂看不懂看不懂看不懂看不懂看不懂
  * @CreateDate: 2021/3/19 8:29
  * @UpdateDate: 2021/3/19 8:29
  */

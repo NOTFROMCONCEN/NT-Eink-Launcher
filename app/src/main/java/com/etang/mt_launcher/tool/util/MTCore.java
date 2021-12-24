@@ -6,7 +6,7 @@ import ru.alexbykov.nopermission.BuildConfig;
 /**
  * @Package: com.etang.nt_launcher.tool.util
  * @ClassName: MTCore
- * @Description: 存放整个APP能用到的变量
+ * @Description: 存放整个APP能用到的变量，自定义类
  * @CreateDate: 2021/3/19 8:29
  * @UpdateDate: 2021/3/19 8:29
  */

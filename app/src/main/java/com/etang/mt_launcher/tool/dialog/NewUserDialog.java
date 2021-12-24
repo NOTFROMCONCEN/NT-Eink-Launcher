@@ -3,11 +3,8 @@ package com.etang.mt_launcher.tool.dialog;
 import android.content.Context;
 import android.os.Build;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.webkit.WebView;
 
-import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.tool.util.MTCore;
 
 /**

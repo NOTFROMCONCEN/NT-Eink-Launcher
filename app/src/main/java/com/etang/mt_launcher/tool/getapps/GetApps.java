@@ -14,6 +14,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 
 import com.etang.mt_launcher.R;
+import com.etang.mt_launcher.tool.bitmap.BitMapTools;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -145,7 +146,7 @@ public class GetApps {
         Canvas canvas = new Canvas(bitmap);
         drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
         drawable.draw(canvas);
-//        return BitMapTools.toGrayscale(bitmap);//灰色bitmap
-        return bitmap;//正常bitmap
+        return BitMapTools.toRoundCorner(bitmap, 64);//灰色bitmap
+//        return bitmap;//正常bitmap
     }
 }

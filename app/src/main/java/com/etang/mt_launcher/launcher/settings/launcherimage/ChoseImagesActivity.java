@@ -1,8 +1,5 @@
 package com.etang.mt_launcher.launcher.settings.launcherimage;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,11 +17,14 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.launcher.MainActivity;
 import com.etang.mt_launcher.tool.dialog.DeBugDialog;
 import com.etang.mt_launcher.tool.permission.SavePermission;
 import com.etang.mt_launcher.tool.toast.DiyToast;
-import com.etang.mt_launcher.R;
 
 import java.io.IOException;
 

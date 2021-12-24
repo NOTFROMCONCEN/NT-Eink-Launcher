@@ -1,6 +1,5 @@
 package com.etang.mt_launcher.launcher.settings.about;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -15,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.etang.mt_launcher.BuildConfig;
 import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.tool.dialog.CheckUpdateDialog;
+import com.etang.mt_launcher.tool.dialog.FollwoMeDialog;
 import com.etang.mt_launcher.tool.dialog.PayMeDialog;
 import com.etang.mt_launcher.tool.permission.SavePermission;
 import com.etang.mt_launcher.tool.toast.DiyToast;
@@ -33,7 +33,7 @@ import com.etang.mt_launcher.tool.toast.DiyToast;
 public class AboutActivity extends AppCompatActivity {
     private ImageView iv_about_logo;//关于 LOGO
     //文本，分别是文本_返回，文本_标题，文本_按钮，文本_关于捐赠我
-    private TextView tv_title, tv_button, tv_about_juanzeng, tv_about_showversion;
+    private TextView tv_title, tv_button, tv_about_juanzeng, tv_about_showversion, tv_about_guanzhu;
     //返回LinearLayout
     private LinearLayout lv_back;
     //检查更新按钮
@@ -50,7 +50,7 @@ public class AboutActivity extends AppCompatActivity {
         //设置Activity没有title栏
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //设置xml界面
-        setContentView(R.layout.setting_about);
+        setContentView(R.layout.setting_about_yuan);
         //绑定控件
         initView();
         //标题
@@ -60,11 +60,7 @@ public class AboutActivity extends AppCompatActivity {
         tv_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //新建一个dialog
-                new AlertDialog.Builder(AboutActivity.this)
-                        .setTitle("部分图片来自：iconfont.cn")
-                        .setMessage("图标（launcher icon）：小白熊_猫草君 | \"糖果\"icon")
-                        .setNegativeButton("关闭", null).show();
+                PayMeDialog.show_iconlink_dialog(AboutActivity.this);
             }
         });
         //返回 线性布局 点击事件
@@ -104,6 +100,15 @@ public class AboutActivity extends AppCompatActivity {
                 PayMeDialog.show_dialog(AboutActivity.this);
             }
         });
+        tv_about_guanzhu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast提示
+                DiyToast.showToast(getApplicationContext(), "使用对应APP扫码即可~~~~", true);
+                //显示捐赠弹出框
+                FollwoMeDialog.show_dialog(AboutActivity.this);
+            }
+        });
         //设置版本号
         tv_about_showversion.setText("梅糖桌面 Project" + "\n" + BuildConfig.VERSION_NAME);
     }
@@ -119,6 +124,7 @@ public class AboutActivity extends AppCompatActivity {
         tv_title = (TextView) findViewById(R.id.tv_title_text);
         btn_about_checkup_button = (Button) findViewById(R.id.btn_about_checkup_button);
         tv_about_juanzeng = (TextView) findViewById(R.id.tv_about_juanzeng);
+        tv_about_guanzhu = (TextView) findViewById(R.id.tv_about_guanzhu);
     }
 
     /**

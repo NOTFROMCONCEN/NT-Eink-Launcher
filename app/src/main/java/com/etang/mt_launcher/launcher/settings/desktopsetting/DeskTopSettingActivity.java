@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -41,6 +43,8 @@ public class DeskTopSettingActivity extends AppCompatActivity implements View.On
     private TextView tv_title, tv_gridlist_setting, tv_gridlist_iconsize;
     //返回LinearLayout
     private LinearLayout lv_back;
+    //隐藏图标
+    private CheckBox cb_appname_hind_ico;
     //当前TAG
     private static String TAG = "DeskTopSettingActivity";
     //当前TAG中文名
@@ -76,6 +80,10 @@ public class DeskTopSettingActivity extends AppCompatActivity implements View.On
         final SharedPreferences sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
         //进度条进度
         int progress = Integer.valueOf(sharedPreferences.getString("icon_size", null));
+        //设置复选框状态
+        if (progress <= 5) {
+            cb_appname_hind_ico.setChecked(true);
+        }
         //在文本上显示已存储的进度
         tv_gridlist_iconsize.setText(String.valueOf(progress));
         //设置SeekBar的进度
@@ -97,6 +105,19 @@ public class DeskTopSettingActivity extends AppCompatActivity implements View.On
             public void onStopTrackingTouch(SeekBar seekBar) {
                 //重新载入一遍软件列表以应用更改后的图标大小
                 MainActivity.initAppList(DeskTopSettingActivity.this);
+            }
+        });
+        //设置隐藏图标
+        cb_appname_hind_ico.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    sharedPreferences.edit().putString("icon_size", "0").commit();
+                    sk_gridlist_iconsize.setProgress(0);
+                } else {
+                    sharedPreferences.edit().putString("icon_size", "40").commit();
+                    sk_gridlist_iconsize.setProgress(40);
+                }
             }
         });
     }
@@ -182,6 +203,7 @@ public class DeskTopSettingActivity extends AppCompatActivity implements View.On
         ra_app_show_nocolor_blok_line.setOnClickListener(this);
         ra_app_show_nocolor_blok_yuan = (RadioButton) findViewById(R.id.ra_app_show_nocolor_blok_yuan);
         ra_app_show_nocolor_blok_yuan.setOnClickListener(this);
+        cb_appname_hind_ico = (CheckBox) findViewById(R.id.cb_appname_hind_ico);
     }
 
     public void show_gridlist_setting() {

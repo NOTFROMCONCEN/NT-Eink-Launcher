@@ -15,6 +15,7 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/shaper_yuanjiao_nocolor_show"
@@ -33,15 +34,27 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:contentDescription="@null"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/ic_love2_ico" />
 
-        <TextView
-            android:id="@+id/tv_about_showversion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center|center_vertical"
-            android:text="梅糖桌面 Project"
-            android:textSize="20dp"></TextView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|left"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_about_showversion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="梅糖桌面 Project"
+                android:textSize="20dp"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="By - 奶油话梅糖"></TextView>
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -51,25 +64,43 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_margin="25dp"
-        android:background="@drawable/shaper_apks_button_window_show"
+        android:background="@drawable/shaper_toast_show"
         android:text="检查更新"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_about_juanzeng"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:background="@drawable/shaper_toast_show"
-        android:padding="5dp"
-        android:text="点击此捐赠|支持开发"
-        android:textSize="15dp"
+        android:layout_marginBottom="20sp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/btn_about_checkup_button"
         app:layout_constraintEnd_toEndOf="@+id/btn_about_checkup_button"
-        app:layout_constraintStart_toStartOf="@+id/btn_about_checkup_button" />
+        app:layout_constraintStart_toStartOf="@+id/btn_about_checkup_button">
+
+        <TextView
+            android:id="@+id/tv_about_juanzeng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            android:background="@drawable/shaper_toast_show"
+            android:padding="5dp"
+            android:text="点击这里支持我"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tv_about_guanzhu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            android:background="@drawable/shaper_toast_show"
+            android:padding="5dp"
+            android:text="点击这里关注我"
+            android:textSize="15dp" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -40,7 +40,7 @@
                     android:id="@+id/ra_appname_hind"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="隐藏"
+                    android:text="隐藏文本"
                     android:textColor="#90000000" />
 
                 <RadioButton
@@ -166,6 +166,13 @@
                 android:text="点击进行应用列数设置"
                 android:textColor="#000000"
                 android:textSize="17sp" />
+
+            <CheckBox
+                android:id="@+id/cb_appname_hind_ico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="隐藏图标"
+                android:textColor="#90000000" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

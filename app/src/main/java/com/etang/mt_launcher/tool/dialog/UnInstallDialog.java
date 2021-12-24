@@ -21,11 +21,11 @@ import com.etang.mt_launcher.launcher.settings.SettingActivity;
 import com.etang.mt_launcher.launcher.settings.about.AboutActivity;
 import com.etang.mt_launcher.launcher.settings.uirefresh.UireFreshActivity;
 import com.etang.mt_launcher.launcher.settings.weather.WeatherActivity;
+import com.etang.mt_launcher.tool.getapps.AppInfo;
 import com.etang.mt_launcher.tool.permission.SavePermission;
 import com.etang.mt_launcher.tool.savearrayutil.SaveArrayImageUtil;
 import com.etang.mt_launcher.tool.savearrayutil.SaveArrayListUtil;
 import com.etang.mt_launcher.tool.toast.DiyToast;
-import com.etang.mt_launcher.tool.getapps.AppInfo;
 
 import java.util.ArrayList;
 import java.util.List;

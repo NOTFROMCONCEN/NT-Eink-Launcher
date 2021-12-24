@@ -34,8 +34,12 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
- * ver01.于 2021年10月22日 23点01分 尝试解耦
+ * 于 2021年10月22日 23点01分 尝试解耦
  * 别看了，以前的版本早就找不到了，现在的能用就行
+ * 有的地方越来越看不懂了
+ * <p>
+ * 于2021年12月11日 17点42分
+ * 看懂了，但是又没看懂，试下多家两个注释
  */
 public class CheckUpdateDialog {
     //  上下文

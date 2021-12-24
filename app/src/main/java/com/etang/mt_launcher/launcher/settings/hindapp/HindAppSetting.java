@@ -18,18 +18,17 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.etang.mt_launcher.R;
-import com.etang.mt_launcher.launcher.MainActivity;
 import com.etang.mt_launcher.launcher.settings.SettingActivity;
 import com.etang.mt_launcher.launcher.settings.about.AboutActivity;
 import com.etang.mt_launcher.launcher.settings.uirefresh.UireFreshActivity;
 import com.etang.mt_launcher.launcher.settings.weather.WeatherActivity;
 import com.etang.mt_launcher.launcher.welecome.WelecomeActivity;
 import com.etang.mt_launcher.tool.dialog.DeBugDialog;
-import com.etang.mt_launcher.tool.savearrayutil.SaveArrayListUtil;
-import com.etang.mt_launcher.tool.toast.DiyToast;
 import com.etang.mt_launcher.tool.getapps.AppInfo;
 import com.etang.mt_launcher.tool.getapps.DeskTopGridViewBaseAdapter;
 import com.etang.mt_launcher.tool.getapps.GetApps;
+import com.etang.mt_launcher.tool.savearrayutil.SaveArrayListUtil;
+import com.etang.mt_launcher.tool.toast.DiyToast;
 
 import java.util.ArrayList;
 import java.util.List;

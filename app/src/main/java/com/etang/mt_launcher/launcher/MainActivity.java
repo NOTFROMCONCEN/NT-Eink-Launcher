@@ -53,17 +53,16 @@ import com.etang.mt_launcher.launcher.settings.about.AboutActivity;
 import com.etang.mt_launcher.launcher.settings.uirefresh.UireFreshActivity;
 import com.etang.mt_launcher.launcher.settings.weather.WeatherActivity;
 import com.etang.mt_launcher.launcher.welecome.WelecomeActivity;
-import com.etang.mt_launcher.tool.dialog.CheckUpdateDialog;
 import com.etang.mt_launcher.tool.dialog.DeBugDialog;
 import com.etang.mt_launcher.tool.dialog.UnInstallDialog;
+import com.etang.mt_launcher.tool.getapps.AppInfo;
+import com.etang.mt_launcher.tool.getapps.DeskTopGridViewBaseAdapter;
+import com.etang.mt_launcher.tool.getapps.GetApps;
 import com.etang.mt_launcher.tool.permission.SavePermission;
 import com.etang.mt_launcher.tool.savearrayutil.SaveArrayListUtil;
 import com.etang.mt_launcher.tool.server.AppInstallServer;
 import com.etang.mt_launcher.tool.sql.MyDataBaseHelper;
 import com.etang.mt_launcher.tool.toast.DiyToast;
-import com.etang.mt_launcher.tool.getapps.AppInfo;
-import com.etang.mt_launcher.tool.getapps.DeskTopGridViewBaseAdapter;
-import com.etang.mt_launcher.tool.getapps.GetApps;
 import com.etang.mt_launcher.tool.util.MTCore;
 import com.etang.mt_launcher.tool.util.StreamTool;
 
@@ -86,6 +85,12 @@ import java.util.Locale;
  * @Description: Main活动，主界面，桌面界面
  * @CreateDate: 2021/3/19 8:18
  * @UpdateDate: 2021/3/19 8:18
+ * <p>
+ * <p>
+ * 于2021年12月11日 17点43分
+ * 不会真的有人尝试看懂风滚草方式写出来的代码吧，不会吧不会吧。
+ * 哦原来是我自己尝试看懂啊。
+ * 坏了，看不懂了
  */
 public class MainActivity extends Activity implements OnClickListener {
     private BroadcastReceiver batteryLevelRcvr;
