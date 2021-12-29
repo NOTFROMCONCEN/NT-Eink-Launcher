@@ -19,6 +19,8 @@ import com.etang.mt_launcher.tool.dialog.PayMeDialog;
 import com.etang.mt_launcher.tool.permission.SavePermission;
 import com.etang.mt_launcher.tool.toast.DiyToast;
 
+import java.util.Random;
+
 /**
  * @ProjectName: NT-Eink-Launcher
  * @Package: com.etang.nt_launcher.launcher.settings.about
@@ -49,13 +51,20 @@ public class AboutActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //设置Activity没有title栏
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //设置xml界面
-        setContentView(R.layout.setting_about_yuan);
+        //随机开启页面
+        Random random = new Random();
+        int i = random.nextInt(10);
+        if (i >= 5) {
+            setContentView(R.layout.setting_about_fang);
+        } else {
+            setContentView(R.layout.setting_about_yuan);
+        }
         //绑定控件
         initView();
         //标题
         tv_title.setText(getString(R.string.string_about));
         tv_button.setText(getString(R.string.string_version));
+        tv_button.setVisibility(View.INVISIBLE);
         //按钮 文本
         tv_button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -21,6 +21,7 @@ import android.widget.Toast;
 import androidx.core.content.FileProvider;
 
 import com.etang.mt_launcher.BuildConfig;
+import com.etang.mt_launcher.R;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -40,6 +41,8 @@ import javax.net.ssl.HttpsURLConnection;
  * <p>
  * 于2021年12月11日 17点42分
  * 看懂了，但是又没看懂，试下多家两个注释
+ * 于2022年1月2日 12点21分
+ * 优化了整体结构，现在整个代码可以复制到其他工程使用了，前提是服务器有对应的资源
  */
 public class CheckUpdateDialog {
     //  上下文
@@ -71,33 +74,42 @@ public class CheckUpdateDialog {
     public static void check_update(final Context context, final Activity activity, final String where) {
         mContext = context;
         mActivity = activity;
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        final AlertDialog dialog = builder.create();
+        dialog.setTitle("链接中......");
+        dialog.setIcon(R.drawable.ic_update_zoe);
+        dialog.setMessage("请稍后，正在链接中~~~");
         final Handler handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                Toast.makeText(mContext, "正在连接，请稍后", Toast.LENGTH_SHORT).show();
                 Bundle data = msg.getData();
                 String val = data.getString("weblink_state");
                 switch (val) {
                     case "1":
                         if (where.equals("about")) {
+                            dialog.show();
                         }
                         break;
                     case "2":
                         if (where.equals("about")) {
                             Bundle data_error = msg.getData();
                             String error_message = data_error.getString("error_message");
+                            dialog.dismiss();
                             Toast.makeText(mContext, "网络连接失败！请重试" + "\n" + "Error：" + error_message, Toast.LENGTH_LONG).show();
                         }
                         break;
                     case "3":
                         if (where.equals("about")) {
+                            dialog.dismiss();
                         }
                     case "4":
                         if (where.equals("about")) {
+                            dialog.dismiss();
                         }
                         break;
                     case "5":
+                        dialog.dismiss();
                         Bundle data_version = msg.getData();
                         //获取APP名称
                         String version_Apps = data_version.getString("version_Apps")
@@ -196,13 +208,26 @@ public class CheckUpdateDialog {
                 });
                 builder.setPositiveButton("关闭", null);
                 builder.show();
+            } else if (version_code == mVersion_new || version_code > mVersion_new) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setCancelable(false);// 设置是否可以通过点击Back键取消
+                builder.setTitle("未发现更新或本地版本号过高");
+                builder.setMessage("当前版本：" + "\n" + String.valueOf(version_code) + "\n" + "现有版本：" + "\n" + mVersion_new);
+                builder.setNeutralButton("重新下载正式版", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startUpdate();
+                    }
+                });
+                builder.setPositiveButton("关闭", null);
+                builder.show();
             }
         } else {
             if (where == "about") {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                 builder.setCancelable(false);// 设置是否可以通过点击Back键取消
                 builder.setTitle("未发现更新");
-                builder.setMessage("当前版本：" + "\n" + String.valueOf(version_code) + "\n" + "现有版本：" + "\n" + mVersion_new + "\n" + "\n你已经是最新版本了\n\n更新日志：\n" + mVersion_Logs);
+                builder.setMessage("当前版本：" + "\n" + String.valueOf(version_code) + "\n" + "现有版本：" + "\n" + mVersion_new);
                 builder.setNeutralButton("重新下载", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
