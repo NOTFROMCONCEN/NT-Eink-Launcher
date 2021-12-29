@@ -50,7 +50,7 @@ public class UireFreshActivity extends AppCompatActivity {
             } else {
                 uirefresh_id.setBackgroundColor(Color.WHITE);
             }
-            handler.postDelayed(timeRunnable, 500);
+            handler.postDelayed(timeRunnable, 300);
         }
     };
     Runnable timeRunnable = new Runnable() {
