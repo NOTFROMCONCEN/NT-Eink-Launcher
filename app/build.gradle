@@ -7,10 +7,11 @@ android {
         applicationId "com.etang.mt_launcher"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 98
-        versionName "ver0.9.8"
+        versionCode 99
+        versionName "ver0.9.9"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     signingConfigs {
         debug {
             keyAlias 'etang'

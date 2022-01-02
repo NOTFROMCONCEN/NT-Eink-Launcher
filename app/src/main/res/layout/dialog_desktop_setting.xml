@@ -8,6 +8,7 @@
     android:padding="10dp">
 
 
+
     <EditText
         android:id="@+id/et_dialog_applist_number"
         android:layout_width="match_parent"

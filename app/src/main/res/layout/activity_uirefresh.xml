@@ -8,6 +8,7 @@
     android:gravity="center_vertical|center_horizontal|center"
     android:orientation="vertical">
 
+
     <View
         android:id="@+id/uirefresh_id"
         android:layout_width="match_parent"
