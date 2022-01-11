@@ -10,8 +10,7 @@
         layout="@layout/layout_in_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:visibility="invisible"></include>
+        android:layout_marginBottom="50dp"></include>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -31,15 +30,15 @@
                 android:gravity="center_vertical|center_horizontal|center"
                 android:text="本页面已弃用\n如有需要，请查看“activity_setting_new”"
                 android:textColor="#90000000"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:orientation="vertical"
-                android:visibility="invisible">
+                android:orientation="vertical">
 
                 <View
                     android:layout_width="match_parent"
