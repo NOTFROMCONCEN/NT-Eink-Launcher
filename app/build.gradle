@@ -7,8 +7,8 @@ android {
         applicationId "com.etang.mt_launcher"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 99
-        versionName "ver0.9.9"
+        versionCode 103
+        versionName "ver1.0.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -16,13 +16,13 @@ android {
         debug {
             keyAlias 'etang'
             keyPassword 'xiaoyu0632'
-            storeFile file('C:/Users/10976/Desktop/Project/Android Project/Android Keys/home/MyNewAppKey.jks')
+            storeFile file('D:/AndroidProject/NT-Eink-Launcher/app/siginFile/MyNewAppKey.jks')
             storePassword 'xiaoyu0632'
         }
         release {
             keyAlias 'etang'
             keyPassword 'xiaoyu0632'
-            storeFile file('C:/Users/10976/Desktop/Project/Android Project/Android Keys/home/MyNewAppKey.jks')
+            storeFile file('D:/AndroidProject/NT-Eink-Launcher/app/siginFile/MyNewAppKey.jks')
             storePassword 'xiaoyu0632'
         }
     }
