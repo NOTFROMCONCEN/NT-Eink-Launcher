@@ -22,9 +22,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.launcher.MainActivity;
-import com.etang.mt_launcher.tool.dialog.DeBugDialog;
 import com.etang.mt_launcher.tool.permission.SavePermission;
 import com.etang.mt_launcher.tool.toast.DiyToast;
+import com.etang.mt_launcher.tool.util.MTCore;
 
 import java.io.IOException;
 
@@ -246,11 +246,11 @@ public class ChoseImagesActivity extends AppCompatActivity {
                             setWallpaper(bitmap);
                         } catch (IOException e) {
                             e.printStackTrace();
-                            DeBugDialog.debug_show_dialog(ChoseImagesActivity.this, "设置壁纸时出现错误：" + e.toString(), TAG);
+                            MTCore.debug_show_dialog(ChoseImagesActivity.this, "设置壁纸时出现错误：" + e.toString(), TAG);
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
-                        DeBugDialog.debug_show_dialog(ChoseImagesActivity.this, "获取图片时出现错误：" + e.toString(), TAG);
+                        MTCore.debug_show_dialog(ChoseImagesActivity.this, "获取图片时出现错误：" + e.toString(), TAG);
                     }
                 }
                 DiyToast.showToast(getApplicationContext(), "选择成功，可点击右上角进行预览。\n路径：", true);

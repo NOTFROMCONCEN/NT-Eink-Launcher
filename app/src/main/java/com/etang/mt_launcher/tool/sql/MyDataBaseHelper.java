@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.etang.mt_launcher.tool.dialog.DeBugDialog;
+import com.etang.mt_launcher.tool.util.MTCore;
 
 /**
  * @Package: com.etang.nt_launcher.tool.sql
@@ -41,7 +41,7 @@ public class MyDataBaseHelper extends SQLiteOpenHelper {
             db.execSQL("insert into wather_city(city)values(?)",
                     new String[]{"上海"});
         } catch (Exception e) {
-            DeBugDialog.debug_show_dialog(context, String.valueOf(e), TAG);
+            MTCore.debug_show_dialog(context, String.valueOf(e), TAG);
         }
     }
 

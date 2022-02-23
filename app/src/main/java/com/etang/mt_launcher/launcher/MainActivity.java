@@ -53,7 +53,6 @@ import com.etang.mt_launcher.launcher.settings.about.AboutActivity;
 import com.etang.mt_launcher.launcher.settings.uirefresh.UireFreshActivity;
 import com.etang.mt_launcher.launcher.settings.weather.WeatherActivity;
 import com.etang.mt_launcher.launcher.welecome.WelecomeActivity;
-import com.etang.mt_launcher.tool.dialog.DeBugDialog;
 import com.etang.mt_launcher.tool.dialog.UnInstallDialog;
 import com.etang.mt_launcher.tool.getapps.AppInfo;
 import com.etang.mt_launcher.tool.getapps.DeskTopGridViewBaseAdapter;
@@ -139,7 +138,7 @@ public class MainActivity extends Activity implements OnClickListener {
                     string_app_info = appInfos.get(position).getPackageName();
                     UnInstallDialog.uninstall_app(position, appInfos, MainActivity.this, MainActivity.this, string_app_info, appInfos.get(position).getName());
                 } catch (Exception e) {
-                    DeBugDialog.debug_show_dialog(MainActivity.this, e.toString(), TAG);//显示错误信息
+                    MTCore.debug_show_dialog(MainActivity.this, e.toString(), TAG);//显示错误信息
                 }
                 return true;
             }
@@ -195,10 +194,10 @@ public class MainActivity extends Activity implements OnClickListener {
                         startActivity(intent);
                         overridePendingTransition(0, 0);
                     } else {//出现异常
-                        DeBugDialog.debug_show_dialog(MainActivity.this, "启动APP时出现“Intent”相关的异常", TAG);
+                        MTCore.debug_show_dialog(MainActivity.this, "启动APP时出现“Intent”相关的异常", TAG);
                     }
                 } catch (Exception e) {
-                    DeBugDialog.debug_show_dialog(MainActivity.this, e.toString(), TAG);
+                    MTCore.debug_show_dialog(MainActivity.this, e.toString(), TAG);
                 }
             }
         });
@@ -352,7 +351,7 @@ public class MainActivity extends Activity implements OnClickListener {
             MainActivity.iv_index_back.setImageBitmap(bitmap);
             MainActivity.tg_apps_state.setVisibility(View.GONE);
 //            DiyToast.showToast(context, "系统壁纸出错，重置为白色", true);
-            DeBugDialog.debug_show_dialog(context, "系统壁纸获取出错 \n 请更改其他壁纸设置 \n 错误信息：" + e.toString(), TAG);
+            MTCore.debug_show_dialog(context, "系统壁纸获取出错 \n 请更改其他壁纸设置 \n 错误信息：" + e.toString(), TAG);
         }
     }
 
@@ -545,7 +544,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 initSkinMode(MainActivity.this, images_mode);
             }
         } catch (Exception e) {
-            DeBugDialog.debug_show_dialog(c, "桌面壁纸出现错误，已重置为默认", TAG);
+            MTCore.debug_show_dialog(c, "桌面壁纸出现错误，已重置为默认", TAG);
             sharedPreferences.edit().putString("images_info", "applist").apply();
         }
     }

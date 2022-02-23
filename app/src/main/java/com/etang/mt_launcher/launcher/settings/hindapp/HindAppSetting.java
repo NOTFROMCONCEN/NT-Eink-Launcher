@@ -23,12 +23,12 @@ import com.etang.mt_launcher.launcher.settings.about.AboutActivity;
 import com.etang.mt_launcher.launcher.settings.uirefresh.UireFreshActivity;
 import com.etang.mt_launcher.launcher.settings.weather.WeatherActivity;
 import com.etang.mt_launcher.launcher.welecome.WelecomeActivity;
-import com.etang.mt_launcher.tool.dialog.DeBugDialog;
 import com.etang.mt_launcher.tool.getapps.AppInfo;
 import com.etang.mt_launcher.tool.getapps.DeskTopGridViewBaseAdapter;
 import com.etang.mt_launcher.tool.getapps.GetApps;
 import com.etang.mt_launcher.tool.savearrayutil.SaveArrayListUtil;
 import com.etang.mt_launcher.tool.toast.DiyToast;
+import com.etang.mt_launcher.tool.util.MTCore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -147,10 +147,10 @@ public class HindAppSetting extends AppCompatActivity {
                         startActivity(intent);
                         overridePendingTransition(0, 0);
                     } else {//出现异常
-                        DeBugDialog.debug_show_dialog(HindAppSetting.this, "启动APP时出现“Intent”相关的异常", TAG);
+                        MTCore.debug_show_dialog(HindAppSetting.this, "启动APP时出现“Intent”相关的异常", TAG);
                     }
                 } catch (Exception e) {
-                    DeBugDialog.debug_show_dialog(HindAppSetting.this, e.toString(), TAG);
+                    MTCore.debug_show_dialog(HindAppSetting.this, e.toString(), TAG);
                 }
             }
         });

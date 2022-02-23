@@ -22,6 +22,7 @@ import androidx.core.content.FileProvider;
 
 import com.etang.mt_launcher.BuildConfig;
 import com.etang.mt_launcher.R;
+import com.etang.mt_launcher.tool.util.MTCore;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -96,7 +97,7 @@ public class CheckUpdateDialog {
                             Bundle data_error = msg.getData();
                             String error_message = data_error.getString("error_message");
                             dialog.dismiss();
-                            Toast.makeText(mContext, "网络连接失败！请重试" + "\n" + "Error：" + error_message, Toast.LENGTH_LONG).show();
+                            MTCore.check_erroe_code(MTCore.error_code_timeout);
                         }
                         break;
                     case "3":
