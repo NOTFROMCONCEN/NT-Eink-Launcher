@@ -15,9 +15,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
-
     <application
-
         android:allowBackup="true"
         android:icon="@drawable/ic_love5_ico"
         android:label="@string/app_name"
@@ -27,6 +25,10 @@
         android:testOnly="false"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".launcher.settings.desktopsetting.DeskTopSettingList"
+            android:exported="false" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.etang.mt_launcher.fileprovider"
@@ -36,8 +38,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
         <activity
-            android:name="com.etang.mt_launcher.launcher.MainActivity"
+            android:name=".launcher.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,7 +50,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <receiver android:name="com.etang.mt_launcher.tool.server.AppInstallServer">
+
+        <receiver android:name=".tool.server.AppInstallServer">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
@@ -59,34 +63,34 @@
         </receiver>
 
         <activity
-            android:name="com.etang.mt_launcher.launcher.welecome.WelecomeActivity"
+            android:name=".launcher.welecome.WelecomeActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.etang.mt_launcher.launcher.settings.uirefresh.UireFreshActivity"
+            android:name=".launcher.settings.uirefresh.UireFreshActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.etang.mt_launcher.launcher.settings.hindapp.HindAppSetting"
+            android:name=".launcher.settings.hindapp.HindAppSetting"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.etang.mt_launcher.launcher.settings.desktopsetting.DeskTopSettingActivity"
+            android:name=".launcher.settings.desktopsetting.DeskTopSettingActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.etang.mt_launcher.launcher.settings.SettingActivity"
+            android:name=".launcher.settings.SettingActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.etang.mt_launcher.launcher.settings.about.AboutActivity"
+            android:name=".launcher.settings.about.AboutActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.etang.mt_launcher.launcher.settings.launcherimage.ChoseImagesActivity"
+            android:name=".launcher.settings.launcherimage.ChoseImagesActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.etang.mt_launcher.launcher.settings.weather.WeatherActivity"
+            android:name=".launcher.settings.weather.WeatherActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.etang.mt_launcher.launcher.settings.textsizesetting.TextSizeSetting"
+            android:name=".launcher.settings.textsizesetting.TextSizeSetting"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.etang.mt_launcher.launcher.settings.inforeback.InfoRebackActivity"
+            android:name=".launcher.settings.inforeback.InfoRebackActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 

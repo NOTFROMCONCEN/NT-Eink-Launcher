@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/activity_setting_new.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/dialog_newuserchecker.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/setting_about_fang.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/setting_activity_desk_top_list.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/setting_activity_desk_top_setting.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/setting_hind_app.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/drawable/layer_list_progressbarback.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/drawable/select_apps_state.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/drawable/shaper_apks_button_window_show.xml" value="0.26979166666666665" />
