@@ -123,6 +123,16 @@ public class GetApps {
         mInfo_uirefresh.setIco(Bitmap.createBitmap(bmp_uirefresh));
         list.add(mInfo_uirefresh);
         /**
+         * \添加“使用记录”
+         */
+        AppInfo mInfo_appuserlogs = new AppInfo();
+        mInfo_appuserlogs.setName("使用记录");
+        mInfo_appuserlogs.setPackageName(context.getPackageName() + ".appuserlogs");
+        Resources r_mInfo_appuserlogs = context.getResources();
+        Bitmap bmp_appuserlogs = BitmapFactory.decodeResource(r_mInfo_appuserlogs, R.drawable.ic_appuserlogs);
+        mInfo_appuserlogs.setIco(Bitmap.createBitmap(bmp_appuserlogs));
+        list.add(mInfo_appuserlogs);
+        /**
          * \添加“使用向导”
          */
 //        AppInfo mInfo_userhelper = new AppInfo();

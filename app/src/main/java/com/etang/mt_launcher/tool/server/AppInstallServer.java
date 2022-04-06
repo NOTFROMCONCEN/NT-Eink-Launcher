@@ -17,8 +17,6 @@ import com.etang.mt_launcher.tool.toast.DiyToast;
  * @UpdateDate: 2021/3/19 8:27
  */
 public class AppInstallServer extends BroadcastReceiver {
-    //当前页面TAG
-    private static String TAG = "AppInstallServer";
 
     /**
      * ACTION_PACKAGE_ADDED 一个新应用包已经安装在设备上，数据包括包名（最新安装的包程序不能接收到这个广播）

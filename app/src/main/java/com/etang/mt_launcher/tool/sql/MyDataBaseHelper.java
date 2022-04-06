@@ -40,6 +40,8 @@ public class MyDataBaseHelper extends SQLiteOpenHelper {
             //插入默认值
             db.execSQL("insert into wather_city(city)values(?)",
                     new String[]{"上海"});
+            //存放APP使用记录
+            db.execSQL("create table appuselogs (_id integer primary key autoincrement,appname text,time text)");
         } catch (Exception e) {
             MTCore.debug_show_dialog(context, String.valueOf(e), TAG);
         }

@@ -9,12 +9,12 @@
     android:padding="15dp">
 
 
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:background="@drawable/shaper_desk_top_show"
+        android:gravity="center|center_horizontal|center_vertical"
         android:padding="5dp"
         android:text="@string/dialog_newuser_title"
         android:textColor="#000"
@@ -24,6 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:background="@drawable/shaper_desk_top_show"
+        android:padding="15dp"
         android:text="@string/dialog_newuser_message"
         android:textColor="#000" />
 
@@ -42,6 +44,7 @@
             android:layout_weight="1"
             android:background="@drawable/shaper_desk_top_show"
             android:text="@string/dialog_con"
+            android:textColor="#000000"
             android:textSize="15dp" />
 
         <Button
@@ -53,6 +56,7 @@
             android:layout_weight="1"
             android:background="@drawable/shaper_desk_top_show"
             android:text="@string/dialog_cls"
+            android:textColor="#000000"
             android:textSize="15dp" />
     </LinearLayout>
 

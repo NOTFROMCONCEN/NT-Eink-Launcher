@@ -40,8 +40,6 @@ public class AboutActivity extends AppCompatActivity {
     private LinearLayout lv_back;
     //检查更新按钮
     private Button btn_about_checkup_button;
-    //当前TAG
-    private static String TAG = "AboutActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +107,7 @@ public class AboutActivity extends AppCompatActivity {
                 PayMeDialog.show_dialog(AboutActivity.this);
             }
         });
+        //弹出关注方式Dialog
         tv_about_guanzhu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

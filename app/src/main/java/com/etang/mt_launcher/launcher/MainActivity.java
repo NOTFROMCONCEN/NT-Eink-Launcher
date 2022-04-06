@@ -1,6 +1,7 @@
 package com.etang.mt_launcher.launcher;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -51,8 +52,10 @@ import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.launcher.settings.SettingActivity;
 import com.etang.mt_launcher.launcher.settings.about.AboutActivity;
 import com.etang.mt_launcher.launcher.settings.uirefresh.UireFreshActivity;
+import com.etang.mt_launcher.launcher.settings.uselogs.AppUseLogsActivity;
 import com.etang.mt_launcher.launcher.settings.weather.WeatherActivity;
 import com.etang.mt_launcher.launcher.welecome.WelecomeActivity;
+import com.etang.mt_launcher.tool.dialog.MessageDialog;
 import com.etang.mt_launcher.tool.dialog.UnInstallDialog;
 import com.etang.mt_launcher.tool.getapps.AppInfo;
 import com.etang.mt_launcher.tool.getapps.DeskTopGridViewBaseAdapter;
@@ -90,6 +93,10 @@ import java.util.Locale;
  * 不会真的有人尝试看懂风滚草方式写出来的代码吧，不会吧不会吧。
  * 哦原来是我自己尝试看懂啊。
  * 坏了，看不懂了
+ * 于2022年3月7日 09点27分
+ * 别改了，好家伙，完全看不懂了，找时间重构吧
+ * 于2022年4月6日 17点07分
+ * 完了，摆烂，开始摆烂，这些代码就这样吧
  */
 public class MainActivity extends Activity implements OnClickListener {
     private BroadcastReceiver batteryLevelRcvr;
@@ -101,7 +108,7 @@ public class MainActivity extends Activity implements OnClickListener {
     public static TextView tv_user_id, tv_time_hour, tv_time_min,
             tv_main_batterystate, tv_city, tv_temp_state,
             tv_last_updatetime, tv_main_nowdate;
-    public static ImageView iv_setting_button, iv_setting_yinliang, iv_setting_refresh, iv_setting_rss, iv_clean_button, iv_index_back;
+    public static ImageView iv_setting_button, iv_setting_yinliang, iv_setting_refresh, iv_clean_button, iv_index_back;
     public static ToggleButton tg_apps_state;
     public static LinearLayout line_wather, line_bottom;
     public static String string_app_info = "";
@@ -154,12 +161,22 @@ public class MainActivity extends Activity implements OnClickListener {
                     Intent intent = getPackageManager().getLaunchIntentForPackage(
                             appInfos.get(position).getPackageName());
                     if (intent != null) {//点击的APP无异常
-                        intent.putExtra("type", "110");
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        overridePendingTransition(0, 0);
+                        try {
+                            db.execSQL("insert into appuselogs(appname,time)values(?,?)", new String[]{appInfos.get(position).getName(), tv_main_nowdate.getText() + "--" + tv_time_hour.getText() + ":" + tv_time_min.getText()});
+                            intent.putExtra("type", "110");
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                            overridePendingTransition(0, 0);
+                        } catch (Exception e) {
+                            db.execSQL("create table appuselogs (_id integer primary key autoincrement,appname text,time text)");
+                            MessageDialog.show_dialog("数据库已部署，请再次点击你要打开的APP", MainActivity.this);
+                        }
                     } else if (appInfos.get(position).getPackageName().equals(getPackageName() + ".weather")) {//点击了“天气”
                         intent = new Intent(MainActivity.this, WeatherActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    } else if (appInfos.get(position).getPackageName().equals(getPackageName() + ".appuserlogs")) {//点击了“使用记录”
+                        intent = new Intent(MainActivity.this, AppUseLogsActivity.class);
                         startActivity(intent);
                         overridePendingTransition(0, 0);
                     } else if (appInfos.get(position).getPackageName().equals(getPackageName() + ".systemupdate")) {//点击了“检查更新”
@@ -677,7 +694,6 @@ public class MainActivity extends Activity implements OnClickListener {
         line_bottom = (LinearLayout) findViewById(R.id.line_bottom);
         tv_main_nowdate = (TextView) findViewById(R.id.tv_main_nowdate);
         iv_clean_button = (ImageView) findViewById(R.id.iv_setting_clear);
-        iv_setting_rss = (ImageView) findViewById(R.id.iv_setting_rss);
         iv_setting_refresh = (ImageView) findViewById(R.id.iv_setting_refresh);
         mListView = (GridView) findViewById(R.id.mAppGridView);
         iv_setting_button = (ImageView) findViewById(R.id.iv_setting_button);
@@ -688,14 +704,11 @@ public class MainActivity extends Activity implements OnClickListener {
         tv_main_batterystate = (TextView) findViewById(R.id.tv_main_batterystate);
         line_wather = (LinearLayout) findViewById(R.id.line_wather);
         tv_city = (TextView) findViewById(R.id.tv_city);
-        iv_setting_yinliang = (ImageView) findViewById(R.id.iv_setting_yinliang);
         iv_index_back = (ImageView) findViewById(R.id.iv_index_back);
         tv_temp_state = (TextView) findViewById(R.id.tv_temp_state);
         tv_last_updatetime = (TextView) findViewById(R.id.tv_last_updatetime);
         iv_setting_button.setOnClickListener(this);
         line_wather.setOnClickListener(this);
-        iv_setting_yinliang.setOnClickListener(this);
-        iv_setting_rss.setOnClickListener(this);
         iv_setting_refresh.setOnClickListener(this);
         iv_clean_button.setOnClickListener(this);
         String s_clean = Build.BRAND;
@@ -975,18 +988,6 @@ public class MainActivity extends Activity implements OnClickListener {
                     DiyToast.showToast(getApplicationContext(), "当前处于离线模式", true);
                 }
                 break;
-            //音量
-            case R.id.iv_setting_yinliang:
-                //解决华为，魅族等等手机扩音播放失败的bug
-                try {
-                    String keyCommand = "input keyevent " + KeyEvent.KEYCODE_VOLUME_UP;
-                    Runtime runtime = Runtime.getRuntime();
-                    Process proc = runtime.exec(keyCommand);
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                break;
             case R.id.iv_setting_clear:
                 String s_clean = Build.BRAND;
                 if (s_clean.equals("Allwinner")) {
@@ -995,10 +996,6 @@ public class MainActivity extends Activity implements OnClickListener {
 //                    Intent intent = new Intent("android.eink.force.refresh");
 //                    sendBroadcast(intent);
                 }
-                break;
-            //RSS订阅
-            case R.id.iv_setting_rss:
-                DiyToast.showToast(MainActivity.this, "调试中的功能", false);
                 break;
             //刷新
             case R.id.iv_setting_refresh:

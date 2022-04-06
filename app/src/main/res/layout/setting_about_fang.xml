@@ -35,7 +35,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:contentDescription="@null"
-            android:src="@drawable/ic_love2_ico" />
+            android:src="@drawable/ic_love5_ico" />
 
         <LinearLayout
             android:layout_width="match_parent"

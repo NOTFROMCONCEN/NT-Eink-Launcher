@@ -11,8 +11,6 @@ import android.graphics.Bitmap;
  * @UpdateDate: 2021/3/19 8:27
  */
 public class AppInfo {
-    //当前页面TAG
-    private static String TAG = "AppInfo";
     //包名
     private String packageName;
     //图标

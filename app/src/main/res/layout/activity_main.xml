@@ -167,21 +167,6 @@
                 android:layout_margin="5dp"
                 android:src="@drawable/ic_update" />
 
-            <ImageView
-                android:id="@+id/iv_setting_rss"
-                android:layout_width="30sp"
-                android:layout_height="30sp"
-                android:layout_margin="5dp"
-                android:src="@drawable/ic_rss"
-                android:visibility="gone" />
-
-            <ImageView
-                android:id="@+id/iv_setting_yinliang"
-                android:layout_width="30sp"
-                android:layout_height="30sp"
-                android:layout_margin="5dp"
-                android:src="@drawable/ic_yinliang"
-                android:visibility="gone" />
 
             <ToggleButton
                 android:id="@+id/tg_apps_state"

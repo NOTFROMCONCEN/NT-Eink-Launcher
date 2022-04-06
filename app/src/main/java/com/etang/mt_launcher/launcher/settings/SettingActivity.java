@@ -45,9 +45,9 @@ public class SettingActivity extends Activity {
     // 消息反馈设置、APP列表设置、
     // 关于桌面设置、桌面设置、退出桌面设置、
     // 隐藏APP设置、签名设置、卸载桌面设置
-    LinearLayout lv_back, lv_window_setting, lv_restart_setting, lv_inforeback_activity,
+    LinearLayout lv_back, lv_restart_setting, lv_inforeback_activity,
             lv_textsize_setting, lv_applist_setting, lv_about_activity, lv_desktop_setting,
-            lv_exit_setting, lv_hindapp_setting, lv_name_setting, lv_uninstall_setting;
+            lv_hindapp_setting, lv_name_setting, lv_uninstall_setting;
     //复选框，隐藏设置图标（底栏）、离线模式、老年模式
     private CheckBox cb_hind_setting_ico, cb_setting_offlinemode, cb_setting_oldmanmode;
     //数据库
@@ -135,13 +135,6 @@ public class SettingActivity extends Activity {
                 overridePendingTransition(0, 0);
             }
         });
-//        //退出“奶糖桌面”
-//        lv_exit_setting.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                System.exit(0);
-//            }
-//        });
         //卸载“奶糖桌面”
         lv_uninstall_setting.setOnClickListener(new OnClickListener() {
             @Override
@@ -379,12 +372,10 @@ public class SettingActivity extends Activity {
         lv_name_setting = (LinearLayout) findViewById(R.id.lv_name_setting);
         lv_uninstall_setting = (LinearLayout) findViewById(R.id.lv_uninstall_setting);
         lv_hindapp_setting = (LinearLayout) findViewById(R.id.lv_hindapp_setting);
-        lv_exit_setting = (LinearLayout) findViewById(R.id.lv_exit_setting);
         lv_textsize_setting = (LinearLayout) findViewById(R.id.lv_textsize_setting);
         lv_desktop_setting = (LinearLayout) findViewById(R.id.lv_desktop_setting);
         lv_about_activity = (LinearLayout) findViewById(R.id.lv_about_activity);
         lv_applist_setting = (LinearLayout) findViewById(R.id.lv_applist_setting);
-        lv_window_setting = (LinearLayout) findViewById(R.id.lv_window_setting);
         //数据库
         dbHelper_name_sql = new MyDataBaseHelper(getApplicationContext(), "info.db",
                 null, 2);

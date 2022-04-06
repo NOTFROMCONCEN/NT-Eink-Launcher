@@ -5,10 +5,10 @@ android {
     buildToolsVersion '30.0.3'
     defaultConfig {
         applicationId "com.etang.mt_launcher"
-        minSdkVersion 16
+        minSdkVersion 18
         targetSdkVersion 30
-        versionCode 1031
-        versionName "ver1.0.31"
+        versionCode 1100
+        versionName "ver1.1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

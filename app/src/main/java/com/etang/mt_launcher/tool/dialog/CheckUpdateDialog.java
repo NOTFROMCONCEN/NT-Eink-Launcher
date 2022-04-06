@@ -39,11 +39,12 @@ import javax.net.ssl.HttpsURLConnection;
  * 于 2021年10月22日 23点01分 尝试解耦
  * 别看了，以前的版本早就找不到了，现在的能用就行
  * 有的地方越来越看不懂了
- * <p>
  * 于2021年12月11日 17点42分
- * 看懂了，但是又没看懂，试下多家两个注释
+ * 看懂了，但是又没看懂，试下多加两个注释
  * 于2022年1月2日 12点21分
  * 优化了整体结构，现在整个代码可以复制到其他工程使用了，前提是服务器有对应的资源
+ * 与2022年3月7日 09点30分
+ * 更新了链接服务器的方法，更加稳定了
  */
 public class CheckUpdateDialog {
     //  上下文
@@ -78,7 +79,6 @@ public class CheckUpdateDialog {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         final AlertDialog dialog = builder.create();
         dialog.setTitle("链接中......");
-        dialog.setIcon(R.drawable.ic_update_zoe);
         dialog.setMessage("请稍后，正在链接中~~~");
         final Handler handler = new Handler() {
             @Override
