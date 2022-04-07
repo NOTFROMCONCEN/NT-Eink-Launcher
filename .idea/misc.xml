@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/drawable/select_apps_state.xml" value="0.2025" />
         <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/drawable/shaper_yuanjiao_nocolor_show.xml" value="0.2085" />
         <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/drawable/shaper_zhijiao_lins_nocolor.xml" value="0.2085" />
         <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/drawable/shaper_zhijiao_lins_show.xml" value="0.2085" />
@@ -11,8 +12,18 @@
         <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/activity_main.xml" value="0.14635416666666667" />
         <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/activity_setting.xml" value="0.19610507246376813" />
         <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/activity_setting_new.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/activity_uirefresh.xml" value="0.1852355072463768" />
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/activity_weather.xml" value="0.1852355072463768" />
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/activity_welecome.xml" value="0.1852355072463768" />
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/activity_welecome_1.xml" value="0.1852355072463768" />
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/activity_welecome_2.xml" value="0.1852355072463768" />
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/activity_welecome_chose.xml" value="0.1852355072463768" />
         <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/dialog_chose_image.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/dialog_debug_message.xml" value="0.1852355072463768" />
         <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/dialog_desktop_setting.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/dialog_follwome.xml" value="0.1852355072463768" />
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/dialog_follwome_bilibili.xml" value="0.1852355072463768" />
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/dialog_load_ico.xml" value="0.1852355072463768" />
         <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/dialog_newuserchecker.xml" value="0.1956521739130435" />
         <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/dialog_payme.xml" value="0.1956521739130435" />
         <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/dialog_payme_aifadian.xml" value="0.1956521739130435" />
@@ -22,10 +33,13 @@
         <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/dialog_show_progressbar.xml" value="0.1956521739130435" />
         <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/dialog_uninstall.xml" value="0.1956521739130435" />
         <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/dialog_update_show_1.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/list_gridview_item.xml" value="0.1852355072463768" />
         <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/setting_about_fang.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/setting_about_yuan.xml" value="0.1852355072463768" />
         <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/setting_activity_desk_top_list.xml" value="0.1956521739130435" />
         <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/setting_activity_desk_top_setting.xml" value="0.1956521739130435" />
         <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/setting_hind_app.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidProject/NT-Eink-Launcher/app/src/main/res/layout/setting_inforeback.xml" value="0.1852355072463768" />
         <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/drawable/layer_list_progressbarback.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/drawable/select_apps_state.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/10976/StudioProjects/NT-Eink-Launcher/app/src/main/res/drawable/shaper_apks_button_window_show.xml" value="0.26979166666666665" />

@@ -35,7 +35,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/shaper_toast_show"
+                    android:background="@drawable/shaper_desk_top_show"
 
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical"
@@ -65,7 +65,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/shaper_toast_show"
+                    android:background="@drawable/shaper_desk_top_show"
 
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical"
@@ -95,7 +95,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/shaper_toast_show"
+                    android:background="@drawable/shaper_desk_top_show"
 
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical"
@@ -133,7 +133,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/shaper_toast_show"
+                    android:background="@drawable/shaper_desk_top_show"
 
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical"
@@ -163,7 +163,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/shaper_toast_show"
+                    android:background="@drawable/shaper_desk_top_show"
 
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical"
@@ -193,7 +193,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/shaper_toast_show"
+                    android:background="@drawable/shaper_desk_top_show"
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical"
                     android:padding="5dp">
@@ -230,7 +230,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/shaper_toast_show"
+                    android:background="@drawable/shaper_desk_top_show"
 
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical"
@@ -260,7 +260,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/shaper_toast_show"
+                    android:background="@drawable/shaper_desk_top_show"
 
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical"
@@ -290,7 +290,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/shaper_toast_show"
+                    android:background="@drawable/shaper_desk_top_show"
 
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical"
@@ -319,6 +319,7 @@
                 android:id="@+id/cb_hind_setting_ico"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/shaper_desk_top_show"
                 android:text="@string/setting_checkbox_hindbar"
                 android:textColor="#000" />
 
@@ -334,6 +335,7 @@
                 android:id="@+id/cb_setting_offlinemode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/shaper_desk_top_show"
                 android:text="@string/setting_offlinemode"
                 android:textColor="#000" />
 

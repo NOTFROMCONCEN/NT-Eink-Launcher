@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:padding="10dp">
 
 
     <LinearLayout
@@ -58,7 +59,10 @@
 
         <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shaper_desk_top_show"
+            android:padding="10dp">
 
             <RadioButton
                 android:id="@+id/ra_welecome_auto"

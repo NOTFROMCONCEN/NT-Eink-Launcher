@@ -18,41 +18,7 @@ import com.etang.mt_launcher.R;
  */
 public class FollwoMeDialog {
     //当前页面TAG
-    private static String TAG = "PayMeDialog";
-
-
-    public static void show_iconlink_dialog(final Activity activity) {
-        final AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
-        View view = LayoutInflater.from(activity).inflate(R.layout.dialog_follwome, null, false);
-        alertDialog.setView(view);
-        //绑定控件
-        ImageView iv_ali = (ImageView) view.findViewById(R.id.iv_alipay);
-        iv_ali.setImageResource(R.drawable.ic_about_iconlink);
-        ImageView iv_wechat = (ImageView) view.findViewById(R.id.iv_wechatpay);
-        iv_wechat.setImageResource(R.drawable.im_wechatpay);
-        Button btn_payme_close = (Button) view.findViewById(R.id.btn_payme_close);
-        btn_payme_close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
-        });
-        iv_ali.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                View view = LayoutInflater.from(activity).inflate(R.layout.dialog_payme_ali, null, false);
-                new AlertDialog.Builder(activity).setTitle("请扫码——支付宝").setView(view).setPositiveButton("关闭", null).show();
-            }
-        });
-        iv_wechat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                View view = LayoutInflater.from(activity).inflate(R.layout.dialog_payme_wechat, null, false);
-                new AlertDialog.Builder(activity).setTitle("请扫码——微信").setView(view).setPositiveButton("关闭", null).show();
-            }
-        });
-        alertDialog.show();
-    }
+    private static String TAG = "FollwoMeDialog";
 
 
     public static void show_dialog(final Activity activity) {
@@ -60,10 +26,8 @@ public class FollwoMeDialog {
         View view = LayoutInflater.from(activity).inflate(R.layout.dialog_follwome, null, false);
         alertDialog.setView(view);
         //绑定控件
-        ImageView iv_ali = (ImageView) view.findViewById(R.id.iv_alipay);
-        iv_ali.setImageResource(R.drawable.im_alipay);
-        ImageView iv_wechat = (ImageView) view.findViewById(R.id.iv_wechatpay);
-        iv_wechat.setImageResource(R.drawable.im_wechatpay);
+        ImageView iv_ali = (ImageView) view.findViewById(R.id.iv_bilibili);
+        iv_ali.setImageResource(R.drawable.ic_about_bilibili);
         Button btn_payme_close = (Button) view.findViewById(R.id.btn_payme_close);
         btn_payme_close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,15 +38,8 @@ public class FollwoMeDialog {
         iv_ali.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                View view = LayoutInflater.from(activity).inflate(R.layout.dialog_payme_ali, null, false);
-                new AlertDialog.Builder(activity).setTitle("请扫码——支付宝").setView(view).setPositiveButton("关闭", null).show();
-            }
-        });
-        iv_wechat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                View view = LayoutInflater.from(activity).inflate(R.layout.dialog_payme_wechat, null, false);
-                new AlertDialog.Builder(activity).setTitle("请扫码——微信").setView(view).setPositiveButton("关闭", null).show();
+//                View view = LayoutInflater.from(activity).inflate(R.layout.dialog_, null, false);
+                new AlertDialog.Builder(activity).setTitle("请扫码——哔哩哔哩").setView(view).setPositiveButton("关闭", null).show();
             }
         });
         alertDialog.show();

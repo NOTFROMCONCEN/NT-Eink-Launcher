@@ -35,6 +35,9 @@ public class AppUseLogsActivity extends AppCompatActivity {
     private ListView lv_1;
     private List<Bean_AppUseLog> list = new ArrayList<Bean_AppUseLog>();
     private ListAdapterHelper_AppUseLog listHelpAdapter;
+    //总使用次数
+    private int all_use_logs_num = 0;
+    private TextView tv_uselogs_num;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +77,8 @@ public class AppUseLogsActivity extends AppCompatActivity {
                 builder.show();
             }
         });
+        //设置总使用次数统计
+        tv_uselogs_num.setText("从开始统计直到现在，一共启动了" + all_use_logs_num + "次各种APP");
     }
 
     private void initSQL() {
@@ -83,6 +88,7 @@ public class AppUseLogsActivity extends AppCompatActivity {
             listHelpAdapter.setData(null);
             Cursor cursor = db.rawQuery("select * from appuselogs", null);
             if (cursor.getCount() != 0) {
+                all_use_logs_num = cursor.getCount();
                 for (int i = 0; i < cursor.getCount(); i++) {
                     cursor.moveToNext();
                     list.add(new Bean_AppUseLog(cursor.getString(cursor
@@ -102,6 +108,7 @@ public class AppUseLogsActivity extends AppCompatActivity {
 
 
     private void initView() {
+        tv_uselogs_num = (TextView) findViewById(R.id.tv_uselogs_num);
         tv_button = (TextView) findViewById(R.id.tv_title_button);
         tv_title = (TextView) findViewById(R.id.tv_title_text);
         lv_back = (LinearLayout) findViewById(R.id.lv_back);
