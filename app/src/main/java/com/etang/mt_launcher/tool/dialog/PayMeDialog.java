@@ -20,7 +20,6 @@ public class PayMeDialog {
     //当前页面TAG
     private static String TAG = "PayMeDialog";
 
-
     public static void show_iconlink_dialog(final Activity activity) {
         final AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
         View view = LayoutInflater.from(activity).inflate(R.layout.dialog_payme, null, false);

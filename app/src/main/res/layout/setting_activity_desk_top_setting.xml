@@ -178,7 +178,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shaper_apks_button_window_show"
+                android:background="@drawable/shaper_toast_show"
                 android:text="自定义排序"></Button>
         </LinearLayout>
     </ScrollView>

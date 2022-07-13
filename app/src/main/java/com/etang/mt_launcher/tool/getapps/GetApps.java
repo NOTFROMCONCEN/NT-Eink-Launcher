@@ -133,6 +133,16 @@ public class GetApps {
         mInfo_appuserlogs.setIco(Bitmap.createBitmap(bmp_appuserlogs));
         list.add(mInfo_appuserlogs);
         /**
+         * \添加“锁屏”
+         */
+        AppInfo mInfo_locker = new AppInfo();
+        mInfo_locker.setName("锁屏");
+        mInfo_locker.setPackageName(context.getPackageName() + ".locker");
+        Resources r_mInfo_locker = context.getResources();
+        Bitmap bmp_locker = BitmapFactory.decodeResource(r_mInfo_locker, R.drawable.ic_mtlocker);
+        mInfo_locker.setIco(Bitmap.createBitmap(bmp_locker));
+//        list.add(mInfo_locker);
+        /**
          * \添加“使用向导”
          */
 //        AppInfo mInfo_userhelper = new AppInfo();

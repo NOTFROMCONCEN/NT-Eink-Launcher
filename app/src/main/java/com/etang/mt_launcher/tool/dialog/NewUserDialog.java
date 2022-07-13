@@ -18,7 +18,6 @@ public class NewUserDialog {
     //当前页面TAG
     private static String TAG = "NewUserDialog";
 
-
     public static void dialog_show(Context context, String info, boolean newuser_or_debug) {
         if (newuser_or_debug) {
             test(context, info, newuser_or_debug);

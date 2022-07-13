@@ -162,7 +162,6 @@ public class UnInstallDialog {
         }
     }
 
-
     private static void show_ico_dialog(final Context context, final Activity activity) {
         try {
             SavePermission.check_save_permission(activity);//检查存取权限

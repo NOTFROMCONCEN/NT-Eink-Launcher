@@ -1,7 +1,6 @@
 package com.etang.mt_launcher.launcher;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -51,6 +50,7 @@ import androidx.core.app.NotificationCompat;
 import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.launcher.settings.SettingActivity;
 import com.etang.mt_launcher.launcher.settings.about.AboutActivity;
+import com.etang.mt_launcher.launcher.settings.locker.MTLocker;
 import com.etang.mt_launcher.launcher.settings.uirefresh.UireFreshActivity;
 import com.etang.mt_launcher.launcher.settings.uselogs.AppUseLogsActivity;
 import com.etang.mt_launcher.launcher.settings.weather.WeatherActivity;
@@ -71,7 +71,6 @@ import com.etang.mt_launcher.tool.util.StreamTool;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -175,6 +174,10 @@ public class MainActivity extends Activity implements OnClickListener {
                         intent = new Intent(MainActivity.this, WeatherActivity.class);
                         startActivity(intent);
                         overridePendingTransition(0, 0);
+                    } else if (appInfos.get(position).getPackageName().equals(getPackageName() + ".locker")) {//点击了“锁屏”
+                        intent = new Intent(MainActivity.this, MTLocker.class);
+                        startActivity(intent);
+                        finish();
                     } else if (appInfos.get(position).getPackageName().equals(getPackageName() + ".appuserlogs")) {//点击了“使用记录”
                         intent = new Intent(MainActivity.this, AppUseLogsActivity.class);
                         startActivity(intent);

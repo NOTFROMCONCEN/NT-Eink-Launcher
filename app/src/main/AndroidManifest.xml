@@ -33,6 +33,10 @@
         <activity
             android:name=".launcher.settings.desktopsetting.DeskTopSettingList"
             android:exported="false" />
+        <activity
+            android:name=".launcher.settings.locker.MTLocker"
+            android:exported="false"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

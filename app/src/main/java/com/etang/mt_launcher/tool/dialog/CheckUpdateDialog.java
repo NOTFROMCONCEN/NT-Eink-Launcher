@@ -16,12 +16,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
 
 import com.etang.mt_launcher.BuildConfig;
-import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.tool.util.MTCore;
 
 import org.jsoup.Jsoup;

@@ -38,12 +38,9 @@ public class MTCore {
     private static Context mContext;
     //继承Activity
     private static Activity mActivity;
-
-
     //错误代码
     private static String error_name_timeout = "E-1-TimeOut-网络链接超时";
     public static int error_code_timeout = 90001;
-
 
     //初始化MTCore（继承Context和Activity）
     public static void initMTCore(Context context, Activity activity) {
@@ -51,12 +48,10 @@ public class MTCore {
         mActivity = activity;
     }
 
-
     //APP ID
     public static String get_my_appAPPLICATION_ID() {
         return String.valueOf(BuildConfig.APPLICATION_ID);
     }
-
 
     /**
      * 错误代码
