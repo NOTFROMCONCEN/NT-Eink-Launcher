@@ -8,7 +8,6 @@
     android:orientation="vertical">
 
 
-
     <LinearLayout
         android:id="@+id/line_appinfo"
         android:layout_width="match_parent"

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.etang.mt_launcher.R;
 
@@ -25,12 +26,9 @@ public class PayMeDialog {
         View view = LayoutInflater.from(activity).inflate(R.layout.dialog_payme, null, false);
         alertDialog.setView(view);
         //绑定控件
-        ImageView iv_ali = (ImageView) view.findViewById(R.id.iv_alipay);
-        iv_ali.setImageResource(R.drawable.ic_about_iconlink);
-        ImageView iv_wechat = (ImageView) view.findViewById(R.id.iv_wechatpay);
-        iv_wechat.setImageResource(R.drawable.im_wechatpay);
-        ImageView iv_aifadian = (ImageView) view.findViewById(R.id.iv_aifadian);
-        iv_aifadian.setImageResource(R.drawable.im_aifadian);
+        LinearLayout iv_ali = (LinearLayout) view.findViewById(R.id.iv_alipay);
+        LinearLayout iv_wechat = (LinearLayout) view.findViewById(R.id.iv_wechat);
+        LinearLayout iv_aifadian = (LinearLayout) view.findViewById(R.id.iv_aifadian);
         Button btn_payme_close = (Button) view.findViewById(R.id.btn_payme_close);
         btn_payme_close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,12 +66,9 @@ public class PayMeDialog {
         View view = LayoutInflater.from(activity).inflate(R.layout.dialog_payme, null, false);
         alertDialog.setView(view);
         //绑定控件
-        ImageView iv_ali = (ImageView) view.findViewById(R.id.iv_alipay);
-        iv_ali.setImageResource(R.drawable.im_alipay);
-        ImageView iv_wechat = (ImageView) view.findViewById(R.id.iv_wechatpay);
-        iv_wechat.setImageResource(R.drawable.im_wechatpay);
-        ImageView iv_aifadian = (ImageView) view.findViewById(R.id.iv_aifadian);
-        iv_aifadian.setImageResource(R.drawable.im_aifadian);
+        LinearLayout iv_ali = (LinearLayout) view.findViewById(R.id.iv_alipay);
+        LinearLayout iv_wechat = (LinearLayout) view.findViewById(R.id.iv_wechat);
+        LinearLayout iv_aifadian = (LinearLayout) view.findViewById(R.id.iv_aifadian);
         Button btn_payme_close = (Button) view.findViewById(R.id.btn_payme_close);
         btn_payme_close.setOnClickListener(new View.OnClickListener() {
             @Override

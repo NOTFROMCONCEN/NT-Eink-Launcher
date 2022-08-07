@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.etang.mt_launcher.R;
 
@@ -25,8 +26,7 @@ public class FollwoMeDialog {
         View view = LayoutInflater.from(activity).inflate(R.layout.dialog_follwome, null, false);
         alertDialog.setView(view);
         //绑定控件
-        ImageView iv_ali = (ImageView) view.findViewById(R.id.iv_bilibili);
-        iv_ali.setImageResource(R.drawable.ic_about_bilibili);
+        LinearLayout iv_ali = (LinearLayout) view.findViewById(R.id.iv_bilibili);
         Button btn_payme_close = (Button) view.findViewById(R.id.btn_payme_close);
         btn_payme_close.setOnClickListener(new View.OnClickListener() {
             @Override

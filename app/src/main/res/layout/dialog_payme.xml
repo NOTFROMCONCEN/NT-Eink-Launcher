@@ -31,6 +31,7 @@
         android:padding="10dp">
 
         <LinearLayout
+            android:id="@+id/iv_alipay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal|center"
@@ -49,16 +50,10 @@
                 android:text="支付宝"
                 android:textColor="#000000" />
 
-            <ImageView
-                android:id="@+id/iv_alipay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/im_alipay" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/iv_wechat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal|center"
@@ -77,16 +72,10 @@
                 android:text="微信"
                 android:textColor="#000000" />
 
-            <ImageView
-                android:id="@+id/iv_wechatpay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/im_wechatpay" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/iv_aifadian"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal|center"
@@ -105,13 +94,6 @@
                 android:text="爱发电"
                 android:textColor="#000000" />
 
-            <ImageView
-                android:id="@+id/iv_aifadian"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/im_aifadian" />
         </LinearLayout>
 
     </LinearLayout>
