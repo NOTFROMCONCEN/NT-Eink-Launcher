@@ -96,6 +96,8 @@ import java.util.Locale;
  * 别改了，好家伙，完全看不懂了，找时间重构吧
  * 于2022年4月6日 17点07分
  * 完了，摆烂，开始摆烂，这些代码就这样吧
+ * 于2022年8月31日 21点05分
+ * 摆烂！！！！！！！！！！！！
  */
 public class MainActivity extends Activity implements OnClickListener {
     private BroadcastReceiver batteryLevelRcvr;
@@ -227,6 +229,7 @@ public class MainActivity extends Activity implements OnClickListener {
             public boolean onLongClick(View v) {
                 iv_index_back.setVisibility(View.GONE);
                 mListView.setVisibility(View.VISIBLE);
+                tg_apps_state.setChecked(true);
                 return true;
             }
         });

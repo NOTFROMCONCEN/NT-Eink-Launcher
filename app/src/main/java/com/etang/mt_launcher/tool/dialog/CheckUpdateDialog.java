@@ -20,6 +20,7 @@ import android.util.Log;
 import androidx.core.content.FileProvider;
 
 import com.etang.mt_launcher.BuildConfig;
+import com.etang.mt_launcher.tool.toast.DiyToast;
 import com.etang.mt_launcher.tool.util.MTCore;
 
 import org.jsoup.Jsoup;
@@ -95,7 +96,9 @@ public class CheckUpdateDialog {
                             Bundle data_error = msg.getData();
                             String error_message = data_error.getString("error_message");
                             dialog.dismiss();
-                            MTCore.check_erroe_code(MTCore.error_code_timeout);
+                            DiyToast.showToast(mContext, error_message, true);
+                            Log.e("11111111", "出现错误！！！！！！！: " + error_message);
+//                            MTCore.check_erroe_code(MTCore.error_code_timeout);
                         }
                         break;
                     case "3":
