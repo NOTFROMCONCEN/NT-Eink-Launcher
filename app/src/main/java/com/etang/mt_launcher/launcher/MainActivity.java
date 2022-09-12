@@ -98,6 +98,8 @@ import java.util.Locale;
  * 完了，摆烂，开始摆烂，这些代码就这样吧
  * 于2022年8月31日 21点05分
  * 摆烂！！！！！！！！！！！！
+ * 2022年9月9日 18点08分
+ * remake
  */
 public class MainActivity extends Activity implements OnClickListener {
     private BroadcastReceiver batteryLevelRcvr;
