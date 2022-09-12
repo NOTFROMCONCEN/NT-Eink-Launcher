@@ -100,6 +100,8 @@ import java.util.Locale;
  * 摆烂！！！！！！！！！！！！
  * 2022年9月9日 18点08分
  * remake
+ * 2022年9月12日 12点28分
+ * 想办法重置吧，lite版也要重置了
  */
 public class MainActivity extends Activity implements OnClickListener {
     private BroadcastReceiver batteryLevelRcvr;
@@ -906,6 +908,7 @@ public class MainActivity extends Activity implements OnClickListener {
             return false;
         }
         if (keyCode == KeyEvent.KEYCODE_HOME) {
+            DiyToast.showToast(MainActivity.this, "已经回到桌面", false);
             return false;
         }
         return super.onKeyDown(keyCode, event);
@@ -942,11 +945,11 @@ public class MainActivity extends Activity implements OnClickListener {
                     sb.append("'s battery feels very hot!");
                 } else {
                     if (status == BatteryManager.BATTERY_STATUS_FULL) {//充电完成
-                        sb.append(String.valueOf(level) + "%已充满 ");
+                        sb.append(String.valueOf(level) + "%-已充满 ");
                         tv_main_batterystate.setText(sb.toString());
                     }
                     if (status == BatteryManager.BATTERY_STATUS_CHARGING) {//充电
-                        sb.append(String.valueOf(level) + "%充电中 ");
+                        sb.append(String.valueOf(level) + "%-充电中 ");
                         tv_main_batterystate.setText(sb.toString());
                     }
                     if (status == BatteryManager.BATTERY_STATUS_DISCHARGING) {//放电
