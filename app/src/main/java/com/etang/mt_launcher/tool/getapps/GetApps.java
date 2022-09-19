@@ -89,19 +89,19 @@ public class GetApps {
         Bitmap bmp_launchersetting = BitmapFactory.decodeResource(r_launchersetting, R.drawable.ic_setting);
         mInfo_launchersetting.setIco(Bitmap.createBitmap(bmp_launchersetting));
         list.add(mInfo_launchersetting);
-        /**
-         * 如果设备是多看添加“一键清理”
-         */
-        String s_clean = Build.BRAND;
-        if (s_clean.equals("Allwinner")) {
-            AppInfo mInfo_systemclean = new AppInfo();
-            mInfo_systemclean.setName("一键清理");
-            mInfo_systemclean.setPackageName(context.getPackageName() + ".systemclean");
-            Resources r_systemclean = context.getResources();
-            Bitmap bmp_systemclean = BitmapFactory.decodeResource(r_systemclean, R.drawable.ic_clean);
-            mInfo_systemclean.setIco(Bitmap.createBitmap(bmp_systemclean));
-            list.add(mInfo_systemclean);
-        }
+//        /**
+//         * 如果设备是多看添加“一键清理”
+//         */
+//        String s_clean = Build.BRAND;
+//        if (s_clean.equals("Allwinner")) {
+//            AppInfo mInfo_systemclean = new AppInfo();
+//            mInfo_systemclean.setName("一键清理");
+//            mInfo_systemclean.setPackageName(context.getPackageName() + ".systemclean");
+//            Resources r_systemclean = context.getResources();
+//            Bitmap bmp_systemclean = BitmapFactory.decodeResource(r_systemclean, R.drawable.ic_clean);
+//            mInfo_systemclean.setIco(Bitmap.createBitmap(bmp_systemclean));
+//            list.add(mInfo_systemclean);
+//        }
 //        /**
 //         * \添加“检查更新”
 //         */
@@ -136,12 +136,12 @@ public class GetApps {
          * \添加“锁屏”
          */
         AppInfo mInfo_locker = new AppInfo();
-        mInfo_locker.setName("锁屏");
+        mInfo_locker.setName("梅糖待机");
         mInfo_locker.setPackageName(context.getPackageName() + ".locker");
         Resources r_mInfo_locker = context.getResources();
         Bitmap bmp_locker = BitmapFactory.decodeResource(r_mInfo_locker, R.drawable.ic_mtlocker);
         mInfo_locker.setIco(Bitmap.createBitmap(bmp_locker));
-//        list.add(mInfo_locker);
+        list.add(mInfo_locker);
         /**
          * \添加“使用向导”
          */

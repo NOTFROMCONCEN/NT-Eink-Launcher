@@ -31,6 +31,7 @@ import com.etang.mt_launcher.launcher.welecome.WelecomeActivity;
 import com.etang.mt_launcher.tool.dialog.UnInstallDialog;
 import com.etang.mt_launcher.tool.sql.MyDataBaseHelper;
 import com.etang.mt_launcher.tool.toast.DiyToast;
+import com.etang.mt_launcher.tool.util.MTCore;
 
 /**
  * @Package: com.etang.nt_launcher.launcher.settings

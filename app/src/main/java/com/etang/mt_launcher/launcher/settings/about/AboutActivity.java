@@ -1,6 +1,7 @@
 package com.etang.mt_launcher.launcher.settings.about;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,9 +16,11 @@ import com.etang.mt_launcher.BuildConfig;
 import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.tool.dialog.CheckUpdateDialog;
 import com.etang.mt_launcher.tool.dialog.FollwoMeDialog;
+import com.etang.mt_launcher.tool.dialog.MessageDialog;
 import com.etang.mt_launcher.tool.dialog.PayMeDialog;
 import com.etang.mt_launcher.tool.permission.SavePermission;
 import com.etang.mt_launcher.tool.toast.DiyToast;
+import com.etang.mt_launcher.tool.util.MTCore;
 
 import java.util.Random;
 
@@ -81,20 +84,14 @@ public class AboutActivity extends AppCompatActivity {
         iv_about_logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //检查存储权限
-                SavePermission.check_save_permission(AboutActivity.this);
-                //检查更新
-                CheckUpdateDialog.check_update(AboutActivity.this, AboutActivity.this, "about");
+                checkupdate();
             }
         });
         //关于检查更新 按钮 点击事件
         btn_about_checkup_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //检查存储权限
-                SavePermission.check_save_permission(AboutActivity.this);
-                //检查更新
-                CheckUpdateDialog.check_update(AboutActivity.this, AboutActivity.this, "about");
+                checkupdate();
             }
         });
         //关于捐赠 文本 点击事件
@@ -119,6 +116,18 @@ public class AboutActivity extends AppCompatActivity {
         });
         //设置版本号
         tv_about_showversion.setText("梅糖桌面 Project" + "\n" + BuildConfig.VERSION_NAME);
+    }
+
+    private void checkupdate() {
+        if (MTCore.get_Now_AndroidVersion() == 19) {
+            MessageDialog.show_dialog("很抱歉，检测到您使用的是Android4.4（SDK=19），目前梅糖桌面的更新功能在此版本中有致命BUG，请通过“酷安”APP进行在线更新。或使用ADB安装最新版。",
+                    AboutActivity.this);
+        } else {
+            //检查存储权限
+            SavePermission.check_save_permission(AboutActivity.this);
+            //检查更新
+            CheckUpdateDialog.check_update(AboutActivity.this, AboutActivity.this, "about");
+        }
     }
 
     /**

@@ -7,8 +7,8 @@ android {
         applicationId "com.etang.mt_launcher"
         minSdkVersion 15
         targetSdkVersion 30
-        versionCode 1115
-        versionName "Evolve-1115"
+        versionCode 1116
+        versionName "Evolve-1116"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

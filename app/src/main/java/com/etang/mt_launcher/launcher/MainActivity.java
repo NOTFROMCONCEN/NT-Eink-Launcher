@@ -181,6 +181,7 @@ public class MainActivity extends Activity implements OnClickListener {
                         startActivity(intent);
                         overridePendingTransition(0, 0);
                     } else if (appInfos.get(position).getPackageName().equals(getPackageName() + ".locker")) {//点击了“锁屏”
+                        handler.removeCallbacks(runnable);
                         intent = new Intent(MainActivity.this, MTLocker.class);
                         startActivity(intent);
                         finish();
@@ -945,11 +946,11 @@ public class MainActivity extends Activity implements OnClickListener {
                     sb.append("'s battery feels very hot!");
                 } else {
                     if (status == BatteryManager.BATTERY_STATUS_FULL) {//充电完成
-                        sb.append(String.valueOf(level) + "%-已充满 ");
+                        sb.append(String.valueOf(level) + "% 已充满 ");
                         tv_main_batterystate.setText(sb.toString());
                     }
                     if (status == BatteryManager.BATTERY_STATUS_CHARGING) {//充电
-                        sb.append(String.valueOf(level) + "%-充电中 ");
+                        sb.append(String.valueOf(level) + "% 充电中 ");
                         tv_main_batterystate.setText(sb.toString());
                     }
                     if (status == BatteryManager.BATTERY_STATUS_DISCHARGING) {//放电

@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -46,6 +47,12 @@ public class MTCore {
     public static void initMTCore(Context context, Activity activity) {
         mContext = context;
         mActivity = activity;
+    }
+
+    public static int get_Now_AndroidVersion() {
+        int version = android.os.Build.VERSION.SDK_INT;
+        Log.e(TAG, "get_Now_AndroidVersion: " + version);
+        return version;
     }
 
     //APP ID
