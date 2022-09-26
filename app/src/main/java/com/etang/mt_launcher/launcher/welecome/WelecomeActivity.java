@@ -22,9 +22,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.launcher.MainActivity;
-import com.etang.mt_launcher.tool.dialog.NewUserDialog;
-import com.etang.mt_launcher.tool.permission.SavePermission;
-import com.etang.mt_launcher.tool.toast.DiyToast;
+import com.etang.mt_launcher.tool.mtcore.dialog.NewUserDialog;
+import com.etang.mt_launcher.tool.mtcore.permission.SavePermission;
+import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;

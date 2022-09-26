@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.launcher.MainActivity;
-import com.etang.mt_launcher.tool.toast.DiyToast;
+import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 
 /**
  * @Package: com.etang.nt_launcher.launcher.settings.textsizesetting

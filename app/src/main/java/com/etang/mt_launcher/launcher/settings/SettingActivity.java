@@ -28,10 +28,9 @@ import com.etang.mt_launcher.launcher.settings.inforeback.InfoRebackActivity;
 import com.etang.mt_launcher.launcher.settings.launcherimage.ChoseImagesActivity;
 import com.etang.mt_launcher.launcher.settings.textsizesetting.TextSizeSetting;
 import com.etang.mt_launcher.launcher.welecome.WelecomeActivity;
-import com.etang.mt_launcher.tool.dialog.UnInstallDialog;
+import com.etang.mt_launcher.tool.mtcore.dialog.UnInstallDialog;
 import com.etang.mt_launcher.tool.sql.MyDataBaseHelper;
-import com.etang.mt_launcher.tool.toast.DiyToast;
-import com.etang.mt_launcher.tool.util.MTCore;
+import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 
 /**
  * @Package: com.etang.nt_launcher.launcher.settings

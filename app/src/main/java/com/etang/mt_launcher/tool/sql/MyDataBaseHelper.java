@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.etang.mt_launcher.tool.util.MTCore;
+import com.etang.mt_launcher.tool.mtcore.MTCore;
 
 /**
  * @Package: com.etang.nt_launcher.tool.sql

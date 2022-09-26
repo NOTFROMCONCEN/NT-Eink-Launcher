@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.tool.sql.MyDataBaseHelper;
-import com.etang.mt_launcher.tool.toast.DiyToast;
+import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 
 /**
  * @Package: com.etang.nt_launcher.launcher.settings.weather

@@ -7,7 +7,7 @@ import android.content.IntentFilter;
 import android.util.Log;
 
 import com.etang.mt_launcher.launcher.MainActivity;
-import com.etang.mt_launcher.tool.toast.DiyToast;
+import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 
 /**
  * @Package: com.etang.nt_launcher.tool.server

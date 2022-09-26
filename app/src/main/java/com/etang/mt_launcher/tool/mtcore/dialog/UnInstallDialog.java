@@ -1,4 +1,4 @@
-package com.etang.mt_launcher.tool.dialog;
+package com.etang.mt_launcher.tool.mtcore.dialog;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -22,11 +22,11 @@ import com.etang.mt_launcher.launcher.settings.about.AboutActivity;
 import com.etang.mt_launcher.launcher.settings.uirefresh.UireFreshActivity;
 import com.etang.mt_launcher.launcher.settings.weather.WeatherActivity;
 import com.etang.mt_launcher.tool.getapps.AppInfo;
-import com.etang.mt_launcher.tool.permission.SavePermission;
-import com.etang.mt_launcher.tool.savearrayutil.SaveArrayImageUtil;
-import com.etang.mt_launcher.tool.savearrayutil.SaveArrayListUtil;
-import com.etang.mt_launcher.tool.toast.DiyToast;
-import com.etang.mt_launcher.tool.util.MTCore;
+import com.etang.mt_launcher.tool.mtcore.permission.SavePermission;
+import com.etang.mt_launcher.tool.mtcore.savearrayutil.SaveArrayImageUtil;
+import com.etang.mt_launcher.tool.mtcore.savearrayutil.SaveArrayListUtil;
+import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
+import com.etang.mt_launcher.tool.mtcore.MTCore;
 
 import java.util.ArrayList;
 import java.util.List;

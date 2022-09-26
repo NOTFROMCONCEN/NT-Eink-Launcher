@@ -1,7 +1,6 @@
 package com.etang.mt_launcher.launcher.settings.about;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -12,15 +11,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.etang.mt_launcher.BuildConfig;
 import com.etang.mt_launcher.R;
-import com.etang.mt_launcher.tool.dialog.CheckUpdateDialog;
-import com.etang.mt_launcher.tool.dialog.FollwoMeDialog;
-import com.etang.mt_launcher.tool.dialog.MessageDialog;
-import com.etang.mt_launcher.tool.dialog.PayMeDialog;
-import com.etang.mt_launcher.tool.permission.SavePermission;
-import com.etang.mt_launcher.tool.toast.DiyToast;
-import com.etang.mt_launcher.tool.util.MTCore;
+import com.etang.mt_launcher.tool.mtcore.update.CheckUpdateDialog;
+import com.etang.mt_launcher.tool.mtcore.dialog.FollwoMeDialog;
+import com.etang.mt_launcher.tool.mtcore.update.MessageDialog;
+import com.etang.mt_launcher.tool.mtcore.dialog.PayMeDialog;
+import com.etang.mt_launcher.tool.mtcore.permission.SavePermission;
+import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
+import com.etang.mt_launcher.tool.mtcore.MTCore;
 
 import java.util.Random;
 
@@ -115,7 +113,8 @@ public class AboutActivity extends AppCompatActivity {
             }
         });
         //设置版本号
-        tv_about_showversion.setText("梅糖桌面 Project" + "\n" + BuildConfig.VERSION_NAME);
+        tv_about_showversion.setText("梅糖桌面 Project" + "\n" + MTCore.get_my_appVERSIONNAME());
+//        tv_about_showversion.setText("梅糖桌面 Project" + "\n" + BuildConfig.VERSION_NAME);
     }
 
     private void checkupdate() {

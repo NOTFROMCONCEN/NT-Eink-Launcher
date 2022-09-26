@@ -1,4 +1,4 @@
-package com.etang.mt_launcher.tool.dialog;
+package com.etang.mt_launcher.tool.mtcore.update;
 
 import android.Manifest;
 import android.app.Activity;
@@ -20,8 +20,7 @@ import android.util.Log;
 import androidx.core.content.FileProvider;
 
 import com.etang.mt_launcher.BuildConfig;
-import com.etang.mt_launcher.tool.toast.DiyToast;
-import com.etang.mt_launcher.tool.util.MTCore;
+import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

@@ -1,4 +1,4 @@
-package com.etang.mt_launcher.tool.savearrayutil;
+package com.etang.mt_launcher.tool.mtcore.savearrayutil;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,13 +8,12 @@ import java.util.ArrayList;
 /**
  * @Package: com.etang.nt_launcher.tool.savearrayutil
  * @ClassName: SaveArrayImageUtil
- * @Description: 用于保存ArrayList的SharedPreferences方法（列表）
+ * @Description: 用于保存ArrayList的SharedPreferences方法（图片）
  * @CreateDate: 2021/3/19 8:26
  * @UpdateDate: 2021/3/19 8:26
  */
-public class SaveArrayListUtil {
-    //当前页面TAG
-    private static String TAG = "SaveArrayListUtil";
+public class SaveArrayImageUtil {
+    private static String TAG = "SaveArrayImageUtil";
 
     /**
      * 将arrayList的内容保存到sp里
@@ -41,7 +40,7 @@ public class SaveArrayListUtil {
         }
         //定义SP.Editor和文件名称
         SharedPreferences.Editor editor = context.getSharedPreferences(
-                "SearchDataList", context.MODE_PRIVATE).edit();
+                "SearchImageUriList", context.MODE_PRIVATE).edit();
         //将结果放入文件，关键是把集合大小放入，为了后面的取出判断大小。
         editor.putInt("searchNums", searchList.size());
         for (int i = 0; i < searchList.size(); i++) {
@@ -57,7 +56,7 @@ public class SaveArrayListUtil {
     public static ArrayList<String> getSearchArrayList(Context context) {
         //先定位到文件
         SharedPreferences preferDataList = context.getSharedPreferences(
-                "SearchDataList", context.MODE_PRIVATE);
+                "SearchImageUriList", context.MODE_PRIVATE);
         //定义一个集合等下返回结果
         ArrayList<String> list = new ArrayList<>();
         //刚才存的大小此时派上用场了

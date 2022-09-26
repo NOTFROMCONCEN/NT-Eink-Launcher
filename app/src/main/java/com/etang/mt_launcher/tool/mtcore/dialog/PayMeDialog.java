@@ -1,4 +1,4 @@
-package com.etang.mt_launcher.tool.dialog;
+package com.etang.mt_launcher.tool.mtcore.dialog;
 
 import android.app.Activity;
 import android.app.AlertDialog;

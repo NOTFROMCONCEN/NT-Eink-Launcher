@@ -22,9 +22,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.launcher.MainActivity;
-import com.etang.mt_launcher.tool.permission.SavePermission;
-import com.etang.mt_launcher.tool.toast.DiyToast;
-import com.etang.mt_launcher.tool.util.MTCore;
+import com.etang.mt_launcher.tool.mtcore.permission.SavePermission;
+import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
+import com.etang.mt_launcher.tool.mtcore.MTCore;
 
 import java.io.IOException;
 

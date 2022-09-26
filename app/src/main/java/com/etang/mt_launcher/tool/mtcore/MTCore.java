@@ -1,4 +1,4 @@
-package com.etang.mt_launcher.tool.util;
+package com.etang.mt_launcher.tool.mtcore;
 
 
 import android.app.Activity;
@@ -10,8 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.etang.mt_launcher.tool.dialog.NewUserDialog;
-import com.etang.mt_launcher.tool.toast.DiyToast;
+import com.etang.mt_launcher.tool.mtcore.dialog.NewUserDialog;
 
 import ru.alexbykov.nopermission.BuildConfig;
 
@@ -196,23 +195,17 @@ public class MTCore {
         window.setAttributes(lp);
     }
 
-    //APP构造模式（正式版or测试版）
-    public static String get_my_appBUILD_TYPE() {
-        return String.valueOf(BuildConfig.BUILD_TYPE);
-    }
-
-    //APP Debug模式
-    public static String get_my_appDEBUG() {
-        return String.valueOf(BuildConfig.DEBUG);
-    }
-
     //APP版本代号
     public static String get_my_appVERSIONNAME() {
-        return String.valueOf(BuildConfig.VERSION_NAME);
+        String version_name = BuildConfig.VERSION_NAME;
+        Log.i(TAG, "get_my_appVERSIONNAME: " + version_name);
+        return version_name;
     }
 
     //APP版本代码
-    public static String get_my_appVERSIONCODE() {
-        return String.valueOf(BuildConfig.VERSION_CODE);
+    public static int get_my_appVERSIONCODE() {
+        int version_code = BuildConfig.VERSION_CODE;
+        Log.i(TAG, "get_my_appVERSIONNAME: " + String.valueOf(version_code));
+        return version_code;
     }
 }

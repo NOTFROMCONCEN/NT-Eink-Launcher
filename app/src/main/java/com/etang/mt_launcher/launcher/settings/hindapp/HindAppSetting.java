@@ -26,9 +26,9 @@ import com.etang.mt_launcher.launcher.welecome.WelecomeActivity;
 import com.etang.mt_launcher.tool.getapps.AppInfo;
 import com.etang.mt_launcher.tool.getapps.DeskTopGridViewBaseAdapter;
 import com.etang.mt_launcher.tool.getapps.GetApps;
-import com.etang.mt_launcher.tool.savearrayutil.SaveArrayListUtil;
-import com.etang.mt_launcher.tool.toast.DiyToast;
-import com.etang.mt_launcher.tool.util.MTCore;
+import com.etang.mt_launcher.tool.mtcore.savearrayutil.SaveArrayListUtil;
+import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
+import com.etang.mt_launcher.tool.mtcore.MTCore;
 
 import java.util.ArrayList;
 import java.util.List;

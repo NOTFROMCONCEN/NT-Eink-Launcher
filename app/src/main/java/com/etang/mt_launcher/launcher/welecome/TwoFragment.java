@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.etang.mt_launcher.R;
-import com.etang.mt_launcher.tool.dialog.PayMeDialog;
+import com.etang.mt_launcher.tool.mtcore.dialog.PayMeDialog;
 
 /**
  * @Package: com.etang.nt_launcher.launcher.welecome

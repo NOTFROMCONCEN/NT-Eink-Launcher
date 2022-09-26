@@ -1,4 +1,4 @@
-package com.etang.mt_launcher.tool.toast;
+package com.etang.mt_launcher.tool.mtcore.toast;
 
 import android.content.Context;
 import android.view.Gravity;

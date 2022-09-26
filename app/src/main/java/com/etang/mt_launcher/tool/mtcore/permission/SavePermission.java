@@ -1,10 +1,10 @@
-package com.etang.mt_launcher.tool.permission;
+package com.etang.mt_launcher.tool.mtcore.permission;
 
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 
-import com.etang.mt_launcher.tool.toast.DiyToast;
+import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 
 /**
  * @Package: com.etang.nt_launcher.tool.permission
