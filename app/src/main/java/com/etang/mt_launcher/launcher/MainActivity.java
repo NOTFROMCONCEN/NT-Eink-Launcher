@@ -55,7 +55,7 @@ import com.etang.mt_launcher.launcher.settings.uirefresh.UireFreshActivity;
 import com.etang.mt_launcher.launcher.settings.uselogs.AppUseLogsActivity;
 import com.etang.mt_launcher.launcher.settings.weather.WeatherActivity;
 import com.etang.mt_launcher.launcher.welecome.WelecomeActivity;
-import com.etang.mt_launcher.tool.mtcore.update.MessageDialog;
+import com.etang.mt_launcher.tool.mtcore.dialog.MessageDialog;
 import com.etang.mt_launcher.tool.mtcore.dialog.UnInstallDialog;
 import com.etang.mt_launcher.tool.getapps.AppInfo;
 import com.etang.mt_launcher.tool.getapps.DeskTopGridViewBaseAdapter;
@@ -407,6 +407,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
     private void check_first_user() {
         if (isFirstStart(MainActivity.this)) {//第一次
+            DiyToast.showToast(MainActivity.this, "ヾ(≧▽≦*)o", true);
             /**
              * 填充预设数据
              */

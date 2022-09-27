@@ -14,13 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.tool.mtcore.update.CheckUpdateDialog;
 import com.etang.mt_launcher.tool.mtcore.dialog.FollwoMeDialog;
-import com.etang.mt_launcher.tool.mtcore.update.MessageDialog;
+import com.etang.mt_launcher.tool.mtcore.dialog.MessageDialog;
 import com.etang.mt_launcher.tool.mtcore.dialog.PayMeDialog;
 import com.etang.mt_launcher.tool.mtcore.permission.SavePermission;
 import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 import com.etang.mt_launcher.tool.mtcore.MTCore;
-
-import java.util.Random;
 
 /**
  * @ProjectName: NT-Eink-Launcher
@@ -51,13 +49,14 @@ public class AboutActivity extends AppCompatActivity {
         //设置Activity没有title栏
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //随机开启页面
-        Random random = new Random();
-        int i = random.nextInt(10);
-        if (i >= 5) {
-            setContentView(R.layout.setting_about_fang);
-        } else {
-            setContentView(R.layout.setting_about_yuan);
-        }
+//        Random random = new Random();
+//        int i = random.nextInt(10);
+//        if (i >= 5) {
+//            setContentView(R.layout.setting_about_fang);
+//        } else {
+//            setContentView(R.layout.setting_about_yuan);
+//        }
+        setContentView(R.layout.setting_about_fang);
         //绑定控件
         initView();
         //标题
