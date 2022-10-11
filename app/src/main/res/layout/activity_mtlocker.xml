@@ -62,13 +62,19 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center|center_horizontal|center_vertical"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
                 android:src="@android:drawable/ic_lock_power_off"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已锁定"
+                android:textStyle="italic"
+                android:typeface="sans"></TextView>
         </LinearLayout>
 
         <LinearLayout
@@ -79,6 +85,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/iv_locker_setting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"

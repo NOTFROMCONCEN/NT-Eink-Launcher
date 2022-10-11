@@ -164,10 +164,11 @@
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/shaper_desk_top_show"
-
                     android:gravity="center_horizontal|center_vertical"
+
                     android:orientation="vertical"
-                    android:padding="5dp">
+                    android:padding="5dp"
+                    android:visibility="gone">
 
                     <ImageView
                         android:layout_width="40dp"
@@ -186,6 +187,7 @@
                         android:textColor="#000"
                         android:textSize="13dp"></TextView>
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/lv_hindapp_setting"
@@ -212,6 +214,36 @@
                         android:layout_marginBottom="5dp"
                         android:gravity="center_vertical|center_horizontal"
                         android:text="@string/setting_hindapp"
+                        android:textColor="#000"
+                        android:textSize="13dp"></TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lv_restart_setting"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shaper_desk_top_show"
+
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_setting_restart">
+
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="@string/setting_restartlauncher"
                         android:textColor="#000"
                         android:textSize="13dp"></TextView>
                 </LinearLayout>
@@ -255,51 +287,22 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/lv_restart_setting"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/shaper_desk_top_show"
-
-                    android:gravity="center_horizontal|center_vertical"
-                    android:orientation="vertical"
-                    android:padding="5dp">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/ic_setting_restart">
-
-                    </ImageView>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:gravity="center_vertical|center_horizontal"
-                        android:text="@string/setting_restartlauncher"
-                        android:textColor="#000"
-                        android:textSize="13dp"></TextView>
-                </LinearLayout>
-
-                <LinearLayout
                     android:id="@+id/lv_uninstall_setting"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/shaper_desk_top_show"
-
                     android:gravity="center_horizontal|center_vertical"
+
                     android:orientation="vertical"
-                    android:padding="5dp">
+                    android:padding="5dp"
+                    android:visibility="gone">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/ic_setting_uninstall">
+                        android:src="@null">
 
                     </ImageView>
 

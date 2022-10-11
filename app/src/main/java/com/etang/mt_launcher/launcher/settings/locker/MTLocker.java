@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.launcher.MainActivity;
+import com.etang.mt_launcher.tool.mtcore.dialog.MessageDialog;
 import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 
 import java.text.SimpleDateFormat;
@@ -23,7 +24,7 @@ import java.util.Date;
 public class MTLocker extends AppCompatActivity {
     private Handler handler;
     private Runnable runnable;
-    private ImageView iv_locker_xuanzhuan;
+    private ImageView iv_locker_xuanzhuan, iv_locker_setting;
     private TextView tv_locker_nowtime;
 
     @Override
@@ -39,21 +40,30 @@ public class MTLocker extends AppCompatActivity {
         iv_locker_xuanzhuan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                rollScreen();
+//                rollScreen();
+                MessageDialog.show_dialog("未完成功能", MTLocker.this);
+            }
+        });
+        iv_locker_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MessageDialog.show_dialog("未完成功能", MTLocker.this);
             }
         });
     }
 
     private void rollScreen() {
-        if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
+        if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        else if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+        } else if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
     }
 
 
     private void initView() {
         tv_locker_nowtime = (TextView) findViewById(R.id.tv_locker_nowtime);
+        iv_locker_setting = (ImageView) findViewById(R.id.iv_locker_setting);
         iv_locker_xuanzhuan = (ImageView) findViewById(R.id.iv_locker_xuanzhuan);
         DiyToast.showToast(MTLocker.this, "已启用待机，长按任意位置退出", true);
         View my_locker_main_view = (View) findViewById(R.id.my_locker_main_view);
