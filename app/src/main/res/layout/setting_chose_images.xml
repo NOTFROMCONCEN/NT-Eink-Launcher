@@ -86,7 +86,8 @@
                     android:clickable="false"
                     android:enabled="false"
                     android:focusable="false"
-                    android:text="@string/setting_imagesetting_name_newlauncher" />
+                    android:text="@string/setting_imagesetting_name_newlauncher"
+                    android:visibility="gone" />
             </RadioGroup>
 
             <Button

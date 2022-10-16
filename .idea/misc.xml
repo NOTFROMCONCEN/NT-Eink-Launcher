@@ -7,6 +7,7 @@
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/drawable/shaper_zhijiao_lins_nocolor.xml" value="0.2435" />
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/drawable/shaper_zhijiao_lins_show.xml" value="0.2435" />
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/activity_app_use_logs.xml" value="0.24547101449275363" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/activity_app_use_logs_list.xml" value="0.25364583333333335" />
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/activity_main.xml" value="0.24547101449275363" />
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/activity_mtlocker.xml" value="0.25364583333333335" />
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/activity_setting_new.xml" value="0.25364583333333335" />
@@ -22,6 +23,9 @@
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/list_gridview_item.xml" value="0.25364583333333335" />
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/setting_about_fang.xml" value="0.21472663139329806" />
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/setting_about_yuan.xml" value="0.25364583333333335" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/setting_activity_desk_top_setting.xml" value="0.25364583333333335" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/setting_chose_images.xml" value="0.25364583333333335" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/setting_hind_app.xml" value="0.25364583333333335" />
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/setting_inforeback.xml" value="0.25364583333333335" />
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/setting_textsize.xml" value="0.25364583333333335" />
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/title_wather.xml" value="0.25364583333333335" />
