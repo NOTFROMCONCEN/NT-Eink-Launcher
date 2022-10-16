@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/drawable/layer_list_progressbarback.xml" value="0.126" />
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/drawable/select_apps_state.xml" value="0.2435" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/drawable/shaper_apks_button_window_show.xml" value="0.126" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/drawable/shaper_desk_top_show.xml" value="0.126" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/drawable/shaper_edittext_back.xml" value="0.126" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/drawable/shaper_toast_show.xml" value="0.126" />
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/drawable/shaper_zhijiao_lins_nocolor.xml" value="0.2435" />
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/drawable/shaper_zhijiao_lins_show.xml" value="0.2435" />
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/activity_app_use_logs.xml" value="0.24547101449275363" />

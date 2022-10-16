@@ -44,7 +44,7 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/ic_setting_text">
+                        android:src="@drawable/ic_setting_inforeback">
 
                     </ImageView>
 
@@ -102,7 +102,7 @@
                     android:padding="5dp">
 
                     <ImageView
-                        android:layout_width="50dp"
+                        android:layout_width="40dp"
                         android:layout_height="50dp"
                         android:src="@drawable/ic_setting_desktopback">
 
@@ -140,7 +140,7 @@
                     android:padding="5dp">
 
                     <ImageView
-                        android:layout_width="50dp"
+                        android:layout_width="40dp"
                         android:layout_height="50dp"
                         android:src="@drawable/ic_setting_textsize">
 
@@ -231,7 +231,7 @@
                     android:padding="5dp">
 
                     <ImageView
-                        android:layout_width="50dp"
+                        android:layout_width="40dp"
                         android:layout_height="50dp"
                         android:src="@drawable/ic_setting_restart">
 

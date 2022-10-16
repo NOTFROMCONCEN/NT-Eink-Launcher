@@ -108,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="@drawable/shaper_apks_button_window_show"
+            android:background="@drawable/shaper_button_window_show"
             android:text="@string/dialog_con"
             android:textColor="#000"
             android:textSize="15dp" />
@@ -120,7 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="@drawable/shaper_apks_button_window_show"
+            android:background="@drawable/shaper_button_window_show"
             android:text="@string/dialog_cls"
             android:textColor="#000"
             android:textSize="15dp" />

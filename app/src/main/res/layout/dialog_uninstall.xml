@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="@drawable/shaper_apks_button_window_show"
+            android:background="@drawable/shaper_button_window_show"
             android:text="@string/uninstall"
             android:textColor="#000000"
             android:textSize="15dp" />
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="@drawable/shaper_apks_button_window_show"
+            android:background="@drawable/shaper_button_window_show"
             android:text="@string/hinddin"
             android:textColor="#000000"
             android:textSize="15dp" />
@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="@drawable/shaper_apks_button_window_show"
+            android:background="@drawable/shaper_button_window_show"
             android:text="@string/update_icon"
             android:textColor="#000000"
             android:textSize="15dp" />
@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="@drawable/shaper_apks_button_window_show"
+            android:background="@drawable/shaper_button_window_show"
             android:text="@string/dialog_cls"
             android:textColor="#000000"
             android:textSize="15dp" />
@@ -103,7 +103,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5sp"
-        android:background="@drawable/shaper_apks_button_window_show"
+        android:background="@drawable/shaper_button_window_show"
         android:text="@string/dialog_uninstall_open_app"
         android:visibility="gone" />
 
