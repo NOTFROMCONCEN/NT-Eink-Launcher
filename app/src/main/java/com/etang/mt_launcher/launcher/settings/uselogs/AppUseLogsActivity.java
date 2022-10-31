@@ -117,4 +117,13 @@ public class AppUseLogsActivity extends AppCompatActivity {
         db = dbHelper.getWritableDatabase();
         listHelpAdapter = new ListAdapterHelper_AppUseLog(AppUseLogsActivity.this);
     }
+
+    /**
+     * 结束当前Activity时，关闭所有动画
+     */
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(0, 0);
+    }
 }

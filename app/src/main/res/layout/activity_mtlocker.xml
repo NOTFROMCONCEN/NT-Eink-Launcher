@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:gravity="center_horizontal"
-            android:text="梦想，可以天花乱坠，理想，是我们一步一个脚印踩出来的坎坷道路。"
+            android:text="错过的永远错过，活着的永远记得"
             android:textSize="15dp"
             android:textStyle="italic"
             android:typeface="sans"></TextView>

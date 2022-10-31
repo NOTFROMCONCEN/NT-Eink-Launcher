@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.launcher.MainActivity;
-import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
+import com.etang.mt_launcher.tool.mtcore.MTCore;
 
 /**
  * @Package: com.etang.nt_launcher.launcher.settings.textsizesetting
@@ -99,7 +99,7 @@ public class TextSizeSetting extends AppCompatActivity {
                 editor.putString("dianchitext_size", "17");//电池文本大小
                 editor.putString("datetext_size", "17");//日期文本大小
                 editor.apply();
-                DiyToast.showToast(TextSizeSetting.this, "重置成功", true);
+                MTCore.showToast(TextSizeSetting.this, "重置成功", true);
             }
         });
         btn_textsize_resert.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +115,7 @@ public class TextSizeSetting extends AppCompatActivity {
                 editor.putString("dianchitext_size", "17");//电池文本大小
                 editor.putString("datetext_size", "17");//日期文本大小
                 editor.apply();
-                DiyToast.showToast(TextSizeSetting.this, "重置成功", true);
+                MTCore.showToast(TextSizeSetting.this, "重置成功", true);
             }
         });
     }

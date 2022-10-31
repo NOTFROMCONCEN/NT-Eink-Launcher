@@ -1,8 +1,10 @@
 package com.etang.mt_launcher.launcher.settings.launcherimage;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,12 +21,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.launcher.MainActivity;
-import com.etang.mt_launcher.tool.mtcore.permission.SavePermission;
-import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 import com.etang.mt_launcher.tool.mtcore.MTCore;
+import com.etang.mt_launcher.tool.mtcore.permission.SavePermission;
 
 import java.io.IOException;
 
@@ -50,6 +53,9 @@ public class ChoseImagesActivity extends AppCompatActivity {
     private LinearLayout lv_back;
     //当前TAG
     private static String TAG = "ChoseImagesActivity";
+    //判断返回到的Activity
+    private static final int IMAGE_REQUEST_CODE = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +77,7 @@ public class ChoseImagesActivity extends AppCompatActivity {
                 MainActivity.tg_apps_state.setChecked(true);
                 MainActivity.iv_index_back.setVisibility(View.INVISIBLE);
                 MainActivity.mListView.setVisibility(View.VISIBLE);
-                DiyToast.showToast(ChoseImagesActivity.this, "已更换：应用列表", true);
+                MTCore.showToast(ChoseImagesActivity.this, "已更换：应用列表", true);
             }
         });
         //妹子
@@ -85,7 +91,7 @@ public class ChoseImagesActivity extends AppCompatActivity {
                 MainActivity.tg_apps_state.setChecked(false);
                 MainActivity.iv_index_back.setVisibility(View.VISIBLE);
                 MainActivity.mListView.setVisibility(View.INVISIBLE);
-                DiyToast.showToast(ChoseImagesActivity.this, "已更换：妹子", true);
+                MTCore.showToast(ChoseImagesActivity.this, "已更换：妹子", true);
             }
         });
         //情侣
@@ -99,7 +105,7 @@ public class ChoseImagesActivity extends AppCompatActivity {
                 MainActivity.tg_apps_state.setChecked(false);
                 MainActivity.iv_index_back.setVisibility(View.VISIBLE);
                 MainActivity.mListView.setVisibility(View.INVISIBLE);
-                DiyToast.showToast(ChoseImagesActivity.this, "已更换：情侣", true);
+                MTCore.showToast(ChoseImagesActivity.this, "已更换：情侣", true);
             }
         });
         //萝莉
@@ -113,7 +119,7 @@ public class ChoseImagesActivity extends AppCompatActivity {
                 MainActivity.tg_apps_state.setChecked(false);
                 MainActivity.iv_index_back.setVisibility(View.VISIBLE);
                 MainActivity.mListView.setVisibility(View.INVISIBLE);
-                DiyToast.showToast(ChoseImagesActivity.this, "已更换：萝莉", true);
+                MTCore.showToast(ChoseImagesActivity.this, "已更换：萝莉", true);
             }
         });
         //知遇
@@ -127,7 +133,7 @@ public class ChoseImagesActivity extends AppCompatActivity {
                 MainActivity.tg_apps_state.setChecked(false);
                 MainActivity.iv_index_back.setVisibility(View.VISIBLE);
                 MainActivity.mListView.setVisibility(View.INVISIBLE);
-                DiyToast.showToast(ChoseImagesActivity.this, "已更换：知遇", true);
+                MTCore.showToast(ChoseImagesActivity.this, "已更换：知遇", true);
             }
         });
         //系统壁纸
@@ -145,7 +151,7 @@ public class ChoseImagesActivity extends AppCompatActivity {
                 MainActivity.tg_apps_state.setChecked(false);
                 MainActivity.iv_index_back.setVisibility(View.VISIBLE);
                 MainActivity.mListView.setVisibility(View.INVISIBLE);
-                DiyToast.showToast(ChoseImagesActivity.this, "已更换：系统壁纸", true);
+                MTCore.showToast(ChoseImagesActivity.this, "已更换：系统壁纸", true);
                 MainActivity.initSkinMode(ChoseImagesActivity.this, "app_wallpaper");
             }
         });
@@ -165,7 +171,7 @@ public class ChoseImagesActivity extends AppCompatActivity {
                 MainActivity.tg_apps_state.setVisibility(View.GONE);
                 MainActivity.iv_index_back.setVisibility(View.VISIBLE);
                 MainActivity.mListView.setVisibility(View.VISIBLE);
-                DiyToast.showToast(ChoseImagesActivity.this, "已更换：系统壁纸和应用列表", true);
+                MTCore.showToast(ChoseImagesActivity.this, "已更换：系统壁纸和应用列表", true);
                 MainActivity.initSkinMode(ChoseImagesActivity.this, "app_wallpaper_applist");
             }
         });
@@ -180,16 +186,27 @@ public class ChoseImagesActivity extends AppCompatActivity {
         tv_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SavePermission.check_save_permission(ChoseImagesActivity.this);//检查存取权限
+                MTCore.check_save_permission(ChoseImagesActivity.this);//检查存取权限
                 show_dialog();
             }
         });
         btn_set_wallpaperimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SavePermission.check_save_permission(ChoseImagesActivity.this);//检查存取权限
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("image/*");
+                MTCore.check_save_permission(ChoseImagesActivity.this);//检查存取权限
+//                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+//                intent.setType("image/*");
+//                startActivityForResult(intent, IMAGE_PICK);
+//                Intent intent = new Intent(MediaStore.ACTION_PICK_IMAGES);
+//                startActivityForResult(intent, PHOTO_PICKER_REQUEST_CODE);
+                if (ContextCompat.checkSelfPermission(ChoseImagesActivity.this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(ChoseImagesActivity.this, new String[]{
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    }, 1);
+                }
+                Intent intent = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, IMAGE_PICK);
             }
         });
@@ -204,34 +221,61 @@ public class ChoseImagesActivity extends AppCompatActivity {
         builder.setView(view);
         ImageView iv_see_image = (ImageView) view
                 .findViewById(R.id.iv_see_image);
-        if (images_mode.equals("ql")) {
-            iv_see_image.setImageResource(R.drawable.mi_haole);
-        }
-        if (images_mode.equals("mz")) {
-            iv_see_image.setImageResource(R.drawable.mi_meizi);
-        }
-        if (images_mode.equals("ll")) {
-            iv_see_image.setImageResource(R.drawable.mi_luoli);
-        }
-        if (images_mode.equals("zy")) {
-            iv_see_image.setImageResource(R.drawable.mi_zhiyu);
-        }
-        if (images_mode.equals("applist")) {
-            iv_see_image.setImageResource(R.drawable.ic_setting);
-        }
-        if (images_mode.equals("")) {
-            DiyToast.showToast(ChoseImagesActivity.this, "请选择壁纸或者应用列表", true);
-        }
-        if (images_mode.equals("app_wallpaper")) {
-            iv_see_image.setImageBitmap(bitmap);
-        }
-        if (images_mode.equals("app_wallpaper_applist")) {
-            iv_see_image.setImageBitmap(bitmap);
+//        if (images_mode.equals("ql")) {
+//            iv_see_image.setImageResource(R.drawable.mi_haole);
+//        }
+//        if (images_mode.equals("mz")) {
+//            iv_see_image.setImageResource(R.drawable.mi_meizi);
+//        }
+//        if (images_mode.equals("ll")) {
+//            iv_see_image.setImageResource(R.drawable.mi_luoli);
+//        }
+//        if (images_mode.equals("zy")) {
+//            iv_see_image.setImageResource(R.drawable.mi_zhiyu);
+//        }
+//        if (images_mode.equals("applist")) {
+//            iv_see_image.setImageResource(R.drawable.ic_setting);
+//        }
+//        if (images_mode.equals("")) {
+//            MTCore.showToast(ChoseImagesActivity.this, "请选择壁纸或者应用列表", true);
+//        }
+//        if (images_mode.equals("app_wallpaper")) {
+//            iv_see_image.setImageBitmap(bitmap);
+//        }
+//        if (images_mode.equals("app_wallpaper_applist")) {
+//            iv_see_image.setImageBitmap(bitmap);
+//        }
+        switch (images_mode) {
+            case "ql":
+                iv_see_image.setImageResource(R.drawable.mi_haole);
+                break;
+            case "mz":
+                iv_see_image.setImageResource(R.drawable.mi_meizi);
+                break;
+            case "ll":
+                iv_see_image.setImageResource(R.drawable.mi_luoli);
+                break;
+            case "zy":
+                iv_see_image.setImageResource(R.drawable.mi_zhiyu);
+                break;
+            case "applist":
+                iv_see_image.setImageResource(R.drawable.ic_setting);
+                break;
+            case "":
+                MTCore.showToast(ChoseImagesActivity.this, "请选择壁纸或者应用列表", true);
+                break;
+            case "app_wallpaper":
+                iv_see_image.setImageBitmap(bitmap);
+                break;
+            case "app_wallpaper_applist":
+                iv_see_image.setImageBitmap(bitmap);
+                break;
         }
         builder.setTitle("图片预览：" + images_mode);
         builder.setPositiveButton("关闭", null);
         builder.show();
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -240,22 +284,19 @@ public class ChoseImagesActivity extends AppCompatActivity {
                 if (data != null) {
                     // 得到图片的全路径
                     Uri uri = data.getData();
+                    System.out.println("壁纸URI：" + uri);
                     try {
                         bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-                        try {
-                            setWallpaper(bitmap);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                            MTCore.debug_show_dialog(ChoseImagesActivity.this, "设置壁纸时出现错误：" + e.toString(), TAG);
-                        }
+                        //                            setWallpaper(bitmap);
+//                        MainActivity.iv_index_back.setImageBitmap(bitmap);
                     } catch (IOException e) {
                         e.printStackTrace();
                         MTCore.debug_show_dialog(ChoseImagesActivity.this, "获取图片时出现错误：" + e.toString(), TAG);
                     }
                 }
-                DiyToast.showToast(getApplicationContext(), "选择成功，可点击右上角进行预览。\n路径：", true);
+                MTCore.showToast(getApplicationContext(), "选择成功，可点击右上角进行预览。\n路径：", true);
             } else {
-                DiyToast.showToast(getApplicationContext(), "你并没有选择什么", true);
+                MTCore.showToast(getApplicationContext(), "你并没有选择什么", true);
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
@@ -265,30 +306,57 @@ public class ChoseImagesActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences;
         sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
         String images_mode = sharedPreferences.getString("images_info", null);
-        if (images_mode.equals("ql")) {
-            ra_qinglv.setChecked(true);
+        switch (images_mode) {
+            case "ql":
+                ra_qinglv.setChecked(true);
+                break;
+            case "mz":
+                ra_meizi.setChecked(true);
+                break;
+            case "ll":
+                ra_luoli.setChecked(true);
+                break;
+            case "zy":
+                ra_zhiyu.setChecked(true);
+                break;
+            case "applist":
+                ra_applist.setChecked(true);
+                break;
+            case "":
+                MTCore.showToast(this, "请选择壁纸或者应用列表", true);
+                break;
+            case "app_wallpaper":
+                ra_wallpaper.setChecked(true);
+                break;
+            case "app_wallpaper_applist":
+                ra_wallpaper_and_applist.setChecked(true);
+                break;
         }
-        if (images_mode.equals("mz")) {
-            ra_meizi.setChecked(true);
-        }
-        if (images_mode.equals("ll")) {
-            ra_luoli.setChecked(true);
-        }
-        if (images_mode.equals("zy")) {
-            ra_zhiyu.setChecked(true);
-        }
-        if (images_mode.equals("applist")) {
-            ra_applist.setChecked(true);
-        }
-        if (images_mode.equals("")) {
-            DiyToast.showToast(this, "请选择壁纸或者应用列表", true);
-        }
-        if (images_mode.equals("app_wallpaper")) {
-            ra_wallpaper.setChecked(true);
-        }
-        if (images_mode.equals("app_wallpaper_applist")) {
-            ra_wallpaper_and_applist.setChecked(true);
-        }
+//
+//        if (images_mode.equals("ql")) {
+//            ra_qinglv.setChecked(true);
+//        }
+//        if (images_mode.equals("mz")) {
+//            ra_meizi.setChecked(true);
+//        }
+//        if (images_mode.equals("ll")) {
+//            ra_luoli.setChecked(true);
+//        }
+//        if (images_mode.equals("zy")) {
+//            ra_zhiyu.setChecked(true);
+//        }
+//        if (images_mode.equals("applist")) {
+//            ra_applist.setChecked(true);
+//        }
+//        if (images_mode.equals("")) {
+//            MTCore.showToast(this, "请选择壁纸或者应用列表", true);
+//        }
+//        if (images_mode.equals("app_wallpaper")) {
+//            ra_wallpaper.setChecked(true);
+//        }
+//        if (images_mode.equals("app_wallpaper_applist")) {
+//            ra_wallpaper_and_applist.setChecked(true);
+//        }
     }
 
     /**

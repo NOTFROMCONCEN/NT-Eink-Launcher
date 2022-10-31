@@ -35,7 +35,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/shaper_desk_top_show"
+                    android:background="@drawable/shaper_toast_show"
 
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical"
@@ -65,7 +65,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/shaper_desk_top_show"
+                    android:background="@drawable/shaper_toast_show"
 
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical"
@@ -95,7 +95,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/shaper_desk_top_show"
+                    android:background="@drawable/shaper_toast_show"
 
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical"
@@ -133,7 +133,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/shaper_desk_top_show"
+                    android:background="@drawable/shaper_toast_show"
 
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical"
@@ -195,7 +195,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/shaper_desk_top_show"
+                    android:background="@drawable/shaper_toast_show"
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical"
                     android:padding="5dp">
@@ -224,7 +224,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/shaper_desk_top_show"
+                    android:background="@drawable/shaper_toast_show"
 
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical"
@@ -262,7 +262,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/shaper_desk_top_show"
+                    android:background="@drawable/shaper_toast_show"
 
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical"
@@ -318,36 +318,56 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <CheckBox
-                android:id="@+id/cb_hind_setting_ico"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shaper_desk_top_show"
-                android:text="@string/setting_checkbox_hindbar"
-                android:textColor="#000" />
+                android:layout_margin="5dp"
+                android:background="@drawable/shaper_toast_show"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/info_for_hindbottom"
-                android:textColor="#000"
-                android:textSize="13sp" />
+                <CheckBox
+                    android:id="@+id/cb_hind_setting_ico"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/setting_checkbox_hindbar"
+                    android:textColor="#000" />
 
-            <CheckBox
-                android:id="@+id/cb_setting_offlinemode"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shaper_desk_top_show"
-                android:text="@string/setting_offlinemode"
-                android:textColor="#000" />
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/info_for_hindbottom"
+                    android:textColor="#000"
+                    android:textSize="13sp" />
+            </LinearLayout>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/info_for_offlinemode"
-                android:textColor="#000"
-                android:textSize="13sp" />
+                android:layout_margin="5dp"
+                android:background="@drawable/shaper_toast_show"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/cb_setting_offlinemode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/setting_offlinemode"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/info_for_offlinemode"
+                    android:textColor="#000"
+                    android:textSize="13sp" />
+            </LinearLayout>
 
             <CheckBox
                 android:id="@+id/cb_setting_oldmanmode"
@@ -368,6 +388,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical|center"
                 android:text="@string/need_reboot"
                 android:textColor="#000"
                 android:textSize="13sp" />

@@ -22,6 +22,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.launcher.MainActivity;
+import com.etang.mt_launcher.tool.mtcore.MTCore;
 import com.etang.mt_launcher.tool.mtcore.dialog.NewUserDialog;
 import com.etang.mt_launcher.tool.mtcore.permission.SavePermission;
 import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
@@ -177,25 +178,25 @@ public class WelecomeActivity extends FragmentActivity {
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        SavePermission.check_save_permission(WelecomeActivity.this);
+                        MTCore.check_save_permission(WelecomeActivity.this);
                     }
                 }).setNegativeButton("也是确定", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                SavePermission.check_save_permission(WelecomeActivity.this);
-            }
-        }).setNeutralButton("还是确定", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                SavePermission.check_save_permission(WelecomeActivity.this);
-            }
-        }).setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                DiyToast.showToast(WelecomeActivity.this, "请给予权限", true);
-                SavePermission.check_save_permission(WelecomeActivity.this);
-            }
-        }).show();
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        MTCore.check_save_permission(WelecomeActivity.this);
+                    }
+                }).setNeutralButton("还是确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        MTCore.check_save_permission(WelecomeActivity.this);
+                    }
+                }).setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        MTCore.showToast(WelecomeActivity.this, "请给予权限", true);
+                        MTCore.check_save_permission(WelecomeActivity.this);
+                    }
+                }).show();
     }
 
     private void initView() {

@@ -164,7 +164,7 @@ public class UnInstallDialog {
 
     private static void show_ico_dialog(final Context context, final Activity activity) {
         try {
-            SavePermission.check_save_permission(activity);//检查存取权限
+            MTCore.check_save_permission(activity);//检查存取权限
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             View view = LayoutInflater.from(context).inflate(R.layout.dialog_load_ico, null, false);
             builder.setView(view);
@@ -175,7 +175,7 @@ public class UnInstallDialog {
                 public void onClick(DialogInterface dialog, int which) {
                     if (et_load_ico_uri.getText().toString().isEmpty()) {
                         show_ico_dialog(context, activity);
-                        DiyToast.showToast(context, "请输入文件名", true);
+                        MTCore.showToast(context, "请输入文件名", true);
                     } else {
                         ArrayList<String> arrayList = new ArrayList<>();
                         arrayList = SaveArrayImageUtil.getSearchArrayList(context);

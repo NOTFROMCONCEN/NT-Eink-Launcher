@@ -15,6 +15,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.etang.mt_launcher.R;
+import com.etang.mt_launcher.tool.mtcore.MTCore;
 import com.etang.mt_launcher.tool.sql.MyDataBaseHelper;
 import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 
@@ -65,7 +66,7 @@ public class WeatherActivity extends Activity {
                 //如果文本框为空
                 if (et_city_get.getText().toString().isEmpty()) {
                     //提示
-                    DiyToast.showToast(getApplicationContext(), "请输入城市", true);
+                    MTCore.showToast(getApplicationContext(), "请输入城市", true);
                 } else {
                     //向数据库内插入输入的城市
                     db.execSQL("update wather_city set city = ? ",

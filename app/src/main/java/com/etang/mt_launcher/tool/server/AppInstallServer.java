@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.util.Log;
 
 import com.etang.mt_launcher.launcher.MainActivity;
+import com.etang.mt_launcher.tool.mtcore.MTCore;
 import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 
 /**
@@ -36,7 +37,7 @@ public class AppInstallServer extends BroadcastReceiver {
             if (intent.getAction().equals(Intent.ACTION_PACKAGE_ADDED)) {
                 String packageName = intent.getData().getSchemeSpecificPart();
 //                Log.e("服务安装", "onReceive: " + packageName);
-                DiyToast.showToast(context, "安装了" + packageName, true);
+                MTCore.showToast(context, "安装了" + packageName, true);
                 MainActivity.initAppList(context);
             }
             //接收卸载广播
@@ -44,7 +45,7 @@ public class AppInstallServer extends BroadcastReceiver {
                 String packageName = intent.getData().getSchemeSpecificPart();
 //                Log.e("服务卸载", "onReceive: " + packageName);
                 boolean isReplace = intent.getBooleanExtra(Intent.EXTRA_REPLACING, false);
-                DiyToast.showToast(context, "卸载了" + packageName, true);
+                MTCore.showToast(context, "卸载了" + packageName, true);
                 MainActivity.initAppList(context);
             }
             //接收升级更新广播

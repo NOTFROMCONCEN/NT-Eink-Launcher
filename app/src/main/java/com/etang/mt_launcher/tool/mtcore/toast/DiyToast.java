@@ -21,7 +21,7 @@ public class DiyToast {
     //当前页面TAG
     private static String TAG = "DiyToast";
 
-    public static void showToast(Context context, String s, boolean long_or_short) {
+    public static void show(Context context, String s, boolean long_or_short) {
         if (toast != null) {
             toast.cancel();
         }

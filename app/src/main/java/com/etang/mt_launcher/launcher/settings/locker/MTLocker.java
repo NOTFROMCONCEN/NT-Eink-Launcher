@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.launcher.MainActivity;
+import com.etang.mt_launcher.tool.mtcore.MTCore;
 import com.etang.mt_launcher.tool.mtcore.dialog.MessageDialog;
 import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 
@@ -65,7 +66,7 @@ public class MTLocker extends AppCompatActivity {
         tv_locker_nowtime = (TextView) findViewById(R.id.tv_locker_nowtime);
         iv_locker_setting = (ImageView) findViewById(R.id.iv_locker_setting);
         iv_locker_xuanzhuan = (ImageView) findViewById(R.id.iv_locker_xuanzhuan);
-        DiyToast.showToast(MTLocker.this, "已启用待机，长按任意位置退出", true);
+        MTCore.showToast(MTLocker.this, "已启用待机，长按任意位置退出", true);
         View my_locker_main_view = (View) findViewById(R.id.my_locker_main_view);
         my_locker_main_view.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -102,6 +103,15 @@ public class MTLocker extends AppCompatActivity {
             }
         };
         handler.post(runnable);
+    }
+
+    /**
+     * 结束当前Activity时，关闭所有动画
+     */
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(0, 0);
     }
 
 }

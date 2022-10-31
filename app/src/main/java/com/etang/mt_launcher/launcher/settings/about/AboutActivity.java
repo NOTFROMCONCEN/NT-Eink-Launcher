@@ -96,7 +96,7 @@ public class AboutActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast提示
-                DiyToast.showToast(getApplicationContext(), "请注意：是否捐赠并不影响正常使用", true);
+                MTCore.showToast(getApplicationContext(), "请注意：是否捐赠并不影响正常使用", true);
                 //显示捐赠弹出框
                 PayMeDialog.show_dialog(AboutActivity.this);
             }
@@ -106,7 +106,7 @@ public class AboutActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast提示
-                DiyToast.showToast(getApplicationContext(), "使用对应APP扫码即可~~~~", true);
+                MTCore.showToast(getApplicationContext(), "使用对应APP扫码即可~~~~", true);
                 //显示捐赠弹出框
                 FollwoMeDialog.show_dialog(AboutActivity.this);
             }
@@ -122,9 +122,9 @@ public class AboutActivity extends AppCompatActivity {
                     AboutActivity.this);
         } else {
             //检查存储权限
-            SavePermission.check_save_permission(AboutActivity.this);
+            MTCore.check_save_permission(AboutActivity.this);
             //检查更新
-            CheckUpdateDialog.check_update(AboutActivity.this, AboutActivity.this, "about");
+            MTCore.CheckUpdate(AboutActivity.this, AboutActivity.this, "about");
         }
     }
 

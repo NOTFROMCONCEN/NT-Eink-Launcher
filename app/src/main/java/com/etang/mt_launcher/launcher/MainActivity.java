@@ -55,17 +55,16 @@ import com.etang.mt_launcher.launcher.settings.uirefresh.UireFreshActivity;
 import com.etang.mt_launcher.launcher.settings.uselogs.AppUseLogsActivity;
 import com.etang.mt_launcher.launcher.settings.weather.WeatherActivity;
 import com.etang.mt_launcher.launcher.welecome.WelecomeActivity;
-import com.etang.mt_launcher.tool.mtcore.dialog.MessageDialog;
-import com.etang.mt_launcher.tool.mtcore.dialog.UnInstallDialog;
 import com.etang.mt_launcher.tool.getapps.AppInfo;
 import com.etang.mt_launcher.tool.getapps.DeskTopGridViewBaseAdapter;
 import com.etang.mt_launcher.tool.getapps.GetApps;
+import com.etang.mt_launcher.tool.mtcore.MTCore;
+import com.etang.mt_launcher.tool.mtcore.dialog.MessageDialog;
+import com.etang.mt_launcher.tool.mtcore.dialog.UnInstallDialog;
 import com.etang.mt_launcher.tool.mtcore.permission.SavePermission;
 import com.etang.mt_launcher.tool.mtcore.savearrayutil.SaveArrayListUtil;
 import com.etang.mt_launcher.tool.server.AppInstallServer;
 import com.etang.mt_launcher.tool.sql.MyDataBaseHelper;
-import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
-import com.etang.mt_launcher.tool.mtcore.MTCore;
 import com.etang.mt_launcher.tool.util.StreamTool;
 
 import org.json.JSONArray;
@@ -136,7 +135,7 @@ public class MainActivity extends Activity implements OnClickListener {
         //绑定各类
         initView();// 绑定控件
         check_first_user();//检查是不是第一次使用
-        SavePermission.check_save_permission(MainActivity.this);//检查存取权限
+        MTCore.check_save_permission(MainActivity.this);//检查存取权限
         new_time_Thread();// 启用更新时间进程
         read_info_help(MainActivity.this, sharedPreferences);//集中存放读取信息相关方法
 //        //检查更新
@@ -215,7 +214,7 @@ public class MainActivity extends Activity implements OnClickListener {
                             sendBroadcast(intent_clear);
                         }
                     } else if (appInfos.get(position).getPackageName().equals(getPackageName() + ".userhelper")) {
-                        DiyToast.showToast(getApplicationContext(), "打开", true);
+                        MTCore.showToast(getApplicationContext(), "打开", true);
                         intent.putExtra("state", "false");
                         intent = new Intent(MainActivity.this, WelecomeActivity.class);
                         startActivity(intent);
@@ -378,7 +377,7 @@ public class MainActivity extends Activity implements OnClickListener {
             MainActivity.mListView.setVisibility(View.VISIBLE);
             MainActivity.iv_index_back.setImageBitmap(bitmap);
             MainActivity.tg_apps_state.setVisibility(View.GONE);
-//            DiyToast.showToast(context, "系统壁纸出错，重置为白色", true);
+//            MTCore.showToast(context, "系统壁纸出错，重置为白色", true);
             MTCore.debug_show_dialog(context, "系统壁纸获取出错 \n 请更改其他壁纸设置 \n 错误信息：" + e.toString(), TAG);
         }
     }
@@ -407,7 +406,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
     private void check_first_user() {
         if (isFirstStart(MainActivity.this)) {//第一次
-            DiyToast.showToast(MainActivity.this, "ヾ(≧▽≦*)o", true);
+            MTCore.showToast(MainActivity.this, "ヾ(≧▽≦*)o", true);
             /**
              * 填充预设数据
              */
@@ -564,7 +563,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 iv_index_back.setImageResource(R.drawable.mi_haole);
                 iv_index_back.setVisibility(View.GONE);
                 mListView.setVisibility(View.VISIBLE);
-                DiyToast.showToast(this, "请选择壁纸或者应用列表（设置-壁纸设置）", false);
+                MTCore.showToast(this, "请选择壁纸或者应用列表（设置-壁纸设置）", false);
             }
             if (images_mode.equals("app_wallpaper")) {
                 initSkinMode(MainActivity.this, images_mode);
@@ -796,7 +795,7 @@ public class MainActivity extends Activity implements OnClickListener {
                             tv_city.setText(cursor.getString(cursor
                                     .getColumnIndex("city")) + "  " + type);
                         } else {
-                            DiyToast.showToast(getApplicationContext(), "请到“梅糖天气”设置位置信息", true);
+                            MTCore.showToast(getApplicationContext(), "请到“梅糖天气”设置位置信息", true);
                         }
                         SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
                         editor.putString("wather_info_citytype", cursor.getString(cursor
@@ -818,7 +817,7 @@ public class MainActivity extends Activity implements OnClickListener {
                     }
                     break;
                 case 1:
-                    DiyToast.showToast(getApplicationContext(), "城市无效（已重置为上海）", true);
+                    MTCore.showToast(getApplicationContext(), "城市无效（已重置为上海）", true);
                     db.execSQL("update wather_city set city = ? ",
                             new String[]{"上海"});
                     break;
@@ -840,7 +839,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
     public void update_wather(Context context, final String city) {
         if (TextUtils.isEmpty(city)) {
-            DiyToast.showToast(context, "城市错误，不在数据库中", true);
+            MTCore.showToast(context, "城市错误，不在数据库中", true);
             return;
         }
         new Thread() {
@@ -910,7 +909,7 @@ public class MainActivity extends Activity implements OnClickListener {
             return false;
         }
         if (keyCode == KeyEvent.KEYCODE_HOME) {
-            DiyToast.showToast(MainActivity.this, "已经回到桌面", false);
+            MTCore.showToast(MainActivity.this, "已经回到桌面", false);
             return false;
         }
         return super.onKeyDown(keyCode, event);
@@ -998,7 +997,7 @@ public class MainActivity extends Activity implements OnClickListener {
                         update_wathers(sharedPreferences);
                     }
                 } else {
-                    DiyToast.showToast(getApplicationContext(), "当前处于离线模式", true);
+                    MTCore.showToast(getApplicationContext(), "当前处于离线模式", true);
                 }
                 break;
             case R.id.iv_setting_clear:

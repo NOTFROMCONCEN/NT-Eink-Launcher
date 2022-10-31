@@ -21,7 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.launcher.MainActivity;
-import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
+import com.etang.mt_launcher.tool.mtcore.MTCore;
 
 /**
  * @ProjectName: NT-Eink-Launcher
@@ -278,7 +278,7 @@ public class DeskTopSettingActivity extends AppCompatActivity implements View.On
 
     private void mode_edittext(int number) {
         if (number == 0) {
-            DiyToast.showToast(getApplicationContext(), "不能为“0”", true);
+            MTCore.showToast(getApplicationContext(), "不能为“0”", true);
         } else {
             SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
             editor.putString("applist_number", String.valueOf(number));
@@ -288,7 +288,7 @@ public class DeskTopSettingActivity extends AppCompatActivity implements View.On
 
     private void mode_seekbar(int number) {
         if (number == 0) {
-            DiyToast.showToast(getApplicationContext(), "不能为“0”", true);
+            MTCore.showToast(getApplicationContext(), "不能为“0”", true);
         } else {
             SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
             editor.putString("applist_number", String.valueOf(number));
@@ -307,62 +307,62 @@ public class DeskTopSettingActivity extends AppCompatActivity implements View.On
             case R.id.ra_app_hind_blok:
                 editor.putString("appblok_state", "hind_blok");
                 editor.apply();
-                DiyToast.showToast(getApplicationContext(), "已设置为：隐藏边框", true);
+                MTCore.showToast(getApplicationContext(), "已设置为：隐藏边框", true);
                 MainActivity.initAppList(DeskTopSettingActivity.this);
                 break;
             case R.id.ra_app_show_blok_line:
                 editor.putString("appblok_state", "show_blok_line");
                 editor.apply();
                 MainActivity.initAppList(DeskTopSettingActivity.this);
-                DiyToast.showToast(getApplicationContext(), "已设置为：显示边框（直角）", true);
+                MTCore.showToast(getApplicationContext(), "已设置为：显示边框（直角）", true);
                 break;
             case R.id.ra_app_show_blok_yuan:
                 editor.putString("appblok_state", "show_blok_yuan");
                 editor.apply();
                 MainActivity.initAppList(DeskTopSettingActivity.this);
-                DiyToast.showToast(getApplicationContext(), "已设置为：显示边框（圆角）", true);
+                MTCore.showToast(getApplicationContext(), "已设置为：显示边框（圆角）", true);
                 break;
             case R.id.ra_app_show_nocolor_blok_line:
                 editor.putString("appblok_state", "show_nocolor_blok_line");
                 editor.apply();
                 MainActivity.initAppList(DeskTopSettingActivity.this);
-                DiyToast.showToast(getApplicationContext(), "已设置为：显示直角边框，背景透明", true);
+                MTCore.showToast(getApplicationContext(), "已设置为：显示直角边框，背景透明", true);
                 break;
             case R.id.ra_app_show_nocolor_blok_yuan:
                 editor.putString("appblok_state", "show_nocolor_blok_yuan");
                 editor.apply();
                 MainActivity.initAppList(DeskTopSettingActivity.this);
-                DiyToast.showToast(getApplicationContext(), "已设置为：显示圆角边框，背景透明", true);
+                MTCore.showToast(getApplicationContext(), "已设置为：显示圆角边框，背景透明", true);
                 break;
             case R.id.ra_appname_one:
                 editor.putString("appname_state", "one");
                 editor.apply();
                 MainActivity.initAppList(DeskTopSettingActivity.this);
-                DiyToast.showToast(getApplicationContext(), "已设置为：限制为一行", true);
+                MTCore.showToast(getApplicationContext(), "已设置为：限制为一行", true);
                 break;
             case R.id.ra_appname_nope:
                 editor.putString("appname_state", "nope");
                 editor.apply();
                 MainActivity.initAppList(DeskTopSettingActivity.this);
-                DiyToast.showToast(getApplicationContext(), "已设置为：显示", true);
+                MTCore.showToast(getApplicationContext(), "已设置为：显示", true);
                 break;
             case R.id.ra_appname_hind:
                 editor.putString("appname_state", "hind");
                 editor.apply();
                 MainActivity.initAppList(DeskTopSettingActivity.this);
-                DiyToast.showToast(getApplicationContext(), "已设置为：隐藏", true);
+                MTCore.showToast(getApplicationContext(), "已设置为：隐藏", true);
                 break;
             case R.id.ra_app_bottommode_bottom:
                 editor_bottommode.putBoolean("app_setStackFromBottomMode", true);
                 editor_bottommode.apply();
                 MainActivity.initAppList(DeskTopSettingActivity.this);
-                DiyToast.showToast(getApplicationContext(), "已设置为：从底部开始排列", true);
+                MTCore.showToast(getApplicationContext(), "已设置为：从底部开始排列", true);
                 break;
             case R.id.ra_app_bottommode_top:
                 editor_bottommode.putBoolean("app_setStackFromBottomMode", false);
                 editor_bottommode.apply();
                 MainActivity.initAppList(DeskTopSettingActivity.this);
-                DiyToast.showToast(getApplicationContext(), "已设置为：从顶部开始排列", true);
+                MTCore.showToast(getApplicationContext(), "已设置为：从顶部开始排列", true);
                 break;
         }
     }

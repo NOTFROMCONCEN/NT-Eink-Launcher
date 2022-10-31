@@ -26,9 +26,8 @@ import com.etang.mt_launcher.launcher.welecome.WelecomeActivity;
 import com.etang.mt_launcher.tool.getapps.AppInfo;
 import com.etang.mt_launcher.tool.getapps.DeskTopGridViewBaseAdapter;
 import com.etang.mt_launcher.tool.getapps.GetApps;
-import com.etang.mt_launcher.tool.mtcore.savearrayutil.SaveArrayListUtil;
-import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 import com.etang.mt_launcher.tool.mtcore.MTCore;
+import com.etang.mt_launcher.tool.mtcore.savearrayutil.SaveArrayListUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,7 +88,7 @@ public class HindAppSetting extends AppCompatActivity {
         tv_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DiyToast.showToast(getApplicationContext(), "刷新成功", false);
+                MTCore.showToast(getApplicationContext(), "刷新成功", false);
                 initAppList(getApplicationContext());
             }
         });
@@ -141,7 +140,7 @@ public class HindAppSetting extends AppCompatActivity {
                             sendBroadcast(intent_clear);
                         }
                     } else if (appHindInfos.get(position).getPackageName().equals(getPackageName() + ".userhelper")) {
-                        DiyToast.showToast(getApplicationContext(), "打开", true);
+                        MTCore.showToast(getApplicationContext(), "打开", true);
                         intent.putExtra("state", "false");
                         intent = new Intent(HindAppSetting.this, WelecomeActivity.class);
                         startActivity(intent);

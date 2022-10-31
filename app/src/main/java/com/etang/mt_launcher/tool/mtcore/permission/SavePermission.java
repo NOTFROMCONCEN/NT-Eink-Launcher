@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 
+import com.etang.mt_launcher.tool.mtcore.MTCore;
 import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 
 /**
@@ -20,7 +21,7 @@ public class SavePermission {
     /**
      * 检查是否拥有存储权限
      */
-    public static void check_save_permission(Activity activity) {
+    public static void check(Activity activity) {
         boolean isGranted = true;
         if (android.os.Build.VERSION.SDK_INT >= 23) {
             if (activity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -31,7 +32,7 @@ public class SavePermission {
                 isGranted = false;
             }
             if (!isGranted) {
-                DiyToast.showToast(activity, "请给予存储权限", true);
+                MTCore.showToast(activity, "请给予存储权限", true);
                 activity.requestPermissions(
                         new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission
                                 .ACCESS_FINE_LOCATION,
