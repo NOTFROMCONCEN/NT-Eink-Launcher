@@ -108,7 +108,7 @@ public class AboutActivity extends AppCompatActivity {
                 //Toast提示
                 MTCore.showToast(getApplicationContext(), "使用对应APP扫码即可~~~~", true);
                 //显示捐赠弹出框
-                FollwoMeDialog.show_dialog(AboutActivity.this);
+                MTCore.FollwoMeDialog(AboutActivity.this);
             }
         });
         //设置版本号
@@ -118,7 +118,7 @@ public class AboutActivity extends AppCompatActivity {
 
     private void checkupdate() {
         if (MTCore.get_Now_AndroidVersion() == 19) {
-            MessageDialog.show_dialog("很抱歉，检测到您使用的是Android4.4（SDK=19），目前梅糖桌面的更新功能在此版本中有致命BUG，请通过“酷安”APP进行在线更新。或使用ADB安装最新版。",
+            MTCore.MessageDialog("很抱歉，检测到您使用的是Android4.4（SDK=19），目前梅糖桌面的更新功能在此版本中有致命BUG，请通过“酷安”APP进行在线更新。或使用ADB安装最新版。",
                     AboutActivity.this);
         } else {
             //检查存储权限

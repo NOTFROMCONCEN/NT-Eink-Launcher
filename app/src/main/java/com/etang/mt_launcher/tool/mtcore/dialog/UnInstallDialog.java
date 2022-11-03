@@ -96,10 +96,10 @@ public class UnInstallDialog {
                                 context.sendBroadcast(intent_clear);
                             }
                         } else {//出现异常
-                            MTCore.debug_show_dialog(context, "启动APP时出现“Intent”相关的异常", TAG);
+                            MTCore.ErrorDialog(context, "启动APP时出现“Intent”相关的异常", TAG);
                         }
                     } catch (Exception e) {
-                        MTCore.debug_show_dialog(context, e.toString(), TAG);
+                        MTCore.ErrorDialog(context, e.toString(), TAG);
                     }
                 }
             });
@@ -115,7 +115,7 @@ public class UnInstallDialog {
                         builder.dismiss();
                         MainActivity.initAppList(context);
                     } catch (Exception e) {
-                        MTCore.debug_show_dialog(context, e.toString(), TAG);
+                        MTCore.ErrorDialog(context, e.toString(), TAG);
                     }
                 }
             });
@@ -145,7 +145,7 @@ public class UnInstallDialog {
             lp.dimAmount = 0f;
             window.setAttributes(lp);
         } catch (Exception e) {
-            MTCore.debug_show_dialog(context, e.toString(), TAG);
+            MTCore.ErrorDialog(context, e.toString(), TAG);
         }
     }
 
@@ -158,7 +158,7 @@ public class UnInstallDialog {
             Intent uninstallIntent = new Intent(Intent.ACTION_DELETE, packageURI);
             activity.startActivityForResult(uninstallIntent, 1);
         } catch (Exception e) {
-            MTCore.debug_show_dialog(context, e.toString(), TAG);
+            MTCore.ErrorDialog(context, e.toString(), TAG);
         }
     }
 
@@ -203,7 +203,7 @@ public class UnInstallDialog {
             builder.setNegativeButton("取消", null);
             builder.show();
         } catch (Exception e) {
-            MTCore.debug_show_dialog(context, e.toString(), TAG);
+            MTCore.ErrorDialog(context, e.toString(), TAG);
         }
     }
 }

@@ -21,7 +21,7 @@ public class FollwoMeDialog {
     //当前页面TAG
     private static String TAG = "FollwoMeDialog";
 
-    public static void show_dialog(final Activity activity) {
+    public static void show(final Activity activity) {
         final AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
         View view = LayoutInflater.from(activity).inflate(R.layout.dialog_follwome, null, false);
         alertDialog.setView(view);

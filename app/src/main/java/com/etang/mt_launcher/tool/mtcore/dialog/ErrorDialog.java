@@ -7,7 +7,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 public class ErrorDialog {
-    public static void showdialog(final Context context, final String e, final String TAG) {
+    public static void show(final Context context, final String e, final String TAG) {
         //新建一个AlertDialog
         final AlertDialog builder = new AlertDialog.Builder(context).create();
         //设置标题

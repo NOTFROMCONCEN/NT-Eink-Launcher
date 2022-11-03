@@ -146,10 +146,10 @@ public class HindAppSetting extends AppCompatActivity {
                         startActivity(intent);
                         overridePendingTransition(0, 0);
                     } else {//出现异常
-                        MTCore.debug_show_dialog(HindAppSetting.this, "启动APP时出现“Intent”相关的异常", TAG);
+                        MTCore.ErrorDialog(HindAppSetting.this, "启动APP时出现“Intent”相关的异常", TAG);
                     }
                 } catch (Exception e) {
-                    MTCore.debug_show_dialog(HindAppSetting.this, e.toString(), TAG);
+                    MTCore.ErrorDialog(HindAppSetting.this, e.toString(), TAG);
                 }
             }
         });

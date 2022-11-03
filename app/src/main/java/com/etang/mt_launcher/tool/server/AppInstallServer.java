@@ -51,8 +51,8 @@ public class AppInstallServer extends BroadcastReceiver {
             //接收升级更新广播
             if (intent.getAction().equals(Intent.ACTION_PACKAGE_REPLACED)) {
                 String packageName = intent.getData().getSchemeSpecificPart();
-//                Log.e("服务更新", "onReceive: " + packageName);
-//                DiyToast.showToast(context, "更新了" + packageName, true);
+                Log.e("服务更新", "onReceive: " + packageName);
+                MTCore.showToast(context, "更新了" + packageName, true);
                 MainActivity.initAppList(context);
             }
         } catch (Exception e) {

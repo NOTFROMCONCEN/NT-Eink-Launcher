@@ -42,13 +42,13 @@ public class MTLocker extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                rollScreen();
-                MessageDialog.show_dialog("未完成功能", MTLocker.this);
+                MTCore.MessageDialog("未完成功能", MTLocker.this);
             }
         });
         iv_locker_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MessageDialog.show_dialog("未完成功能", MTLocker.this);
+                MTCore.MessageDialog("未完成功能", MTLocker.this);
             }
         });
     }

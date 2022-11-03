@@ -15,7 +15,7 @@ public class MessageDialog {
     //当前页面TAG
     private static String TAG = "MessageDialog";
 
-    public static void show_dialog(final String msg, Activity activity) {
+    public static void show(final String msg, Activity activity) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("来自系统的消息");
         builder.setMessage(msg);

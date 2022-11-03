@@ -11,6 +11,8 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.etang.mt_launcher.tool.mtcore.dialog.ErrorDialog;
+import com.etang.mt_launcher.tool.mtcore.dialog.FollwoMeDialog;
+import com.etang.mt_launcher.tool.mtcore.dialog.MessageDialog;
 import com.etang.mt_launcher.tool.mtcore.dialog.NewUserDialog;
 import com.etang.mt_launcher.tool.mtcore.permission.SavePermission;
 import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
@@ -46,6 +48,19 @@ public class MTCore {
     private static String error_name_timeout = "E-1-TimeOut-网络链接超时";
     public static int error_code_timeout = 90001;
 
+    public static void FollwoMeDialog(final Activity activity) {
+        FollwoMeDialog.show(activity);
+    }
+
+    public static void MessageDialog(final String msg, Activity activity) {
+        MessageDialog.show(msg, activity);
+    }
+
+
+    public static void ErrorDialog(final Context context, final String e, final String TAG) {
+        ErrorDialog.show(context, e, TAG);
+    }
+
     //查找APP更新
     public static void CheckUpdate(final Context context, final Activity activity, final String where) {
         CheckUpdateDialog.check_update(context, activity, where);
@@ -80,11 +95,7 @@ public class MTCore {
     }
 
     public static void showToast(Context context, String s, boolean long_or_short) {
-        DiyToast.show(context, s, long_or_short);
-    }
-
-    public static void debug_show_dialog(final Context context, final String e, final String TAG) {
-        ErrorDialog.showdialog(context, e, TAG);
+        DiyToast.show(context, my_app_name + ":" + s, long_or_short);
     }
 
     public static void check_save_permission(Activity activity) {

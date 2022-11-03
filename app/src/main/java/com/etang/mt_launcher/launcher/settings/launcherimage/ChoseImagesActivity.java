@@ -291,7 +291,7 @@ public class ChoseImagesActivity extends AppCompatActivity {
 //                        MainActivity.iv_index_back.setImageBitmap(bitmap);
                     } catch (IOException e) {
                         e.printStackTrace();
-                        MTCore.debug_show_dialog(ChoseImagesActivity.this, "获取图片时出现错误：" + e.toString(), TAG);
+                        MTCore.ErrorDialog(ChoseImagesActivity.this, "获取图片时出现错误：" + e.toString(), TAG);
                     }
                 }
                 MTCore.showToast(getApplicationContext(), "选择成功，可点击右上角进行预览。\n路径：", true);

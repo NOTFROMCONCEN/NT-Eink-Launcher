@@ -149,7 +149,7 @@ public class MainActivity extends Activity implements OnClickListener {
                     string_app_info = appInfos.get(position).getPackageName();
                     UnInstallDialog.uninstall_app(position, appInfos, MainActivity.this, MainActivity.this, string_app_info, appInfos.get(position).getName());
                 } catch (Exception e) {
-                    MTCore.debug_show_dialog(MainActivity.this, e.toString(), TAG);//显示错误信息
+                    MTCore.ErrorDialog(MainActivity.this, e.toString(), TAG);//显示错误信息
                 }
                 return true;
             }
@@ -173,7 +173,7 @@ public class MainActivity extends Activity implements OnClickListener {
                             overridePendingTransition(0, 0);
                         } catch (Exception e) {
                             db.execSQL("create table appuselogs (_id integer primary key autoincrement,appname text,time text)");
-                            MessageDialog.show_dialog("数据库已部署，请再次点击你要打开的APP", MainActivity.this);
+                            MTCore.MessageDialog("数据库已部署，请再次点击你要打开的APP", MainActivity.this);
                         }
                     } else if (appInfos.get(position).getPackageName().equals(getPackageName() + ".weather")) {//点击了“天气”
                         intent = new Intent(MainActivity.this, WeatherActivity.class);
@@ -220,10 +220,10 @@ public class MainActivity extends Activity implements OnClickListener {
                         startActivity(intent);
                         overridePendingTransition(0, 0);
                     } else {//出现异常
-                        MTCore.debug_show_dialog(MainActivity.this, "启动APP时出现“Intent”相关的异常", TAG);
+                        MTCore.ErrorDialog(MainActivity.this, "启动APP时出现“Intent”相关的异常", TAG);
                     }
                 } catch (Exception e) {
-                    MTCore.debug_show_dialog(MainActivity.this, e.toString(), TAG);
+                    MTCore.ErrorDialog(MainActivity.this, e.toString(), TAG);
                 }
             }
         });
@@ -378,7 +378,7 @@ public class MainActivity extends Activity implements OnClickListener {
             MainActivity.iv_index_back.setImageBitmap(bitmap);
             MainActivity.tg_apps_state.setVisibility(View.GONE);
 //            MTCore.showToast(context, "系统壁纸出错，重置为白色", true);
-            MTCore.debug_show_dialog(context, "系统壁纸获取出错 \n 请更改其他壁纸设置 \n 错误信息：" + e.toString(), TAG);
+            MTCore.ErrorDialog(context, "系统壁纸获取出错 \n 请更改其他壁纸设置 \n 错误信息：" + e.toString(), TAG);
         }
     }
 
@@ -572,7 +572,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 initSkinMode(MainActivity.this, images_mode);
             }
         } catch (Exception e) {
-            MTCore.debug_show_dialog(c, "桌面壁纸出现错误，已重置为默认", TAG);
+            MTCore.ErrorDialog(c, "桌面壁纸出现错误，已重置为默认", TAG);
             sharedPreferences.edit().putString("images_info", "applist").apply();
         }
     }

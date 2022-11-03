@@ -43,7 +43,7 @@ public class MyDataBaseHelper extends SQLiteOpenHelper {
             //存放APP使用记录
             db.execSQL("create table appuselogs (_id integer primary key autoincrement,appname text,time text)");
         } catch (Exception e) {
-            MTCore.debug_show_dialog(context, String.valueOf(e), TAG);
+            MTCore.ErrorDialog(context, String.valueOf(e), TAG);
         }
     }
 
