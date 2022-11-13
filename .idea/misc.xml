@@ -24,6 +24,18 @@
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/activity_welecome_1.xml" value="0.25364583333333335" />
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/activity_welecome_2.xml" value="0.25364583333333335" />
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/activity_welecome_chose.xml" value="0.25364583333333335" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/dialog_chose_image.xml" value="0.2463768115942029" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/dialog_desktop_setting.xml" value="0.2463768115942029" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/dialog_follwome.xml" value="0.2463768115942029" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/dialog_follwome_bilibili.xml" value="0.2463768115942029" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/dialog_load_ico.xml" value="0.2463768115942029" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/dialog_name_show.xml" value="0.2463768115942029" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/dialog_name_show_new.xml" value="0.2463768115942029" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/dialog_newuserchecker.xml" value="0.2463768115942029" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/dialog_payme.xml" value="0.2463768115942029" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/dialog_payme_aifadian.xml" value="0.2463768115942029" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/dialog_payme_ali.xml" value="0.2463768115942029" />
+        <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/dialog_payme_wechat.xml" value="0.2463768115942029" />
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/dialog_seekbar_and_edittext.xml" value="0.2418478260869565" />
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/dialog_show_progressbar.xml" value="0.2418478260869565" />
         <entry key="..\:/APPs/DEVS/HBuilderXProject/MT-Eink-Launcher/app/src/main/res/layout/dialog_uninstall.xml" value="0.25364583333333335" />
