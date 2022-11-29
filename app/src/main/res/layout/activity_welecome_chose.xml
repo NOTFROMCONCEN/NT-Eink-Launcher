@@ -11,58 +11,27 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5sp"
-            android:gravity="center|center_vertical|center_horizontal"
-            android:text="@string/welecome_huanying1"
-            android:textColor="#000000"
-            android:textSize="20sp" />
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_launcher"></ImageView>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5sp"
-            android:gravity="center|center_vertical|center_horizontal"
-            android:text="@string/welecome_huanying2"
-            android:textColor="#000000"
-            android:textSize="20sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5sp"
-            android:gravity="center|center_vertical|center_horizontal"
-            android:text="@string/welecome_huanying3"
-            android:textColor="#000000"
-            android:textSize="20sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:text="@string/welecome_huanying_choseyuyan1"
-            android:textSize="17sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/welecome_huanying_choseyuyan2"
-            android:textSize="17sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/welecome_huanying_choseyuyan3"
-            android:textSize="17sp" />
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="梅糖桌面 | MTLauncher"></TextView>
 
         <RadioGroup
+            android:id="@+id/rg_welecome_choselan"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
             android:background="@drawable/shaper_desk_top_show"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:visibility="gone">
 
             <RadioButton
                 android:id="@+id/ra_welecome_auto"
@@ -95,15 +64,15 @@
                 android:layout_height="wrap_content"
                 android:gravity="center|center_vertical|center_horizontal"
                 android:text="@string/welecome_huanying_needreboot" />
-
-
-            <Button
-                android:id="@+id/btn_welecome_resart"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/shaper_yuanjiao_lins_show"
-                android:text="@string/welecome_huanying_quedingandreboot" />
         </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_welecome_showchose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/shaper_yuanjiao_lins_show"
+            android:text="点击显示多语言选项" />
     </LinearLayout>
+
 </ScrollView>

@@ -11,7 +11,9 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,6 +38,12 @@ public class ChoseFragment extends Fragment {
     private RadioButton ra_welecome_auto, ra_welecome_cn, ra_welecome_en, ra_welecome_jp;
     //当前页面TAG
     private static String TAG = "ChoseFragment";
+    //单选按钮组
+    private RadioGroup rg_welecome_choselan;
+    //展示按钮
+    private Button btn_welecome_showchose;
+    int i = 0;
+
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Nullable
@@ -57,6 +65,19 @@ public class ChoseFragment extends Fragment {
 //        if (sharedPreferences.getString("language", null).equals("3")) {
 //            ra_welecome_jp.setChecked(true);
 //        }
+        //显示多语言选项
+        btn_welecome_showchose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (i == 0) {
+                    rg_welecome_choselan.setVisibility(View.VISIBLE);
+                    i = 1;
+                } else {
+                    rg_welecome_choselan.setVisibility(View.GONE);
+                    i = 0;
+                }
+            }
+        });
         //自动选择语言
         ra_welecome_auto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -215,5 +236,7 @@ public class ChoseFragment extends Fragment {
         ra_welecome_cn = (RadioButton) view.findViewById(R.id.ra_welecome_china);
         ra_welecome_en = (RadioButton) view.findViewById(R.id.ra_welecome_english);
         ra_welecome_jp = (RadioButton) view.findViewById(R.id.ra_welecome_japanese);
+        rg_welecome_choselan = (RadioGroup) view.findViewById(R.id.rg_welecome_choselan);
+        btn_welecome_showchose = (Button) view.findViewById(R.id.btn_welecome_showchose);
     }
 }

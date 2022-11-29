@@ -112,7 +112,7 @@ public class AboutActivity extends AppCompatActivity {
             }
         });
         //设置版本号
-        tv_about_showversion.setText("梅糖桌面 Project" + "\n" + MTCore.get_my_appVERSIONNAME());
+//        tv_about_showversion.setText("梅糖桌面 Project" + "\n" + MTCore.get_my_appVERSIONNAME());
 //        tv_about_showversion.setText("梅糖桌面 Project" + "\n" + BuildConfig.VERSION_NAME);
     }
 

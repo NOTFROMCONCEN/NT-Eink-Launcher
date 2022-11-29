@@ -13,8 +13,7 @@
         android:layout_height="wrap_content"
         android:text="城市"
         android:textColor="#90000000"
-        android:textSize="13sp"
-        android:typeface="sans" />
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/tv_temp_state"
@@ -22,8 +21,7 @@
         android:layout_height="wrap_content"
         android:text="最高温最低温"
         android:textColor="#90000000"
-        android:textSize="13sp"
-        android:typeface="sans" />
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/tv_last_updatetime"
@@ -31,7 +29,6 @@
         android:layout_height="wrap_content"
         android:text="最后更新时间"
         android:textColor="#90000000"
-        android:textSize="13sp"
-        android:typeface="sans" />
+        android:textSize="13sp" />
 
 </LinearLayout>

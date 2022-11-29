@@ -63,6 +63,7 @@ import com.etang.mt_launcher.tool.mtcore.dialog.MessageDialog;
 import com.etang.mt_launcher.tool.mtcore.dialog.UnInstallDialog;
 import com.etang.mt_launcher.tool.mtcore.permission.SavePermission;
 import com.etang.mt_launcher.tool.mtcore.savearrayutil.SaveArrayListUtil;
+import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 import com.etang.mt_launcher.tool.server.AppInstallServer;
 import com.etang.mt_launcher.tool.sql.MyDataBaseHelper;
 import com.etang.mt_launcher.tool.util.StreamTool;
@@ -586,7 +587,7 @@ public class MainActivity extends Activity implements OnClickListener {
          */
         if (!offline_mode) {
             if (tv_time_min.getText().toString().equals("00") || tv_time_min.getText().toString().equals("30")) {
-                line_wather.setVisibility(View.VISIBLE);
+//                line_wather.setVisibility(View.VISIBLE);
                 Cursor cursor = db.rawQuery("select * from wather_city", null);
                 if (cursor.getCount() != 0) {
                     cursor.moveToFirst();
@@ -598,7 +599,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 update_wathers(sharedPreferences);
             }
         } else {
-            line_wather.setVisibility(View.INVISIBLE);
+//            line_wather.setVisibility(View.INVISIBLE);
         }
         initAppList(MainActivity.this);
     }
@@ -677,7 +678,7 @@ public class MainActivity extends Activity implements OnClickListener {
                     Log.e("更新时间", "----------");
                     if (!offline_mode) {
                         if (tv_time_min.getText().toString().equals("00") || tv_time_min.getText().toString().equals("30")) {
-                            line_wather.setVisibility(View.VISIBLE);
+//                            line_wather.setVisibility(View.VISIBLE);
                             Cursor cursor = db.rawQuery("select * from wather_city", null);
                             if (cursor.getCount() != 0) {
                                 cursor.moveToFirst();
@@ -689,7 +690,7 @@ public class MainActivity extends Activity implements OnClickListener {
                             update_wathers(sharedPreferences);
                         }
                     } else {
-                        line_wather.setVisibility(View.INVISIBLE);
+//                        line_wather.setVisibility(View.INVISIBLE);
                     }
                 }
             }
@@ -739,7 +740,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
     private void update_wathers(SharedPreferences sharedPreferences) {
         if (!offline_mode) {
-            line_wather.setVisibility(View.VISIBLE);
+//            line_wather.setVisibility(View.VISIBLE);
             tv_temp_state.setText(sharedPreferences.getString("wather_info_temp", null));
             tv_last_updatetime.setText(sharedPreferences.getString("wather_info_updatetime", null));
             tv_city.setText(sharedPreferences.getString("wather_info_citytype", null));
@@ -748,17 +749,17 @@ public class MainActivity extends Activity implements OnClickListener {
              */
             check_weather_view(sharedPreferences);
         } else {
-            line_wather.setVisibility(View.INVISIBLE);
+//            line_wather.setVisibility(View.INVISIBLE);
         }
     }
 
     private void check_weather_view(SharedPreferences sharedPreferences) {
         if (sharedPreferences.getBoolean("isHind_weather", false) == true) {
-            line_wather.setVisibility(View.INVISIBLE);
+//            line_wather.setVisibility(View.INVISIBLE);
         } else if (sharedPreferences.getBoolean("isHind_weather", false) == false) {
-            line_wather.setVisibility(View.VISIBLE);
+//            line_wather.setVisibility(View.VISIBLE);
         } else {
-            line_wather.setVisibility(View.VISIBLE);
+//            line_wather.setVisibility(View.VISIBLE);
         }
     }
 
@@ -838,10 +839,12 @@ public class MainActivity extends Activity implements OnClickListener {
     };
 
     public void update_wather(Context context, final String city) {
+        Log.i(TAG, "update_wather: start");
         if (TextUtils.isEmpty(city)) {
             MTCore.showToast(context, "城市错误，不在数据库中", true);
             return;
         }
+        Log.i(TAG, "update_wather: 开始获取城市天气信息");
         new Thread() {
             @Override
             public void run() {
@@ -857,6 +860,7 @@ public class MainActivity extends Activity implements OnClickListener {
                     conn.setRequestMethod("GET");
                     int code = conn.getResponseCode();
                     if (code == 200) {
+                        Log.i(TAG, "run: 网络连接成功");
                         // 连接网络成功
                         InputStream in = conn.getInputStream();
                         String data = StreamTool.decodeStream(in);
@@ -987,8 +991,10 @@ public class MainActivity extends Activity implements OnClickListener {
                 if (!offline_mode) {
                     if (cursor.getCount() != 0) {
                         cursor.moveToFirst();
+                        String city = cursor.getString(cursor.getColumnIndex("city"));
                         update_wather(MainActivity.this,
                                 cursor.getString(cursor.getColumnIndex("city")));
+                        MTCore.showToast(MainActivity.this, "正在尝试更新：" + city, false);
                         /**
                          * 更新天气信息
                          */

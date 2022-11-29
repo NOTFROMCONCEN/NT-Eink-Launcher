@@ -37,6 +37,7 @@ public class TwoFragment extends Fragment {
                 PayMeDialog.show_dialog(getActivity());
             }
         });
+        btn_welecome_show_shuomingshu.setVisibility(View.GONE);
         btn_welecome_show_shuomingshu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
