@@ -51,12 +51,13 @@ public class AppInstallServer extends BroadcastReceiver {
             //接收升级更新广播
             if (intent.getAction().equals(Intent.ACTION_PACKAGE_REPLACED)) {
                 String packageName = intent.getData().getSchemeSpecificPart();
-                Log.e("服务更新", "onReceive: " + packageName);
+//                Log.e("服务更新", "onReceive: " + packageName);
                 MTCore.showToast(context, "更新了" + packageName, true);
                 MainActivity.initAppList(context);
             }
         } catch (Exception e) {
-            Log.e("服务出现错误", "onReceive: " + e.toString());
+//            Log.e("服务出现错误", "onReceive: " + e.toString());
+            MTCore.ErrorDialog(context, "服务出现错误：应用安装卸载监听服务", "AppInstallServer");
         }
     }
 
