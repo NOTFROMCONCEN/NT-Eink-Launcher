@@ -179,7 +179,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shaper_toast_show"
-                android:text="自定义排序"></Button>
+                android:text="自定义排序（未完成功能，无法使用）"></Button>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
