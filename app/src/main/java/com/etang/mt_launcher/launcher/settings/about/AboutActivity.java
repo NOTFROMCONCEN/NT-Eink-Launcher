@@ -1,6 +1,8 @@
 package com.etang.mt_launcher.launcher.settings.about;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -61,13 +63,16 @@ public class AboutActivity extends AppCompatActivity {
         initView();
         //标题
         tv_title.setText(getString(R.string.string_about));
-        tv_button.setText(getString(R.string.string_version));
-        tv_button.setVisibility(View.INVISIBLE);
+        tv_button.setText("打开WIFI设置");
+        tv_button.setVisibility(View.VISIBLE);
         //按钮 文本
         tv_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PayMeDialog.show_iconlink_dialog(AboutActivity.this);
+//                PayMeDialog.show_iconlink_dialog(AboutActivity.this);
+//                Intent i = new Intent();
+//                i = new Intent(Settings.ACTION_WIFI_SETTINGS);
+//                startActivity(i);
             }
         });
         //返回 线性布局 点击事件
@@ -81,7 +86,10 @@ public class AboutActivity extends AppCompatActivity {
         iv_about_logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkupdate();
+//                checkupdate();
+                Intent i = new Intent();
+                i = new Intent(Settings.ACTION_WIFI_SETTINGS);
+                startActivity(i);
             }
         });
         //关于检查更新 按钮 点击事件
