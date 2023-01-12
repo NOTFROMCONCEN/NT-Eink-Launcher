@@ -73,6 +73,9 @@ public class AboutActivity extends AppCompatActivity {
 //                Intent i = new Intent();
 //                i = new Intent(Settings.ACTION_WIFI_SETTINGS);
 //                startActivity(i);
+                Intent i = new Intent();
+                i = new Intent(Settings.ACTION_WIFI_SETTINGS);
+                startActivity(i);
             }
         });
         //返回 线性布局 点击事件
@@ -86,10 +89,7 @@ public class AboutActivity extends AppCompatActivity {
         iv_about_logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                checkupdate();
-                Intent i = new Intent();
-                i = new Intent(Settings.ACTION_WIFI_SETTINGS);
-                startActivity(i);
+                checkupdate();
             }
         });
         //关于检查更新 按钮 点击事件
