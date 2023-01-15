@@ -19,6 +19,12 @@ import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 import com.etang.mt_launcher.tool.mtcore.update.CheckUpdateDialog;
 
 import ru.alexbykov.nopermission.BuildConfig;
+// _   _   _   _       ___       ___  ___   _____   _   _____       ___   __   _   _____
+//| | | | | | | |     /   |     /   |/   | | ____| | | |_   _|     /   | |  \ | | /  ___|
+//| |_| | | | | |    / /| |    / /|   /| | | |__   | |   | |      / /| | |   \| | | |
+//|  _  | | | | |   / / | |   / / |__/ | | |  __|  | |   | |     / / | | | |\   | | |  _
+//| | | | | |_| |  / /  | |  / /       | | | |___  | |   | |    / /  | | | | \  | | |_| |
+//|_| |_| \_____/ /_/   |_| /_/        |_| |_____| |_|   |_|   /_/   |_| |_|  \_| \_____/
 
 /**
  * @Package: com.etang.nt_launcher.tool.util

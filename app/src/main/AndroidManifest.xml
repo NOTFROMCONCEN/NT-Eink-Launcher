@@ -54,6 +54,7 @@
 
         <activity
             android:name=".launcher.MainActivity"
+            android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -64,7 +65,9 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".tool.server.AppInstallServer">
+        <receiver
+            android:name=".tool.server.AppInstallServer"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />

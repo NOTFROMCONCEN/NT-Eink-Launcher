@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion '30.0.3'
     defaultConfig {
         applicationId "com.etang.mt_launcher"
         minSdkVersion 15
-        targetSdkVersion 30
-        versionCode 11303
-        versionName "MTCORE-ER2.0-Evolve-11303"
+        targetSdkVersion 31
+        versionCode 11304
+        versionName "MTCORE-ER2.0-Evolve-11304"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
