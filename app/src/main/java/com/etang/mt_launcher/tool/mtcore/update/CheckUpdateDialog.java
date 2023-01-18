@@ -3,6 +3,7 @@ package com.etang.mt_launcher.tool.mtcore.update;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -44,7 +45,20 @@ import javax.net.ssl.HttpsURLConnection;
  * 优化了整体结构，现在整个代码可以复制到其他工程使用了，前提是服务器有对应的资源
  * 与2022年3月7日 09点30分
  * 更新了链接服务器的方法，更加稳定了
+ * 于2023年1月18日 22点05分
+ * 之前发现的okhttp会在android4.x上报错，还没找到好的代替框架
  */
+
+/**
+ * 如果要进行第三方适配，这个链接提供了服务器xml文件应有的格式以及文本内容：
+ * 实例：
+ * https://yp.nyanon.online/data/User/admin/home/NaiYouApks/for%20web/Android/js/com.etang.mt_launcher.xml
+ * 示例：
+ * https://yp.nyanon.online/data/User/admin/home/NaiYouApks/for%20web/Android/js/show_test.xml
+ * 结构：
+ * https://yp.nyanon.online/data/User/admin/home/NaiYouApks/for%20web/Android/js/structure.xml
+ */
+
 public class CheckUpdateDialog {
     //  上下文
     private static Context mContext;
@@ -97,7 +111,7 @@ public class CheckUpdateDialog {
                             String error_message = data_error.getString("error_message");
                             dialog.dismiss();
                             MTCore.showToast(mContext, error_message, true);
-                            Log.e("11111111", "出现错误！！！！！！！: " + error_message);
+                            Log.e("Error!UpdateDialog.java", "出现错误！！！！！！！: " + error_message);
 //                            MTCore.check_erroe_code(MTCore.error_code_timeout);
                         }
                         break;
@@ -194,6 +208,11 @@ public class CheckUpdateDialog {
         }).start();
     }
 
+    /**
+     * 此段代码暂时废弃
+     *
+     * @param where
+     */
     private static void check_beta(final String where) {
         int version_code = BuildConfig.VERSION_CODE;
         if (version_code != mVersion_new) {
@@ -242,9 +261,12 @@ public class CheckUpdateDialog {
         }
     }
 
-
+    /**
+     * 开始更新
+     */
     private static void startUpdate() {
         boolean isGranted = true;
+        //检查Android版本并检查存储权限
         if (android.os.Build.VERSION.SDK_INT >= 23) {
             if (mActivity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 //如果没有写sd卡权限
@@ -360,7 +382,7 @@ public class CheckUpdateDialog {
                     // 安装 APK 文件
                     AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                     builder.setCancelable(false);// 设置是否可以通过点击Back键取消
-                    builder.setTitle("安装");
+                    builder.setTitle("Install Update");
                     builder.setMessage("请点击“确定”按钮进行安装，如果安装失败请前往 根目录/" + mContext.getPackageName() + "/ 目录下进行安装");
                     builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override

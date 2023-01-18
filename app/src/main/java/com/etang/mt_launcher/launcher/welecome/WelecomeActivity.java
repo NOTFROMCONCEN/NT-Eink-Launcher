@@ -103,8 +103,10 @@ public class WelecomeActivity extends FragmentActivity {
                     case 2:
                         if (viewPager.getCurrentItem() == 2 && !state.equals("false")) {
                             dialog_newuser(true);
+                            MTCore.showToast(view.getContext(), "初始化成功ヾ(≧▽≦*)o", true);
                         } else if (viewPager.getCurrentItem() == 2 && state.equals("false")) {
                             dialog_newuser(false);
+                            MTCore.showToast(view.getContext(), "初始化成功ヾ(≧▽≦*)o", true);
                         }
                         break;
                 }

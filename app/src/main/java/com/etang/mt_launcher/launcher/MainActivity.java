@@ -1,5 +1,7 @@
 package com.etang.mt_launcher.launcher;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -11,6 +13,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -45,6 +48,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 
 import com.etang.mt_launcher.R;
@@ -59,11 +63,8 @@ import com.etang.mt_launcher.tool.getapps.AppInfo;
 import com.etang.mt_launcher.tool.getapps.DeskTopGridViewBaseAdapter;
 import com.etang.mt_launcher.tool.getapps.GetApps;
 import com.etang.mt_launcher.tool.mtcore.MTCore;
-import com.etang.mt_launcher.tool.mtcore.dialog.MessageDialog;
 import com.etang.mt_launcher.tool.mtcore.dialog.UnInstallDialog;
-import com.etang.mt_launcher.tool.mtcore.permission.SavePermission;
 import com.etang.mt_launcher.tool.mtcore.savearrayutil.SaveArrayListUtil;
-import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 import com.etang.mt_launcher.tool.server.AppInstallServer;
 import com.etang.mt_launcher.tool.sql.MyDataBaseHelper;
 import com.etang.mt_launcher.tool.util.StreamTool;
@@ -130,6 +131,8 @@ public class MainActivity extends Activity implements OnClickListener {
     private AppInstallServer appinstallserver;
     private SharedPreferences sharedPreferences;
     private static String TAG = "MainActivity";
+    //引入MTCore
+    private MTCore mtCore = new MTCore();
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
@@ -358,6 +361,16 @@ public class MainActivity extends Activity implements OnClickListener {
             // 获取壁纸管理器
             WallpaperManager wallpaperManager = WallpaperManager.getInstance(context);
             // 获取当前壁纸
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
             BitmapDrawable wallpaperDrawable = (BitmapDrawable) wallpaperManager.getDrawable();
             // 将Drawable,转成Bitmap
             Bitmap bitmap = Bitmap.createBitmap(wallpaperDrawable.getBitmap());
@@ -396,7 +409,7 @@ public class MainActivity extends Activity implements OnClickListener {
         Paint paint = new Paint();
         paint.setTextSize(100);
         paint.setColor(Color.DKGRAY);
-        paint.setFlags(100);
+        paint.setFlags(Paint.ANTI_ALIAS_FLAG);
         paint.setStyle(Paint.Style.STROKE); //用于设置字体填充的类型
 //        canvas.drawText("Ken", 100, 100, paint);
         //最后通过Imageview显示出来
@@ -414,7 +427,10 @@ public class MainActivity extends Activity implements OnClickListener {
 
     private void check_first_user() {
         if (isFirstStart(MainActivity.this)) {//第一次
-            MTCore.showToast(MainActivity.this, "ヾ(≧▽≦*)o", true);
+            //第一次启动预填充数据，并且跳转至欢迎界面
+            startActivity(new Intent(getApplicationContext(), WelecomeActivity.class));
+            overridePendingTransition(0, 0);
+            finish();
             /**
              * 填充预设数据
              */
@@ -441,10 +457,6 @@ public class MainActivity extends Activity implements OnClickListener {
             ArrayList<String> arrayList = new ArrayList<String>();
             arrayList.add("frist");
             SaveArrayListUtil.saveArrayList(MainActivity.this, arrayList, "start");//存储在本地
-            //第一次启动预填充数据，并且跳转至欢迎界面
-            startActivity(new Intent(getApplicationContext(), WelecomeActivity.class));
-            overridePendingTransition(0, 0);
-            finish();
 //            initAppList(MainActivity.this);
         }
     }
@@ -598,8 +610,8 @@ public class MainActivity extends Activity implements OnClickListener {
                 Cursor cursor = db.rawQuery("select * from wather_city", null);
                 if (cursor.getCount() != 0) {
                     cursor.moveToFirst();
-                    update_wather(MainActivity.this,
-                            cursor.getString(cursor.getColumnIndex("city")));
+                    @SuppressLint("Range") String city = cursor.getString(cursor.getColumnIndex("city"));
+                    update_wather(MainActivity.this, city);
                 }
                 SharedPreferences sharedPreferences;
                 sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
@@ -646,8 +658,8 @@ public class MainActivity extends Activity implements OnClickListener {
         Cursor cursor = MainActivity.db.rawQuery("select * from name", null);
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();
-            MainActivity.tv_user_id.setText(cursor.getString(cursor
-                    .getColumnIndex("username")));
+            @SuppressLint("Range") String username = cursor.getString(cursor.getColumnIndex("username"));
+            MainActivity.tv_user_id.setText(username);
             if (MainActivity.tv_user_id.getText().toString().isEmpty()) {
                 MainActivity.tv_user_id.setText("请设置文本（桌面设置中）");
             } else if (MainActivity.tv_user_id.getText().toString().equals("")) {
@@ -689,8 +701,8 @@ public class MainActivity extends Activity implements OnClickListener {
                             Cursor cursor = db.rawQuery("select * from wather_city", null);
                             if (cursor.getCount() != 0) {
                                 cursor.moveToFirst();
-                                update_wather(MainActivity.this,
-                                        cursor.getString(cursor.getColumnIndex("city")));
+                                @SuppressLint("Range") String city = cursor.getString(cursor.getColumnIndex("city"));
+                                update_wather(MainActivity.this, city);
                             }
                             SharedPreferences sharedPreferences;
                             sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
@@ -800,14 +812,14 @@ public class MainActivity extends Activity implements OnClickListener {
                                 null);
                         if (cursor.getCount() != 0) {
                             cursor.moveToFirst();
-                            tv_city.setText(cursor.getString(cursor
-                                    .getColumnIndex("city")) + "  " + type);
+                            @SuppressLint("Range") String city = cursor.getString(cursor.getColumnIndex("city"));
+                            tv_city.setText(city + "  " + type);
                         } else {
                             MTCore.showToast(getApplicationContext(), "请到“梅糖天气”设置位置信息", true);
                         }
+                        @SuppressLint("Range") String city = cursor.getString(cursor.getColumnIndex("city"));
                         SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
-                        editor.putString("wather_info_citytype", cursor.getString(cursor
-                                .getColumnIndex("city")) + "  " + type);
+                        editor.putString("wather_info_citytype", city + "  " + type);
                         editor.putString("wather_info_wind", fengxiang);
                         editor.putString("wather_info_temp", high + "  " + low);
                         editor.putString("wather_info_updatetime", "于"
@@ -998,9 +1010,8 @@ public class MainActivity extends Activity implements OnClickListener {
                 if (!offline_mode) {
                     if (cursor.getCount() != 0) {
                         cursor.moveToFirst();
-                        String city = cursor.getString(cursor.getColumnIndex("city"));
-                        update_wather(MainActivity.this,
-                                cursor.getString(cursor.getColumnIndex("city")));
+                        @SuppressLint("Range") String city = cursor.getString(cursor.getColumnIndex("city"));
+                        update_wather(MainActivity.this, city);
                         MTCore.showToast(MainActivity.this, "正在尝试更新：" + city, false);
                         /**
                          * 更新天气信息

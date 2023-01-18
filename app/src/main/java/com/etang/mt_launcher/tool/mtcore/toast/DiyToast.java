@@ -28,9 +28,9 @@ public class DiyToast {
 //        View view = LayoutInflater.from(context).inflate(R.layout.layout_toast_back, null);
 //        TextView tv = (TextView) view.findViewById(R.id.tv_toast_show);
         if (long_or_short) {
-            toast = Toast.makeText(context, s, Toast.LENGTH_LONG);
+            toast = Toast.makeText(context, "MTCore:" + s, Toast.LENGTH_LONG);
         } else {
-            toast = Toast.makeText(context, s, Toast.LENGTH_SHORT);
+            toast = Toast.makeText(context, "MTCore:" + s, Toast.LENGTH_SHORT);
         }
 //        toast.setView(view);
 //        tv.setText(s);

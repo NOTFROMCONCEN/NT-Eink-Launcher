@@ -68,8 +68,8 @@
     <string name="setting_yijian">信息反馈</string>
     <string name="setting_exit_launcher">退出“奶糖桌面”</string>
     <string name="setting_checkbox_hindbar">在主界面隐藏底栏</string>
-    <string name="setting_offlinemode">离线模式（不稳定）</string>
-    <string name="setting_oldmanmode">老年模式（不稳定）</string>
+    <string name="setting_offlinemode">离线模式（不稳定QAQ）</string>
+    <string name="setting_oldmanmode">老年模式（不稳定QAQ）</string>
     <string name="welecome_string_welecome">欢迎使用“梅糖桌面”</string>
     <string name="welecome_string_quanxian">权限需求：</string>
     <string name="welecome_string_needquanxian">“梅糖桌面”需要以下权限：</string>

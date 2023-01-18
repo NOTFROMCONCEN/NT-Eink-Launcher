@@ -142,14 +142,14 @@ public class GetApps {
         Bitmap bmp_locker = BitmapFactory.decodeResource(r_mInfo_locker, R.drawable.ic_mtlocker);
         mInfo_locker.setIco(Bitmap.createBitmap(bmp_locker));
         list.add(mInfo_locker);
-        /**
-         * \添加“使用向导”
-         */
+//        /**
+//         * \添加“工具箱”
+//         */
 //        AppInfo mInfo_userhelper = new AppInfo();
-//        mInfo_userhelper.setName("使用向导");
-//        mInfo_userhelper.setPackageName(context.getPackageName() + ".userhelper");
+//        mInfo_userhelper.setName("工具箱");
+//        mInfo_userhelper.setPackageName(context.getPackageName() + ".toolsbox");
 //        Resources r_userhelper = context.getResources();
-//        Bitmap bmp_userhelper = BitmapFactory.decodeResource(r_userhelper, R.drawable.ic_launcher);
+//        Bitmap bmp_userhelper = BitmapFactory.decodeResource(r_userhelper, R.drawable.ic_appuserlogs);
 //        mInfo_userhelper.setIco(Bitmap.createBitmap(bmp_userhelper));
 //        list.add(mInfo_userhelper);
     }

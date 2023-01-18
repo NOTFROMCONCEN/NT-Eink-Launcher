@@ -34,6 +34,10 @@ import ru.alexbykov.nopermission.BuildConfig;
  * @UpdateDate: 2021/3/19 8:29
  */
 public class MTCore {
+    //APP版本号_versionCode
+    private static String my_app_versionCode;
+    //APP版本名称_versionName
+    private static String my_app_versionName;
     //APP名称
     public static String my_app_name = "梅糖桌面";
     //当前页面TAG
@@ -53,6 +57,28 @@ public class MTCore {
     //错误代码
     private static String error_name_timeout = "E-1-TimeOut-网络链接超时";
     public static int error_code_timeout = 90001;
+    //MTCore版本
+    private static String MTCore_version = "ER2.1";
+
+    public static String getMTCore_version() {
+        return MTCore_version;
+    }
+
+    public static String getMy_app_versionCode() {
+        return my_app_versionCode;
+    }
+
+    public static String getMy_app_versionName() {
+        return my_app_versionName;
+    }
+
+    public static void setMy_app_versionCode(String my_app_versionCode) {
+        MTCore.my_app_versionCode = my_app_versionCode;
+    }
+
+    public static void setMy_app_versionName(String my_app_versionName) {
+        MTCore.my_app_versionName = my_app_versionName;
+    }
 
     public static void FollwoMeDialog(final Activity activity) {
         FollwoMeDialog.show(activity);
@@ -101,7 +127,7 @@ public class MTCore {
     }
 
     public static void showToast(Context context, String s, boolean long_or_short) {
-        DiyToast.show(context, my_app_name + ":" + s, long_or_short);
+        DiyToast.show(context, s, long_or_short);
     }
 
     public static void check_save_permission(Activity activity) {
