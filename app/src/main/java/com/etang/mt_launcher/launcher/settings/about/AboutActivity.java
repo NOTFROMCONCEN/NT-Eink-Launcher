@@ -61,6 +61,10 @@ public class AboutActivity extends AppCompatActivity {
         setContentView(R.layout.setting_about_fang);
         //绑定控件
         initView();
+        //加载MTCore
+        MTCore.initMTCore(AboutActivity.this, AboutActivity.this);
+        //设置版本号
+        tv_about_showversion.setText(MTCore.getMy_app_versionName() + MTCore.getMy_app_versionCode());
         //标题
         tv_title.setText(getString(R.string.string_about));
         tv_button.setText("打开WIFI设置");
@@ -104,7 +108,7 @@ public class AboutActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast提示
-                MTCore.showToast(getApplicationContext(), "请注意：是否捐赠并不影响正常使用", true);
+                MTCore.showToast_new("请注意：是否捐赠并不影响正常使用", true);
                 //显示捐赠弹出框
                 PayMeDialog.show_dialog(AboutActivity.this);
             }
@@ -114,7 +118,7 @@ public class AboutActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast提示
-                MTCore.showToast(getApplicationContext(), "使用对应APP扫码即可~~~~", true);
+                MTCore.showToast_new("使用对应APP扫码即可~~~~", true);
                 //显示捐赠弹出框
                 MTCore.FollwoMeDialog(AboutActivity.this);
             }
@@ -132,7 +136,7 @@ public class AboutActivity extends AppCompatActivity {
             //检查存储权限
             MTCore.check_save_permission(AboutActivity.this);
             //检查更新
-            MTCore.CheckUpdate(AboutActivity.this, AboutActivity.this, "about");
+            MTCore.CheckUpdate_new("about");
         }
     }
 

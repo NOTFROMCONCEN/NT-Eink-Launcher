@@ -10,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.etang.mt_launcher.BuildConfig;
 import com.etang.mt_launcher.tool.mtcore.dialog.ErrorDialog;
 import com.etang.mt_launcher.tool.mtcore.dialog.FollwoMeDialog;
 import com.etang.mt_launcher.tool.mtcore.dialog.MessageDialog;
@@ -17,8 +18,6 @@ import com.etang.mt_launcher.tool.mtcore.dialog.NewUserDialog;
 import com.etang.mt_launcher.tool.mtcore.permission.SavePermission;
 import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 import com.etang.mt_launcher.tool.mtcore.update.CheckUpdateDialog;
-
-import ru.alexbykov.nopermission.BuildConfig;
 // _   _   _   _       ___       ___  ___   _____   _   _____       ___   __   _   _____
 //| | | | | | | |     /   |     /   |/   | | ____| | | |_   _|     /   | |  \ | | /  ___|
 //| |_| | | | | |    / /| |    / /|   /| | | |__   | |   | |      / /| | |   \| | | |
@@ -38,8 +37,6 @@ public class MTCore {
     private static String my_app_versionCode;
     //APP版本名称_versionName
     private static String my_app_versionName;
-    //APP名称
-    public static String my_app_name = "梅糖桌面";
     //当前页面TAG
     public static String TAG = "MTCore";
     //服务器URL
@@ -58,24 +55,37 @@ public class MTCore {
     private static String error_name_timeout = "E-1-TimeOut-网络链接超时";
     public static int error_code_timeout = 90001;
     //MTCore版本
-    private static String MTCore_version = "ER2.1";
+    private static String MTCore_version = "2.1";
 
+    //初始化MTCore（继承Context和Activity）
+    public static void initMTCore(Context context, Activity activity) {
+        mContext = context;
+        mActivity = activity;
+        setMy_app_versionCode(String.valueOf(BuildConfig.VERSION_CODE));
+        setMy_app_versionName(BuildConfig.VERSION_NAME);
+    }
+
+    //获取MTCore版本
     public static String getMTCore_version() {
         return MTCore_version;
     }
 
+    //获取MTCore版本代码
     public static String getMy_app_versionCode() {
         return my_app_versionCode;
     }
 
+    //获取APP版本名
     public static String getMy_app_versionName() {
         return my_app_versionName;
     }
 
+    //设置APP版本代码
     public static void setMy_app_versionCode(String my_app_versionCode) {
         MTCore.my_app_versionCode = my_app_versionCode;
     }
 
+    //设置APP版本名
     public static void setMy_app_versionName(String my_app_versionName) {
         MTCore.my_app_versionName = my_app_versionName;
     }
@@ -94,25 +104,14 @@ public class MTCore {
     }
 
     //查找APP更新
-    public static void CheckUpdate(final Context context, final Activity activity, final String where) {
-        CheckUpdateDialog.check_update(context, activity, where);
-    }
-
-    //初始化MTCore（继承Context和Activity）
-    public static void initMTCore(Context context, Activity activity) {
-        mContext = context;
-        mActivity = activity;
+    public static void CheckUpdate_new(final String where) {
+        CheckUpdateDialog.check_update(mContext, mActivity, where);
     }
 
     public static int get_Now_AndroidVersion() {
         int version = android.os.Build.VERSION.SDK_INT;
         Log.e(TAG, "get_Now_AndroidVersion: " + version);
         return version;
-    }
-
-    //APP ID
-    public static String get_my_appAPPLICATION_ID() {
-        return String.valueOf(BuildConfig.APPLICATION_ID);
     }
 
     /**
@@ -126,25 +125,15 @@ public class MTCore {
         }
     }
 
+    public static void showToast_new(String s, boolean long_or_short) {
+        DiyToast.show(mContext, s, long_or_short);
+    }
+
     public static void showToast(Context context, String s, boolean long_or_short) {
         DiyToast.show(context, s, long_or_short);
     }
 
     public static void check_save_permission(Activity activity) {
         SavePermission.check(activity);
-    }
-
-    //APP版本代号
-    public static String get_my_appVERSIONNAME() {
-        String version_name = BuildConfig.VERSION_NAME;
-        Log.i(TAG, "get_my_appVERSIONNAME: " + version_name);
-        return version_name;
-    }
-
-    //APP版本代码
-    public static int get_my_appVERSIONCODE() {
-        int version_code = BuildConfig.VERSION_CODE;
-        Log.i(TAG, "get_my_appVERSIONNAME: " + String.valueOf(version_code));
-        return version_code;
     }
 }

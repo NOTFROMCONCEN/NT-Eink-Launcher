@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.etang.mt_launcher.R;
+import com.etang.mt_launcher.tool.mtcore.MTCore;
 
 /**
  * @Package: com.etang.nt_launcher.tool.toast
@@ -25,16 +26,12 @@ public class DiyToast {
         if (toast != null) {
             toast.cancel();
         }
-//        View view = LayoutInflater.from(context).inflate(R.layout.layout_toast_back, null);
-//        TextView tv = (TextView) view.findViewById(R.id.tv_toast_show);
         if (long_or_short) {
-            toast = Toast.makeText(context, "MTCore:" + s, Toast.LENGTH_LONG);
+            toast = Toast.makeText(context, "MTCore_Message:" + s, Toast.LENGTH_LONG);
         } else {
-            toast = Toast.makeText(context, "MTCore:" + s, Toast.LENGTH_SHORT);
+            toast = Toast.makeText(context, "MTCore_Message:" + s, Toast.LENGTH_SHORT);
         }
-//        toast.setView(view);
-//        tv.setText(s);
-//        toast.setGravity(Gravity.TOP, 0, 0);
+//        toast.setGravity(Gravity.BOTTOM, 0, 0);
         toast.show();
     }
 }

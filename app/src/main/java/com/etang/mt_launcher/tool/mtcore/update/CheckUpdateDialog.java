@@ -89,6 +89,7 @@ public class CheckUpdateDialog {
     public static void check_update(final Context context, final Activity activity, final String where) {
         mContext = context;
         mActivity = activity;
+        MTCore.initMTCore(mContext, mActivity);
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         final AlertDialog dialog = builder.create();
         dialog.setTitle("链接中......");
@@ -110,7 +111,7 @@ public class CheckUpdateDialog {
                             Bundle data_error = msg.getData();
                             String error_message = data_error.getString("error_message");
                             dialog.dismiss();
-                            MTCore.showToast(mContext, error_message, true);
+                            MTCore.showToast_new(error_message, true);
                             Log.e("Error!UpdateDialog.java", "出现错误！！！！！！！: " + error_message);
 //                            MTCore.check_erroe_code(MTCore.error_code_timeout);
                         }
