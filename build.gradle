@@ -12,8 +12,6 @@ ext {
 
 buildscript {
     repositories {
-        google()
-        mavenCentral()
         maven() { url 'https://maven.aliyun.com/repository/jcenter' }
         maven() { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/public' }
@@ -22,17 +20,17 @@ buildscript {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
         maven { url "https://maven.google.com" }
         maven { url 'https://jitpack.io' }
+        google()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.3.1'
+        classpath 'com.android.tools.build:gradle:7.4.1'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
 allprojects {
     repositories {
-        google()
-        mavenCentral()
         maven() { url 'https://maven.aliyun.com/repository/jcenter' }
         maven() { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/public' }
@@ -41,6 +39,8 @@ allprojects {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
         maven { url "https://maven.google.com" }
         maven { url 'https://jitpack.io' }
+        google()
+        mavenCentral()
     }
 }
 
