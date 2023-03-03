@@ -55,7 +55,7 @@ public class MTCore {
     private static String error_name_timeout = "E-1-TimeOut-网络链接超时";
     public static int error_code_timeout = 90001;
     //MTCore版本
-    private static String MTCore_version = "2.1";
+    private static String MTCore_version = "2.2";
 
     //初始化MTCore（继承Context和Activity）
     public static void initMTCore(Context context, Activity activity) {
@@ -112,17 +112,6 @@ public class MTCore {
         int version = android.os.Build.VERSION.SDK_INT;
         Log.e(TAG, "get_Now_AndroidVersion: " + version);
         return version;
-    }
-
-    /**
-     * 错误代码
-     */
-    public static void check_erroe_code(int state) {
-        switch (state) {
-            case 90001:
-                Toast.makeText(mContext, error_name_timeout, Toast.LENGTH_SHORT).show();
-                break;
-        }
     }
 
     public static void showToast_new(String s, boolean long_or_short) {

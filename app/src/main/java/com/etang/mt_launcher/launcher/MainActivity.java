@@ -200,10 +200,11 @@ public class MainActivity extends Activity implements OnClickListener {
                         startActivity(intent);
                         overridePendingTransition(0, 0);
                     } else if (appInfos.get(position).getPackageName().equals(getPackageName() + ".systemupdate")) {//点击了“检查更新”
-                        intent = new Intent(MainActivity.this, AboutActivity.class);
-                        startActivity(intent);
-                        overridePendingTransition(0, 0);
+//                        intent = new Intent(MainActivity.this, AboutActivity.class);
+//                        startActivity(intent);
+//                        overridePendingTransition(0, 0);
 //                        CheckUpdateDialog.check_update(MainActivity.this, MainActivity.this);
+                        MTCore.CheckUpdate_new("about");
                     } else if (appInfos.get(position).getPackageName().equals(getPackageName() + ".launchersetting")) {//点击了“桌面设置”
                         intent = new Intent(MainActivity.this, SettingActivity.class);
                         startActivity(intent);
