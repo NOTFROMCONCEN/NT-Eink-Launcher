@@ -58,7 +58,7 @@
                 android:id="@+id/tv_about_showversion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="MTCORE-ER2.0-Evolve"></TextView>
+                android:text="ER2.2-Vernalagnia"></TextView>
 
         </LinearLayout>
 
