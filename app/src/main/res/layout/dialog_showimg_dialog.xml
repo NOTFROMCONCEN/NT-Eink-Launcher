@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical|center_horizontal|center"
+    android:gravity="center|center_horizontal|center_vertical"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal|center"
+        android:background="@drawable/shaper_yuanjiao_lins_show"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/iv_showimg_indeximg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/qrcode_for_kindle"></ImageView>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_showimg_close"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical|center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shaper_yuanjiao_lins_show"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="关闭" />
+
+    <Button
+        android:id="@+id/btn_showimg_openlink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical|center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shaper_yuanjiao_lins_show"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="打开链接" />
+</LinearLayout>

@@ -73,6 +73,27 @@
             android:layout_margin="10dp"
             android:background="@drawable/shaper_yuanjiao_lins_show"
             android:text="点击显示多语言选项" />
+        <Button
+            android:id="@+id/btn_welecome_for_kindle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/shaper_yuanjiao_lins_show"
+            android:text="给Kindle用户的一封信" />
+        <Button
+            android:id="@+id/btn_welecome_for_moan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/shaper_yuanjiao_lins_show"
+            android:text="给墨案用户的一封信" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="注：MTLauncher（梅糖桌面）和MTProject等项目，均为免费开源项目，不会盈利，也不得加入或嵌入本程序代码到盈利项目中。开源地址：https://gitee.com/rabbitTang_admin/NT-Eink-Launcher"></TextView>
     </LinearLayout>
 
 </ScrollView>

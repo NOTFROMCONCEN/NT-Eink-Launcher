@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Message;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,8 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.etang.mt_launcher.R;
+import com.etang.mt_launcher.tool.mtcore.MTCore;
+import com.etang.mt_launcher.tool.mtcore.dialog.ShowImgDialog;
 
 import java.util.Locale;
 
@@ -41,7 +44,7 @@ public class ChoseFragment extends Fragment {
     //单选按钮组
     private RadioGroup rg_welecome_choselan;
     //展示按钮
-    private Button btn_welecome_showchose;
+    private Button btn_welecome_showchose, btn_welecome_for_kindle, btn_welecome_for_moan;
     int i = 0;
 
 
@@ -76,6 +79,22 @@ public class ChoseFragment extends Fragment {
                     rg_welecome_choselan.setVisibility(View.GONE);
                     i = 0;
                 }
+            }
+        });
+        //给kindle用户的一封信
+        btn_welecome_for_kindle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MTCore.showToast(getActivity(),"请使用其他设备扫码查看，或点击“打开链接”",true);
+                ShowImgDialog.show_dialog(getActivity(),"kindle");
+            }
+        });
+        //给墨案用户的一封信
+        btn_welecome_for_moan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MTCore.showToast(getActivity(),"请使用其他设备扫码查看，或点击“打开链接”",true);
+                ShowImgDialog.show_dialog(getActivity(),"moan");
             }
         });
         //自动选择语言
@@ -238,5 +257,7 @@ public class ChoseFragment extends Fragment {
         ra_welecome_jp = (RadioButton) view.findViewById(R.id.ra_welecome_japanese);
         rg_welecome_choselan = (RadioGroup) view.findViewById(R.id.rg_welecome_choselan);
         btn_welecome_showchose = (Button) view.findViewById(R.id.btn_welecome_showchose);
+        btn_welecome_for_kindle = (Button) view.findViewById(R.id.btn_welecome_for_kindle);
+        btn_welecome_for_moan = (Button) view.findViewById(R.id.btn_welecome_for_moan);
     }
 }

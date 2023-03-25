@@ -64,7 +64,7 @@ public class AboutActivity extends AppCompatActivity {
         //加载MTCore
         MTCore.initMTCore(AboutActivity.this, AboutActivity.this);
         //设置版本号
-        tv_about_showversion.setText(MTCore.getMy_app_versionName() + MTCore.getMy_app_versionCode());
+        tv_about_showversion.setText(String.valueOf(MTCore.getMy_app_versionName()) + "\n版本代码：" + String.valueOf(MTCore.getMy_app_versionCode()));
         //标题
         tv_title.setText(getString(R.string.string_about));
         tv_button.setText("打开WIFI设置");

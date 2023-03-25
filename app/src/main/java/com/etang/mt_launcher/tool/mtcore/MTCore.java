@@ -54,6 +54,8 @@ public class MTCore {
     //错误代码
     private static String error_name_timeout = "E-1-TimeOut-网络链接超时";
     public static int error_code_timeout = 90001;
+    private static String error_name_sqlError = "E-2-sqlError-数据库错误";
+    public static int error_code_sqlError = 90002;
     //MTCore版本
     private static String MTCore_version = "2.2";
 
