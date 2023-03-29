@@ -3,7 +3,6 @@ package com.etang.mt_launcher.tool.mtcore.update;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -22,7 +21,7 @@ import androidx.core.content.FileProvider;
 
 import com.etang.mt_launcher.BuildConfig;
 import com.etang.mt_launcher.tool.mtcore.MTCore;
-import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
+import com.etang.mt_launcher.tool.mtcore.ssl.SSL;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -32,8 +31,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.URL;
+import java.security.cert.CertificateException;
 
 import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.X509TrustManager;
 
 /**
  * 于 2021年10月22日 23点01分 尝试解耦
@@ -78,6 +79,20 @@ public class CheckUpdateDialog {
     private static String mVersion_Url = "";
     //当前更新日志
     private static String mVersion_Logs = "";
+    private static final X509TrustManager trustAllCert = new X509TrustManager() {
+        @Override
+        public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+        }
+
+        @Override
+        public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+        }
+
+        @Override
+        public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+            return new java.security.cert.X509Certificate[]{};
+        }
+    };
 
     /**
      * 检查更新
@@ -179,7 +194,7 @@ public class CheckUpdateDialog {
                     Document doc = Jsoup.connect(
                             "https://yp.nyanon.online/data/User/admin/home/NaiYouApks/for%20web/Android/js/"
                                     + mContext.getPackageName() +
-                                    ".xml").get();
+                                    ".xml").sslSocketFactory(new SSL(trustAllCert)).get();
                     /**
                      * 开始解析
                      * */
@@ -335,6 +350,7 @@ public class CheckUpdateDialog {
                         }
                         // 下载文件
                         HttpsURLConnection conn = (HttpsURLConnection) new URL(mVersion_Url).openConnection();
+                        conn.setSSLSocketFactory(new SSL(trustAllCert));
                         conn.connect();
                         InputStream is = conn.getInputStream();
                         int length = conn.getContentLength();

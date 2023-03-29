@@ -129,15 +129,10 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     private void checkupdate() {
-        if (MTCore.get_Now_AndroidVersion() == 19) {
-            MTCore.MessageDialog("很抱歉，检测到您使用的是Android4.4（SDK=19），目前梅糖桌面的更新功能在此版本中有致命BUG，请通过“酷安”APP进行在线更新。或使用ADB安装最新版。",
-                    AboutActivity.this);
-        } else {
-            //检查存储权限
-            MTCore.check_save_permission(AboutActivity.this);
-            //检查更新
-            MTCore.CheckUpdate_new("about");
-        }
+        //检查存储权限
+        MTCore.check_save_permission(AboutActivity.this);
+        //检查更新
+        MTCore.CheckUpdate_new("about");
     }
 
     /**
