@@ -7,8 +7,8 @@ android {
         applicationId "com.etang.mt_launcher"
         minSdkVersion 15
         targetSdkVersion 31
-        versionCode 11311
-        versionName "MTCore2.2-Vernalagnia-11312"
+        versionCode 11320
+        versionName "MTCore2.2-renewal-11320"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

@@ -83,7 +83,8 @@
             android:background="@drawable/shaper_toast_show"
             android:gravity="center|center_horizontal|center_vertical"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="5dp"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="match_parent"
