@@ -118,9 +118,7 @@ public class MainActivity extends Activity implements OnClickListener {
     private Runnable runnable;
     private static MyDataBaseHelper dbHelper_name_sql;
     private static SQLiteDatabase db;
-    public static TextView tv_user_id, tv_time_hour, tv_time_min,
-            tv_main_batterystate, tv_city, tv_temp_state,
-            tv_last_updatetime, tv_main_nowdate;
+    public static TextView tv_user_id, tv_time_hour, tv_time_min, tv_main_batterystate, tv_city, tv_temp_state, tv_last_updatetime, tv_main_nowdate;
     public static ImageView iv_setting_button, iv_setting_yinliang, iv_setting_refresh, iv_clean_button, iv_index_back;
     public static ToggleButton tg_apps_state;
     public static LinearLayout line_wather, line_bottom;
@@ -139,8 +137,7 @@ public class MainActivity extends Activity implements OnClickListener {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //全屏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);// 无Title
         setContentView(R.layout.activity_main);
         //绑定各类
@@ -168,13 +165,11 @@ public class MainActivity extends Activity implements OnClickListener {
         // 当点击GridView时，获取ID和应用包名并启动
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 try {
                     // Intent intent=appInfos.get(position).getIntent();
                     // startActivity(intent);
-                    Intent intent = getPackageManager().getLaunchIntentForPackage(
-                            appInfos.get(position).getPackageName());
+                    Intent intent = getPackageManager().getLaunchIntentForPackage(appInfos.get(position).getPackageName());
                     if (intent != null) {//点击的APP无异常
                         try {
                             db.execSQL("insert into appuselogs(appname,time)values(?,?)", new String[]{appInfos.get(position).getName(), tv_main_nowdate.getText() + "--" + tv_time_hour.getText() + ":" + tv_time_min.getText()});
@@ -251,8 +246,7 @@ public class MainActivity extends Activity implements OnClickListener {
         tg_apps_state.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
             @Override
-            public void onCheckedChanged(CompoundButton buttonView,
-                                         boolean isChecked) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // TODO Auto-generated method stub
                 if (isChecked) {
                     mListView.setVisibility(View.VISIBLE);
@@ -527,8 +521,7 @@ public class MainActivity extends Activity implements OnClickListener {
     }
 
     public boolean isFirstStart(Context context) {
-        SharedPreferences preferences = context.getSharedPreferences(
-                "SHARE_APP_TAG", 0);
+        SharedPreferences preferences = context.getSharedPreferences("SHARE_APP_TAG", 0);
         Boolean isFirst = preferences.getBoolean("FIRSTStart", true);
         if (isFirst) {// 第一次
             preferences.edit().putBoolean("FIRSTStart", false).commit();
@@ -643,8 +636,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 }
             }
         }
-        DeskTopGridViewBaseAdapter deskTopGridViewBaseAdapter = new DeskTopGridViewBaseAdapter(appInfos,
-                context);
+        DeskTopGridViewBaseAdapter deskTopGridViewBaseAdapter = new DeskTopGridViewBaseAdapter(appInfos, context);
         mListView.setAdapter(deskTopGridViewBaseAdapter);
     }
 
@@ -677,18 +669,12 @@ public class MainActivity extends Activity implements OnClickListener {
             @Override
             public void run() {
                 // TODO Auto-generated method stub
-                SimpleDateFormat simpleDateFormat_hour = new SimpleDateFormat(
-                        "HH");
-                SimpleDateFormat simpleDateFormat_min = new SimpleDateFormat(
-                        "mm");
-                SimpleDateFormat simpleDateFormat_date = new SimpleDateFormat(
-                        "yyyy/MM/dd");
-                tv_main_nowdate.setText(simpleDateFormat_date
-                        .format(new java.util.Date()));
-                tv_time_hour.setText(simpleDateFormat_hour
-                        .format(new java.util.Date()));
-                tv_time_min.setText(simpleDateFormat_min
-                        .format(new java.util.Date()));
+                SimpleDateFormat simpleDateFormat_hour = new SimpleDateFormat("HH");
+                SimpleDateFormat simpleDateFormat_min = new SimpleDateFormat("mm");
+                SimpleDateFormat simpleDateFormat_date = new SimpleDateFormat("yyyy/MM/dd");
+                tv_main_nowdate.setText(simpleDateFormat_date.format(new java.util.Date()));
+                tv_time_hour.setText(simpleDateFormat_hour.format(new java.util.Date()));
+                tv_time_min.setText(simpleDateFormat_min.format(new java.util.Date()));
                 handler.postDelayed(runnable, 1000);
                 MTCore.i_for_weather++;
                 if (MTCore.i_for_weather > 5) {
@@ -748,8 +734,7 @@ public class MainActivity extends Activity implements OnClickListener {
             iv_clean_button.setVisibility(View.INVISIBLE);
         }
         //数据库
-        dbHelper_name_sql = new MyDataBaseHelper(getApplicationContext(), "info.db",
-                null, 2);
+        dbHelper_name_sql = new MyDataBaseHelper(getApplicationContext(), "info.db", null, 2);
         db = dbHelper_name_sql.getWritableDatabase();
         //动态注册
         appinstallserver = new AppInstallServer();
@@ -807,8 +792,7 @@ public class MainActivity extends Activity implements OnClickListener {
                             low = jsonObject.optString("low");
                             date = jsonObject.optString("date");
                         }
-                        Cursor cursor = db.rawQuery("select * from wather_city",
-                                null);
+                        Cursor cursor = db.rawQuery("select * from wather_city", null);
                         if (cursor.getCount() != 0) {
                             cursor.moveToFirst();
                             @SuppressLint("Range") String city = cursor.getString(cursor.getColumnIndex("city"));
@@ -821,9 +805,7 @@ public class MainActivity extends Activity implements OnClickListener {
                         editor.putString("wather_info_citytype", city + "  " + type);
                         editor.putString("wather_info_wind", fengxiang);
                         editor.putString("wather_info_temp", high + "  " + low);
-                        editor.putString("wather_info_updatetime", "于"
-                                + tv_time_hour.getText().toString() + ":"
-                                + tv_time_min.getText().toString() + "更新");
+                        editor.putString("wather_info_updatetime", "于" + tv_time_hour.getText().toString() + ":" + tv_time_min.getText().toString() + "更新");
                         editor.apply();
                         /**
                          * 更新天气信息
@@ -837,14 +819,11 @@ public class MainActivity extends Activity implements OnClickListener {
                     break;
                 case 1:
                     MTCore.showToast(getApplicationContext(), "城市无效（已重置为上海）", true);
-                    db.execSQL("update wather_city set city = ? ",
-                            new String[]{"上海"});
+                    db.execSQL("update wather_city set city = ? ", new String[]{"上海"});
                     break;
                 case 2:
                     SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
-                    editor.putString("wather_info_updatetime", "于"
-                            + tv_time_hour.getText().toString() + ":"
-                            + tv_time_min.getText().toString() + "更新（离线状态）");
+                    editor.putString("wather_info_updatetime", "于" + tv_time_hour.getText().toString() + ":" + tv_time_min.getText().toString() + "更新（离线状态）");
                     editor.apply();
                     SharedPreferences sharedPreferences;
                     sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
@@ -869,11 +848,8 @@ public class MainActivity extends Activity implements OnClickListener {
                 // TODO Auto-generated method stub
                 super.run();
                 try {
-                    URL url = new URL(
-                            "http://wthrcdn.etouch.cn/weather_mini?city="
-                                    + URLEncoder.encode(city, "UTF-8"));
-                    HttpURLConnection conn = (HttpURLConnection) url
-                            .openConnection();
+                    URL url = new URL("http://wthrcdn.etouch.cn/weather_mini?city=" + URLEncoder.encode(city, "UTF-8"));
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setConnectTimeout(5000);
                     conn.setRequestMethod("GET");
                     int code = conn.getResponseCode();
@@ -889,8 +865,7 @@ public class MainActivity extends Activity implements OnClickListener {
                         if ("OK".equals(result)) {
                             // 城市有效，返回了需要的数据
                             JSONObject dataObj = jsonObj.getJSONObject("data");
-                            JSONArray jsonArray = dataObj
-                                    .getJSONArray("forecast");
+                            JSONArray jsonArray = dataObj.getJSONArray("forecast");
                             // 通知更新ui
                             Message msg = Message.obtain();
                             msg.obj = jsonArray;
@@ -1056,8 +1031,7 @@ public class MainActivity extends Activity implements OnClickListener {
         NotificationCompat.Builder builder;
         int channelId = 1;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {    //Android 8.0以上适配
-            NotificationChannel channel = new NotificationChannel(String.valueOf(channelId), "channel_name",
-                    NotificationManager.IMPORTANCE_HIGH);
+            NotificationChannel channel = new NotificationChannel(String.valueOf(channelId), "channel_name", NotificationManager.IMPORTANCE_HIGH);
             manager.createNotificationChannel(channel);
             builder = new NotificationCompat.Builder(this, String.valueOf(channelId));
         } else {
@@ -1073,8 +1047,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 .setContentText("软件后台运行中")//通知的正文内容
                 .setWhen(0)//通知创建的时间
                 .setAutoCancel(false)//点击通知后，自动取消
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(""))
-                .setSmallIcon(R.drawable.ic_launcher)//通知显示的小图标，只能用alpha图层的图片进行设置
+                .setStyle(new NotificationCompat.BigTextStyle().bigText("")).setSmallIcon(R.drawable.ic_launcher)//通知显示的小图标，只能用alpha图层的图片进行设置
                 .setPriority(NotificationCompat.PRIORITY_MAX)//通知重要程度
                 .setContentIntent(pi)//点击跳转
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher));

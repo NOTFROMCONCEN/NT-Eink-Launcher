@@ -45,9 +45,7 @@ public class SettingActivity extends Activity {
     // 消息反馈设置、APP列表设置、
     // 关于桌面设置、桌面设置、退出桌面设置、
     // 隐藏APP设置、签名设置、卸载桌面设置
-    LinearLayout lv_back, lv_restart_setting, lv_inforeback_activity,
-            lv_textsize_setting, lv_applist_setting, lv_about_activity, lv_desktop_setting,
-            lv_hindapp_setting, lv_name_setting, lv_uninstall_setting;
+    LinearLayout lv_back, lv_restart_setting, lv_inforeback_activity, lv_textsize_setting, lv_applist_setting, lv_about_activity, lv_desktop_setting, lv_hindapp_setting, lv_name_setting, lv_uninstall_setting;
     //复选框，隐藏设置图标（底栏）、离线模式、老年模式
     private CheckBox cb_hind_setting_ico, cb_setting_offlinemode, cb_setting_oldmanmode;
     //数据库
@@ -62,8 +60,7 @@ public class SettingActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        //全屏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);// 无Title
         setContentView(R.layout.activity_setting_new);
         initView();//绑定控件
@@ -272,23 +269,16 @@ public class SettingActivity extends Activity {
      */
     private void show_name_dialog() {
         //新建一个dialog
-        final AlertDialog builder = new AlertDialog.Builder(
-                SettingActivity.this).create();
+        final AlertDialog builder = new AlertDialog.Builder(SettingActivity.this).create();
         //绑定一个自定义View
-        View view = LayoutInflater.from(SettingActivity.this).inflate(
-                R.layout.dialog_name_show, null, false);
+        View view = LayoutInflater.from(SettingActivity.this).inflate(R.layout.dialog_name_show, null, false);
         //设置自定义view
         builder.setView(view);
-        final EditText et_name_get = (EditText) view
-                .findViewById(R.id.et_title_name);
-        final RadioButton ra_0 = (RadioButton) view
-                .findViewById(R.id.radio0);
-        final RadioButton ra_1 = (RadioButton) view
-                .findViewById(R.id.radio1);
-        final RadioButton ra_2 = (RadioButton) view
-                .findViewById(R.id.radio2);
-        final RadioButton ra_3 = (RadioButton) view
-                .findViewById(R.id.radio3);
+        final EditText et_name_get = (EditText) view.findViewById(R.id.et_title_name);
+        final RadioButton ra_0 = (RadioButton) view.findViewById(R.id.radio0);
+        final RadioButton ra_1 = (RadioButton) view.findViewById(R.id.radio1);
+        final RadioButton ra_2 = (RadioButton) view.findViewById(R.id.radio2);
+        final RadioButton ra_3 = (RadioButton) view.findViewById(R.id.radio3);
         final Button btn_con = (Button) view.findViewById(R.id.btn_dialog_rename_con);
         final Button btn_cls = (Button) view.findViewById(R.id.btn_dialog_rename_cls);
         //关闭按钮
@@ -303,47 +293,29 @@ public class SettingActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //判断文本框、单选按钮是否被选中
-                if (et_name_get.getText().toString().isEmpty()
-                        && !ra_0.isChecked() && !ra_2.isChecked()
-                        && !ra_3.isChecked() && !ra_1.isChecked()) {
+                if (et_name_get.getText().toString().isEmpty() && !ra_0.isChecked() && !ra_2.isChecked() && !ra_3.isChecked() && !ra_1.isChecked()) {
                     //插入空白数据
-                    db.execSQL("update name set username = ?",
-                            new String[]{""});
+                    db.execSQL("update name set username = ?", new String[]{""});
                 } else {
                     /**
                      * 很老的代码，等待更新
                      */
                     //判断哪个单选按钮被选中
-                    if (ra_0.isChecked() || ra_1.isChecked()
-                            || ra_2.isChecked() || ra_3.isChecked()) {
+                    if (ra_0.isChecked() || ra_1.isChecked() || ra_2.isChecked() || ra_3.isChecked()) {
                         if (ra_0.isChecked()) {
-                            db.execSQL(
-                                    "update name set username = ?",
-                                    new String[]{ra_0.getText()
-                                            .toString() + getString(R.string.name_ebook)});
+                            db.execSQL("update name set username = ?", new String[]{ra_0.getText().toString() + getString(R.string.name_ebook)});
                         }
                         if (ra_1.isChecked()) {
-                            db.execSQL(
-                                    "update name set username = ?",
-                                    new String[]{ra_1.getText()
-                                            .toString() + getString(R.string.name_ebook)});
+                            db.execSQL("update name set username = ?", new String[]{ra_1.getText().toString() + getString(R.string.name_ebook)});
                         }
                         if (ra_2.isChecked()) {
-                            db.execSQL(
-                                    "update name set username = ?",
-                                    new String[]{ra_2.getText()
-                                            .toString() + getString(R.string.name_ebook)});
+                            db.execSQL("update name set username = ?", new String[]{ra_2.getText().toString() + getString(R.string.name_ebook)});
                         }
                         if (ra_3.isChecked()) {
-                            db.execSQL(
-                                    "update name set username = ?",
-                                    new String[]{ra_3.getText()
-                                            .toString() + getString(R.string.name_ebook)});
+                            db.execSQL("update name set username = ?", new String[]{ra_3.getText().toString() + getString(R.string.name_ebook)});
                         }
                     } else {
-                        db.execSQL("update name set username = ?",
-                                new String[]{et_name_get
-                                        .getText().toString()});
+                        db.execSQL("update name set username = ?", new String[]{et_name_get.getText().toString()});
                     }
                 }
                 //关闭dialog
@@ -377,8 +349,7 @@ public class SettingActivity extends Activity {
         lv_about_activity = (LinearLayout) findViewById(R.id.lv_about_activity);
         lv_applist_setting = (LinearLayout) findViewById(R.id.lv_applist_setting);
         //数据库
-        dbHelper_name_sql = new MyDataBaseHelper(getApplicationContext(), "info.db",
-                null, 2);
+        dbHelper_name_sql = new MyDataBaseHelper(getApplicationContext(), "info.db", null, 2);
         db = dbHelper_name_sql.getWritableDatabase();
     }
 

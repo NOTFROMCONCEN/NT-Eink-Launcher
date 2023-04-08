@@ -69,7 +69,7 @@ public class DeskTopSettingActivity extends AppCompatActivity implements View.On
         /**
          * 设置title
          */
-        tv_title.setText("应用列表设置");
+        tv_title.setText("列表设置");
         //title栏的linelayout布局点击事件
         lv_back.setOnClickListener(new View.OnClickListener() {
             @Override

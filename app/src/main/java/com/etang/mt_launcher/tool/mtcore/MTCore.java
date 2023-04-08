@@ -18,6 +18,7 @@ import com.etang.mt_launcher.tool.mtcore.dialog.MessageDialog;
 import com.etang.mt_launcher.tool.mtcore.dialog.NewUserDialog;
 import com.etang.mt_launcher.tool.mtcore.permission.SavePermission;
 import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
+import com.etang.mt_launcher.tool.mtcore.toast.DiyToast_New;
 import com.etang.mt_launcher.tool.mtcore.update.CheckUpdateDialog;
 // _   _   _   _       ___       ___  ___   _____   _   _____       ___   __   _   _____
 //| | | | | | | |     /   |     /   |/   | | ____| | | |_   _|     /   | |  \ | | /  ___|
@@ -127,7 +128,7 @@ public class MTCore {
     }
 
     public static void showToast(Context context, String s, boolean long_or_short) {
-        DiyToast.show(context, s, long_or_short);
+        DiyToast_New.show(context, s, long_or_short);
     }
 
     public static void check_save_permission(Activity activity) {
