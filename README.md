@@ -25,7 +25,7 @@
 #### 更新地址
 
 - 最新更新在：[Gitee码云](https://gitee.com/rabbitTang_admin/NT-Eink-Launcher)
-- 我的博客是：[どうして私だけが](https://blog.nyanon.online/)
+- 我的博客是：[どうして私だけが](https://nyanon.online/)
 
 ## 介绍
 
