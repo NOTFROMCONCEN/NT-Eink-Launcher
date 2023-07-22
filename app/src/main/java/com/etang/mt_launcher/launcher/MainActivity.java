@@ -283,7 +283,7 @@ public class MainActivity extends Activity implements OnClickListener {
         monitorBatteryState();// 监听电池信息
         check_text_size(c);//检查文本大小
         rember_name(c);// 读取昵称
-        update_wathers(sharedPreferences);//更新天气
+//        update_wathers(sharedPreferences);//更新天气
         check_view_hind(c, sharedPreferences);//检查底栏是否隐藏
         check_offline_mode(c, sharedPreferences);//检查离线模式是否打开
         check_oldman_mode(c, sharedPreferences);//检查老年模式是否打开
@@ -492,13 +492,13 @@ public class MainActivity extends Activity implements OnClickListener {
         try {
             String ico_info = sharedPreferences.getString("setting_ico_hind", null);
             if (ico_info.equals("true")) {
-                line_bottom.setVisibility(View.GONE);
+                line_bottom.setVisibility(View.INVISIBLE);
             } else {
                 line_bottom.setVisibility(View.VISIBLE);
             }
         } catch (Exception e) {
             SharedPreferences.Editor editor = context.getSharedPreferences("info", context.MODE_PRIVATE).edit();
-            editor.putString("setting_ico_hind", "false");//日期文本大小
+            editor.putString("setting_ico_hind", "false");
             editor.apply();
         }
     }
@@ -603,11 +603,11 @@ public class MainActivity extends Activity implements OnClickListener {
                 if (cursor.getCount() != 0) {
                     cursor.moveToFirst();
                     @SuppressLint("Range") String city = cursor.getString(cursor.getColumnIndex("city"));
-                    update_wather(MainActivity.this, city);
+//                    update_wather(MainActivity.this, city);
                 }
                 SharedPreferences sharedPreferences;
                 sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
-                update_wathers(sharedPreferences);
+//                update_wathers(sharedPreferences);
             }
         } else {
 //            line_wather.setVisibility(View.INVISIBLE);
@@ -687,11 +687,11 @@ public class MainActivity extends Activity implements OnClickListener {
                             if (cursor.getCount() != 0) {
                                 cursor.moveToFirst();
                                 @SuppressLint("Range") String city = cursor.getString(cursor.getColumnIndex("city"));
-                                update_wather(MainActivity.this, city);
+//                                update_wather(MainActivity.this, city);
                             }
                             SharedPreferences sharedPreferences;
                             sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
-                            update_wathers(sharedPreferences);
+//                            update_wathers(sharedPreferences);
                         }
                     } else {
 //                        line_wather.setVisibility(View.INVISIBLE);
@@ -718,13 +718,13 @@ public class MainActivity extends Activity implements OnClickListener {
         tv_time_min = (TextView) findViewById(R.id.tv_time_min);
         tv_user_id = (TextView) findViewById(R.id.tv_user_id);
         tv_main_batterystate = (TextView) findViewById(R.id.tv_main_batterystate);
-        line_wather = (LinearLayout) findViewById(R.id.line_wather);
+//        line_wather = (LinearLayout) findViewById(R.id.line_wather);
         tv_city = (TextView) findViewById(R.id.tv_city);
         iv_index_back = (ImageView) findViewById(R.id.iv_index_back);
         tv_temp_state = (TextView) findViewById(R.id.tv_temp_state);
         tv_last_updatetime = (TextView) findViewById(R.id.tv_last_updatetime);
         iv_setting_button.setOnClickListener(this);
-        line_wather.setOnClickListener(this);
+//        line_wather.setOnClickListener(this);
         iv_setting_refresh.setOnClickListener(this);
         iv_clean_button.setOnClickListener(this);
         String s_clean = Build.BRAND;
@@ -741,160 +741,160 @@ public class MainActivity extends Activity implements OnClickListener {
         appinstallserver.register(this);
     }
 
-    private void update_wathers(SharedPreferences sharedPreferences) {
-        if (!offline_mode) {
-//            line_wather.setVisibility(View.VISIBLE);
-            tv_temp_state.setText(sharedPreferences.getString("wather_info_temp", null));
-            tv_last_updatetime.setText(sharedPreferences.getString("wather_info_updatetime", null));
-            tv_city.setText(sharedPreferences.getString("wather_info_citytype", null));
-            /**
-             * 判断设置是不是隐藏天气布局
-             */
-            check_weather_view(sharedPreferences);
-        } else {
-//            line_wather.setVisibility(View.INVISIBLE);
-        }
-    }
+//    private void update_wathers(SharedPreferences sharedPreferences) {
+//        if (!offline_mode) {
+////            line_wather.setVisibility(View.VISIBLE);
+//            tv_temp_state.setText(sharedPreferences.getString("wather_info_temp", null));
+//            tv_last_updatetime.setText(sharedPreferences.getString("wather_info_updatetime", null));
+//            tv_city.setText(sharedPreferences.getString("wather_info_citytype", null));
+//            /**
+//             * 判断设置是不是隐藏天气布局
+//             */
+////            check_weather_view(sharedPreferences);
+//        } else {
+////            line_wather.setVisibility(View.INVISIBLE);
+//        }
+//    }
 
-    private void check_weather_view(SharedPreferences sharedPreferences) {
-        if (sharedPreferences.getBoolean("isHind_weather", false) == true) {
-//            line_wather.setVisibility(View.INVISIBLE);
-        } else if (sharedPreferences.getBoolean("isHind_weather", false) == false) {
-//            line_wather.setVisibility(View.VISIBLE);
-        } else {
-//            line_wather.setVisibility(View.VISIBLE);
-        }
-    }
+//    private void check_weather_view(SharedPreferences sharedPreferences) {
+//        if (sharedPreferences.getBoolean("isHind_weather", false) == true) {
+////            line_wather.setVisibility(View.INVISIBLE);
+//        } else if (sharedPreferences.getBoolean("isHind_weather", false) == false) {
+////            line_wather.setVisibility(View.VISIBLE);
+//        } else {
+////            line_wather.setVisibility(View.VISIBLE);
+//        }
+//    }
 
-    private Handler mHandler = new Handler() {
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case 0:
-                    String fengxiang = "";
-                    String fengli = "";
-                    String high = "";
-                    String type = "";
-                    String low = "";
-                    String date = "";
-                    JSONArray dataArray = (JSONArray) msg.obj;
-                    try {
-                        String json_today = dataArray.getString(0);
+//    private Handler mHandler = new Handler() {
+//        public void handleMessage(Message msg) {
+//            switch (msg.what) {
+//                case 0:
+//                    String fengxiang = "";
+//                    String fengli = "";
+//                    String high = "";
+//                    String type = "";
+//                    String low = "";
+//                    String date = "";
+//                    JSONArray dataArray = (JSONArray) msg.obj;
+//                    try {
+//                        String json_today = dataArray.getString(0);
+//
+//                        System.out.println("-----------" + json_today);
+//
+//                        JSONObject jsonObject = dataArray.getJSONObject(0);
+//                        System.out.println(jsonObject);
+//                        if (jsonObject != null) {
+//                            fengxiang = jsonObject.optString("fengxiang");
+//                            fengli = jsonObject.optString("fengli");
+//                            high = jsonObject.optString("high");
+//                            type = jsonObject.optString("type");
+//                            low = jsonObject.optString("low");
+//                            date = jsonObject.optString("date");
+//                        }
+//                        Cursor cursor = db.rawQuery("select * from wather_city", null);
+//                        if (cursor.getCount() != 0) {
+//                            cursor.moveToFirst();
+//                            @SuppressLint("Range") String city = cursor.getString(cursor.getColumnIndex("city"));
+//                            tv_city.setText(city + "  " + type);
+//                        } else {
+//                            MTCore.showToast(getApplicationContext(), "请到“梅糖天气”设置位置信息", true);
+//                        }
+//                        @SuppressLint("Range") String city = cursor.getString(cursor.getColumnIndex("city"));
+//                        SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
+//                        editor.putString("wather_info_citytype", city + "  " + type);
+//                        editor.putString("wather_info_wind", fengxiang);
+//                        editor.putString("wather_info_temp", high + "  " + low);
+//                        editor.putString("wather_info_updatetime", "于" + tv_time_hour.getText().toString() + ":" + tv_time_min.getText().toString() + "更新");
+//                        editor.apply();
+//                        /**
+//                         * 更新天气信息
+//                         */
+//                        SharedPreferences sharedPreferences;
+//                        sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
+//                        update_wathers(sharedPreferences);
+//                    } catch (Exception e) {
+//                        // TODO: handle exception
+//                    }
+//                    break;
+//                case 1:
+//                    MTCore.showToast(getApplicationContext(), "城市无效（已重置为上海）", true);
+//                    db.execSQL("update wather_city set city = ? ", new String[]{"上海"});
+//                    break;
+//                case 2:
+//                    SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
+//                    editor.putString("wather_info_updatetime", "于" + tv_time_hour.getText().toString() + ":" + tv_time_min.getText().toString() + "更新（离线状态）");
+//                    editor.apply();
+//                    SharedPreferences sharedPreferences;
+//                    sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
+//                    update_wathers(sharedPreferences);
+//                    break;
+//                default:
+//                    break;
+//            }
+//        }
+//    };
 
-                        System.out.println("-----------" + json_today);
-
-                        JSONObject jsonObject = dataArray.getJSONObject(0);
-                        System.out.println(jsonObject);
-                        if (jsonObject != null) {
-                            fengxiang = jsonObject.optString("fengxiang");
-                            fengli = jsonObject.optString("fengli");
-                            high = jsonObject.optString("high");
-                            type = jsonObject.optString("type");
-                            low = jsonObject.optString("low");
-                            date = jsonObject.optString("date");
-                        }
-                        Cursor cursor = db.rawQuery("select * from wather_city", null);
-                        if (cursor.getCount() != 0) {
-                            cursor.moveToFirst();
-                            @SuppressLint("Range") String city = cursor.getString(cursor.getColumnIndex("city"));
-                            tv_city.setText(city + "  " + type);
-                        } else {
-                            MTCore.showToast(getApplicationContext(), "请到“梅糖天气”设置位置信息", true);
-                        }
-                        @SuppressLint("Range") String city = cursor.getString(cursor.getColumnIndex("city"));
-                        SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
-                        editor.putString("wather_info_citytype", city + "  " + type);
-                        editor.putString("wather_info_wind", fengxiang);
-                        editor.putString("wather_info_temp", high + "  " + low);
-                        editor.putString("wather_info_updatetime", "于" + tv_time_hour.getText().toString() + ":" + tv_time_min.getText().toString() + "更新");
-                        editor.apply();
-                        /**
-                         * 更新天气信息
-                         */
-                        SharedPreferences sharedPreferences;
-                        sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
-                        update_wathers(sharedPreferences);
-                    } catch (Exception e) {
-                        // TODO: handle exception
-                    }
-                    break;
-                case 1:
-                    MTCore.showToast(getApplicationContext(), "城市无效（已重置为上海）", true);
-                    db.execSQL("update wather_city set city = ? ", new String[]{"上海"});
-                    break;
-                case 2:
-                    SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
-                    editor.putString("wather_info_updatetime", "于" + tv_time_hour.getText().toString() + ":" + tv_time_min.getText().toString() + "更新（离线状态）");
-                    editor.apply();
-                    SharedPreferences sharedPreferences;
-                    sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
-                    update_wathers(sharedPreferences);
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
-
-    public void update_wather(Context context, final String city) {
-        Log.i(TAG, "update_wather: start");
-        if (TextUtils.isEmpty(city)) {
-            MTCore.showToast(context, "城市错误，不在数据库中", true);
-            return;
-        }
-        Log.i(TAG, "update_wather: 开始获取城市天气信息");
-        new Thread() {
-            @Override
-            public void run() {
-                // TODO Auto-generated method stub
-                super.run();
-                try {
-                    URL url = new URL("http://wthrcdn.etouch.cn/weather_mini?city=" + URLEncoder.encode(city, "UTF-8"));
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setConnectTimeout(5000);
-                    conn.setRequestMethod("GET");
-                    int code = conn.getResponseCode();
-                    if (code == 200) {
-                        Log.i(TAG, "run: 网络连接成功");
-                        // 连接网络成功
-                        InputStream in = conn.getInputStream();
-                        String data = StreamTool.decodeStream(in);
-                        // 解析json格式的数据
-                        JSONObject jsonObj = new JSONObject(data);
-                        // 获得desc的值
-                        String result = jsonObj.getString("desc");
-                        if ("OK".equals(result)) {
-                            // 城市有效，返回了需要的数据
-                            JSONObject dataObj = jsonObj.getJSONObject("data");
-                            JSONArray jsonArray = dataObj.getJSONArray("forecast");
-                            // 通知更新ui
-                            Message msg = Message.obtain();
-                            msg.obj = jsonArray;
-                            msg.what = 0;
-                            mHandler.sendMessage(msg);
-                        } else {
-                            // 城市无效
-                            Message msg = Message.obtain();
-                            msg.what = 1;
-                            mHandler.sendMessage(msg);
-                        }
-                    } else {
-                        // 联网失败
-                        Message msg = Message.obtain();
-                        msg.what = 2;
-                        mHandler.sendMessage(msg);
-                    }
-                } catch (Exception e) {
-                    // TODO: handle exception
-                    e.printStackTrace();
-                    Message msg = Message.obtain();
-                    msg.what = 2;
-                    mHandler.sendMessage(msg);
-                }
-            }
-
-            ;
-        }.start();
-    }
+//    public void update_wather(Context context, final String city) {
+//        Log.i(TAG, "update_wather: start");
+//        if (TextUtils.isEmpty(city)) {
+//            MTCore.showToast(context, "城市错误，不在数据库中", true);
+//            return;
+//        }
+//        Log.i(TAG, "update_wather: 开始获取城市天气信息");
+//        new Thread() {
+//            @Override
+//            public void run() {
+//                // TODO Auto-generated method stub
+//                super.run();
+//                try {
+//                    URL url = new URL("http://wthrcdn.etouch.cn/weather_mini?city=" + URLEncoder.encode(city, "UTF-8"));
+//                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//                    conn.setConnectTimeout(5000);
+//                    conn.setRequestMethod("GET");
+//                    int code = conn.getResponseCode();
+//                    if (code == 200) {
+//                        Log.i(TAG, "run: 网络连接成功");
+//                        // 连接网络成功
+//                        InputStream in = conn.getInputStream();
+//                        String data = StreamTool.decodeStream(in);
+//                        // 解析json格式的数据
+//                        JSONObject jsonObj = new JSONObject(data);
+//                        // 获得desc的值
+//                        String result = jsonObj.getString("desc");
+//                        if ("OK".equals(result)) {
+//                            // 城市有效，返回了需要的数据
+//                            JSONObject dataObj = jsonObj.getJSONObject("data");
+//                            JSONArray jsonArray = dataObj.getJSONArray("forecast");
+//                            // 通知更新ui
+//                            Message msg = Message.obtain();
+//                            msg.obj = jsonArray;
+//                            msg.what = 0;
+//                            mHandler.sendMessage(msg);
+//                        } else {
+//                            // 城市无效
+//                            Message msg = Message.obtain();
+//                            msg.what = 1;
+//                            mHandler.sendMessage(msg);
+//                        }
+//                    } else {
+//                        // 联网失败
+//                        Message msg = Message.obtain();
+//                        msg.what = 2;
+//                        mHandler.sendMessage(msg);
+//                    }
+//                } catch (Exception e) {
+//                    // TODO: handle exception
+//                    e.printStackTrace();
+//                    Message msg = Message.obtain();
+//                    msg.what = 2;
+//                    mHandler.sendMessage(msg);
+//                }
+//            }
+//
+//            ;
+//        }.start();
+//    }
 
     /**
      * 拦截返回键、Home键
@@ -979,25 +979,25 @@ public class MainActivity extends Activity implements OnClickListener {
                 overridePendingTransition(0, 0);
                 break;
             //天气
-            case R.id.line_wather:
-                Cursor cursor = db.rawQuery("select * from wather_city", null);
-                if (!offline_mode) {
-                    if (cursor.getCount() != 0) {
-                        cursor.moveToFirst();
-                        @SuppressLint("Range") String city = cursor.getString(cursor.getColumnIndex("city"));
-                        update_wather(MainActivity.this, city);
-                        MTCore.showToast(MainActivity.this, "正在尝试更新：" + city, false);
-                        /**
-                         * 更新天气信息
-                         */
-                        SharedPreferences sharedPreferences;
-                        sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
-                        update_wathers(sharedPreferences);
-                    }
-                } else {
-                    MTCore.showToast(getApplicationContext(), "当前处于离线模式", true);
-                }
-                break;
+//            case R.id.line_wather:
+//                Cursor cursor = db.rawQuery("select * from wather_city", null);
+//                if (!offline_mode) {
+//                    if (cursor.getCount() != 0) {
+//                        cursor.moveToFirst();
+//                        @SuppressLint("Range") String city = cursor.getString(cursor.getColumnIndex("city"));
+////                        update_wather(MainActivity.this, city);
+//                        MTCore.showToast(MainActivity.this, "正在尝试更新：" + city, false);
+//                        /**
+//                         * 更新天气信息
+//                         */
+//                        SharedPreferences sharedPreferences;
+//                        sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
+//                        update_wathers(sharedPreferences);
+//                    }
+//                } else {
+//                    MTCore.showToast(getApplicationContext(), "当前处于离线模式", true);
+//                }
+//                break;
             case R.id.iv_setting_clear:
                 String s_clean = Build.BRAND;
                 if (s_clean.equals("Allwinner")) {

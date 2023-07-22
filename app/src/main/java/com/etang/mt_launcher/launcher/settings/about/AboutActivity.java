@@ -58,7 +58,8 @@ public class AboutActivity extends AppCompatActivity {
 //        } else {
 //            setContentView(R.layout.setting_about_yuan);
 //        }
-        setContentView(R.layout.setting_about_fang);
+//        setContentView(R.layout.setting_about_fang);
+        setContentView(R.layout.setting_about_yuan);
         //绑定控件
         initView();
         //加载MTCore

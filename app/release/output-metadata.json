@@ -11,8 +11,8 @@
       "type": "SINGLE",
       "filters": [],
       "attributes": [],
-      "versionCode": 11322,
-      "versionName": "MTCore2.2-renewal-11322",
+      "versionCode": 11330,
+      "versionName": "MTCore2.2-fix-11330",
       "outputFile": "app-release.apk"
     }
   ],
