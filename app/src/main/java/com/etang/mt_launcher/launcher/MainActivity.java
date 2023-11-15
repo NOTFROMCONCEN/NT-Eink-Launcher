@@ -277,10 +277,16 @@ public class MainActivity extends Activity implements OnClickListener {
         check_view_hind(c, sharedPreferences);//检查底栏是否隐藏
         check_offline_mode(c, sharedPreferences);//检查离线模式是否打开
         check_oldman_mode(c, sharedPreferences);//检查老年模式是否打开
-        check_Language(c, sharedPreferences);
         get_applist_number(c, sharedPreferences);//获取设定的应用列表列数
         images_upgrade(c, sharedPreferences);//更新图像信息
         set_app_setStackFromBottomMode(sharedPreferences);//检查并设置APP列表排列方式
+
+
+        //check_Language需要api-17以上才可以正确运行
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            check_Language(c, sharedPreferences);
+        }
+
     }
 
     /**
@@ -289,7 +295,7 @@ public class MainActivity extends Activity implements OnClickListener {
      * @param context
      * @param sharedPreferences
      */
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)//setLocale的最低api版本号是17
     private void check_Language(Context context, SharedPreferences sharedPreferences) {
         int language = 0;
         try {
