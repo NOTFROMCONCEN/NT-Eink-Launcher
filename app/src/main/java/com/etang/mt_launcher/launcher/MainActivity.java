@@ -28,8 +28,6 @@ import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -67,15 +65,7 @@ import com.etang.mt_launcher.tool.mtcore.dialog.UnInstallDialog;
 import com.etang.mt_launcher.tool.mtcore.savearrayutil.SaveArrayListUtil;
 import com.etang.mt_launcher.tool.server.AppInstallServer;
 import com.etang.mt_launcher.tool.sql.MyDataBaseHelper;
-import com.etang.mt_launcher.tool.util.StreamTool;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -1042,7 +1032,7 @@ public class MainActivity extends Activity implements OnClickListener {
         intent.setAction(Intent.ACTION_MAIN);// 设置Intent动作
         intent.addCategory(Intent.CATEGORY_HOME);// 设置Intent种类
 //        startActivity(intent);// 将Intent传递给Activity
-        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
+        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
         builder.setContentTitle("点击此条通知回到桌面")//指定通知栏的标题内容
                 .setContentText("软件后台运行中")//通知的正文内容
                 .setWhen(0)//通知创建的时间
