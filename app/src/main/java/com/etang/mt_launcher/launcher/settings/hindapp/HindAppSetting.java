@@ -31,6 +31,13 @@ import com.etang.mt_launcher.tool.mtcore.savearrayutil.SaveArrayListUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+// _   _   _   _       ___       ___  ___   _____   _   _____       ___   __   _   _____
+//| | | | | | | |     /   |     /   |/   | | ____| | | |_   _|     /   | |  \ | | /  ___|
+//| |_| | | | | |    / /| |    / /|   /| | | |__   | |   | |      / /| | |   \| | | |
+//|  _  | | | | |   / / | |   / / |__/ | | |  __|  | |   | |     / / | | | |\   | | |  _
+//| | | | | |_| |  / /  | |  / /       | | | |___  | |   | |    / /  | | | | \  | | |_| |
+//|_| |_| \_____/ /_/   |_| /_/        |_| |_____| |_|   |_|   /_/   |_| |_|  \_| \_____/
+// code by 邢启瑞 xingqirui@petalmail.com
 
 /**
  * @ProjectName: NT-Eink-Launcher

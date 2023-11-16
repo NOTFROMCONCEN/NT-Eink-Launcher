@@ -77,6 +77,7 @@ import java.util.Locale;
 //|  _  | | | | |   / / | |   / / |__/ | | |  __|  | |   | |     / / | | | |\   | | |  _
 //| | | | | |_| |  / /  | |  / /       | | | |___  | |   | |    / /  | | | | \  | | |_| |
 //|_| |_| \_____/ /_/   |_| /_/        |_| |_____| |_|   |_|   /_/   |_| |_|  \_| \_____/
+// code by 邢启瑞 xingqirui@petalmail.com
 
 /**
  * @Package: com.etang.nt_launcher.launcher
