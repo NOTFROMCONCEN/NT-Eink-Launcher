@@ -69,16 +69,16 @@ public class GetApps {
      * @param list    继承list
      */
     private static void add_diary(Context context, List<AppInfo> list) {
-//        /**
-//         * 添加“天气”
-//         */
-//        AppInfo mInfo_weather = new AppInfo();
-//        mInfo_weather.setName(context.getString(R.string.app_desktopweather));
-//        mInfo_weather.setPackageName(context.getPackageName() + ".weather");
-//        Resources r_weather = context.getResources();
-//        Bitmap bmp_weather = BitmapFactory.decodeResource(r_weather, R.drawable.ic_weather);
-//        mInfo_weather.setIco(Bitmap.createBitmap(bmp_weather));
-//        list.add(mInfo_weather);
+        /**
+         * 添加“天气”
+         */
+        AppInfo mInfo_weather = new AppInfo();
+        mInfo_weather.setName(context.getString(R.string.app_desktopweather));
+        mInfo_weather.setPackageName(context.getPackageName() + ".weather");
+        Resources r_weather = context.getResources();
+        Bitmap bmp_weather = BitmapFactory.decodeResource(r_weather, R.drawable.ic_weather);
+        mInfo_weather.setIco(Bitmap.createBitmap(bmp_weather));
+        list.add(mInfo_weather);
         /**
          * 添加“桌面设置”
          */

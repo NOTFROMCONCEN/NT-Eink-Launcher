@@ -31,13 +31,6 @@ import com.etang.mt_launcher.launcher.welecome.WelecomeActivity;
 import com.etang.mt_launcher.tool.mtcore.MTCore;
 import com.etang.mt_launcher.tool.mtcore.dialog.UnInstallDialog;
 import com.etang.mt_launcher.tool.sql.MyDataBaseHelper;
-// _   _   _   _       ___       ___  ___   _____   _   _____       ___   __   _   _____
-//| | | | | | | |     /   |     /   |/   | | ____| | | |_   _|     /   | |  \ | | /  ___|
-//| |_| | | | | |    / /| |    / /|   /| | | |__   | |   | |      / /| | |   \| | | |
-//|  _  | | | | |   / / | |   / / |__/ | | |  __|  | |   | |     / / | | | |\   | | |  _
-//| | | | | |_| |  / /  | |  / /       | | | |___  | |   | |    / /  | | | | \  | | |_| |
-//|_| |_| \_____/ /_/   |_| /_/        |_| |_____| |_|   |_|   /_/   |_| |_|  \_| \_____/
-// code by 邢启瑞 xingqirui@petalmail.com
 
 /**
  * @Package: com.etang.nt_launcher.launcher.settings

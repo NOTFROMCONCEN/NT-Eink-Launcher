@@ -17,7 +17,6 @@ import com.etang.mt_launcher.tool.mtcore.dialog.FollwoMeDialog;
 import com.etang.mt_launcher.tool.mtcore.dialog.MessageDialog;
 import com.etang.mt_launcher.tool.mtcore.dialog.NewUserDialog;
 import com.etang.mt_launcher.tool.mtcore.permission.SavePermission;
-import com.etang.mt_launcher.tool.mtcore.permission.SavePermission_New;
 import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 import com.etang.mt_launcher.tool.mtcore.toast.DiyToast_New;
 import com.etang.mt_launcher.tool.mtcore.update.CheckUpdateDialog;
@@ -133,7 +132,6 @@ public class MTCore {
     }
 
     public static void check_save_permission(Activity activity) {
-//        SavePermission.check(activity);
-        SavePermission_New.check(activity);
+        SavePermission.check(activity);
     }
 }

@@ -6,9 +6,9 @@ android {
     defaultConfig {
         applicationId "com.etang.mt_launcher"
         minSdkVersion 15
-        targetSdkVersion 34
-        versionCode 11330
-        versionName "MTCore2.2-fix-11330"
+        targetSdkVersion 31
+        versionCode 11322
+        versionName "MTCore2.2-renewal-11322"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

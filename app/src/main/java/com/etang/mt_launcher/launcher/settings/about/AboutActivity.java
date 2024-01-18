@@ -21,13 +21,6 @@ import com.etang.mt_launcher.tool.mtcore.dialog.PayMeDialog;
 import com.etang.mt_launcher.tool.mtcore.permission.SavePermission;
 import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 import com.etang.mt_launcher.tool.mtcore.MTCore;
-// _   _   _   _       ___       ___  ___   _____   _   _____       ___   __   _   _____
-//| | | | | | | |     /   |     /   |/   | | ____| | | |_   _|     /   | |  \ | | /  ___|
-//| |_| | | | | |    / /| |    / /|   /| | | |__   | |   | |      / /| | |   \| | | |
-//|  _  | | | | |   / / | |   / / |__/ | | |  __|  | |   | |     / / | | | |\   | | |  _
-//| | | | | |_| |  / /  | |  / /       | | | |___  | |   | |    / /  | | | | \  | | |_| |
-//|_| |_| \_____/ /_/   |_| /_/        |_| |_____| |_|   |_|   /_/   |_| |_|  \_| \_____/
-// code by 邢启瑞 xingqirui@petalmail.com
 
 /**
  * @ProjectName: NT-Eink-Launcher
@@ -65,8 +58,7 @@ public class AboutActivity extends AppCompatActivity {
 //        } else {
 //            setContentView(R.layout.setting_about_yuan);
 //        }
-//        setContentView(R.layout.setting_about_fang);
-        setContentView(R.layout.setting_about_yuan);
+        setContentView(R.layout.setting_about_fang);
         //绑定控件
         initView();
         //加载MTCore

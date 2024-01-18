@@ -23,13 +23,6 @@ import com.etang.mt_launcher.R;
 import com.etang.mt_launcher.launcher.MainActivity;
 import com.etang.mt_launcher.launcher.settings.about.AboutActivity;
 import com.etang.mt_launcher.tool.mtcore.MTCore;
-// _   _   _   _       ___       ___  ___   _____   _   _____       ___   __   _   _____
-//| | | | | | | |     /   |     /   |/   | | ____| | | |_   _|     /   | |  \ | | /  ___|
-//| |_| | | | | |    / /| |    / /|   /| | | |__   | |   | |      / /| | |   \| | | |
-//|  _  | | | | |   / / | |   / / |__/ | | |  __|  | |   | |     / / | | | |\   | | |  _
-//| | | | | |_| |  / /  | |  / /       | | | |___  | |   | |    / /  | | | | \  | | |_| |
-//|_| |_| \_____/ /_/   |_| /_/        |_| |_____| |_|   |_|   /_/   |_| |_|  \_| \_____/
-// code by 邢启瑞 xingqirui@petalmail.com
 
 /**
  * @ProjectName: NT-Eink-Launcher

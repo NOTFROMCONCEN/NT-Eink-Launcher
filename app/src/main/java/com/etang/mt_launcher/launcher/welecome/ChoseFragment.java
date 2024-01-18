@@ -85,16 +85,16 @@ public class ChoseFragment extends Fragment {
         btn_welecome_for_kindle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MTCore.showToast(getActivity(), "请使用其他设备扫码查看，或点击“打开链接”", true);
-                ShowImgDialog.show_dialog(getActivity(), "kindle");
+                MTCore.showToast(getActivity(),"请使用其他设备扫码查看，或点击“打开链接”",true);
+                ShowImgDialog.show_dialog(getActivity(),"kindle");
             }
         });
         //给墨案用户的一封信
         btn_welecome_for_moan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MTCore.showToast(getActivity(), "请使用其他设备扫码查看，或点击“打开链接”", true);
-                ShowImgDialog.show_dialog(getActivity(), "moan");
+                MTCore.showToast(getActivity(),"请使用其他设备扫码查看，或点击“打开链接”",true);
+                ShowImgDialog.show_dialog(getActivity(),"moan");
             }
         });
         //自动选择语言
