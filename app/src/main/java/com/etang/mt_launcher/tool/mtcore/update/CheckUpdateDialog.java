@@ -190,11 +190,12 @@ public class CheckUpdateDialog {
                 data.putString("weblink_state", "1");
                 msg_start.setData(data);
                 handler.sendMessage(msg_start);
+                String set_url = "https://yp.nyanon.online/data/User/admin/home/NaiYouApks/for%20web/Android/js/"
+                                + mContext.getPackageName() +
+                                ".xml";
+                Log.i("----------", "run: " + set_url);
                 try {
-                    Document doc = Jsoup.connect(
-                            "https://yp.nyanon.online/data/User/admin/home/NaiYouApks/for%20web/Android/js/"
-                                    + mContext.getPackageName() +
-                                    ".xml").sslSocketFactory(new SSL(trustAllCert)).get();
+                    Document doc = Jsoup.connect(set_url).sslSocketFactory(new SSL(trustAllCert)).get();
                     /**
                      * 开始解析
                      * */
@@ -211,6 +212,7 @@ public class CheckUpdateDialog {
                     data_version.putString("version_Urls", String.valueOf(titleAndPic.get(0).select("updateurl")));
                     data_version.putString("version_Logs", String.valueOf(titleAndPic.get(0).select("updatemessage")));
                     msg_version.setData(data_version);
+                    Log.i("--------------", "run: " + msg_version);
                     handler.sendMessage(msg_version);
                 } catch (Exception e) {
                     Message msg_link_error = new Message();

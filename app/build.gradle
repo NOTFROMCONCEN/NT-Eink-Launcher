@@ -1,71 +1,87 @@
+// 应用插件
 apply plugin: 'com.android.application'
 
+// Android配置
 android {
-    compileSdkVersion 31
-    buildToolsVersion '30.0.3'
+    compileSdkVersion 33 // 编译SDK版本
+    buildToolsVersion '34.0.0' // 构建工具版本
     defaultConfig {
-        applicationId "com.etang.mt_launcher"
-        minSdkVersion 15
-        targetSdkVersion 31
-        versionCode 11322
-        versionName "MTCore2.2-renewal-11322"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        applicationId "com.etang.mt_launcher" // 应用ID
+        minSdkVersion 15 // 最低支持的SDK版本
+        targetSdkVersion 33 // 目标SDK版本
+        versionCode 11331 // 版本号
+        versionName "MTCore2.2-renewal-11331" // 版本名称
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner" // 测试运行器
     }
 
+    // 签名配置
     signingConfigs {
         debug {
-            keyAlias 'etang'
-            keyPassword 'xiaoyu0632'
-//            storeFile file('D:/AndroidStudioProject/NT-Eink-Launcher/app/siginFile/MyNewAppKey.jks')
-            storeFile file('./siginFile/MyNewAppKey.jks')
-            storePassword 'xiaoyu0632'
+            keyAlias 'etang' // 密钥别名
+            keyPassword 'xiaoyu0632' // 密钥密码
+            storeFile file('E:\\DEV\\Projects\\NT-Eink-Launcher\\app\\siginFile\\MyNewAppKey.jks')
+            // 存储文件路径
+            storePassword 'xiaoyu0632' // 存储密码
         }
         release {
-            keyAlias 'etang'
-            keyPassword 'xiaoyu0632'
-//            storeFile file('D:/AndroidStudioProject/NT-Eink-Launcher/app/siginFile/MyNewAppKey.jks')
-            storeFile file('./siginFile/MyNewAppKey.jks')
-            storePassword 'xiaoyu0632'
+            keyAlias 'etang' // 密钥别名
+            keyPassword 'xiaoyu0632' // 密钥密码
+            storeFile file('E:\\DEV\\Projects\\NT-Eink-Launcher\\app\\siginFile\\MyNewAppKey.jks')
+            // 存储文件路径
+            storePassword 'xiaoyu0632' // 存储密码
         }
     }
+    // 构建类型配置
     buildTypes {
         debug {
-            zipAlignEnabled true
-            debuggable true// 是否开启DEBUG
-            minifyEnabled false //是否混淆
-            shrinkResources false //是否去除无效的资源文件
+            zipAlignEnabled true // 是否启用ZIP对齐
+            debuggable true // 是否开启DEBUG
+            minifyEnabled false // 是否混淆
+            shrinkResources false // 是否去除无效的资源文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.debug
+            // ProGuard规则文件
+            signingConfig signingConfigs.debug // 签名配置
         }
         release {
-            zipAlignEnabled true
-            debuggable false// 是否开启DEBUG
-            minifyEnabled true //是否混淆
-            shrinkResources true //是否去除无效的资源文件
+            zipAlignEnabled true // 是否启用ZIP对齐
+            debuggable false // 是否开启DEBUG
+            minifyEnabled true // 是否混淆
+            shrinkResources true // 是否去除无效的资源文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            // ProGuard规则文件
+            signingConfig signingConfigs.release // 签名配置
         }
     }
-    namespace 'com.etang.mt_launcher'
+    namespace 'com.etang.mt_launcher' // 命名空间
+    buildFeatures {
+        buildConfig true // 是否生成BuildConfig文件
+    }
+    android {
+        lint {
+            baseline = file("lint-baseline.xml")
+        }
+    }
 }
 
+// 依赖项配置
 dependencies {
-    implementation "com.google.zxing:core:3.4.1"
-    implementation "org.greenrobot:eventbus:3.2.0"
-    implementation 'org.jsoup:jsoup:1.13.1'
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "androidx.appcompat:appcompat:${appcompatVersion}"
-    implementation 'ru.alexbykov:nopermission:1.1.2'
-    implementation "androidx.constraintlayout:constraintlayout:${constraintlayoutVersion}"
-    implementation "com.google.android.material:material:${materialVersion}"
-    implementation "androidx.navigation:navigation-fragment:2.3.1"
-    implementation "androidx.navigation:navigation-ui:2.3.1"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation "junit:junit:${junitVersion1}"
-    androidTestImplementation "androidx.test.ext:junit:${junitVersion}"
-    androidTestImplementation "androidx.test.espresso:espresso-core:${espressoCoreVersion}"
-    implementation "androidx.recyclerview:recyclerview:1.1.0"
-    implementation "androidx.cardview:cardview:${cardviewVersion}"
-//    implementation("com.squareup.okhttp3:okhttp:4.9.0")
-    implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
+    implementation("com.google.zxing:core:3.4.1") // ZXing库
+    implementation("org.greenrobot:eventbus:3.2.0") // EventBus库
+    implementation("org.jsoup:jsoup:1.13.1") // Jsoup库
+//    implementation(name: "libs", ext: "jar") // 其他库文件
+    implementation("androidx.appcompat:appcompat:${appcompatVersion}") // AppCompat库
+    implementation("ru.alexbykov:nopermission:1.1.2") // NoPermission库
+    implementation("androidx.constraintlayout:constraintlayout:${constraintlayoutVersion}")
+    // ConstraintLayout库
+    implementation("com.google.android.material:material:${materialVersion}") // Material库
+    implementation("androidx.navigation:navigation-fragment:2.3.1") // Navigation Fragment库
+    implementation("androidx.navigation:navigation-ui:2.3.1") // Navigation UI库
+    implementation("androidx.legacy:legacy-support-v4:1.0.0") // Legacy Support V4库
+    testImplementation("junit:junit:${junitVersion1}") // JUnit库
+    androidTestImplementation("androidx.test.ext:junit:${junitVersion}") // Android测试JUnit库
+    androidTestImplementation("androidx.test.espresso:espresso-core:${espressoCoreVersion}")
+    // Espresso Core库
+    implementation("androidx.recyclerview:recyclerview:1.1.0") // RecyclerView库
+    implementation("androidx.cardview:cardview:${cardviewVersion}") // CardView库
+    implementation("com.google.code.gson:gson:2.8.6") // Gson库
 }

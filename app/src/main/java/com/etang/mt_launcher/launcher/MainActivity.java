@@ -29,9 +29,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -67,15 +65,10 @@ import com.etang.mt_launcher.tool.mtcore.dialog.UnInstallDialog;
 import com.etang.mt_launcher.tool.mtcore.savearrayutil.SaveArrayListUtil;
 import com.etang.mt_launcher.tool.server.AppInstallServer;
 import com.etang.mt_launcher.tool.sql.MyDataBaseHelper;
-import com.etang.mt_launcher.tool.util.StreamTool;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -424,34 +417,38 @@ public class MainActivity extends Activity implements OnClickListener {
             startActivity(new Intent(getApplicationContext(), WelecomeActivity.class));
             overridePendingTransition(0, 0);
             finish();
-            /**
-             * 填充预设数据
-             */
-            SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
-            editor.putString("images_info", "applist");//默认显示内容
-            editor.putString("images_app_listifo", "true");
-            editor.putString("appname_state", "one");//是否显示APP名称
-            editor.putString("applist_number", "5");//默认APP列表大小
-            editor.putString("timetext_min_size", "40");//分钟时间大小
-            editor.putString("timetext_hour_size", "70");//小时时间大小
-            editor.putString("nametext_size", "16");//昵称文本大小
-            editor.putString("dianchitext_size", "16");//电池文本大小
-            editor.putString("datetext_size", "16");//日期文本大小
-            editor.putString("setting_ico_hind", "false");//隐藏底栏
-            editor.putString("offline", "false");//离线模式
-            editor.putString("oldman", "false");//老年模式
-            editor.putBoolean("app_setStackFromBottomMode", false);//默认显示内容
-            editor.putString("icon_size", "45");//图标大小
-            editor.putString("language", "0");//设置语言
-            editor.apply();
+        } else {
             //更新桌面信息
             images_upgrade(MainActivity.this, sharedPreferences);
-            //填充预设隐藏应用包名
-            ArrayList<String> arrayList = new ArrayList<String>();
-            arrayList.add("frist");
-            SaveArrayListUtil.saveArrayList(MainActivity.this, arrayList, "start");//存储在本地
-//            initAppList(MainActivity.this);
         }
+
+        //填充预设数据
+        fillPresetData();
+
+        //填充预设隐藏应用包名
+        ArrayList<String> arrayList = new ArrayList<String>();
+        arrayList.add("frist");
+        SaveArrayListUtil.saveArrayList(MainActivity.this, arrayList, "start");//存储在本地
+    }
+
+    private void fillPresetData() {
+        SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
+        editor.putString("images_info", "applist");//默认显示内容
+        editor.putString("images_app_listifo", "true");
+        editor.putString("appname_state", "one");//是否显示APP名称
+        editor.putString("applist_number", "5");//默认APP列表大小
+        editor.putString("timetext_min_size", "40");//分钟时间大小
+        editor.putString("timetext_hour_size", "70");//小时时间大小
+        editor.putString("nametext_size", "16");//昵称文本大小
+        editor.putString("dianchitext_size", "16");//电池文本大小
+        editor.putString("datetext_size", "16");//日期文本大小
+        editor.putString("setting_ico_hind", "false");//隐藏底栏
+        editor.putString("offline", "false");//离线模式
+        editor.putString("oldman", "false");//老年模式
+        editor.putBoolean("app_setStackFromBottomMode", false);//默认显示内容
+        editor.putString("icon_size", "45");//图标大小
+        editor.putString("language", "0");//设置语言
+        editor.apply();
     }
 
 
@@ -593,25 +590,6 @@ public class MainActivity extends Activity implements OnClickListener {
     protected void onResume() {
         // TODO Auto-generated method stub
         super.onResume();
-        /**
-         * 更新天气信息
-         */
-        if (!offline_mode) {
-            if (tv_time_min.getText().toString().equals("00") || tv_time_min.getText().toString().equals("30")) {
-//                line_wather.setVisibility(View.VISIBLE);
-                Cursor cursor = db.rawQuery("select * from wather_city", null);
-                if (cursor.getCount() != 0) {
-                    cursor.moveToFirst();
-                    @SuppressLint("Range") String city = cursor.getString(cursor.getColumnIndex("city"));
-                    update_wather(MainActivity.this, city);
-                }
-                SharedPreferences sharedPreferences;
-                sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
-                update_wathers(sharedPreferences);
-            }
-        } else {
-//            line_wather.setVisibility(View.INVISIBLE);
-        }
         initAppList(MainActivity.this);
     }
 
@@ -676,27 +654,6 @@ public class MainActivity extends Activity implements OnClickListener {
                 tv_time_hour.setText(simpleDateFormat_hour.format(new java.util.Date()));
                 tv_time_min.setText(simpleDateFormat_min.format(new java.util.Date()));
                 handler.postDelayed(runnable, 1000);
-                MTCore.i_for_weather++;
-                if (MTCore.i_for_weather > 5) {
-                    MTCore.i_for_weather = 0;
-                    Log.e("更新时间", "----------");
-                    if (!offline_mode) {
-                        if (tv_time_min.getText().toString().equals("00") || tv_time_min.getText().toString().equals("30")) {
-//                            line_wather.setVisibility(View.VISIBLE);
-                            Cursor cursor = db.rawQuery("select * from wather_city", null);
-                            if (cursor.getCount() != 0) {
-                                cursor.moveToFirst();
-                                @SuppressLint("Range") String city = cursor.getString(cursor.getColumnIndex("city"));
-                                update_wather(MainActivity.this, city);
-                            }
-                            SharedPreferences sharedPreferences;
-                            sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
-                            update_wathers(sharedPreferences);
-                        }
-                    } else {
-//                        line_wather.setVisibility(View.INVISIBLE);
-                    }
-                }
             }
         };
         handler.post(runnable);
@@ -835,67 +792,6 @@ public class MainActivity extends Activity implements OnClickListener {
         }
     };
 
-    public void update_wather(Context context, final String city) {
-        Log.i(TAG, "update_wather: start");
-        if (TextUtils.isEmpty(city)) {
-            MTCore.showToast(context, "城市错误，不在数据库中", true);
-            return;
-        }
-        Log.i(TAG, "update_wather: 开始获取城市天气信息");
-        new Thread() {
-            @Override
-            public void run() {
-                // TODO Auto-generated method stub
-                super.run();
-                try {
-                    URL url = new URL("http://wthrcdn.etouch.cn/weather_mini?city=" + URLEncoder.encode(city, "UTF-8"));
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setConnectTimeout(5000);
-                    conn.setRequestMethod("GET");
-                    int code = conn.getResponseCode();
-                    if (code == 200) {
-                        Log.i(TAG, "run: 网络连接成功");
-                        // 连接网络成功
-                        InputStream in = conn.getInputStream();
-                        String data = StreamTool.decodeStream(in);
-                        // 解析json格式的数据
-                        JSONObject jsonObj = new JSONObject(data);
-                        // 获得desc的值
-                        String result = jsonObj.getString("desc");
-                        if ("OK".equals(result)) {
-                            // 城市有效，返回了需要的数据
-                            JSONObject dataObj = jsonObj.getJSONObject("data");
-                            JSONArray jsonArray = dataObj.getJSONArray("forecast");
-                            // 通知更新ui
-                            Message msg = Message.obtain();
-                            msg.obj = jsonArray;
-                            msg.what = 0;
-                            mHandler.sendMessage(msg);
-                        } else {
-                            // 城市无效
-                            Message msg = Message.obtain();
-                            msg.what = 1;
-                            mHandler.sendMessage(msg);
-                        }
-                    } else {
-                        // 联网失败
-                        Message msg = Message.obtain();
-                        msg.what = 2;
-                        mHandler.sendMessage(msg);
-                    }
-                } catch (Exception e) {
-                    // TODO: handle exception
-                    e.printStackTrace();
-                    Message msg = Message.obtain();
-                    msg.what = 2;
-                    mHandler.sendMessage(msg);
-                }
-            }
-
-            ;
-        }.start();
-    }
-
     /**
      * 拦截返回键、Home键
      */
@@ -978,26 +874,6 @@ public class MainActivity extends Activity implements OnClickListener {
                 startActivity(new Intent(getApplicationContext(), SettingActivity.class));
                 overridePendingTransition(0, 0);
                 break;
-            //天气
-            case R.id.line_wather:
-                Cursor cursor = db.rawQuery("select * from wather_city", null);
-                if (!offline_mode) {
-                    if (cursor.getCount() != 0) {
-                        cursor.moveToFirst();
-                        @SuppressLint("Range") String city = cursor.getString(cursor.getColumnIndex("city"));
-                        update_wather(MainActivity.this, city);
-                        MTCore.showToast(MainActivity.this, "正在尝试更新：" + city, false);
-                        /**
-                         * 更新天气信息
-                         */
-                        SharedPreferences sharedPreferences;
-                        sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
-                        update_wathers(sharedPreferences);
-                    }
-                } else {
-                    MTCore.showToast(getApplicationContext(), "当前处于离线模式", true);
-                }
-                break;
             case R.id.iv_setting_clear:
                 String s_clean = Build.BRAND;
                 if (s_clean.equals("Allwinner")) {
@@ -1042,7 +918,10 @@ public class MainActivity extends Activity implements OnClickListener {
         intent.setAction(Intent.ACTION_MAIN);// 设置Intent动作
         intent.addCategory(Intent.CATEGORY_HOME);// 设置Intent种类
 //        startActivity(intent);// 将Intent传递给Activity
-        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
+//        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
+        // 创建一个可变的 PendingIntent
+        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
         builder.setContentTitle("点击此条通知回到桌面")//指定通知栏的标题内容
                 .setContentText("软件后台运行中")//通知的正文内容
                 .setWhen(0)//通知创建的时间
