@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -158,6 +159,7 @@ public class SettingActivity extends Activity {
         String ico_info = sharedPreferences.getString("setting_ico_hind", null);
         String offline_info = sharedPreferences.getString("offline", null);
         String oldman_info = sharedPreferences.getString("oldman", null);
+        Log.i(TAG, "onCreate: 离线模式：" + offline_info + "老年模式：" + oldman_info + "隐藏底栏：" + ico_info);
         try {
             //判断隐藏底栏是否被选中
             if (ico_info.equals("true")) {
@@ -180,6 +182,7 @@ public class SettingActivity extends Activity {
                 cb_setting_oldmanmode.setChecked(false);
             }
         } catch (Exception e) {
+            MTCore.showToast_new("出现问题，隐藏底栏和离线模式已重置", false);
             //如果检查上面三个模式状态出现问题时，插入默认数据
             SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
             editor.putString("setting_ico_hind", "false");//关闭隐藏底栏

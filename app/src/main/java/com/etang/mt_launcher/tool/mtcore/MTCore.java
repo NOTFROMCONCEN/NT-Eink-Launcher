@@ -16,6 +16,7 @@ import com.etang.mt_launcher.tool.mtcore.dialog.ErrorDialog;
 import com.etang.mt_launcher.tool.mtcore.dialog.FollwoMeDialog;
 import com.etang.mt_launcher.tool.mtcore.dialog.MessageDialog;
 import com.etang.mt_launcher.tool.mtcore.dialog.NewUserDialog;
+import com.etang.mt_launcher.tool.mtcore.getinfo.GetSystemInfo;
 import com.etang.mt_launcher.tool.mtcore.permission.SavePermission;
 import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 import com.etang.mt_launcher.tool.mtcore.toast.DiyToast_New;
@@ -67,6 +68,14 @@ public class MTCore {
         mActivity = activity;
         setMy_app_versionCode(String.valueOf(BuildConfig.VERSION_CODE));
         setMy_app_versionName(BuildConfig.VERSION_NAME);
+        getSystemInfo();
+    }
+
+    public static String getSystemInfo() {
+        GetSystemInfo getSystemInfo = new GetSystemInfo();
+        String s = getSystemInfo.getinfo();
+        Log.i(TAG, "getSystemInfo: " + s);
+        return s;
     }
 
     //获取MTCore版本
@@ -109,11 +118,12 @@ public class MTCore {
 
     //查找APP更新
     public static void CheckUpdate_new(final String where) {
+        CheckUpdateDialog update = new CheckUpdateDialog();
         if (MTCore.get_Now_AndroidVersion() == 19) {
             showToast(mContext, "很抱歉，当前“梅糖桌面”对4.x版本支持并不完善，如出现报错和停止运行，请拍照或截图发送给：1097681347@qq.com", true);
-            CheckUpdateDialog.check_update(mContext, mActivity, where);
+            update.check_update(mContext, mActivity, where);
         } else {
-            CheckUpdateDialog.check_update(mContext, mActivity, where);
+            update.check_update(mContext, mActivity, where);
         }
     }
 
@@ -134,4 +144,6 @@ public class MTCore {
     public static void check_save_permission(Activity activity) {
         SavePermission.check(activity);
     }
+
+
 }

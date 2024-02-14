@@ -54,7 +54,6 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <TextView
-            android:id="@+id/tv_about_showversion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="梅糖桌面 Project"
@@ -66,9 +65,19 @@
             android:text="By - 奶油话梅糖"></TextView>
 
         <TextView
+            android:id="@+id/tv_about_showversion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="MTCORE-ER2.0-Evolve"></TextView>
+
+        <TextView
+            android:id="@+id/tv_about_showsysinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:background="@drawable/shaper_desk_top_show"
+            android:padding="5sp"
+            android:text="系统信息"></TextView>
 
     </LinearLayout>
 

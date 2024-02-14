@@ -191,8 +191,8 @@ public class CheckUpdateDialog {
                 msg_start.setData(data);
                 handler.sendMessage(msg_start);
                 String set_url = "https://yp.nyanon.online/data/User/admin/home/NaiYouApks/for%20web/Android/js/"
-                                + mContext.getPackageName() +
-                                ".xml";
+                        + mContext.getPackageName() +
+                        ".xml";
                 Log.i("----------", "run: " + set_url);
                 try {
                     Document doc = Jsoup.connect(set_url).sslSocketFactory(new SSL(trustAllCert)).get();

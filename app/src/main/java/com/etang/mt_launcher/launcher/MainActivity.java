@@ -139,15 +139,12 @@ public class MainActivity extends Activity implements OnClickListener {
         MTCore.check_save_permission(MainActivity.this);//检查存取权限
         new_time_Thread();// 启用更新时间进程
         read_info_help(MainActivity.this, sharedPreferences);//集中存放读取信息相关方法
-//        //检查更新
-//        CheckUpdateDialog.check_update(MainActivity.this, MainActivity.this, "main");
         // 长按弹出APP信息
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                // TODO Auto-generated method stub
                 try {
-                    string_app_info = appInfos.get(position).getPackageName();
+                    String string_app_info = getAppInfo(position);
                     UnInstallDialog.uninstall_app(position, appInfos, MainActivity.this, MainActivity.this, string_app_info, appInfos.get(position).getName());
                 } catch (Exception e) {
                     MTCore.ErrorDialog(MainActivity.this, e.toString(), TAG);//显示错误信息
@@ -269,6 +266,12 @@ public class MainActivity extends Activity implements OnClickListener {
             }
         }, 50);
     }
+
+
+    private String getAppInfo(int position) {
+        return appInfos.get(position).getPackageName();
+    }
+
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void read_info_help(Context c, SharedPreferences sharedPreferences) {
@@ -483,9 +486,9 @@ public class MainActivity extends Activity implements OnClickListener {
     }
 
     public static void check_view_hind(Context context, SharedPreferences sharedPreferences) {
-        if (Build.BRAND.toString().equals("Allwinner")) {
-            iv_setting_refresh.setVisibility(View.GONE);
-        }
+//        if (Build.BRAND.toString().equals("Allwinner")) {
+//            iv_setting_refresh.setVisibility(View.GONE);
+//        }
         try {
             String ico_info = sharedPreferences.getString("setting_ico_hind", null);
             if (ico_info.equals("true")) {

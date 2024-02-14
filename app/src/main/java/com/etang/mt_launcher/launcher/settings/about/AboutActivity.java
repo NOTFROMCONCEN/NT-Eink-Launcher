@@ -36,7 +36,7 @@ import com.etang.mt_launcher.tool.mtcore.MTCore;
 public class AboutActivity extends AppCompatActivity {
     private ImageView iv_about_logo;//关于 LOGO
     //文本，分别是文本_返回，文本_标题，文本_按钮，文本_关于捐赠我
-    private TextView tv_title, tv_button, tv_about_juanzeng, tv_about_showversion, tv_about_guanzhu;
+    private TextView tv_title, tv_button, tv_about_juanzeng, tv_about_showversion, tv_about_guanzhu, tv_about_showsysinfo;
     //返回LinearLayout
     private LinearLayout lv_back;
     //检查更新按钮
@@ -58,7 +58,7 @@ public class AboutActivity extends AppCompatActivity {
 //        } else {
 //            setContentView(R.layout.setting_about_yuan);
 //        }
-        setContentView(R.layout.setting_about_fang);
+        setContentView(R.layout.setting_about_yuan);
         //绑定控件
         initView();
         //加载MTCore
@@ -126,6 +126,12 @@ public class AboutActivity extends AppCompatActivity {
         //设置版本号
 //        tv_about_showversion.setText("梅糖桌面 Project" + "\n" + MTCore.get_my_appVERSIONNAME());
 //        tv_about_showversion.setText("梅糖桌面 Project" + "\n" + BuildConfig.VERSION_NAME);
+        tv_about_showsysinfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MessageDialog.show(MTCore.getSystemInfo(), AboutActivity.this);
+            }
+        });
     }
 
     private void checkupdate() {
@@ -147,6 +153,7 @@ public class AboutActivity extends AppCompatActivity {
         btn_about_checkup_button = (Button) findViewById(R.id.btn_about_checkup_button);
         tv_about_juanzeng = (TextView) findViewById(R.id.tv_about_juanzeng);
         tv_about_guanzhu = (TextView) findViewById(R.id.tv_about_guanzhu);
+        tv_about_showsysinfo = (TextView) findViewById(R.id.tv_about_showsysinfo);
     }
 
     /**
