@@ -7,6 +7,9 @@
         <external-path
             name="external_storage_root"
             path="." />
+        <external-path
+            name="external_files"
+            path="." />
     </paths>
     <!--<root-path/> ：代表设备的根目录new File("/")-->
     <!--<files-path/> : 代表context.getFilesDir()-->

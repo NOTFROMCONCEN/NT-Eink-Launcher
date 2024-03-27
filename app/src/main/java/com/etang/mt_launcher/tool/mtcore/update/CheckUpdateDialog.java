@@ -21,6 +21,7 @@ import androidx.core.content.FileProvider;
 
 import com.etang.mt_launcher.BuildConfig;
 import com.etang.mt_launcher.tool.mtcore.MTCore;
+import com.etang.mt_launcher.tool.mtcore.permission.SavePermission_New;
 import com.etang.mt_launcher.tool.mtcore.ssl.SSL;
 
 import org.jsoup.Jsoup;
@@ -417,6 +418,7 @@ public class CheckUpdateDialog {
     };
 
     public static void installApk(String apkPath) {
+        SavePermission_New.check(mActivity);
         if (mContext == null || TextUtils.isEmpty(apkPath)) {
             return;
         }
