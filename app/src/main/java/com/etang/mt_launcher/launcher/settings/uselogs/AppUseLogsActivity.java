@@ -1,7 +1,6 @@
 package com.etang.mt_launcher.launcher.settings.uselogs;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -16,7 +15,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.etang.mt_launcher.R;
-import com.etang.mt_launcher.tool.sql.Bean_AppUseLog;
+import com.etang.mt_launcher.tool.beans.Bean_AppUseLog;
 import com.etang.mt_launcher.tool.sql.ListAdapterHelper_AppUseLog;
 import com.etang.mt_launcher.tool.sql.MyDataBaseHelper;
 

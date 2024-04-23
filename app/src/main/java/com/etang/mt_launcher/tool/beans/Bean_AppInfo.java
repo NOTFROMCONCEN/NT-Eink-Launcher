@@ -1,4 +1,4 @@
-package com.etang.mt_launcher.tool.getapps;
+package com.etang.mt_launcher.tool.beans;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,7 +10,7 @@ import android.graphics.Bitmap;
  * @CreateDate: 2021/3/19 8:27
  * @UpdateDate: 2021/3/19 8:27
  */
-public class AppInfo {
+public class Bean_AppInfo {
     //包名
     private String packageName;
     //图标

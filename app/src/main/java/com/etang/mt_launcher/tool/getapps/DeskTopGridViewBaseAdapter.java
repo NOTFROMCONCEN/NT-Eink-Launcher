@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 
 import com.etang.mt_launcher.R;
+import com.etang.mt_launcher.tool.beans.Bean_AppInfo;
 import com.etang.mt_launcher.tool.mtcore.savearrayutil.SaveArrayImageUtil;
 
 import java.io.File;
@@ -30,23 +31,23 @@ import java.util.List;
  */
 public class DeskTopGridViewBaseAdapter extends BaseAdapter {
     Context context;
-    List<AppInfo> appInfos = new ArrayList<AppInfo>();
+    List<Bean_AppInfo> beanAppInfos = new ArrayList<Bean_AppInfo>();
     //当前页面TAG
     private static String TAG = "DeskTopGridViewBaseAdapter";
 
-    public DeskTopGridViewBaseAdapter(List<AppInfo> appInfos, Context context) {
-        this.appInfos = appInfos;
+    public DeskTopGridViewBaseAdapter(List<Bean_AppInfo> beanAppInfos, Context context) {
+        this.beanAppInfos = beanAppInfos;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return appInfos.size();
+        return beanAppInfos.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return appInfos.get(position);
+        return beanAppInfos.get(position);
     }
 
     @Override
@@ -69,15 +70,15 @@ public class DeskTopGridViewBaseAdapter extends BaseAdapter {
         } else {
             holder = (Holder) convertView.getTag();
         }
-        holder.ico.setImageBitmap(appInfos.get(position).getIco());
+        holder.ico.setImageBitmap(beanAppInfos.get(position).getIco());
         get_iconsize(context, holder);
-        holder.Name.setText(appInfos.get(position).getName());
+        holder.Name.setText(beanAppInfos.get(position).getName());
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList = SaveArrayImageUtil.getSearchArrayList(context);
         for (int i = 1; i < arrayList.size(); i++) {
             String str = arrayList.get(i);
             String[] all = str.split("-");
-            if (appInfos.get(position).getPackageName().equals(all[0])) {
+            if (beanAppInfos.get(position).getPackageName().equals(all[0])) {
                 holder.ico.setImageURI(Uri.fromFile(new File("sdcard/ntlauncher/" + all[1])));
             }
         }

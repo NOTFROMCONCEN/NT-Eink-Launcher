@@ -6,7 +6,6 @@ public class GetSystemInfo {
     public String getinfo() {
         try {
             GetAppInfo getAppInfo = new GetAppInfo();
-            getAppInfo.AndroidInfo();
             StringBuffer sb = new StringBuffer();
             String ln = "\r\n";
             sb.append("---主板：" + Build.BOARD);

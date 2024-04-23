@@ -1,4 +1,4 @@
-package com.etang.mt_launcher.tool.sql;
+package com.etang.mt_launcher.tool.beans;
 
 public class Bean_AppUseLog {
 

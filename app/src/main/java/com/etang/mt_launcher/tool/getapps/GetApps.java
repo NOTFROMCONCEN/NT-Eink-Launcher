@@ -11,10 +11,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 
 import com.etang.mt_launcher.R;
-import com.etang.mt_launcher.tool.bitmap.BitMapTools;
+import com.etang.mt_launcher.tool.beans.Bean_AppInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +35,8 @@ public class GetApps {
      * @param context 继承context
      * @return
      */
-    public static List<AppInfo> GetAppList1(Context context) {
-        List<AppInfo> list = new ArrayList<AppInfo>();
+    public static List<Bean_AppInfo> GetAppList1(Context context) {
+        List<Bean_AppInfo> list = new ArrayList<Bean_AppInfo>();
         PackageManager pm = context.getPackageManager();
         Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
         mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -47,7 +46,7 @@ public class GetApps {
             if (packName.equals(context.getPackageName())) {
                 continue;
             }
-            AppInfo mInfo = new AppInfo();
+            Bean_AppInfo mInfo = new Bean_AppInfo();
             mInfo.setIco(drawableToBitmap(info.activityInfo.applicationInfo.loadIcon(pm)));
             mInfo.setName(info.activityInfo.applicationInfo.loadLabel(pm)
                     .toString());
@@ -68,11 +67,11 @@ public class GetApps {
      * @param context 继承context
      * @param list    继承list
      */
-    private static void add_diary(Context context, List<AppInfo> list) {
+    private static void add_diary(Context context, List<Bean_AppInfo> list) {
         /**
          * 添加“天气”
          */
-        AppInfo mInfo_weather = new AppInfo();
+        Bean_AppInfo mInfo_weather = new Bean_AppInfo();
         mInfo_weather.setName(context.getString(R.string.app_desktopweather));
         mInfo_weather.setPackageName(context.getPackageName() + ".weather");
         Resources r_weather = context.getResources();
@@ -82,7 +81,7 @@ public class GetApps {
         /**
          * 添加“桌面设置”
          */
-        AppInfo mInfo_launchersetting = new AppInfo();
+        Bean_AppInfo mInfo_launchersetting = new Bean_AppInfo();
         mInfo_launchersetting.setName(context.getString(R.string.app_desktopsetting));
         mInfo_launchersetting.setPackageName(context.getPackageName() + ".launchersetting");
         Resources r_launchersetting = context.getResources();
@@ -105,7 +104,7 @@ public class GetApps {
 //        /**
 //         * \添加“检查更新”
 //         */
-        AppInfo mInfo_systemupdate = new AppInfo();
+        Bean_AppInfo mInfo_systemupdate = new Bean_AppInfo();
         mInfo_systemupdate.setName(context.getString(R.string.app_desktopupdate));
         mInfo_systemupdate.setPackageName(context.getPackageName() + ".systemupdate");
         Resources r_systemupdate = context.getResources();
@@ -115,7 +114,7 @@ public class GetApps {
         /**
          * \添加“刷新屏幕”
          */
-        AppInfo mInfo_uirefresh = new AppInfo();
+        Bean_AppInfo mInfo_uirefresh = new Bean_AppInfo();
         mInfo_uirefresh.setName(context.getString(R.string.app_desktopreforces));
         mInfo_uirefresh.setPackageName(context.getPackageName() + ".uirefresh");
         Resources r_uirefresh = context.getResources();
@@ -125,7 +124,7 @@ public class GetApps {
         /**
          * \添加“使用记录”
          */
-        AppInfo mInfo_appuserlogs = new AppInfo();
+        Bean_AppInfo mInfo_appuserlogs = new Bean_AppInfo();
         mInfo_appuserlogs.setName("使用记录");
         mInfo_appuserlogs.setPackageName(context.getPackageName() + ".appuserlogs");
         Resources r_mInfo_appuserlogs = context.getResources();
@@ -135,7 +134,7 @@ public class GetApps {
         /**
          * \添加“锁屏”
          */
-        AppInfo mInfo_locker = new AppInfo();
+        Bean_AppInfo mInfo_locker = new Bean_AppInfo();
         mInfo_locker.setName("梅糖待机");
         mInfo_locker.setPackageName(context.getPackageName() + ".locker");
         Resources r_mInfo_locker = context.getResources();

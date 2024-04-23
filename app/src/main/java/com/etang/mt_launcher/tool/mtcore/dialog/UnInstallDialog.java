@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -21,11 +22,9 @@ import com.etang.mt_launcher.launcher.settings.SettingActivity;
 import com.etang.mt_launcher.launcher.settings.about.AboutActivity;
 import com.etang.mt_launcher.launcher.settings.uirefresh.UireFreshActivity;
 import com.etang.mt_launcher.launcher.settings.weather.WeatherActivity;
-import com.etang.mt_launcher.tool.getapps.AppInfo;
-import com.etang.mt_launcher.tool.mtcore.permission.SavePermission;
+import com.etang.mt_launcher.tool.beans.Bean_AppInfo;
 import com.etang.mt_launcher.tool.mtcore.savearrayutil.SaveArrayImageUtil;
 import com.etang.mt_launcher.tool.mtcore.savearrayutil.SaveArrayListUtil;
-import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 import com.etang.mt_launcher.tool.mtcore.MTCore;
 
 import java.util.ArrayList;
@@ -42,7 +41,7 @@ public class UnInstallDialog {
     //当前页面TAG
     private static String TAG = "UnInstallDialog";
 
-    public static void uninstall_app(final int position, final List<AppInfo> appInfos, final Context context, final Activity activity, final String pakename, final String app_name) {
+    public static void uninstall_app(final int position, final List<Bean_AppInfo> beanAppInfos, final Context context, final Activity activity, final String pakename, final String app_name) {
         try {
             final AlertDialog builder = new AlertDialog.Builder(context).create();
             View view = LayoutInflater.from(context).inflate(R.layout.dialog_uninstall, null);
@@ -66,21 +65,21 @@ public class UnInstallDialog {
                         // Intent intent=appInfos.get(position).getIntent();
                         // startActivity(intent);
                         Intent intent = context.getPackageManager().getLaunchIntentForPackage(
-                                appInfos.get(position).getPackageName());
+                                beanAppInfos.get(position).getPackageName());
                         if (intent != null) {//点击的APP无异常
                             intent.putExtra("type", "110");
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             context.startActivity(intent);
-                        } else if (appInfos.get(position).getPackageName().equals(context.getPackageName() + ".weather")) {//点击了“天气”
+                        } else if (beanAppInfos.get(position).getPackageName().equals(context.getPackageName() + ".weather")) {//点击了“天气”
                             intent = new Intent(context, WeatherActivity.class);
                             context.startActivity(intent);
-                        } else if (appInfos.get(position).getPackageName().equals(context.getPackageName() + ".systemupdate")) {//点击了“检查更新”
+                        } else if (beanAppInfos.get(position).getPackageName().equals(context.getPackageName() + ".systemupdate")) {//点击了“检查更新”
                             intent = new Intent(context, AboutActivity.class);
                             context.startActivity(intent);
-                        } else if (appInfos.get(position).getPackageName().equals(context.getPackageName() + ".launchersetting")) {//点击了“桌面设置”
+                        } else if (beanAppInfos.get(position).getPackageName().equals(context.getPackageName() + ".launchersetting")) {//点击了“桌面设置”
                             intent = new Intent(context, SettingActivity.class);
                             context.startActivity(intent);
-                        } else if (appInfos.get(position).getPackageName().equals(context.getPackageName() + ".uirefresh")) {//点击了“刷新屏幕”
+                        } else if (beanAppInfos.get(position).getPackageName().equals(context.getPackageName() + ".uirefresh")) {//点击了“刷新屏幕”
                             String s = Build.BRAND;
                             if (s.equals("Allwinner")) {
                                 Intent intent_refresh = new Intent("android.eink.force.refresh");
@@ -88,7 +87,7 @@ public class UnInstallDialog {
                             } else {
                                 context.startActivity(new Intent(context, UireFreshActivity.class));
                             }
-                        } else if (appInfos.get(position).getPackageName().equals(context.getPackageName() + ".systemclean")) {//点击了“清理”
+                        } else if (beanAppInfos.get(position).getPackageName().equals(context.getPackageName() + ".systemclean")) {//点击了“清理”
                             String s_clean = Build.BRAND;
                             if (s_clean.equals("Allwinner")) {
                                 //唤醒广播
@@ -103,18 +102,45 @@ public class UnInstallDialog {
                     }
                 }
             });
+//            btn_hind.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    try {
+//                        ArrayList<String> arrayList = new ArrayList<String>();
+//                        arrayList.clear();
+//                        arrayList = SaveArrayListUtil.getSearchArrayList(context);
+//                        arrayList.add(MainActivity.string_app_info);
+//                        Log.i(TAG, "onClick: ------------" + MainActivity.string_app_info + "----------" + arrayList);
+//                        SaveArrayListUtil.saveArrayList(context, arrayList, "start");//存储在本地
+//                        builder.dismiss();
+//                        MainActivity.initAppList(context);
+//                    } catch (Exception e) {
+//                        MTCore.ErrorDialog(context, e.toString(), TAG);
+//                    }
+//                }
+//            });
+            // 设置btn_hind的点击监听器
             btn_hind.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     try {
-                        ArrayList<String> arrayList = new ArrayList<String>();
-                        arrayList.clear();
-                        arrayList = SaveArrayListUtil.getSearchArrayList(context);
-                        arrayList.add(MainActivity.string_app_info);
-                        SaveArrayListUtil.saveArrayList(context, arrayList, "start");//存储在本地
+                        // 创建一个新的ArrayList来存储数据
+                        ArrayList<String> arrayList = new ArrayList<>();
+                        // 获取之前存储的ArrayList
+                        arrayList.addAll(SaveArrayListUtil.getSearchArrayList(context));
+                        Log.i(TAG, "---------------onClick: " + arrayList);
+                        // 向ArrayList中添加新的元素
+                        arrayList.add(pakename);
+                        // 打印日志信息
+                        Log.i(TAG, "onClick: " + pakename + " added to list. Current list: " + arrayList);
+                        // 将更新后的ArrayList存储到本地
+                        SaveArrayListUtil.saveArrayList(context, arrayList, "start");
+                        // 关闭当前的对话框或窗口
                         builder.dismiss();
+                        // 初始化应用列表
                         MainActivity.initAppList(context);
                     } catch (Exception e) {
+                        // 如果出现异常，则显示错误对话框
                         MTCore.ErrorDialog(context, e.toString(), TAG);
                     }
                 }
@@ -151,16 +177,29 @@ public class UnInstallDialog {
 
     /**
      * 唤起系统的卸载apk功能
+     *
+     * @param context  上下文环境，用于访问系统服务
+     * @param activity 调用活动的实例，用于启动Intent
+     * @param pakename 要卸载应用的包名
      */
     public static void UninstallApk(Context context, Activity activity, String pakename) {
         try {
+            // 创建一个Uri对象，指定要卸载应用的包名
             Uri packageURI = Uri.parse("package:" + pakename);
+
+            // 创建一个Intent对象，指定动作为卸载应用（Intent.ACTION_DELETE）
+            // 并设置要卸载应用的Uri
             Intent uninstallIntent = new Intent(Intent.ACTION_DELETE, packageURI);
+
+            // 使用startActivityForResult启动Intent，以便在卸载完成后可以接收结果
+            // 这里使用的请求码为1，可以在activity.onActivityResult中处理结果
             activity.startActivityForResult(uninstallIntent, 1);
         } catch (Exception e) {
+            // 如果出现异常，使用MTCore.ErrorDialog显示错误信息
             MTCore.ErrorDialog(context, e.toString(), TAG);
         }
     }
+
 
     private static void show_ico_dialog(final Context context, final Activity activity) {
         try {

@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.etang.mt_launcher.R;
+import com.etang.mt_launcher.tool.beans.Bean_AppUseLog;
 
 import java.util.ArrayList;
 import java.util.List;

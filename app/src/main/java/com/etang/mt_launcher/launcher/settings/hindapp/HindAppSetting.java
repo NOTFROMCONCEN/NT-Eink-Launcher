@@ -23,7 +23,7 @@ import com.etang.mt_launcher.launcher.settings.about.AboutActivity;
 import com.etang.mt_launcher.launcher.settings.uirefresh.UireFreshActivity;
 import com.etang.mt_launcher.launcher.settings.weather.WeatherActivity;
 import com.etang.mt_launcher.launcher.welecome.WelecomeActivity;
-import com.etang.mt_launcher.tool.getapps.AppInfo;
+import com.etang.mt_launcher.tool.beans.Bean_AppInfo;
 import com.etang.mt_launcher.tool.getapps.DeskTopGridViewBaseAdapter;
 import com.etang.mt_launcher.tool.getapps.GetApps;
 import com.etang.mt_launcher.tool.mtcore.MTCore;
@@ -45,9 +45,9 @@ import java.util.List;
  */
 public class HindAppSetting extends AppCompatActivity {
     //APP列表
-    private static List<AppInfo> appInfos = new ArrayList<AppInfo>();
+    private static List<Bean_AppInfo> beanAppInfos = new ArrayList<Bean_AppInfo>();
     //隐藏的APP列表
-    private static List<AppInfo> appHindInfos = new ArrayList<AppInfo>();
+    private static List<Bean_AppInfo> appHindInfos = new ArrayList<Bean_AppInfo>();
     //GridView列表
     private static GridView mHindGridView;
     //文本，返回，按钮，标题
@@ -198,16 +198,16 @@ public class HindAppSetting extends AppCompatActivity {
      * @param context
      */
     public static void initAppList(Context context) {
-        appInfos.clear();
+        beanAppInfos.clear();
         appHindInfos.clear();
-        appInfos = GetApps.GetAppList1(context);
+        beanAppInfos = GetApps.GetAppList1(context);
         ArrayList<String> hind_apparrayList = new ArrayList<String>();
         hind_apparrayList.clear();
         hind_apparrayList = SaveArrayListUtil.getSearchArrayList(context);
         for (int j = 0; j < hind_apparrayList.size(); j++) {
-            for (int i = 0; i < appInfos.size(); i++) {
-                if (hind_apparrayList.get(j).equals(appInfos.get(i).getPackageName())) {
-                    appHindInfos.add(appInfos.remove(i));
+            for (int i = 0; i < beanAppInfos.size(); i++) {
+                if (hind_apparrayList.get(j).equals(beanAppInfos.get(i).getPackageName())) {
+                    appHindInfos.add(beanAppInfos.remove(i));
                     continue;
                 }
             }

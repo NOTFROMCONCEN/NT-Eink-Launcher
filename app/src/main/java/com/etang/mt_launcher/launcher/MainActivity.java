@@ -30,6 +30,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -57,7 +58,7 @@ import com.etang.mt_launcher.launcher.settings.uirefresh.UireFreshActivity;
 import com.etang.mt_launcher.launcher.settings.uselogs.AppUseLogsActivity;
 import com.etang.mt_launcher.launcher.settings.weather.WeatherActivity;
 import com.etang.mt_launcher.launcher.welecome.WelecomeActivity;
-import com.etang.mt_launcher.tool.getapps.AppInfo;
+import com.etang.mt_launcher.tool.beans.Bean_AppInfo;
 import com.etang.mt_launcher.tool.getapps.DeskTopGridViewBaseAdapter;
 import com.etang.mt_launcher.tool.getapps.GetApps;
 import com.etang.mt_launcher.tool.mtcore.MTCore;
@@ -117,7 +118,7 @@ public class MainActivity extends Activity implements OnClickListener {
     public static LinearLayout line_wather, line_bottom;
     public static String string_app_info = "";
     public static GridView mListView;
-    public static List<AppInfo> appInfos = new ArrayList<AppInfo>();
+    public static List<Bean_AppInfo> beanAppInfos = new ArrayList<Bean_AppInfo>();
     public static boolean offline_mode = false;
     private AppInstallServer appinstallserver;
     private SharedPreferences sharedPreferences;
@@ -145,7 +146,7 @@ public class MainActivity extends Activity implements OnClickListener {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 try {
                     String string_app_info = getAppInfo(position);
-                    UnInstallDialog.uninstall_app(position, appInfos, MainActivity.this, MainActivity.this, string_app_info, appInfos.get(position).getName());
+                    UnInstallDialog.uninstall_app(position, beanAppInfos, MainActivity.this, MainActivity.this, string_app_info, beanAppInfos.get(position).getName());
                 } catch (Exception e) {
                     MTCore.ErrorDialog(MainActivity.this, e.toString(), TAG);//显示错误信息
                 }
@@ -159,10 +160,10 @@ public class MainActivity extends Activity implements OnClickListener {
                 try {
                     // Intent intent=appInfos.get(position).getIntent();
                     // startActivity(intent);
-                    Intent intent = getPackageManager().getLaunchIntentForPackage(appInfos.get(position).getPackageName());
+                    Intent intent = getPackageManager().getLaunchIntentForPackage(beanAppInfos.get(position).getPackageName());
                     if (intent != null) {//点击的APP无异常
                         try {
-                            db.execSQL("insert into appuselogs(appname,time)values(?,?)", new String[]{appInfos.get(position).getName(), tv_main_nowdate.getText() + "--" + tv_time_hour.getText() + ":" + tv_time_min.getText()});
+                            db.execSQL("insert into appuselogs(appname,time)values(?,?)", new String[]{beanAppInfos.get(position).getName(), tv_main_nowdate.getText() + "--" + tv_time_hour.getText() + ":" + tv_time_min.getText()});
                             intent.putExtra("type", "110");
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
@@ -171,28 +172,28 @@ public class MainActivity extends Activity implements OnClickListener {
                             db.execSQL("create table appuselogs (_id integer primary key autoincrement,appname text,time text)");
                             MTCore.MessageDialog("数据库已部署，请再次点击你要打开的APP", MainActivity.this);
                         }
-                    } else if (appInfos.get(position).getPackageName().equals(getPackageName() + ".weather")) {//点击了“天气”
+                    } else if (beanAppInfos.get(position).getPackageName().equals(getPackageName() + ".weather")) {//点击了“天气”
                         intent = new Intent(MainActivity.this, WeatherActivity.class);
                         startActivity(intent);
                         overridePendingTransition(0, 0);
-                    } else if (appInfos.get(position).getPackageName().equals(getPackageName() + ".locker")) {//点击了“锁屏”
+                    } else if (beanAppInfos.get(position).getPackageName().equals(getPackageName() + ".locker")) {//点击了“锁屏”
                         handler.removeCallbacks(runnable);
                         intent = new Intent(MainActivity.this, MTLocker.class);
                         startActivity(intent);
                         finish();
-                    } else if (appInfos.get(position).getPackageName().equals(getPackageName() + ".appuserlogs")) {//点击了“使用记录”
+                    } else if (beanAppInfos.get(position).getPackageName().equals(getPackageName() + ".appuserlogs")) {//点击了“使用记录”
                         intent = new Intent(MainActivity.this, AppUseLogsActivity.class);
                         startActivity(intent);
                         overridePendingTransition(0, 0);
-                    } else if (appInfos.get(position).getPackageName().equals(getPackageName() + ".systemupdate")) {//点击了“检查更新”
+                    } else if (beanAppInfos.get(position).getPackageName().equals(getPackageName() + ".systemupdate")) {//点击了“检查更新”
                         intent = new Intent(MainActivity.this, AboutActivity.class);
                         startActivity(intent);
                         overridePendingTransition(0, 0);
-                    } else if (appInfos.get(position).getPackageName().equals(getPackageName() + ".launchersetting")) {//点击了“桌面设置”
+                    } else if (beanAppInfos.get(position).getPackageName().equals(getPackageName() + ".launchersetting")) {//点击了“桌面设置”
                         intent = new Intent(MainActivity.this, SettingActivity.class);
                         startActivity(intent);
                         overridePendingTransition(0, 0);
-                    } else if (appInfos.get(position).getPackageName().equals(getPackageName() + ".uirefresh")) {//点击了“刷新屏幕”
+                    } else if (beanAppInfos.get(position).getPackageName().equals(getPackageName() + ".uirefresh")) {//点击了“刷新屏幕”
                         String s = Build.BRAND;
                         if (s.equals("Allwinner")) {
                             Intent intent_refresh = new Intent("android.eink.force.refresh");
@@ -201,14 +202,14 @@ public class MainActivity extends Activity implements OnClickListener {
                             startActivity(new Intent(MainActivity.this, UireFreshActivity.class));
                             overridePendingTransition(0, 0);
                         }
-                    } else if (appInfos.get(position).getPackageName().equals(getPackageName() + ".systemclean")) {//点击了“清理”
+                    } else if (beanAppInfos.get(position).getPackageName().equals(getPackageName() + ".systemclean")) {//点击了“清理”
                         String s_clean = Build.BRAND;
                         if (s_clean.equals("Allwinner")) {
                             //唤醒广播
                             Intent intent_clear = new Intent("com.mogu.clear_mem");
                             sendBroadcast(intent_clear);
                         }
-                    } else if (appInfos.get(position).getPackageName().equals(getPackageName() + ".userhelper")) {
+                    } else if (beanAppInfos.get(position).getPackageName().equals(getPackageName() + ".userhelper")) {
                         MTCore.showToast(getApplicationContext(), "打开", true);
                         intent.putExtra("state", "false");
                         intent = new Intent(MainActivity.this, WelecomeActivity.class);
@@ -269,7 +270,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 
     private String getAppInfo(int position) {
-        return appInfos.get(position).getPackageName();
+        return beanAppInfos.get(position).getPackageName();
     }
 
 
@@ -417,6 +418,13 @@ public class MainActivity extends Activity implements OnClickListener {
     private void check_first_user() {
         if (isFirstStart(MainActivity.this)) {//第一次
             //第一次启动预填充数据，并且跳转至欢迎界面
+            //填充预设数据
+            fillPresetData();
+            //填充预设隐藏应用包名
+            ArrayList<String> arrayList = new ArrayList<String>();
+            arrayList.add("frist");
+            SaveArrayListUtil.saveArrayList(MainActivity.this, arrayList, "start");//存储在本地
+            //跳转到欢迎界面
             startActivity(new Intent(getApplicationContext(), WelecomeActivity.class));
             overridePendingTransition(0, 0);
             finish();
@@ -424,14 +432,6 @@ public class MainActivity extends Activity implements OnClickListener {
             //更新桌面信息
             images_upgrade(MainActivity.this, sharedPreferences);
         }
-
-        //填充预设数据
-        fillPresetData();
-
-        //填充预设隐藏应用包名
-        ArrayList<String> arrayList = new ArrayList<String>();
-        arrayList.add("frist");
-        SaveArrayListUtil.saveArrayList(MainActivity.this, arrayList, "start");//存储在本地
     }
 
     private void fillPresetData() {
@@ -601,25 +601,67 @@ public class MainActivity extends Activity implements OnClickListener {
      *
      * @param context
      */
+//    public static void initAppList(Context context) {
+//        beanAppInfos = GetApps.GetAppList1(context);
+//        ArrayList<String> hind_apparrayList = new ArrayList<String>();
+//        hind_apparrayList.clear();
+//        hind_apparrayList = SaveArrayListUtil.getSearchArrayList(context);
+//        String s = Build.BRAND;
+//        if (s.equals("Allwinner")) {
+//            hind_apparrayList.add("com.android.settings");
+//        }
+//        Log.i(TAG, "initAppList: --------------removeing packname-----------");
+//        for (int j = 0; j < hind_apparrayList.size(); j++) {
+//            for (int i = 0; i < beanAppInfos.size(); i++) {
+//                if (hind_apparrayList.get(j).equals(beanAppInfos.get(i).getPackageName())) {
+//                    Log.i(TAG, "initAppList: remove:" + i);
+//                    beanAppInfos.remove(i);
+//                }
+//            }
+//        }
+//        DeskTopGridViewBaseAdapter deskTopGridViewBaseAdapter = new DeskTopGridViewBaseAdapter(beanAppInfos, context);
+//        mListView.setAdapter(deskTopGridViewBaseAdapter);
+//    }
     public static void initAppList(Context context) {
-        appInfos = GetApps.GetAppList1(context);
-        ArrayList<String> hind_apparrayList = new ArrayList<String>();
-        hind_apparrayList.clear();
-        hind_apparrayList = SaveArrayListUtil.getSearchArrayList(context);
-        String s = Build.BRAND;
-        if (s.equals("Allwinner")) {
-            hind_apparrayList.add("com.android.settings");
-        }
-        for (int j = 0; j < hind_apparrayList.size(); j++) {
-            for (int i = 0; i < appInfos.size(); i++) {
-                if (hind_apparrayList.get(j).equals(appInfos.get(i).getPackageName())) {
-                    appInfos.remove(i);
+        try {
+            beanAppInfos = GetApps.GetAppList1(context);
+            ArrayList<String> hind_apparrayList = SaveArrayListUtil.getSearchArrayList(context);
+            String s = Build.BRAND;
+
+            // 如果品牌是Allwinner，添加特定的应用包名
+            if (s.equals("Allwinner")) {
+                hind_apparrayList.add("com.android.settings");
+            }
+            Log.i(TAG, "initAppList: --------------hind_apparrayList-----------");
+            Log.i(TAG, "initAppList: " + hind_apparrayList);
+            Log.i(TAG, "initAppList: --------------beanAppInfos-----------");
+            Log.i(TAG, "initAppList: " + beanAppInfos);
+
+            // 使用Stream API来过滤不需要的应用
+            // 注意：这里假设beanAppInfos是一个列表，并且getPackageName()方法不存在异常风险
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                beanAppInfos.removeIf(appInfo -> hind_apparrayList.stream().anyMatch(hindApp -> hindApp.equals(appInfo.getPackageName())));
+            } else {
+                for (int j = 0; j < hind_apparrayList.size(); j++) {
+                    for (int i = 0; i < beanAppInfos.size(); i++) {
+                        if (hind_apparrayList.get(j).equals(beanAppInfos.get(i).getPackageName())) {
+                            Log.i(TAG, "initAppList: --------------removeing packname-----------");
+                            Log.i(TAG, "initAppList: remove:" + beanAppInfos.get(i).getPackageName());
+                            beanAppInfos.remove(i);
+                        }
+                    }
                 }
             }
+
+            // 创建适配器并设置到ListView
+            DeskTopGridViewBaseAdapter deskTopGridViewBaseAdapter = new DeskTopGridViewBaseAdapter(beanAppInfos, context);
+            mListView.setAdapter(deskTopGridViewBaseAdapter);
+        } catch (Exception e) {
+            // 记录异常信息，可以根据需要进行异常处理
+            Log.e(TAG, "Error initializing app list", e);
         }
-        DeskTopGridViewBaseAdapter deskTopGridViewBaseAdapter = new DeskTopGridViewBaseAdapter(appInfos, context);
-        mListView.setAdapter(deskTopGridViewBaseAdapter);
     }
+
 
     /**
      * 读取昵称
@@ -691,7 +733,7 @@ public class MainActivity extends Activity implements OnClickListener {
         if (s_clean.equals("Allwinner")) {
             iv_clean_button.setVisibility(View.VISIBLE);
         } else {
-            iv_clean_button.setVisibility(View.INVISIBLE);
+            iv_clean_button.setVisibility(View.GONE);
         }
         //数据库
         dbHelper_name_sql = new MyDataBaseHelper(getApplicationContext(), "info.db", null, 2);
