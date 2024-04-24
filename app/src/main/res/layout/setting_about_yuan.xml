@@ -45,6 +45,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -95,12 +96,37 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20sp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/btn_about_checkup_button"
         app:layout_constraintEnd_toEndOf="@+id/btn_about_checkup_button"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout5">
+
+        <TextView
+            android:id="@+id/tv_about_iconpack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            android:background="@drawable/shaper_toast_show"
+            android:paddingLeft="15sp"
+            android:paddingTop="10sp"
+            android:paddingRight="15sp"
+            android:paddingBottom="10sp"
+            android:text="图标包"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20sp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/btn_about_checkup_button"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout5"
         app:layout_constraintStart_toStartOf="@+id/btn_about_checkup_button">
 
         <TextView
@@ -109,20 +135,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
             android:background="@drawable/shaper_toast_show"
-            android:padding="5dp"
-            android:text="点击这里支持我"
+            android:paddingLeft="15sp"
+            android:paddingTop="10sp"
+            android:paddingRight="15sp"
+            android:paddingBottom="10sp"
+            android:text="赞助我"
             android:textSize="15dp" />
-
-        <TextView
-            android:id="@+id/tv_about_guanzhu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5sp"
-            android:background="@drawable/shaper_toast_show"
-            android:padding="5dp"
-            android:text="点击这里关注我"
-            android:textSize="15dp"
-            android:visibility="gone" />
 
     </LinearLayout>
 
