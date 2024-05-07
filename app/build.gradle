@@ -9,8 +9,8 @@ android {
         applicationId "com.etang.mt_launcher" // 应用ID
         minSdkVersion 15 // 最低支持的SDK版本
         targetSdkVersion 33 // 目标SDK版本
-        versionCode 11340 // 版本号
-        versionName "MTCore2.2-renewal-11340" // 版本名称
+        versionCode 11345 // 版本号
+        versionName "MTCore2.2-renewal-11345" // 版本名称
 //        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner" // 测试运行器
         multiDexEnabled true
     }
@@ -20,14 +20,14 @@ android {
         debug {
             keyAlias 'etang' // 密钥别名
             keyPassword 'xiaoyu0632' // 密钥密码
-            storeFile file('E:\\DEV\\Projects\\NT-Eink-Launcher\\app\\siginFile\\MyNewAppKey.jks')
+            storeFile file('F:\\Android Studio Data\\projects\\MT-Launcher\\app\\siginFile\\MyNewAppKey.jks')
             // 存储文件路径
             storePassword 'xiaoyu0632' // 存储密码
         }
         release {
             keyAlias 'etang' // 密钥别名
             keyPassword 'xiaoyu0632' // 密钥密码
-            storeFile file('E:\\DEV\\Projects\\NT-Eink-Launcher\\app\\siginFile\\MyNewAppKey.jks')
+            storeFile file('F:\\Android Studio Data\\projects\\MT-Launcher\\app\\siginFile\\MyNewAppKey.jks')
             // 存储文件路径
             storePassword 'xiaoyu0632' // 存储密码
         }
