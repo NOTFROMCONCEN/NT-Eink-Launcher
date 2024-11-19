@@ -86,6 +86,7 @@ public class DeskTopGridViewBaseAdapter extends BaseAdapter {
         return convertView;
     }
 
+
     private void get_iconsize(Context context, Holder holder) {
         try {
             SharedPreferences sharedPreferences = context.getSharedPreferences("info", context.MODE_PRIVATE);
