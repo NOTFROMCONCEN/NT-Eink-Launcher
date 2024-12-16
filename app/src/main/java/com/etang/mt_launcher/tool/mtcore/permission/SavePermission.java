@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.pm.PackageManager;
 
 import com.etang.mt_launcher.tool.mtcore.MTCore;
-import com.etang.mt_launcher.tool.mtcore.toast.DiyToast;
 
 /**
  * @Package: com.etang.nt_launcher.tool.permission

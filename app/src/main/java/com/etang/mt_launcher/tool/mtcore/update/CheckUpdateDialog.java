@@ -191,7 +191,7 @@ public class CheckUpdateDialog {
                 data.putString("weblink_state", "1");
                 msg_start.setData(data);
                 handler.sendMessage(msg_start);
-                String set_url = "https://yp.nyanon.online/data/User/admin/home/NaiYouApks/for%20web/Android/js/"
+                String set_url = "http://yp.nyanon.online/data/User/admin/home/NaiYouApks/for%20web/Android/js/"
                         + mContext.getPackageName() +
                         ".xml";
                 Log.i("----------", "run: " + set_url);

@@ -172,6 +172,7 @@ public class WelecomeActivity extends FragmentActivity {
         tv_button.setText("欢迎使用");
     }
 
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void show_dialog() {
         new AlertDialog.Builder(WelecomeActivity.this)

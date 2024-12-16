@@ -48,7 +48,7 @@ public class SettingActivity extends Activity {
     // 隐藏APP设置、签名设置、卸载桌面设置
     LinearLayout lv_back, lv_restart_setting, lv_inforeback_activity, lv_textsize_setting, lv_applist_setting, lv_about_activity, lv_desktop_setting, lv_hindapp_setting, lv_name_setting, lv_uninstall_setting;
     //复选框，隐藏设置图标（底栏）、离线模式、老年模式
-    private CheckBox cb_hind_setting_ico, cb_setting_offlinemode, cb_setting_oldmanmode;
+    private CheckBox cb_full_windows_show, cb_hind_setting_ico, cb_setting_offlinemode, cb_setting_oldmanmode;
     //数据库
     private MyDataBaseHelper dbHelper_name_sql;
     private SQLiteDatabase db;
@@ -159,6 +159,7 @@ public class SettingActivity extends Activity {
         String ico_info = sharedPreferences.getString("setting_ico_hind", null);
         String offline_info = sharedPreferences.getString("offline", null);
         String oldman_info = sharedPreferences.getString("oldman", null);
+        String full_windows_info = sharedPreferences.getString("setting_full_windows", null);
         Log.i(TAG, "onCreate: 离线模式：" + offline_info + "老年模式：" + oldman_info + "隐藏底栏：" + ico_info);
         try {
             //判断隐藏底栏是否被选中
@@ -181,6 +182,11 @@ public class SettingActivity extends Activity {
             } else {
                 cb_setting_oldmanmode.setChecked(false);
             }
+            if (full_windows_info.equals("true")) {
+                cb_full_windows_show.setChecked(true);
+            } else {
+                cb_full_windows_show.setChecked(false);
+            }
         } catch (Exception e) {
             MTCore.showToast_new("出现问题，隐藏底栏和离线模式已重置", false);
             //如果检查上面三个模式状态出现问题时，插入默认数据
@@ -190,6 +196,30 @@ public class SettingActivity extends Activity {
             editor.putString("oldman", "false");//关闭老年模式
             editor.apply();
         }
+        cb_full_windows_show.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    cb_full_windows_show.setChecked(true);
+                    SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
+                    editor.putString("setting_full_windows", "true");//日期文本大小
+                    editor.apply();
+                    MTCore.showToast(SettingActivity.this, "有时需要重启设备以应用更改，请使用“重载梅糖桌面”功能", true);
+                    SharedPreferences sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
+                    MainActivity.check_view_hind(SettingActivity.this, sharedPreferences);
+                } else {
+                    cb_full_windows_show.setChecked(false);
+                    SharedPreferences.Editor editor = getSharedPreferences("info", MODE_PRIVATE).edit();
+                    editor.putString("setting_full_windows", "false");//日期文本大小
+                    editor.apply();
+                    MTCore.showToast(SettingActivity.this, "有时需要重启设备以应用更改，请使用“重载梅糖桌面”功能", true);
+                    SharedPreferences sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
+                    MainActivity.check_view_hind(SettingActivity.this, sharedPreferences);
+                }
+            }
+        });
+        //离线模式选中事件监听
+        //设置全屏显示按钮
         //老年模式选中事件监听
         cb_setting_oldmanmode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -339,6 +369,7 @@ public class SettingActivity extends Activity {
         lv_back = (LinearLayout) findViewById(R.id.lv_back);
         tv_button = (TextView) findViewById(R.id.tv_title_button);
         tv_title = (TextView) findViewById(R.id.tv_title_text);
+        cb_full_windows_show = (CheckBox) findViewById(R.id.cb_full_windows_show);
         lv_restart_setting = (LinearLayout) findViewById(R.id.lv_restart_setting);
         lv_inforeback_activity = (LinearLayout) findViewById(R.id.lv_inforeback_activity);
         cb_setting_offlinemode = (CheckBox) findViewById(R.id.cb_setting_offlinemode);

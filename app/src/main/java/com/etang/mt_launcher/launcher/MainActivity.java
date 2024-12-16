@@ -131,6 +131,7 @@ public class MainActivity extends Activity implements OnClickListener {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //全屏
+        check_full_window();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);// 无Title
         setContentView(R.layout.activity_main);
@@ -288,6 +289,23 @@ public class MainActivity extends Activity implements OnClickListener {
         get_applist_number(c, sharedPreferences);//获取设定的应用列表列数
         images_upgrade(c, sharedPreferences);//更新图像信息
         set_app_setStackFromBottomMode(sharedPreferences);//检查并设置APP列表排列方式
+        check_full_window();//检查全屏设置
+    }
+
+    private void check_full_window() {
+        try {
+            SharedPreferences sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
+            if (sharedPreferences.getString("setting_full_windows", null).equals("true")) {
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            } else {
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            }
+        } catch (Exception e) {
+            SharedPreferences sharedPreferences = getSharedPreferences("info", MODE_PRIVATE);
+            sharedPreferences.edit().putString("setting_full_windows", "false").commit();
+            check_full_window();
+            MTCore.showToast_new("出现错误", true);
+        }
     }
 
     /**
@@ -695,7 +713,12 @@ public class MainActivity extends Activity implements OnClickListener {
                 SimpleDateFormat simpleDateFormat_hour = new SimpleDateFormat("HH");
                 SimpleDateFormat simpleDateFormat_min = new SimpleDateFormat("mm");
                 SimpleDateFormat simpleDateFormat_date = new SimpleDateFormat("yyyy/MM/dd");
-                tv_main_nowdate.setText(simpleDateFormat_date.format(new java.util.Date()));
+                SimpleDateFormat simpleDateFormat_weekday = new SimpleDateFormat("EEEE"); // 用于显示星期
+                // 获取当前日期和星期
+                String currentDate = simpleDateFormat_date.format(new java.util.Date());
+                String currentWeekday = simpleDateFormat_weekday.format(new java.util.Date());
+                // 设置文本，这里假设你想要日期和星期在同一行显示，用空格分隔
+                tv_main_nowdate.setText(currentDate + " " + currentWeekday);
                 tv_time_hour.setText(simpleDateFormat_hour.format(new java.util.Date()));
                 tv_time_min.setText(simpleDateFormat_min.format(new java.util.Date()));
                 handler.postDelayed(runnable, 1000);

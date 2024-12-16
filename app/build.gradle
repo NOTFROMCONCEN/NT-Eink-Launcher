@@ -9,8 +9,8 @@ android {
         applicationId "com.etang.mt_launcher" // 应用ID
         minSdkVersion 15 // 最低支持的SDK版本
         targetSdkVersion 33 // 目标SDK版本
-        versionCode 11345 // 版本号
-        versionName "MTCore2.2-renewal-11345" // 版本名称
+        versionCode 11350 // 版本号
+        versionName "MTCore2.2-renewal-11350" // 版本名称
 //        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner" // 测试运行器
         multiDexEnabled true
     }
