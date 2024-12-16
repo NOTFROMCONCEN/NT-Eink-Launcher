@@ -130,8 +130,6 @@ public class DeskTopGridViewBaseAdapter extends BaseAdapter {
                     holder.Name.setSingleLine(true);
                     holder.Name.setVisibility(View.VISIBLE);
                 }
-
-
                 if (appblok_state.equals("null")) {
                     holder.line_appinfo.setBackground(null);
                 }
