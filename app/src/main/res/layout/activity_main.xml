@@ -5,65 +5,76 @@
     android:layout_height="match_parent"
     android:background="#ffffff">
 
+    <!-- 优化布局，使用 ConstraintLayout 可能会更好，但这里基于现有 RelativeLayout 进行优化 -->
 
+    <!-- 顶部用户 ID 和电量显示 -->
+    <TextView
+        android:id="@+id/tv_user_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="MyEinkBook"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tv_main_batterystate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="5dp"
+        android:text="100%"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000" />
+
+    <!-- 主要内容区域 -->
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_above="@+id/line_bottom"
         android:layout_below="@+id/tv_user_id"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="0sp"
-        android:layout_marginLeft="0sp"
-        android:layout_marginEnd="0sp"
-        android:layout_marginRight="0sp"
         android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/real_layout_main_top"
             android:layout_width="match_parent"
-            android:layout_height="90sp"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="5sp">
-
-
-            <TextView
-                android:id="@+id/tv_time_min"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/tv_time_hour"
-                android:layout_alignBottom="@+id/tv_time_hour"
-                android:layout_toEndOf="@+id/tv_time_hour"
-                android:layout_toRightOf="@+id/tv_time_hour"
-                android:text="59"
-                android:textColor="#353535"
-                android:textSize="40sp" />
+            android:layout_height="90dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp">
 
             <TextView
                 android:id="@+id/tv_time_hour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="5sp"
-                android:layout_marginLeft="5sp"
+                android:layout_marginStart="5dp"
                 android:text="23"
                 android:textColor="#353535"
                 android:textSize="70sp" />
+
+            <TextView
+                android:id="@+id/tv_time_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tv_time_hour"
+                android:layout_toEndOf="@+id/tv_time_hour"
+                android:text="59"
+                android:textColor="#353535"
+                android:textSize="40sp" />
 
             <LinearLayout
                 android:id="@+id/line_wather"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="21sp"
-                android:layout_marginRight="21sp"
+                android:layout_marginEnd="21dp"
                 android:orientation="vertical"
                 android:visibility="gone">
 
@@ -71,9 +82,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#ffffffff"
-                    android:gravity="right|center_vertical|center_horizontal"
+                    android:gravity="end|center_vertical"
                     android:orientation="vertical">
-
 
                     <TextView
                         android:id="@+id/tv_city"
@@ -98,31 +108,26 @@
                         android:text="最后更新时间"
                         android:textColor="#90000000"
                         android:textSize="13sp" />
-
                 </LinearLayout>
             </LinearLayout>
-
-
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <ImageView
                 android:id="@+id/iv_index_back"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 app:srcCompat="@drawable/mi_luoli" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5sp"
-                android:layout_marginRight="5sp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:orientation="horizontal">
 
                 <include
@@ -133,111 +138,72 @@
         </RelativeLayout>
     </LinearLayout>
 
+    <!-- 底部操作栏 -->
     <LinearLayout
         android:id="@+id/line_bottom"
         android:layout_width="match_parent"
-        android:layout_height="50sp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="5sp"
-        android:layout_marginLeft="5sp"
-        android:layout_marginEnd="5sp"
-        android:layout_marginRight="5sp"
-        android:layout_marginBottom="5sp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/shaper_desk_top_show"
-        android:baselineAligned="false"
-        android:gravity="center_vertical|center_horizontal"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="start|center_vertical|center_horizontal"
+            android:gravity="start|center_vertical"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_main_nowdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20sp"
+                android:layout_marginStart="20dp"
                 android:text="2019_12_13"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="#000000" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="end|center_vertical|center_horizontal"
+            android:gravity="end|center_vertical"
             android:orientation="horizontal">
-
 
             <ImageView
                 android:id="@+id/iv_setting_button"
-                android:layout_width="30sp"
-                android:layout_height="30sp"
-                android:layout_margin="5sp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
                 android:src="@drawable/ic_setting" />
 
             <ImageView
                 android:id="@+id/iv_setting_clear"
-                android:layout_width="30sp"
-                android:layout_height="30sp"
-                android:layout_margin="5sp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
                 android:src="@drawable/ic_clean" />
 
             <ImageView
                 android:id="@+id/iv_setting_refresh"
-                android:layout_width="30sp"
-                android:layout_height="30sp"
-                android:layout_margin="5sp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
                 android:src="@drawable/ic_update" />
-
 
             <ToggleButton
                 android:id="@+id/tg_apps_state"
-                android:layout_width="30sp"
-                android:layout_height="30sp"
-                android:layout_margin="5sp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
                 android:background="@drawable/select_apps_state"
                 android:textOff=""
                 android:textOn="" />
-
         </LinearLayout>
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/tv_user_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="5sp"
-        android:layout_marginLeft="5sp"
-        android:layout_marginTop="5sp"
-        android:layout_marginEnd="5sp"
-        android:layout_marginRight="5sp"
-        android:layout_marginBottom="5sp"
-        android:text="MyEinkBook"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000000" />
-
-    <TextView
-        android:id="@+id/tv_main_batterystate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="5sp"
-        android:text="100%"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000000" />
-
 </RelativeLayout>

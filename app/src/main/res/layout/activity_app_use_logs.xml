@@ -7,66 +7,57 @@
     android:orientation="vertical"
     tools:context=".launcher.settings.uselogs.AppUseLogsActivity">
 
+    <!-- 引入通用布局 -->
     <include
         layout="@layout/layout_in_back"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></include>
+        android:layout_height="wrap_content" />
 
+    <!-- 提示信息 -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|center_horizontal|center_vertical"
-        android:gravity="center_vertical|center_horizontal|center"
-        android:text="使用过的APP会在这里显示"></TextView>
+        android:gravity="center"
+        android:text="使用过的APP会在这里显示" />
 
+    <!-- 总使用次数统计 -->
     <TextView
         android:id="@+id/tv_uselogs_num"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|center_horizontal|center_vertical"
-        android:gravity="center_vertical|center_horizontal|center"
-        android:text="总使用次数统计"></TextView>
+        android:gravity="center"
+        android:text="总使用次数统计" />
 
+    <!-- 表头布局 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10px"
+        android:layout_margin="10dp"
         android:background="@drawable/shaper_toast_show"
-        android:gravity="center_vertical|center_horizontal"
-        android:orientation="horizontal"
-        android:padding="5px">
+        android:gravity="center_vertical"
+        android:padding="5dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <!-- APP名称列 -->
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center_vertical|center_horizontal"
-            android:orientation="horizontal">
+            android:gravity="center"
+            android:text="APP名称" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="APP名称" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <!-- 启动时间列 -->
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center_vertical|center_horizontal"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="启动时间" />
-        </LinearLayout>
-
+            android:gravity="center"
+            android:text="启动时间" />
     </LinearLayout>
 
+    <!-- 列表视图 -->
     <ListView
         android:id="@+id/lv_appuselogs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
-
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 </LinearLayout>
