@@ -3,89 +3,143 @@ apply plugin: 'com.android.application'
 
 // Android配置
 android {
-    compileSdkVersion 33 // 编译SDK版本
-    buildToolsVersion '34.0.0' // 构建工具版本
+    // 编译SDK版本，指定项目编译时使用的Android SDK版本
+    compileSdkVersion 33
+    // 构建工具版本，指定项目构建时使用的Android构建工具版本
+    buildToolsVersion '34.0.0'
+    // 默认配置
     defaultConfig {
-        applicationId "com.etang.mt_launcher" // 应用ID
-        minSdkVersion 15 // 最低支持的SDK版本
-        targetSdkVersion 33 // 目标SDK版本
-        versionCode 250116 // 版本号
-        versionName "MTCore2.2-250116" // 版本名称
-//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner" // 测试运行器
+        // 应用ID，用于唯一标识应用
+        applicationId "com.etang.mt_launcher"
+        // 最低支持的SDK版本，低于此版本的设备将无法安装应用
+        minSdkVersion 15
+        // 目标SDK版本，指定应用设计所针对的Android系统版本
+        targetSdkVersion 33
+        // 版本号，用于内部版本管理，通常是一个整数
+        versionCode 250116
+        // 版本名称，用于向用户展示的版本信息
+        versionName "MTCore2.2-250116"
+        // 测试运行器，用于指定Android测试时使用的测试运行器
+        // testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        // 是否启用多Dex支持，当应用方法数超过65536时需要启用
         multiDexEnabled true
     }
 
-    // 签名配置
+    // 签名配置，用于对应用进行签名，确保应用的完整性和安全性
     signingConfigs {
+        // 调试模式的签名配置
         debug {
-            keyAlias 'etang' // 密钥别名
-            keyPassword 'xiaoyu0632' // 密钥密码
+            // 密钥别名，用于标识密钥
+            keyAlias 'etang'
+            // 密钥密码，用于保护密钥
+            keyPassword 'xiaoyu0632'
+            // 存储文件路径，指定密钥库文件的位置
             storeFile file('F:\\Android Studio Data\\projects\\MT-Launcher\\app\\siginFile\\MyNewAppKey.jks')
-            // 存储文件路径
-            storePassword 'xiaoyu0632' // 存储密码
+            // 存储密码，用于保护密钥库
+            storePassword 'xiaoyu0632'
         }
+        // 发布模式的签名配置
         release {
-            keyAlias 'etang' // 密钥别名
-            keyPassword 'xiaoyu0632' // 密钥密码
+            // 密钥别名，用于标识密钥
+            keyAlias 'etang'
+            // 密钥密码，用于保护密钥
+            keyPassword 'xiaoyu0632'
+            // 存储文件路径，指定密钥库文件的位置
             storeFile file('F:\\Android Studio Data\\projects\\MT-Launcher\\app\\siginFile\\MyNewAppKey.jks')
-            // 存储文件路径
-            storePassword 'xiaoyu0632' // 存储密码
+            // 存储密码，用于保护密钥库
+            storePassword 'xiaoyu0632'
         }
     }
-    // 构建类型配置
+    // 构建类型配置，用于定义不同的构建变体，如调试版和发布版
     buildTypes {
+        // 调试构建类型
         debug {
-            zipAlignEnabled true // 是否启用ZIP对齐
-            debuggable true // 是否开启DEBUG
-            minifyEnabled false // 是否混淆
-            shrinkResources false // 是否去除无效的资源文件
+            // 是否启用ZIP对齐，可优化APK文件的存储和运行效率
+            zipAlignEnabled true
+            // 是否开启DEBUG模式，开启后可以进行调试
+            debuggable true
+            // 是否混淆代码，混淆可以减小APK文件大小并提高安全性
+            minifyEnabled false
+            // 是否去除无效的资源文件，可减小APK文件大小
+            shrinkResources false
+            // ProGuard规则文件，指定混淆规则
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            // ProGuard规则文件
-            signingConfig signingConfigs.debug // 签名配置
+            // 签名配置，使用调试模式的签名配置
+            signingConfig signingConfigs.debug
         }
+        // 发布构建类型
         release {
-            zipAlignEnabled true // 是否启用ZIP对齐
-            debuggable false // 是否开启DEBUG
-            minifyEnabled true // 是否混淆
-            shrinkResources true // 是否去除无效的资源文件
+            // 是否启用ZIP对齐，可优化APK文件的存储和运行效率
+            zipAlignEnabled true
+            // 是否开启DEBUG模式，发布版通常关闭调试
+            debuggable false
+            // 是否混淆代码，混淆可以减小APK文件大小并提高安全性
+            minifyEnabled true
+            // 是否去除无效的资源文件，可减小APK文件大小
+            shrinkResources true
+            // ProGuard规则文件，指定混淆规则
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             // ProGuard规则文件
-            signingConfig signingConfigs.release // 签名配置
+            // 签名配置，使用发布模式的签名配置
+            signingConfig signingConfigs.release
         }
     }
-    namespace 'com.etang.mt_launcher' // 命名空间
+    // 命名空间，用于模块化开发中的代码组织
+    namespace 'com.etang.mt_launcher'
+    // 构建特性配置
     buildFeatures {
-        buildConfig true // 是否生成BuildConfig文件
+        // 是否生成BuildConfig文件，该文件包含应用的构建信息
+        buildConfig true
     }
     android {
+        // Lint检查配置，用于静态代码分析
         lint {
+            // 基准线文件，用于忽略一些已知的Lint警告
             baseline = file("lint-baseline.xml")
         }
     }
 }
 
-// 依赖项配置
+// 依赖项配置，用于指定项目所依赖的库和框架
 dependencies {
+    // Glide图片加载库
     implementation 'com.github.bumptech.glide:glide:4.12.0'
+    // Glide注解处理器
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    // Kotlin BOM（Bill of Materials），用于管理Kotlin库的版本
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
-    implementation("com.google.zxing:core:3.4.1") // ZXing库
-    implementation("org.greenrobot:eventbus:3.2.0") // EventBus库
-    implementation("org.jsoup:jsoup:1.13.1") // Jsoup库
-//    implementation(name: "libs", ext: "jar") // 其他库文件
-    implementation("androidx.appcompat:appcompat:${appcompatVersion}") // AppCompat库
-    implementation("ru.alexbykov:nopermission:1.1.2") // NoPermission库
+    // ZXing二维码扫描库
+    implementation("com.google.zxing:core:3.4.1")
+    // EventBus事件总线库，用于组件间通信
+    implementation("org.greenrobot:eventbus:3.2.0")
+    // Jsoup HTML解析库
+    implementation("org.jsoup:jsoup:1.13.1")
+    // 其他库文件，以jar包形式引入
+    // implementation(name: "libs", ext: "jar")
+    // AppCompat库，用于兼容不同版本的Android系统
+    implementation("androidx.appcompat:appcompat:${appcompatVersion}")
+    // NoPermission库，用于处理权限请求
+    implementation("ru.alexbykov:nopermission:1.1.2")
+    // ConstraintLayout布局库
     implementation("androidx.constraintlayout:constraintlayout:${constraintlayoutVersion}")
-    // ConstraintLayout库
-    implementation("com.google.android.material:material:${materialVersion}") // Material库
-    implementation('androidx.navigation:navigation-fragment:2.6.0') // Navigation Fragment库
-    implementation('androidx.navigation:navigation-ui:2.6.0') // Navigation UI库
-    implementation("androidx.legacy:legacy-support-v4:1.0.0") // Legacy Support V4库
-    testImplementation("junit:junit:${junitVersion1}") // JUnit库
-    androidTestImplementation("androidx.test.ext:junit:${junitVersion}") // Android测试JUnit库
+    // Material Design库，用于实现Material Design风格的界面
+    implementation("com.google.android.material:material:${materialVersion}")
+    // Navigation Fragment库，用于实现导航组件
+    implementation('androidx.navigation:navigation-fragment:2.6.0')
+    // Navigation UI库，用于实现导航组件的UI
+    implementation('androidx.navigation:navigation-ui:2.6.0')
+    // Legacy Support V4库，用于兼容旧版本的Android系统
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    // JUnit测试库，用于单元测试
+    testImplementation("junit:junit:${junitVersion1}")
+    // Android测试JUnit库，用于Android单元测试
+    androidTestImplementation("androidx.test.ext:junit:${junitVersion}")
+    // Espresso Core库，用于UI测试
     androidTestImplementation("androidx.test.espresso:espresso-core:${espressoCoreVersion}")
-    // Espresso Core库
-    implementation('androidx.recyclerview:recyclerview:1.3.0') // RecyclerView库
-    implementation("androidx.cardview:cardview:${cardviewVersion}") // CardView库
-    implementation("com.google.code.gson:gson:2.8.6") // Gson库
+    // RecyclerView库，用于实现列表视图
+    implementation('androidx.recyclerview:recyclerview:1.3.0')
+    // CardView库，用于实现卡片视图
+    implementation("androidx.cardview:cardview:${cardviewVersion}")
+    // Gson库，用于JSON数据的解析和序列化
+    implementation("com.google.code.gson:gson:2.8.6")
 }
