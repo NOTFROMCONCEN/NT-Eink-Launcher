@@ -1,9 +1,9 @@
 # MT-Launcher 梅糖桌面
 
 tips
-该项目已经迁移到：[https://gitee.com/rabbitTang_admin/mt-launcher-rebirth](https://github.com/NOTFROMCONCEN/MT-Launcher) 
+该项目已经迁移到：[https://github.com/NOTFROMCONCEN/MT-Launcher](https://github.com/NOTFROMCONCEN/MT-Launcher)
 
-请查阅[MT-Launcher-重生]([https://gitee.com/rabbitTang_admin/mt-launcher-rebirth](https://github.com/NOTFROMCONCEN/MT-Launcher))
+请查阅[MT-Launcher-重生](https://github.com/NOTFROMCONCEN/MT-Launcher)
 
 
 ## 📖 项目概述
